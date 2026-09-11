@@ -192,8 +192,6 @@ En el siguiente cuadro se describen las acciones realizadas y conclusiones del g
 
 Innova Carty es una empresa emergente orientada a la innovación tecnológica en el sector *retail*. Nuestra misión es transformar la experiencia de compra en establecimientos físicos mediante la integración de sistemas IoT, Edge Computing y pasarelas de pago digitales. Buscamos eliminar las fricciones tradicionales en el proceso de compra, como las largas colas en caja y la falta de control en tiempo real sobre el presupuesto del consumidor, dotando a los carritos de supermercado de capacidades autónomas, analíticas y de seguridad.
 
-*(Pendiente: agregar Misión, Visión y Valores formales, siguiendo el formato del informe de referencia — ver sección 1.1.1 del proyecto Nexora)*
-
 ### 1.1.2. Perfiles de integrantes del equipo
 
 | **Integrante** | **Perfil** | **Foto** |

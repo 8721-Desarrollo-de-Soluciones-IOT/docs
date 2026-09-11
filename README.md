@@ -101,9 +101,9 @@
 
 # Registro de versiones del Informe
 
-| Versión | Fecha | Autor(es) | Descripción de modificación |
-|----------|------------|------------|------------|
-| | | | |
+| Versión | Fecha      | Autor(es)                                                                                                                                                                                                                                        | Descripción de modificación                                                                                                                                                 |
+|---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
 
 <div style="page-break-after: always;"></div>
 

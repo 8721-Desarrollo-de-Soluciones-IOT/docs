@@ -7,34 +7,22 @@
   Carrera de Ingeniería de Software
 </p>
 
-<br><br>
+<br>
 
 <p align="center" style="font-size: 14pt; margin-bottom: 5px;">
-  <strong>[Código del curso, ej. 1ASI0572]</strong>
-</p>
-
-<p align="center" style="font-size: 14pt; margin-bottom: 5px;">
-  <strong>Desarrollo de Soluciones IoT</strong>
+  <strong> 1ASI0572 Desarrollo de Soluciones IoT</strong>
 </p>
 
 <p align="center" style="font-size: 12pt; margin-bottom: 5px;">
-  NRC
+  NRC: 8721
 </p>
 
-<p align="center" style="font-size: 14pt;">
-  <strong>[NRC]</strong>
+<p align="center" style="font-size: 12pt; margin-bottom: 5px;">
+  Docente: Javier Antonio Prudencio Vidal
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Informe de Avance</strong>
-</p>
-
-<p align="center" style="font-size: 12pt; margin-bottom: 5px;">
-  Docente
-</p>
-
-<p align="center" style="font-size: 14pt;">
-  <strong>[Apellidos y Nombres del docente]</strong>
+  <strong>Informe de Avance (AV1)</strong>
 </p>
 
 <br>
@@ -57,35 +45,55 @@
   <strong>Innova Carty</strong>
 </p>
 
-<br><br>
+<br>
 
 <p align="center" style="font-size: 12pt;">
   <strong>Integrantes</strong>
 </p>
 
-<div style="text-align: center;">
-  <div style="
-    display: inline-block;
-    text-align: left;
-    white-space: pre;
-    font-size: 11pt;
-    font-family: inherit;
-    line-height: 2;
-  ">
-<span style="font-size:12pt;"><strong>Código</strong>            <strong>Apellidos y Nombres</strong></span>
-U20231D534      Díaz Fiestas, Jorge Luis
-[código]         [Apellidos y Nombres]
-[código]         [Apellidos y Nombres]
-[código]         [Apellidos y Nombres]
-[código]         [Apellidos y Nombres]
-  </div>
+<div align="center">
+<table style="margin: 0 auto; border-collapse:collapse; border:none;">
+  <tr>
+    <th align="left" style="border:none; padding:0.3em 1.5em 0.3em 0;">
+      <strong style="font-size:1.1em;">Código</strong>
+    </th>
+    <th align="left" style="border:none; padding:0.3em 0;">
+      <strong style="font-size:1.1em;">Apellidos y Nombres</strong>
+    </th>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U20201B29</td>
+    <td style="border:none; padding:0.3em 0;">Berrocal Ramirez Omar Christian</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U202120569</td>
+    <td style="border:none; padding:0.3em 0;">Crisanto Calle Deybbi anderson</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U20231D534</td>
+    <td style="border:none; padding:0.3em 0;">Diaz Fiestas Jorge Luis</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U202215285</td>
+    <td style="border:none; padding:0.3em 0;">Huanca Navarro Gustavo Esau</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U20211d760</td>
+    <td style="border:none; padding:0.3em 0;">Paico Calderon, July Zelmira</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U20221A525</td>
+    <td style="border:none; padding:0.3em 0;">Pardo Chumpitazi, Kevin Patrick</td>
+  </tr>
+  <tr>
+    <td style="border:none; padding:0.3em 1.5em 0.3em 0;">U201912401</td>
+    <td style="border:none; padding:0.3em 0;">Trillo Hernandez, Anghel Melanie</td>
+  </tr>
+</table>
 </div>
 
 <br>
-
-<p align="center" style="font-size: 12pt;">
-  <strong>Período [XXXXXX]</strong>
-</p>
+<p align="center">Setiembre 2026</p>
 
 <div style="page-break-after: always;"></div>
 

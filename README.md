@@ -427,7 +427,36 @@ pérdidas).
 *(Pendiente — Responsable: Omar)*
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
-*(Pendiente — Responsable: Jorge)*
+#### 4.1.3.2. Software Architecture Context Level Diagrams
+
+El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una sola caja,
+sin exponer su arquitectura interna, junto con las personas que lo usan y los sistemas
+externos con los que se conecta.
+
+```mermaid
+graph TD
+    Cliente["Cliente / comprador<br/>Compra en el supermercado"]
+    Admin["Administrador de tienda<br/>Supervisa inventario y caja"]
+    Sistema["Innova Carty<br/>Sistema de carrito inteligente"]
+    Yape["Yape / Plin<br/>Sistema externo"]
+    Bancos["Red de tarjetas<br/>Sistema externo"]
+    POS["Sistema POS<br/>Inventario existente"]
+
+    Cliente -->|Escanea productos y paga desde el carrito| Sistema
+    Admin -->|Supervisa alertas e inventario en tiempo real| Sistema
+    Sistema -->|Genera cobro vía QR| Yape
+    Sistema -->|Procesa pagos con tarjeta| Bancos
+    Sistema -->|Sincroniza ventas y valida salida| POS
+```
+
+| Elemento | Tipo | Descripción |
+|---|---|---|
+| Cliente / comprador | Persona | Consumidor final que hace sus compras en el supermercado y usa el carrito inteligente. |
+| Administrador de tienda | Persona | Personal de operaciones que supervisa inventario, seguridad de salida y flujo de caja. |
+| Innova Carty | Sistema (en desarrollo) | Sistema de carrito inteligente: valida productos vía RFID, calcula el total en tiempo real y genera el cobro. |
+| Yape / Plin | Sistema externo | Billeteras digitales usadas para generar y confirmar el cobro por QR. |
+| Red de tarjetas | Sistema externo | Redes de pago con tarjeta (Visa, Mastercard) para clientes que no usan billetera digital. |
+| Sistema POS | Sistema externo | Sistema de punto de venta/inventario que ya usa el supermercado, con el que se sincronizan las ventas. |
 
 #### 4.1.3.3. Software Architecture Container Level Diagrams
 *(Pendiente — Responsable: July)*

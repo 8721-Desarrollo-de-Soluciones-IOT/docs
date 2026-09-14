@@ -274,3 +274,365 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 | **Geografía** | [Pendiente] |
 | **Estadísticas** | [Pendiente] |
 | **Problema** | Riesgo de salida de mercancía sin registrar pago y cuellos de botella operativos en caja durante horas de alta demanda. |
+
+
+
+
+
+
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Capítulo II: Requirements Elicitation & Analysis
+
+## 2.1. Competidores
+
+### 2.1.1. Análisis competitivo
+*(Pendiente — Responsable: Deybbi)*
+
+### 2.1.2. Estrategias y tácticas frente a competidores
+*(Pendiente — Responsable: July)*
+
+---
+
+## 2.2. Entrevistas
+
+### 2.2.1. Diseño de entrevistas
+
+**Objetivo de las entrevistas:** validar (o refutar) las suposiciones clave del Lean UX Canvas
+—que los compradores frecuentes desconocen cuánto llevan gastado durante su recorrido, y que
+los administradores de tienda enfrentan pérdidas operativas por mercancía no registrada y
+cuellos de botella en caja— antes de avanzar con el diseño de la solución.
+
+**Metodología:** entrevistas semiestructuradas de 15–20 minutos, presenciales o virtuales,
+al menos 5 personas por segmento. En la primera mitad de cada entrevista se evitan preguntas
+cerradas o que mencionen la solución (RFID, QR, geofencing, etc.), para indagar primero el
+comportamiento y el problema real, no la reacción a una idea ya formada.
+
+#### Entrevista 1 — Segmento: Comprador Moderno / Consumidor Final
+
+**Perfil del entrevistado:** persona de 20 a 50 años que compra en supermercado al menos una
+vez por semana, usa billeteras digitales (Yape, Plin, tarjetas) y suele cuidar su presupuesto.
+
+**Guion:**
+- *Caldeamiento:* Cuéntame de tu última visita al supermercado. ¿Con qué frecuencia compras
+  y en qué supermercado sueles hacerlo?
+- *Comportamiento actual:* ¿Cómo llevas la cuenta de cuánto vas gastando mientras haces tus
+  compras? ¿Te ha pasado que el total en caja fue distinto a lo que esperabas? ¿Qué hiciste
+  en ese momento?
+- *Dolor con el proceso actual:* ¿Cómo describirías la experiencia de espera en caja,
+  especialmente en fines de semana o quincena?
+- *Pagos digitales:* ¿Qué medios de pago usas normalmente en el supermercado? ¿Qué tan cómodo
+  te sientes pagando con QR o billetera digital?
+- *Cierre:* Si pudieras cambiar algo de tu experiencia de compra, ¿qué sería? ¿Qué tan
+  dispuesto estarías a usar un carrito que te muestre el total en tiempo real y te permita
+  pagar sin pasar por caja?
+
+#### Entrevista 2 — Segmento: Administrador de Tienda / Operaciones
+
+**Perfil del entrevistado:** personal de supermercado con responsabilidad sobre inventario,
+seguridad de perímetro o flujo de caja (supervisor de tienda, jefe de piso, encargado de
+pérdidas).
+
+**Guion:**
+- *Caldeamiento:* Cuéntame sobre tu rol en la tienda y cuánto tiempo llevas en el puesto.
+- *Comportamiento actual:* ¿Cuáles son los principales cuellos de botella operativos en horas
+  punta? ¿Cómo se gestiona hoy el riesgo de mercancía que sale sin registrar pago?
+- *Impacto del problema:* ¿Qué tan seguido ocurren mermas por ese motivo? ¿Cómo se mide el
+  impacto de las colas largas en la satisfacción del cliente?
+- *Tecnología actual:* ¿Qué sistemas usan hoy para el control de inventario o de caja?
+- *Apertura al cambio:* ¿Qué tan dispuestos estarían a modernizar la flota de carritos si eso
+  reduce costos operativos? ¿Qué necesitarías ver para confiar en un sistema de pago dentro
+  del carrito, sin pasar por caja?
+
+
+
+### 2.2.2. Registro de entrevistas
+
+### 2.2.3. Análisis de entrevistas
+*(Pendiente — Responsable: Melanie)*
+
+---
+
+## 2.3. Needfinding
+
+### 2.3.1. User Personas
+*(Pendiente — Responsable: July)*
+
+### 2.3.2. User Task Matrix
+*(Pendiente — Responsable: Omar)*
+
+### 2.3.3. User Journey Mapping
+*(Pendiente — Responsable: Deybbi)*
+
+### 2.3.4. Empathy Mapping
+*(Pendiente — Responsable: Kevin)*
+
+---
+
+## 2.4. Big Picture EventStorming
+*(Pendiente — Responsable: Deybbi)*
+
+---
+
+## 2.5. Ubiquitous Language
+*(Pendiente — Responsable: Kevin)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Capítulo III: Requirements Specification
+
+## 3.1. User Stories
+*(Pendiente — Responsable: Kevin)*
+
+---
+
+## 3.2. Impact Mapping
+*(Pendiente — Responsable: Omar)*
+
+---
+
+## 3.3. Product Backlog
+*(Pendiente — Responsable: July)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Capítulo IV: Solution Software Design
+
+## 4.1. Strategic-Level Domain-Driven Design
+
+### 4.1.1. Design-Level EventStorming
+
+#### 4.1.1.1. Candidate Context Discovery
+*(Pendiente — Responsable: Melanie)*
+
+#### 4.1.1.2. Domain Message Flows Modeling
+*(Pendiente — Responsable: Melanie)*
+
+#### 4.1.1.3. Bounded Context Canvases
+*(Pendiente — Responsable: Melanie)*
+
+### 4.1.2. Context Mapping
+*(Pendiente — Responsable: Kevin)*
+
+### 4.1.3. Software Architecture
+
+#### 4.1.3.1. Software Architecture System Landscape Diagram
+*(Pendiente — Responsable: Omar)*
+
+#### 4.1.3.2. Software Architecture Context Level Diagrams
+*(Pendiente — Responsable: Jorge)*
+
+#### 4.1.3.3. Software Architecture Container Level Diagrams
+*(Pendiente — Responsable: July)*
+
+#### 4.1.3.4. Software Architecture Deployment Diagrams
+*(Pendiente — Responsable: Deybbi)*
+
+---
+
+## 4.2. Tactical-Level Domain-Driven Design
+
+### 4.2.1. Bounded Context: [Nombre]
+*(Duplicar este bloque completo — 4.2.2, 4.2.3, etc. — por cada Bounded Context que definan)*
+
+#### 4.2.1.1. Domain Layer
+*(Pendiente — Responsable: Deybbi)*
+
+#### 4.2.1.2. Interface Layer
+*(Pendiente — Responsable: Gustavo)*
+
+#### 4.2.1.3. Application Layer
+*(Pendiente — Responsable: Gustavo)*
+
+#### 4.2.1.4. Infrastructure Layer
+*(Pendiente — Responsable: Gustavo)*
+
+#### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
+*(Pendiente — Responsable: Gustavo)*
+
+#### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+*(Pendiente — Responsable: Deybbi)*
+
+##### 4.2.1.6.2. Bounded Context Database Design Diagram
+*(Pendiente — Responsable: Melanie)*
+
+### 4.2.2. Bounded Context: [Nombre]
+*(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Capítulo V: Solution UI/UX Design
+
+## 5.1. Style Guidelines
+
+### 5.1.1. General Style Guidelines
+*(Pendiente — Responsable: Kevin)*
+
+### 5.1.2. Web, Mobile and IoT Style Guidelines
+*(Pendiente — Responsable: Jorge)*
+
+---
+
+## 5.2. Information Architecture
+
+### 5.2.1. Organization Systems
+*(Pendiente — Responsable: Jorge)*
+
+### 5.2.2. Labeling Systems
+*(Pendiente — Responsable: July)*
+
+### 5.2.3. SEO Tags and Meta Tags
+*(Pendiente — Responsable: Kevin)*
+
+### 5.2.4. Searching Systems
+*(Pendiente — Responsable: Omar)*
+
+### 5.2.5. Navigation Systems
+*(Pendiente — Responsable: Omar)*
+
+---
+
+## 5.3. Landing Page UI Design
+
+### 5.3.1. Landing Page Wireframe
+*(Pendiente — Responsable: Todos)*
+
+### 5.3.2. Landing Page Mock-up
+*(Pendiente — Responsable: Todos)*
+
+---
+
+## 5.4. Applications UX/UI Design
+
+### 5.4.1. Applications Wireframes
+*(Pendiente — Responsable: Todos)*
+
+### 5.4.2. Applications Wireflow Diagrams
+*(Pendiente — Responsable: Todos)*
+
+### 5.4.3. Applications Mock-ups
+*(Pendiente — Responsable: Todos)*
+
+### 5.4.4. Applications User Flow Diagrams
+*(Pendiente — Responsable: Gustavo)*
+
+---
+
+## 5.5. Applications Prototyping
+*(Pendiente — Responsable: Gustavo)*
+
+---
+
+## 5.6. IoT Device Design
+*(Pendiente — Responsable: Jorge)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Capítulo VI: Product Implementation, Validation & Deployment
+
+## 6.1. Software Configuration Management
+
+### 6.1.1. Software Development Environment Configuration
+*(Pendiente — Responsable: Omar)*
+
+### 6.1.2. Source Code Management
+*(Pendiente — Responsable: Omar)*
+
+### 6.1.3. Source Code Style Guide & Conventions
+*(Pendiente — Responsable: Omar)*
+
+### 6.1.4. Software Deployment Configuration
+*(Pendiente — Responsable: Kevin)*
+
+---
+
+## 6.2. Landing Page, Services & Applications Implementation
+
+### 6.2.1. Sprint 1
+*(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
+
+#### 6.2.1.1. Sprint Planning 1
+*(Pendiente — Responsable: Gustavo)*
+
+#### 6.2.1.2. Aspect Leaders and Collaborators
+*(Pendiente — Responsable: Gustavo)*
+
+#### 6.2.1.3. Sprint Backlog 1
+*(Pendiente — Responsable: July)*
+
+#### 6.2.1.4. Development Evidence for Sprint Review
+*(Pendiente — Responsable: Gustavo)*
+
+#### 6.2.1.5. Testing Suite Evidence for Sprint Review
+*(Pendiente — Responsable: Deybbi)*
+
+#### 6.2.1.6. Execution Evidence for Sprint Review
+*(Pendiente — Responsable: Melanie)*
+
+#### 6.2.1.7. Services Documentation Evidence for Sprint Review
+*(Pendiente — Responsable: Jorge)*
+
+#### 6.2.1.8. Software Deployment Evidence for Sprint Review
+*(Pendiente — Responsable: Jorge)*
+
+#### 6.2.1.9. Team Collaboration Insights during Sprint
+*(Pendiente — Responsable: Jorge)*
+
+---
+
+## 6.3. Validation Interviews
+
+### 6.3.1. Diseño de Entrevistas
+*(Pendiente — Responsable: July)*
+
+### 6.3.2. Registro de Entrevistas
+*(Pendiente — Responsable: Todos)*
+
+### 6.3.3. Evaluaciones según heurísticas
+*(Pendiente — Responsable: Deybbi)*
+
+---
+
+## 6.4. Video About-the-Product
+*(Pendiente — Responsable: Deybbi)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Conclusiones
+
+*(Pendiente — Responsable: Todos)*
+- Conclusiones y recomendaciones
+- Video About-the-Team
+- PPT Canva
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Bibliografía
+
+*(Pendiente — referencias en formato APA/IEEE según pida tu docente)*
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Anexos
+
+*(Pendiente — evidencias adicionales: consentimientos de entrevista, capturas, etc.)*
+

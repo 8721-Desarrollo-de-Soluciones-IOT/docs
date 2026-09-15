@@ -289,8 +289,115 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 
 ## 2.1. Competidores
 
-### 2.1.1. Análisis competitivo
-*(Pendiente — Responsable: Deybbi)*
+### 2.1.1. Análisis competitivo ###
+
+<table border="1px">
+    <thead>
+        <th colspan="11">Competitive Analysis Landscape</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" colspan="2">¿Por qué realizar este análisis?</td>
+            <td colspan="9">Indicar en este espacio la pregunta que se busca responder o el propósito principal del análisis.</td>
+        </tr>
+        <tr>
+            <td colspan="9">El propósito de este análisis es entender cómo funcionan y qué características poseen las soluciones de compra inteligente actuales, con el fin de potenciar las ventajas únicas de Innova Carty (pago ágil por QR peruano y control estricto de presupuesto) y aprovechar las barreras de costo y fricción de la competencia.</td>
+        </tr>
+        <tr>
+            <tr>
+                <td colspan="3">(En la cabecera colocar nombre y logo de cada competidor)</td>
+                <td colspan="2"><img src="assets/common/team/INNOVA_CARTY.jpg" style="width: 60px; height: auto;"><br>Innova Carty (Nuestro)</td>
+                <td colspan="2"><img src="assets/common/team/SCANYGO.png" style="width: 60px; height: auto;"><br>Scan & Go (Apps)</td>
+                <td colspan="2"><img src="assets/common/team/SMARTCART.jpg" style="width: 60px; height: auto;"><br>Smart-Cart</td>
+                <td colspan="2"><img src="assets/common/team/CAPERCART.jpg" style="width: 60px; height: auto;"><br>Caper Cart</td>
+            </tr>
+        </tr>
+        <tr>
+            <td rowspan="2" colspan="1">Perfil</td>
+            <td colspan="2">Descripción general</td>
+            <td colspan="2">Carrito inteligente IoT que escanea productos, calcula presupuesto en tiempo real y cobra vía QR local.</td>
+            <td colspan="2">Aplicación móvil de supermercados donde el cliente usa su celular para escanear y pagar.</td>
+            <td colspan="2">Carrito con tablet y datáfono físico integrado desarrollado para supermercados en Colombia.</td>
+            <td colspan="2">Carrito premium con cámaras de IA de visión computacional y sensores de peso.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Ventaja competitiva<br>¿Qué valor ofrece?</td>
+            <td colspan="2">Pagos universales por QR (Yape/Plin), control de límite de gasto y mínima fricción física.</td>
+            <td colspan="2">No requiere inversión en hardware físico por parte del supermercado.</td>
+            <td colspan="2">Respaldo de red de pagos (Credibanco), permite usar tarjetas de crédito físicas en el carrito.</td>
+            <td colspan="2">Experiencia "Throw & Go": el usuario lanza el producto y las cámaras lo reconocen automáticamente.</td>
+        </tr>
+        <tr>
+            <td rowspan="2" colspan="1">Perfil de Marketing</td>
+            <td colspan="2">Mercado objetivo</td>
+            <td colspan="2">Supermercados y clientes de retail en Perú enfocados en ahorro de tiempo y presupuesto.</td>
+            <td colspan="2">Consumidores digitalizados que ya compran en cadenas de supermercados peruanos.</td>
+            <td colspan="2">Cadenas de supermercados en Colombia y la región andina.</td>
+            <td colspan="2">Grandes corporaciones de retail en Estados Unidos y mercados de primer mundo.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Estrategia de Marketing</td>
+            <td colspan="2">Venta B2B destacando fidelización mediante Yape/Plin y la alerta de presupuesto límite.</td>
+            <td colspan="2">Promociones in-store y descuentos exclusivos por usar la app del supermercado.</td>
+            <td colspan="2">Alianzas corporativas directas entre la red de procesamiento y minoristas.</td>
+            <td colspan="2">Presencia en grandes ferias globales de retail y respaldo corporativo de Instacart.</td>
+        </tr>
+        <tr>
+            <td rowspan="3" colspan="1">Perfil de Producto</td>
+            <td colspan="2">Producto & Servicio</td>
+            <td colspan="2">Hardware (Carrito) con lector, pantalla táctil y software de pagos QR integrado.</td>
+            <td colspan="2">Software (App móvil) instalada en el smartphone del usuario final.</td>
+            <td colspan="2">Hardware (Carrito) adaptado con un terminal de pago POS robusto.</td>
+            <td colspan="2">Hardware (Carrito premium) con tecnología de reconocimiento de imágenes 360°.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Precio & Costos</td>
+            <td colspan="2">Costo medio de hardware. Gratuito para el consumidor final.</td>
+            <td colspan="2">Inversión en software para el retail. Cero costo de hardware extra por carrito.</td>
+            <td colspan="2">Costo alto B2B por la inclusión de terminales POS tradicionales.</td>
+            <td colspan="2">Muy alto (miles de dólares) por uso intensivo de cámaras e IA.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Canales</td>
+            <td colspan="2">Tiendas físicas retail y demostraciones piloto.</td>
+            <td colspan="2">App Store, Google Play y banners en tienda.</td>
+            <td colspan="2">Venta corporativa B2B.</td>
+            <td colspan="2">Venta corporativa B2B.</td>
+        </tr>
+        <tr>
+            <td rowspan="5">Análisis SWOT</td>
+            <td colspan="10">Elabore un análisis para su startup y competidores. Las fortalezas deben respaldar oportunidades y reforzar ventajas competitivas.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Fortalezas</td>
+            <td colspan="2">Fuerte enfoque en inclusión financiera (pagos QR) y alertas para no exceder presupuesto.</td>
+            <td colspan="2">Escalabilidad inmediata y cero mantenimiento de hardware para el supermercado.</td>
+            <td colspan="2">Soporte técnico directo de una gran procesadora de pagos tradicional.</td>
+            <td colspan="2">Tecnología de punta, nula fricción al comprar y marca global reconocida.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Debilidades</td>
+            <td colspan="2">El desarrollo y mantenimiento del hardware en los locales requiere inversión inicial.</td>
+            <td colspan="2">Alta fricción: el usuario gasta batería y maniobra incómodamente con celular y productos.</td>
+            <td colspan="2">El POS físico es pesado, tosco y propenso a sufrir daños en el carrito.</td>
+            <td colspan="2">Costos prohibitivos para Latam; infraestructura muy compleja de mantener.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Oportunidades</td>
+            <td colspan="2">Masiva adopción de billeteras digitales en Perú y demanda por evitar colas.</td>
+            <td colspan="2">Integración nativa con programas de fidelidad como CMR o Tarjeta Oh!</td>
+            <td colspan="2">Expansión hacia otros países sudamericanos con infraestructura de pagos similar.</td>
+            <td colspan="2">Sinergia con ecosistemas de delivery y recolección de macrodatos de consumo.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Amenazas</td>
+            <td colspan="2">Vandalismo hacia la pantalla o sensores, y rechazo de cadenas conservadoras.</td>
+            <td colspan="2">Baja tasa de retención si el usuario prefiere no usar su teléfono personal.</td>
+            <td colspan="2">Reemplazo por tecnologías de pago digital puro (QR) sin terminales físicos.</td>
+            <td colspan="2">Tiendas sin cajeros (cámaras en el techo) que volverían obsoletos los carritos.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 *(Pendiente — Responsable: July)*

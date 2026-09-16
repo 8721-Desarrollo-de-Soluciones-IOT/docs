@@ -676,16 +676,340 @@ graph TD
 *(Pendiente — Responsable: Deybbi)*
 
 #### 4.2.1.2. Interface Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Interface Layer** del Smart Shopping Bounded Context contiene los puntos de entrada mediante los cuales las aplicaciones cliente y el Edge API interactúan con las capacidades del contexto. Su responsabilidad es recibir solicitudes o eventos, validar su estructura, transformar los datos de transporte a comandos o consultas de la Application Layer y construir las respuestas que se devuelven al consumidor. Esta capa no implementa reglas de negocio del carrito.
+
+##### Controllers / Consumers
+
+**1. ShoppingSessionController**
+
+**Propósito:** exponer las operaciones HTTP relacionadas con la sesión de compra activa del cliente.
+
+**Endpoints propuestos:**
+
+- `POST /api/v1/shopping-sessions`: inicia una nueva sesión de compra para un carrito disponible.
+- `GET /api/v1/shopping-sessions/{sessionId}`: obtiene el estado actual de la sesión, productos registrados, total acumulado, presupuesto y estado de validación.
+- `PUT /api/v1/shopping-sessions/{sessionId}/budget`: registra o actualiza el límite de presupuesto definido por el usuario.
+- `DELETE /api/v1/shopping-sessions/{sessionId}/items/{itemId}`: solicita retirar un producto previamente registrado.
+- `POST /api/v1/shopping-sessions/{sessionId}/checkout`: solicita preparar y validar la sesión antes de enviarla al contexto de Payment & Checkout.
+- `POST /api/v1/shopping-sessions/{sessionId}/cancel`: cancela una sesión que todavía no ha sido pagada.
+
+**Dependencias principales:**
+
+- `ShoppingSessionCommandService`
+- `ShoppingSessionQueryService`
+- `CheckoutPreparationService`
+
+**2. EdgeEventController / EdgeEventConsumer**
+
+**Propósito:** recibir desde el Edge API los eventos originados por el hardware del carrito, desacoplando la lógica de aplicación de los detalles del ESP32, lector RFID y celda de carga.
+
+**Operaciones o eventos de entrada propuestos:**
+
+- `ProductDetected`: RFID de un producto detectado en el carrito.
+- `ProductRemoved`: RFID de un producto que dejó de detectarse.
+- `WeightMeasured`: lectura de peso consolidada por el Edge API.
+- `CartHeartbeat`: señal opcional de estado/conectividad del carrito.
+
+**Dependencias principales:**
+
+- `ShoppingSessionCommandService`
+- `WeightValidationEventHandler`
+
+##### Resources / DTOs
+
+**StartShoppingSessionResource**
+
+Representa la información necesaria para iniciar una sesión.
+
+- `cartId`
+- `customerId` *(opcional si el flujo permite compra invitada)*
+- `budgetLimit` *(opcional)*
+
+**ShoppingSessionResource**
+
+Representa la sesión que consume la aplicación web/móvil o la pantalla del carrito.
+
+- `sessionId`
+- `cartId`
+- `status`
+- `items`
+- `subtotal`
+- `budgetLimit`
+- `remainingBudget`
+- `weightValidationStatus`
+- `createdAt`
+
+**EdgeProductEventResource**
+
+Representa un evento de producto enviado por el Edge API.
+
+- `cartId`
+- `sessionId`
+- `rfidTag`
+- `eventType`
+- `timestamp`
+
+**WeightMeasurementResource**
+
+Representa una lectura de peso procesada por el Edge API.
+
+- `cartId`
+- `sessionId`
+- `measuredWeight`
+- `timestamp`
+
+##### Assemblers / Mappers
+
+**ShoppingSessionResourceFromEntityAssembler**
+
+Convierte el agregado `ShoppingSession` en `ShoppingSessionResource`, evitando exponer directamente objetos de dominio.
+
+**StartShoppingSessionCommandFromResourceAssembler**
+
+Convierte `StartShoppingSessionResource` en `StartShoppingSessionCommand`.
+
+**EdgeProductCommandFromResourceAssembler**
+
+Convierte un `EdgeProductEventResource` en `RegisterDetectedProductCommand` o `RemoveDetectedProductCommand`, según el tipo de evento.
+
+**WeightMeasurementCommandFromResourceAssembler**
+
+Convierte la lectura recibida en `RegisterWeightMeasurementCommand`.
+
+##### Relaciones entre componentes
+
+- Los controllers y consumers reciben datos externos y delegan la ejecución a la Application Layer.
+- Los assemblers transforman DTOs en Commands/Queries y entidades de dominio en Resources.
+- La Interface Layer desconoce la persistencia y no accede directamente a la base de datos.
+- Las reglas de consistencia entre RFID, peso, presupuesto y estado de la sesión permanecen fuera de esta capa.
+
+---
 
 #### 4.2.1.3. Application Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Application Layer** coordina los casos de uso del Smart Shopping Bounded Context. Actúa como intermediario entre la Interface Layer, el modelo de dominio y los adaptadores de infraestructura. Su función es orquestar Commands, Queries y Events, mantener los límites transaccionales y ejecutar los flujos de aplicación sin trasladar a esta capa las reglas propias del negocio.
+
+##### Command Services / Command Handlers
+
+**1. ShoppingSessionCommandService**
+
+**Propósito:** ejecutar los casos de uso que modifican el estado de una sesión de compra.
+
+**Operaciones principales:**
+
+- `handle(StartShoppingSessionCommand)`: crea una sesión asociada a un carrito disponible.
+- `handle(SetBudgetLimitCommand)`: registra o modifica el presupuesto máximo de la sesión.
+- `handle(RegisterDetectedProductCommand)`: obtiene la información comercial del producto detectado y solicita al agregado incorporarlo.
+- `handle(RemoveDetectedProductCommand)`: retira de la sesión un producto que ya no se encuentra en el carrito.
+- `handle(RegisterWeightMeasurementCommand)`: incorpora una nueva lectura de peso para su posterior validación.
+- `handle(CancelShoppingSessionCommand)`: cancela una sesión no pagada.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `CatalogPricingPort`
+- `DomainEventPublisher`
+
+**2. CheckoutPreparationService**
+
+**Propósito:** verificar que una sesión se encuentre en condiciones de pasar al checkout.
+
+**Operaciones principales:**
+
+- `prepareCheckout(sessionId)`: comprueba que la sesión esté activa, que no existan inconsistencias pendientes y que el total sea válido.
+- `requestCheckout(sessionId)`: envía al contexto **Payment & Checkout** el identificador de sesión y el monto final mediante un puerto/ACL.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `PaymentCheckoutPort`
+
+##### Query Services / Query Handlers
+
+**ShoppingSessionQueryService**
+
+**Propósito:** recuperar información de la sesión sin modificar su estado.
+
+**Operaciones principales:**
+
+- `handle(GetShoppingSessionByIdQuery)`
+- `handle(GetActiveSessionByCartIdQuery)`
+- `handle(GetShoppingSessionSummaryQuery)`
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+
+##### Event Handlers
+
+**WeightValidationEventHandler**
+
+**Propósito:** reaccionar a una nueva lectura de peso y verificar que el peso físico observado sea coherente con los productos registrados por RFID.
+
+**Flujo propuesto:**
+
+1. Recupera la sesión activa.
+2. Calcula el peso esperado a partir de los productos registrados.
+3. Aplica `WeightConsistencyPolicy`.
+4. Actualiza el estado de validación de la sesión.
+5. Si existe una diferencia superior a la tolerancia, publica `WeightMismatchDetected`.
+6. Cuando la lectura vuelve a ser consistente, publica `WeightConsistencyRestored`.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `WeightConsistencyPolicy`
+- `DomainEventPublisher`
+
+##### Capabilities cubiertos por la Application Layer
+
+- Inicio y finalización lógica de una sesión de compra.
+- Registro y retiro de productos detectados por RFID.
+- Actualización continua del total acumulado.
+- Control del presupuesto máximo configurado por el usuario.
+- Correlación entre productos registrados y peso medido.
+- Gestión del estado de anomalía.
+- Preparación de una sesión para el checkout.
+- Consulta del estado actual del carrito.
+
+##### Relaciones entre componentes
+
+- Los Command Handlers modifican el agregado `ShoppingSession` y persisten sus cambios mediante `ShoppingSessionRepository`.
+- Los Query Handlers consultan el repositorio sin alterar el estado.
+- Los Event Handlers reaccionan a eventos producidos por el Edge API o por el dominio.
+- Las integraciones con otros bounded contexts se realizan mediante puertos definidos por la aplicación y adaptadores implementados en Infrastructure.
+
+---
 
 #### 4.2.1.4. Infrastructure Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Infrastructure Layer** proporciona las implementaciones técnicas requeridas por las capas superiores. En el Smart Shopping Bounded Context concentra la persistencia, los clientes de integración con otros bounded contexts, la publicación de eventos y los detalles de transporte necesarios para comunicarse con servicios externos. Esta capa implementa las abstracciones definidas por el Domain Layer o la Application Layer.
+
+##### Persistence
+
+**1. PostgresShoppingSessionRepository**
+
+**Propósito:** implementar `ShoppingSessionRepository` y persistir el agregado de sesión de compra.
+
+**Operaciones principales:**
+
+- `save(ShoppingSession session)`
+- `findById(ShoppingSessionId id)`
+- `findActiveByCartId(CartId cartId)`
+- `existsActiveSessionByCartId(CartId cartId)`
+
+**Persistencia esperada:**
+
+- `shopping_sessions`
+- `shopping_session_items`
+- estados de validación y timestamps asociados a la sesión
+
+
+##### Outbound Adapters / Anti-Corruption Layer
+
+**2. CatalogPricingClient**
+
+**Propósito:** consultar el contexto de Catalog & Pricing sin incorporar su modelo externo directamente al dominio de Smart Shopping.
+
+**Operaciones principales:**
+
+- `getProductByRfid(rfidTag)`
+- `getCurrentPrice(productId)`
+- `getExpectedWeight(productId)`
+
+**Resultado interno:** transforma la respuesta externa a un objeto propio, por ejemplo `ProductSnapshot`.
+
+**3. PaymentContextClient**
+
+**Propósito:** solicitar al bounded context Payment & Checkout la creación del proceso de pago para una sesión validada.
+
+**Operaciones principales:**
+
+- `createCheckout(sessionId, amount)`
+- `getPaymentStatus(checkoutId)`
+
+La respuesta del contexto de pagos se traduce a tipos propios del contexto Smart Shopping para evitar dependencia directa de su modelo.
+
+##### Messaging / Event Publication
+
+**4. DomainEventPublisher**
+
+**Propósito:** publicar eventos relevantes para otros componentes o bounded contexts.
+
+**Eventos candidatos:**
+
+- `ShoppingSessionStarted`
+- `ProductAddedToShoppingSession`
+- `ProductRemovedFromShoppingSession`
+- `BudgetLimitReached`
+- `WeightMismatchDetected`
+- `ShoppingSessionReadyForCheckout`
+- `ShoppingSessionCancelled`
+
+La implementación puede comenzar con eventos internos/in-process durante el MVP y evolucionar a un broker cuando el diseño de despliegue lo requiera.
+
+##### Relaciones entre componentes
+
+- `PostgresShoppingSessionRepository` implementa la interfaz `ShoppingSessionRepository` definida en el dominio.
+- `CatalogPricingClient` implementa `CatalogPricingPort` y actúa como ACL frente a Catalog & Pricing.
+- `PaymentContextClient` implementa `PaymentCheckoutPort` y actúa como ACL frente a Payment & Checkout.
+- `DomainEventPublisher` desacopla el núcleo de negocio del mecanismo concreto de mensajería.
+- Ningún controller accede directamente a estas implementaciones: la interacción ocurre a través de la Application Layer.
+
+---
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
-*(Pendiente — Responsable: Gustavo)*
+
+El siguiente **Component Diagram (C4 Model – Level 3)** descompone el container correspondiente al backend/cloud API del **Smart Shopping Bounded Context** y muestra sus componentes estructurales principales, responsabilidades e interacciones. Esta representación se alinea con la exigencia de que cada component evidencie su función y su relación con otros components, containers y sistemas externos.
+
+**Insertar aquí la imagen:**
+
+```markdown
+![C4 Component Diagram - Smart Shopping Bounded Context](assets/common/team/smart-shopping-component.png)
+```
+
+La imagen debe ubicarse inmediatamente después del párrafo introductorio anterior.
+
+##### Componentes representados
+
+**Interface Layer**
+
+- `ShoppingSessionController`: expone los endpoints usados por la aplicación cliente.
+- `EdgeEventController / Consumer`: recibe eventos generados por el Edge API.
+- `ShoppingSessionResourceAssembler`: transforma DTOs, commands y recursos.
+
+**Application Layer**
+
+- `ShoppingSessionCommandService`: orquesta las operaciones que cambian el estado de la sesión.
+- `ShoppingSessionQueryService`: resuelve consultas del carrito activo.
+- `WeightValidationEventHandler`: procesa lecturas de peso y genera el flujo de anomalías.
+- `CheckoutPreparationService`: verifica una sesión y coordina el paso al checkout.
+
+**Domain Layer**
+
+- `ShoppingSession`: aggregate root del contexto.
+- `CartItem`, `Budget` y `WeightSnapshot`: entidades/value objects asociados.
+- `WeightConsistencyPolicy`: domain service para la validación RFID-peso.
+- `ShoppingSessionRepository`: contrato de persistencia.
+
+**Infrastructure Layer**
+
+- `PostgresShoppingSessionRepository`: implementación del repositorio.
+- `CatalogPricingClient`: ACL hacia Catalog & Pricing.
+- `PaymentContextClient`: ACL hacia Payment & Checkout.
+- `DomainEventPublisher`: adaptador de publicación de eventos.
+
+##### Interacciones principales
+
+1. La Web/Mobile App invoca `ShoppingSessionController` mediante JSON/HTTPS.
+2. El Edge API envía eventos de RFID y peso a `EdgeEventController / Consumer`.
+3. La Interface Layer traduce la entrada a comandos o consultas.
+4. Los servicios de aplicación orquestan el agregado y las políticas del Domain Layer.
+5. La persistencia se ejecuta mediante la implementación del repositorio en Infrastructure.
+6. Los datos de producto se consultan al Catalog & Pricing Context a través de una ACL.
+7. Una sesión consistente puede solicitar checkout al Payment & Checkout Context.
+8. Los eventos de anomalía o cambio de estado se publican mediante `DomainEventPublisher`.
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 

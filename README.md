@@ -963,13 +963,10 @@ La implementación puede comenzar con eventos internos/in-process durante el MVP
 
 El siguiente **Component Diagram (C4 Model – Level 3)** descompone el container correspondiente al backend/cloud API del **Smart Shopping Bounded Context** y muestra sus componentes estructurales principales, responsabilidades e interacciones. Esta representación se alinea con la exigencia de que cada component evidencie su función y su relación con otros components, containers y sistemas externos.
 
-**Insertar aquí la imagen:**
 
-```markdown
 ![C4 Component Diagram - Smart Shopping Bounded Context](assets/common/team/smart-shopping-component.png)
-```
 
-La imagen debe ubicarse inmediatamente después del párrafo introductorio anterior.
+
 
 ##### Componentes representados
 

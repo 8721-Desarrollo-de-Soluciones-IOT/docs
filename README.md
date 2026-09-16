@@ -197,7 +197,7 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 | **Integrante** | **Perfil** | **Foto** |
 |----------------|------------|----------|
 | **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil: experiencia, tecnologías que maneja, y qué rol tomará en el proyecto] | `assets/common/team/[nombre].jpg` |
+| **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
 | **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
 | **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
 
@@ -243,9 +243,103 @@ Para entender el contexto del problema, aplicamos la técnica de análisis de la
 
 #### 1.2.2.4. Lean UX Canvas
 
-![Lean UX Canvas](assets/chapter-1/lean-ux-canvas/lean-ux-canvas-innovacarty.jpg)
-
-*(Pendiente: agregar imagen del canvas)*
+<table border="1px">
+    <thead>
+        <tr>
+            <th colspan="3" style="text-align: left; font-size: 18px; padding: 10px;">Lean UX Canvas (v2)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="1" style="width: 33%; vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>Business Problem</strong>
+                </div>
+                <ul style="font-size: 12px; padding-left: 15px;">
+                    <li>Pérdida de tiempo y cuellos de botella en filas de pago durante horarios de alta concurrencia.</li>
+                    <li>Desconocimiento del costo acumulado por parte del cliente hasta llegar a la caja registradora.</li>
+                    <li>Abandono de carritos, rechazos de pago de última hora por exceso de presupuesto y mermas por salidas no verificadas.</li>
+                </ul>
+            </td>
+            <td rowspan="2" colspan="1" style="width: 34%; vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>Solutions</strong>
+                </div>
+                <ul style="font-size: 12px; padding-left: 15px;">
+                    <li><strong>Carrito Inteligente IoT (Smart Cart):</strong> Unidades equipadas con hardware integrado (módulo de lectura RFID, celdas de carga y sistema de geofencing).</li>
+                    <li><strong>Validación Edge Local:</strong> Sistema en el carrito para verificar la consistencia entre los productos ingresados por RFID y el peso registrado en la celda de carga.</li>
+                    <li><strong>Pantalla Interactiva con QR:</strong> Interfaz integrada al carrito que muestra el desglose del presupuesto en tiempo real y genera códigos QR instantáneos para pago con billeteras digitales (Yape/Plin) o tarjetas.</li>
+                </ul>
+            </td>
+            <td colspan="1" style="width: 33%; vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>Business Outcomes</strong>
+                </div>
+                 <ul style="font-size: 12px; padding-left: 15px;">
+                    <li>Reducción del 30% en el tiempo total de checkout en tienda.</li>
+                    <li>Cero incidentes de salida de mercancía sin verificar (reducción de merma).</li>
+                    <li>Incremento en las tasas de retención de clientes y mejor CSAT.</li>
+                    <li>Reducción de costos operativos y aumento del margen por mayor rotación de clientes.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" style="vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>Users</strong>
+                </div>
+                <ul style="font-size: 12px; padding-left: 15px;">
+                    <li><strong>Clientes Frecuentes de Supermercados:</strong> Compradores que buscan autonomía, agilidad en sus compras y mantener un control estricto de su presupuesto.</li>
+                    <li><strong>Administradores de Operaciones Retail:</strong> Gerentes y personal enfocado en optimizar el flujo de clientes, reducir colas y mitigar el riesgo de robos/pérdidas.</li>
+                </ul>
+            </td>
+            <td colspan="1" style="vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>User Outcomes & Benefits</strong>
+                </div>
+                <ul style="font-size: 12px; padding-left: 15px;">
+                    <li><strong>Control Presupuestario en Tiempo Real:</strong> Conocer exactamente el monto total acumulado durante el recorrido.</li>
+                    <li><strong>Eliminación de Filas:</strong> Capacidad de realizar auto-pago inmediato en la propia unidad de compra.</li>
+                    <li><strong>Experiencia Autónoma:</strong> Facilidad para escanear productos y pagar con métodos digitales conocidos (Yape, Plin, tarjetas).</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <!-- 6. Hypotheses -->
+            <td colspan="1" style="vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>Hypotheses</strong>
+                </div>
+                <p style="font-size: 12px; margin-top: 5px;">
+                    <strong>Creemos que</strong> lograremos una mayor satisfacción del cliente y una mayor fluidez en tienda<br><br>
+                    <strong>Si</strong> los clientes frecuentes<br><br>
+                    <strong>Obtienen</strong> un carrito inteligente IoT equipado con escaneo RFID, validación por peso y pago integrado vía Yape/Plin.
+                </p>
+            </td>
+            <!-- 7. What's the most important thing we need to learn first? -->
+            <td colspan="1" style="vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>What's the most important thing we need to learn first?</strong>
+                </div>
+                 <ul style="font-size: 12px; padding-left: 15px;">
+                    <li><strong>Aceptación:</strong> ¿Los usuarios prefieren y comprenden el proceso de escaneo e interacción en la pantalla del carrito?</li>
+                    <li><strong>Precisión:</strong> ¿El sistema celdas de carga + RFID logra prevenir fraudes sin generar falsos positivos?</li>
+                    <li><strong>Conexión:</strong> ¿La integración QR (Yape/Plin) es lo suficientemente rápida para evitar fallos en tienda?</li>
+                </ul>
+            </td>
+            <td colspan="1" style="vertical-align: top; padding: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <strong>What's the least amount of work we need to do to learn that next important thing?</strong>
+                </div>
+                <ul style="font-size: 12px; padding-left: 15px;">
+                    <li><strong>Prototipo Piloto MVP:</strong> Desplegar 3 a 5 carritos IoT en una zona delimitada de un supermercado para probar con usuarios reales.</li>
+                    <li><strong>Prueba de Usabilidad Checkout QR:</strong> Medir la tasa de éxito y tiempo medio de pago generando QR dinámicos en pantalla.</li>
+                    <li><strong>Test de Detección de Mermas:</strong> Ensayar escenarios de manipulación (inconsistencia de peso) para calibrar celdas de carga.</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ---
 

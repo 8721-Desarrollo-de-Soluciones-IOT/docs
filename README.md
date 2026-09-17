@@ -563,7 +563,18 @@ pérdidas).
 *(Pendiente — Responsable: July)*
 
 ### 2.3.2. User Task Matrix
-*(Pendiente — Responsable: Omar)*
+
+|Tarea |Frecuencia|Importancia|
+|------- |---------|----------|
+|Activar el carrito inteligente| Alta | Media |
+|Escanear productos  | Alta | Alta |
+|Consultar acumulado de compra  | Alta | Alta |
+|Registrar presupuesto límite | Media | Media |
+|Actualizar lista del carrito | Alta | Alta|
+|Alertas de inconsistencia | Baja | Alta |
+|Pagar con QR | Alta | Alta |
+|Validar comprobante | Alta | Media |
+
 
 ### 2.3.3. User Journey Mapping
 *(Pendiente — Responsable: Deybbi)*

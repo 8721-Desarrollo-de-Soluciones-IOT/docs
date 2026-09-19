@@ -604,8 +604,8 @@ pérdidas).
 ---
 
 ## 3.2. Impact Mapping
-*(Pendiente — Responsable: Omar)*
 
+![Impact Mapping](assets/chapter-3/impact-map.png)
 ---
 
 ## 3.3. Product Backlog

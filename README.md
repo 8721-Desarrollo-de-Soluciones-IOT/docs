@@ -605,7 +605,7 @@ pérdidas).
 
 ## 3.2. Impact Mapping
 
-![Impact Mapping](assets/chapter-3/impact-map.png)
+![Impact Mapping](assets/chapter-3/Impact-map.png)
 ---
 
 ## 3.3. Product Backlog

@@ -639,27 +639,12 @@ pérdidas).
 *(Pendiente — Responsable: Omar)*
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
-#### 4.1.3.2. Software Architecture Context Level Diagrams
 
 El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una sola caja,
 sin exponer su arquitectura interna, junto con las personas que lo usan y los sistemas
 externos con los que se conecta.
 
-```mermaid
-graph TD
-    Cliente["Cliente / comprador<br/>Compra en el supermercado"]
-    Admin["Administrador de tienda<br/>Supervisa inventario y caja"]
-    Sistema["Innova Carty<br/>Sistema de carrito inteligente"]
-    Yape["Yape / Plin<br/>Sistema externo"]
-    Bancos["Red de tarjetas<br/>Sistema externo"]
-    POS["Sistema POS<br/>Inventario existente"]
-
-    Cliente -->|Escanea productos y paga desde el carrito| Sistema
-    Admin -->|Supervisa alertas e inventario en tiempo real| Sistema
-    Sistema -->|Genera cobro vía QR| Yape
-    Sistema -->|Procesa pagos con tarjeta| Bancos
-    Sistema -->|Sincroniza ventas y valida salida| POS
-```
+<img src="assets/chapter-4/software-architecture/system-context-diagram.png" width="900">
 
 | Elemento | Tipo | Descripción |
 |---|---|---|

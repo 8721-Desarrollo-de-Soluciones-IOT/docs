@@ -198,7 +198,7 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 |----------------|------------|----------|
 | **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
 | **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
+| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120"> |
 | **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
 
 ---
@@ -502,55 +502,77 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 
 ### 2.2.1. Diseño de entrevistas
 
-**Objetivo de las entrevistas:** validar (o refutar) las suposiciones clave del Lean UX Canvas
-—que los compradores frecuentes desconocen cuánto llevan gastado durante su recorrido, y que
-los administradores de tienda enfrentan pérdidas operativas por mercancía no registrada y
-cuellos de botella en caja— antes de avanzar con el diseño de la solución.
+**Objetivo de las entrevistas:** Validar (o refutar) las suposiciones clave del Lean UX Canvas —que los compradores frecuentes desconocen cuánto llevan gastado durante su recorrido, y que los administradores de tienda enfrentan pérdidas operativas por mercancía no registrada y cuellos de botella en caja— antes de avanzar con el diseño de la solución.
 
-**Metodología:** entrevistas semiestructuradas de 15–20 minutos, presenciales o virtuales,
-al menos 5 personas por segmento. En la primera mitad de cada entrevista se evitan preguntas
-cerradas o que mencionen la solución (RFID, QR, geofencing, etc.), para indagar primero el
-comportamiento y el problema real, no la reacción a una idea ya formada.
+**Metodología:** Entrevistas semiestructuradas de 15–20 minutos, presenciales o virtuales, considerando al menos 5 personas por segmento objetivo. Se estructuran en preguntas complementarias (datos demográficos, entorno tecnológico y hábitos para la elaboración del arquetipo) y preguntas principales (enfocadas en el flujo de compra, cuellos de botella y problemas reales).
 
-#### Entrevista 1 — Segmento: Comprador Moderno / Consumidor Final
+#### Segmento 1: Comprador Moderno / Consumidor Final
 
-**Perfil del entrevistado:** persona de 20 a 50 años que compra en supermercado al menos una
-vez por semana, usa billeteras digitales (Yape, Plin, tarjetas) y suele cuidar su presupuesto.
+##### Preguntas Complementarias (Demográficas y Psicográficas)
+* ¿Cuál es su nombre completo, edad, estado civil y ocupación actual?
+* ¿En qué distrito reside actualmente y con quiénes vive en su hogar?
+* ¿Qué dispositivos electrónicos utiliza con mayor frecuencia (smartphone iOS/Android, laptop, tablet)?
+* ¿Cuáles son las aplicaciones móviles y billeteras digitales que utiliza en su día a día (ej. Yape, Plin, banca móvil)?
+* ¿Qué marcas de supermercados o retail prefiere visitar y por qué?
 
-**Guion:**
-- *Caldeamiento:* Cuéntame de tu última visita al supermercado. ¿Con qué frecuencia compras
-  y en qué supermercado sueles hacerlo?
-- *Comportamiento actual:* ¿Cómo llevas la cuenta de cuánto vas gastando mientras haces tus
-  compras? ¿Te ha pasado que el total en caja fue distinto a lo que esperabas? ¿Qué hiciste
-  en ese momento?
-- *Dolor con el proceso actual:* ¿Cómo describirías la experiencia de espera en caja,
-  especialmente en fines de semana o quincena?
-- *Pagos digitales:* ¿Qué medios de pago usas normalmente en el supermercado? ¿Qué tan cómodo
-  te sientes pagando con QR o billetera digital?
-- *Cierre:* Si pudieras cambiar algo de tu experiencia de compra, ¿qué sería? ¿Qué tan
-  dispuesto estarías a usar un carrito que te muestre el total en tiempo real y te permita
-  pagar sin pasar por caja?
+##### Preguntas Principales
+* **Caldeamiento:** Cuéntame de tu última visita al supermercado. ¿Con qué frecuencia compras y en qué supermercado sueles hacerlo?
+* **Comportamiento actual:** ¿Cómo llevas la cuenta de cuánto vas gastando mientras haces tus compras? ¿Te ha pasado que el total en caja fue distinto a lo que esperabas? ¿Qué hiciste en ese momento?
+* **Dolor con el proceso actual:** ¿Cómo describirías la experiencia de espera en caja, especialmente en fines de semana o quincena?
+* **Pagos digitales:** ¿Qué medios de pago usas normalmente en el supermercado? ¿Qué tan cómodo te sientes pagando con QR o billetera digital?
+* **Cierre:** Si pudieras cambiar algo de tu experiencia de compra, ¿qué sería? ¿Qué tan dispuesto estarías a usar un carrito que te muestre el total en tiempo real y te permita pagar sin pasar por caja?
 
-#### Entrevista 2 — Segmento: Administrador de Tienda / Operaciones
+---
 
-**Perfil del entrevistado:** personal de supermercado con responsabilidad sobre inventario,
-seguridad de perímetro o flujo de caja (supervisor de tienda, jefe de piso, encargado de
-pérdidas).
+#### Segmento 2: Administrador de Tienda / Operaciones
 
-**Guion:**
-- *Caldeamiento:* Cuéntame sobre tu rol en la tienda y cuánto tiempo llevas en el puesto.
-- *Comportamiento actual:* ¿Cuáles son los principales cuellos de botella operativos en horas
-  punta? ¿Cómo se gestiona hoy el riesgo de mercancía que sale sin registrar pago?
-- *Impacto del problema:* ¿Qué tan seguido ocurren mermas por ese motivo? ¿Cómo se mide el
-  impacto de las colas largas en la satisfacción del cliente?
-- *Tecnología actual:* ¿Qué sistemas usan hoy para el control de inventario o de caja?
-- *Apertura al cambio:* ¿Qué tan dispuestos estarían a modernizar la flota de carritos si eso
-  reduce costos operativos? ¿Qué necesitarías ver para confiar en un sistema de pago dentro
-  del carrito, sin pasar por caja?
+##### Preguntas Complementarias (Demográficas y Entorno Operativo)
+* ¿Cuál es su nombre completo, edad y cargo o rol específico dentro del supermercado?
+* ¿En qué sede o distrito labora y cuánto tiempo de experiencia tiene en la gestión de tiendas retail?
+* ¿Qué dispositivos y herramientas de software utiliza diariamente para supervisar el piso de venta e inventario?
 
+##### Preguntas Principales
+* **Caldeamiento:** Cuéntame sobre tu rol en la tienda y cuánto tiempo llevas en el puesto.
+* **Comportamiento actual:** ¿Cuáles son los principales cuellos de botella operativos en horas punta? ¿Cómo se gestiona hoy el riesgo de mercancía que sale sin registrar pago?
+* **Impacto del problema:** ¿Qué tan seguido ocurren mermas por ese motivo? ¿Cómo se mide el impacto de las colas largas en la satisfacción del cliente?
+* **Tecnología actual:** ¿Qué sistemas usan hoy para el control de inventario o de caja?
+* **Apertura al cambio:** ¿Qué tan dispuestos estarían a modernizar la flota de carritos si eso reduce costos operativos? ¿Qué necesitarías ver para confiar en un sistema de pago dentro del carrito, sin pasar por caja?
 
 
 ### 2.2.2. Registro de entrevistas
+
+### 2.2.2. Registro de entrevistas
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+##### Entrevista 1:
+
+| Atributo | Detalle |
+| :---: | :--- |
+| Nombre | Fernando Justiniano Vega |
+| Edad | 23 años |
+| Distrito | Santiago de Surco |
+| Ocupación | Analista júnior de marketing y estudiante |
+| Fecha de entrevista | 16 de setiembre de 2026 |
+| Timing | 00:00 - 04:35 (Duración: 4 min 35 s) |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/...) |
+| Captura de pantalla de la grabación | ![Entrevista 1 - Fernando Justiniano](assets/common/interviews/entrevista-fernando.png) |
+| Resumen | Fernando reside en Santiago de Surco junto a su madre y hermana menor. Se desempeña como analista júnior de marketing y estudiante, manejando un estilo de vida activo y altamente digitalizado. Sus dispositivos de uso diario son un smartphone Android y una laptop Windows, interactuando constantemente a través de canales digitales como banca móvil (BCP e Interbank), redes sociales y billeteras digitales (Yape y Plin), las cuales utiliza de forma predeterminada para evitar el uso de efectivo. Suele acudir a supermercados de retail como Plaza Vea y Metro una o dos veces por semana, priorizando la cercanía a su domicilio y las promociones vigentes. Fernando manifiesta que su principal frustración ocurre en dos momentos críticos: la falta de control del gasto acumulado en tiempo real durante su recorrido (lo que en ocasiones le genera descuadres presupuestarios e incomodidad social al tener que solicitar el retiro de productos frente a la cajera) y los tiempos excesivos de espera en filas de pago tradicionales durante fines de semana y quincenas, llegando a perder entre 20 y 25 minutos. Se muestra sumamente receptivo y entusiasta ante la adopción de un carrito inteligente con IoT, señalando que una interfaz que le brinde visibilidad continua de su saldo acumulado y le permita efectuar un auto-pago inmediato mediante código QR con Yape o Plin optimizaría significativamente su experiencia de compra al erradicar por completo las colas en caja. |
+
+##### Entrevista 2:
+
+| Atributo | Detalle |
+| --- | --- |
+| Nombre | Max Sifuentes |
+| Edad | 20 años |
+| Distrito | Chorrillos |
+| Ocupación | Estudiante de Ingeniería de Sistemas (UPC) |
+| Fecha de entrevista | 17 de setiembre de 2026 |
+| Timing | 00:00 - 06:34 (Duración: 6 min 34 s) |
+| Enlace a la grabación | *[Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202120569_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202120569%5Fupc%5Fedu%5Fpe%2FDocuments%2FEntrevista%202%20Max%20Sifuentes%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E9e52c550%2D7f7d%2D43d5%2Da457%2D26843fc11f20)* |
+| Captura de pantalla de la grabación | ![Entrevista2.png](assets/common/team/Entrevista2.png) |
+| Resumen | Max es un estudiante de Ingeniería de Sistemas en la UPC de 20 años. Realiza compras en supermercados entre una y dos veces por semana, acudiendo principalmente a Hiperbodegas y Plaza Vea por su cercanía. Para controlar sus gastos, redondea mentalmente los precios hacia arriba y maneja saldos específicos en cuentas separadas de Interbank, ya que su método de pago exclusivo es digital a través de Apple Wallet y Plin. Manifiesta que su principal frustración son las esperas "brutales" e innecesarias al momento de pagar en caja, causadas por la mala organización de las tiendas y la inhabilitación de cajas rápidas. Max se muestra sumamente receptivo e interesado ante la adopción de un carrito inteligente IoT; destaca que contar con el presupuesto exacto en tiempo real, evitar problemas de verificación de precios y tener la capacidad de auto-pago rápido sin pasar por la caja tradicional optimizaría significativamente su experiencia de compra, e incluso lo motivaría a visitar las tiendas con mayor frecuencia. |
+
 
 ### 2.2.3. Análisis de entrevistas
 *(Pendiente — Responsable: Melanie)*
@@ -580,9 +602,23 @@ pérdidas).
 *(Pendiente — Responsable: Deybbi)*
 
 ### 2.3.4. Empathy Mapping
-*(Pendiente — Responsable: Kevin)*
+
+En esta sección se sintetizan los hallazgos cualitativos y conductuales obtenidos durante la fase de entrevistas de investigación. Para comprender a profundidad las necesidades, frustraciones y motivaciones de nuestros usuarios, el equipo estructuró los mapas de empatía utilizando la plataforma UXPressia. El proceso se centró en posicionar al arquetipo de cada segmento en el centro para responder metódicamente a los cuadrantes clave: qué piensa y siente, qué ve, qué oye, qué dice y hace, identificando a partir de ello sus principales dolores (*Pains*) y beneficios esperados (*Gains*).
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+El mapa de empatía para el Segmento 1 representa a jóvenes y adultos que realizan compras periódicas en cadenas de supermercados, priorizan el ahorro de tiempo, administran un presupuesto delimitado y utilizan billeteras digitales de forma cotidiana. A través de este artefacto se evidencian las fricciones causadas por la falta de visibilidad del monto acumulado y la incomodidad de las colas tradicionales de facturación.
+
+<p align="center">
+  <img src="assets/needfinding/Mapping.png" alt="Empathy Map - Segmento 1: Comprador Moderno" width="850">
+</p>
+<p align="center"><em>Figura: Mapa de Empatía para el Segmento 1 elaborado en UXPressia.</em></p>
 
 ---
+
+#### Segmento 2: Administrador de Tienda / Operaciones
+
+*(Pendiente — En proceso de elaboración tras consolidación de entrevistas del segmento)*
 
 ## 2.4. Big Picture EventStorming
 *(Pendiente — Responsable: Deybbi)*
@@ -590,18 +626,62 @@ pérdidas).
 ---
 
 ## 2.5. Ubiquitous Language
-*(Pendiente — Responsable: Kevin)*
 
-<div style="page-break-after: always;"></div>
+Esta sección establece el Ubiquitous Language (Lenguaje Ubicuo) de la solución Innova Carty, formalizando un vocabulario unificado y riguroso entre los miembros del equipo y los interesados del negocio (*stakeholders*). De acuerdo con las directrices de Domain-Driven Design planteadas por Eric Evans, las definiciones se centran exclusivamente en los procesos, reglas y conceptos propios del dominio de compras en retail y supervisión operativa en tienda física, omitiendo terminología técnica de desarrollo de software para garantizar una comunicación fluida, inequívoca y transversal.
 
----
-
+* **Audit Flag (Marca de Auditoría):** Señalización operativa aplicada sobre una compra cuando se registran anomalías persistentes entre los artículos escaneados y las métricas físicas de la unidad.
+* **Budget Limit (Límite de Presupuesto):** Monto monetario máximo fijado voluntariamente por el consumidor antes o durante su recorrido de compra para controlar su gasto.
+* **Budget Threshold Alert (Alerta de Umbral de Presupuesto):** Advertencia visual emitida al comprador cuando el costo acumulado de los artículos alcanza o supera el 90% del límite financiero preestablecido.
+* **Cashierless Checkout (Cobro sin Cajero):** Procedimiento comercial mediante el cual el consumidor realiza el pago íntegro de su canasta de compra directamente desde el carrito, prescindiendo de la intervención de un cajero tradicional.
+* **Digital Receipt (Comprobante Electrónico):** Boleta o factura de venta generada inmediatamente tras la confirmación de la transacción, disponible para visualización del cliente y verificación de salida.
+* **Discrepancy (Discrepancia):** Estado de incongruencia detectado en la canasta cuando la lectura de un artículo no coincide con los parámetros esperados de carga del producto ingresado.
+* **Exit Clearance (Autorización de Salida):** Estado comercial y de seguridad que certifica que todos los productos contenidos en la canasta han sido pagados satisfactoriamente, habilitando el retiro de la mercancía.
+* **Geofence Perimeter (Perímetro de Seguridad en Tienda):** Límite geográfico y físico delimitado dentro del establecimiento retail fuera del cual las unidades de compra no deben transitar sin una autorización de salida activa.
+* **Instant QR Payment (Pago Instantáneo por QR):** Mecanismo de cobro dinámico generado en el punto de interacción del carrito que permite liquidar la orden mediante billeteras digitales interactivas locales (como Yape o Plin) o banca móvil.
+* **Item Catalog (Catálogo de Artículos):** Registro oficial de productos comercializados por el supermercado que contiene descripciones, precios unitarios, pesos promedio nominales y tolerancias comerciales.
+* **Item Tare Weight (Margen de Tolerancia de Peso):** Variación de peso permitida para un producto debido a envolturas, humedad o diferencias naturales en alimentos envasados.
+* **Merchandise Shrinkage (Merma por Salida No Verificada):** Pérdida económica que sufre el establecimiento comercial debido a la sustracción indebida, manipulación incorrecta o salida de productos sin registro de pago.
+* **On-Cart Display (Pantalla Integrada al Carrito):** Panel visual montado en la estructura del carrito que expone al consumidor el resumen detallado de su compra, el saldo acumulado, las alertas y el código de pago.
+* **Order Item (Artículo de Compra):** Bien o producto individual seleccionado por el comprador y colocado dentro de la canasta comercial.
+* **Real-Time Total (Total Acumulado en Tiempo Real):** Valor monetario consolidado de los productos válidamente registrados en la canasta de compra que se actualiza instantáneamente tras cada adición o retiro.
+* **Return of Item (Devolución / Retiro de Artículo):** Acto comercial por el cual el cliente retira un artículo de su canasta, provocando el descuento del monto correspondiente en el total acumulado de la compra.
+* **RFID Product Tag (Etiqueta RFID de Producto):** Identificador electrónico pasivo adherido a la mercancía del supermercado que transmite los datos de identificación del artículo al aproximarse al área de recepción del carrito.
+* **Shopping Cart Lock (Bloqueo Preventivo del Carrito):** Medida de seguridad física o de inmovilización de ruedas aplicada a una unidad de compra cuando se detecta un intento de salida no autorizada fuera del perímetro.
+* **Shopping Session (Sesión de Compra):** Intervalo continuo que inicia cuando un consumidor toma un carrito para comenzar a elegir productos y finaliza cuando concluye el pago y la verificación de salida.
+* **Smart Cart (Carrito Inteligente):** Unidad física móvil de recolección de productos adaptada con elementos de censado, pesaje y visualización interactiva para gestionar compras autónomas.
+* **Store Floor Supervisor (Supervisor de Piso de Venta):** Personal operativo responsable de monitorizar la fluidez de las compras, atender contingencias de cobro y validar la correcta salida de clientes en tienda.
+* **Unverified Merchandise (Mercancía No Verificada):** Todo artículo presente físicamente en la canasta de compra que carece de registro formal de lectura o validación comercial.
+* **Weight Confirmation (Confirmación por Peso):** Validación física realizada en la canasta del carrito para comprobar que la variación de masa corresponda exactamente al peso nominal del artículo escaneado.
 # Capítulo III: Requirements Specification
 
 ## 3.1. User Stories
-*(Pendiente — Responsable: Kevin)*
 
----
+En esta sección se formalizan los requisitos funcionales de la solución Innova Carty mediante el desglose de Épicas (Epics), Historias de Usuario (User Stories) e Historias Técnicas (Technical Stories). La especificación contempla la experiencia integral de la plataforma: la interacción del visitante en el Landing Page, la autonomía del Comprador Moderno en el Smart Cart, la gestión operativa del Administrador de Tienda, y los servicios de backend para desarrolladores. Todos los criterios de aceptación siguen la sintaxis formal de Gherkin (Given-When-Then), redactados en tiempo presente y tercera persona, garantizando verificabilidad e independencia de detalles superfluos de interfaz.
+
+| Epic / Story ID | Título | Descripción | Criterios de Aceptación | Relacionado con (Epic ID) |
+| :--- | :--- | :--- | :--- | :--- |
+| **EP01** | Landing Page y Difusión del Modelo de Negocio | Como visitante de la plataforma, deseo acceder a un portal web informativo y accesible para conocer las ventajas comerciales, la tecnología del Smart Cart y los canales de contacto de Innova Carty. | N/A (Contenedor de alto nivel) | N/A |
+| **US01** | Presentación de la Propuesta de Valor en Landing Page | Como visitante consumidor, deseo visualizar la explicación del funcionamiento del carrito inteligente en la página de inicio para entender cómo me ayuda a ahorrar tiempo y controlar mi presupuesto. | **Escenario 1: Visualización de características clave**<br>Dado que el visitante carga la página de inicio del Landing Page, cuando se desplaza hacia la sección principal de beneficios, entonces el sistema presenta de forma interactiva el flujo de escaneo RFID, control de presupuesto y cobro inmediato por QR.<br><br>**Escenario 2: Redirección al prototipo interactivo**<br>Dado que el visitante se encuentra en la sección principal, cuando hace clic en el botón de llamada a la acción "Conocer Solución", entonces el sistema lo redirige a la sección interactiva con la demostración de los productos digitales. | EP01 |
+| **US02** | Registro de Contacto Corporativo para Supermercados | Como visitante del segmento administrador de retail, deseo enviar una solicitud de información comercial a través de un formulario web para evaluar la implementación de los Smart Carts en mi cadena de tiendas. | **Escenario 1: Envío de solicitud comercial válido**<br>Dado que el representante de supermercado completa los campos obligatorios de RUC, razón social, correo corporativo y cantidad estimada de unidades, cuando pulsa en "Solicitar Demostración", entonces el sistema registra los datos comerciales y presenta un mensaje de confirmación de envío.<br><br>**Escenario 2: Detección de correo o campos inválidos**<br>Dado que el visitante ingresa un formato de correo electrónico no válido o deja campos vacíos requeridos, cuando intenta enviar el formulario, entonces el sistema bloquea el envío y resalta visualmente los campos con inconsistencias. | EP01 |
+| **US03** | Consulta de Términos del Servicio y Políticas de Privacidad | Como visitante, deseo consultar los términos y condiciones de servicio y las políticas de protección de datos personales en el pie de página para verificar la confiabilidad de la plataforma. | **Escenario 1: Acceso a políticas legales**<br>Dado que el visitante navega por cualquier sección del Landing Page, cuando hace clic en el enlace "Términos y Condiciones" ubicado en el pie de página, entonces el sistema despliega el documento formal con las cláusulas de tratamiento de datos personales y garantías de seguridad. | EP01 |
+| **EP02** | Control y Seguimiento del Presupuesto en el Carrito (Segmento 1) | Como comprador moderno, deseo definir y monitorear mi límite de gasto en tiempo real en la pantalla del carrito para no excederme del dinero que tengo disponible. | N/A (Contenedor de alto nivel) | N/A |
+| **US04** | Configuración de Presupuesto Límite de Compra | Como comprador moderno, deseo ingresar un monto tope de dinero al iniciar mi sesión de compra para recibir avisos preventivos si estoy próximo a superarlo. | **Escenario 1: Ingreso de presupuesto válido**<br>Dado que el comprador inicia una sesión en la pantalla del carrito, cuando digita un monto monetario mayor a cero y confirma la asignación, entonces el sistema establece dicho valor como el límite presupuestario de la sesión activa.<br><br>**Escenario 2: Ingreso de valores no permitidos**<br>Dado que el comprador intenta ingresar un valor negativo o caracteres no numéricos, cuando presiona confirmar, entonces el sistema deniega el registro y solicita ingresar un monto válido en soles. | EP02 |
+| **US05** | Visualización Dinámica del Total Acumulado | Como comprador moderno, deseo ver reflejado el costo total y el desglose de productos al instante en la pantalla del carrito cada vez que agrego un producto para conocer exactamente cuánto voy a pagar. | **Escenario 1: Actualización de saldo al ingresar artículo**<br>Dado que el comprador coloca un artículo validado en el carrito, cuando el sensor registra la lectura, entonces el sistema incrementa el monto acumulado sumando el precio unitario del artículo y actualiza la lista en pantalla.<br><br>**Escenario 2: Alerta de umbral de presupuesto superado**<br>Dado que la suma acumulada de los artículos alcanza o supera el 90% del límite de presupuesto fijado, cuando el sistema recalcula el total, entonces emite una alerta visual en pantalla notificando la cercanía al límite establecido. | EP02 |
+| **EP03** | Lectura, Validación y Autonomía de Compra (Segmento 1) | Como comprador moderno, deseo registrar artículos mediante RFID y liquidar mi compra autónomamente por QR para evitar filas en caja tradicional. | N/A (Contenedor de alto nivel) | N/A |
+| **US06** | Registro Automático de Artículo mediante Lectura RFID | Como comprador moderno, deseo que el carrito detecte el producto al introducirlo en la canasta para agregarlo a mi orden sin necesidad de buscar códigos de barras manualmente. | **Escenario 1: Lectura de etiqueta exitosa**<br>Dado que el comprador deposita un artículo con etiqueta RFID válida en la cesta, cuando el lector del carrito detecta el código pasivo, entonces el sistema recupera la información comercial del artículo y lo asocia a la orden activa.<br><br>**Escenario 2: Etiqueta no reconocida o dañada**<br>Dado que el código RFID ingresado no existe en el catálogo local de la tienda, cuando se ejecuta el censado, entonces el sistema emite un aviso sonoro y visual indicando que el artículo debe ser reintentado o reportado. | EP03 |
+| **US07** | Retiro y Descuento de Artículo de la Canasta | Como comprador moderno, deseo retirar un artículo del carrito y que el monto total se descuente de manera automática para prescindir de productos que decida no llevar. | **Escenario 1: Retiro de producto validado**<br>Dado que el comprador extrae un artículo previamente cargado, cuando el sensor de carga detecta una reducción equivalente al peso del artículo y el lector confirma su extracción, entonces el sistema resta el precio del artículo del total acumulado y lo retira de la lista en pantalla. | EP03 |
+| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | Como comprador moderno, deseo generar un código QR único por el total de mi canasta en la pantalla del carrito para pagar con mi billetera digital sin pasar por cajas. | **Escenario 1: Emisión de código QR para pago**<br>Dado que el comprador finaliza la selección de productos y no existen discrepancias activas, cuando pulsa la opción "Proceder al Pago", entonces el sistema genera y despliega en pantalla un código QR dinámico asociado a la orden y al monto exacto.<br><br>**Escenario 2: Confirmación inmediata de pago**<br>Dado que el comprador completa la transferencia desde Yape o Plin, cuando la pasarela notifica la recepción conforme de los fondos, entonces el carrito despliega el comprobante digital y genera la autorización de salida. | EP03 |
+| **EP04** | Prevención de Mermas y Validación de Peso (Segmento 2) | Como administrador de operaciones, deseo que el sistema verifique automáticamente la correspondencia física de peso de los artículos para evitar la sustracción de mercancía no registrada. | N/A (Contenedor de alto nivel) | N/A |
+| **US09** | Validación de Peso en Canasta contra Catálogo | Como administrador de operaciones, deseo que el carrito contraste el incremento de peso medido por las celdas de carga con el peso teórico del catálogo para certificar que el producto ingresado sea auténtico. | **Escenario 1: Peso coincidente dentro de tolerancia**<br>Dado que un artículo RFID ha sido detectado, cuando las celdas de carga registran un incremento de peso que se ubica dentro del rango de tolerancia nominal del producto, entonces el sistema valida la inclusión del artículo satisfactoriamente.<br><br>**Escenario 2: Discrepancia por masa no identificada**<br>Dado que se registra un aumento de peso sin una lectura RFID válida asociada, cuando transcurren 3 segundos, entonces el sistema activa un estado de discrepancia e inmoviliza temporalmente la opción de pago. | EP04 |
+| **US10** | Detección de Retiro No Registrado de Productos | Como administrador de operaciones, deseo que el carrito alerte si se retira mercancía sin pasar por el proceso formal de devolución para evitar manipulaciones indebidas en los pasillos. | **Escenario 1: Disminución de peso sin lectura de baja**<br>Dado que se detecta una disminución de peso en la celda de carga pero la etiqueta RFID no confirma la acción de retiro, cuando transcurre el tiempo de verificación, entonces el sistema emite una advertencia al usuario y registra el evento en la bitácora de auditoría. | EP04 |
+| **EP05** | Supervisión en Piso de Venta y Seguridad Perimetral (Segmento 2) | Como administrador de operaciones, deseo monitorizar las unidades en circulación, gestionar alertas en tiempo real y controlar el perímetro de salida para asegurar la integridad de la tienda. | N/A (Contenedor de alto nivel) | N/A |
+| **US11** | Monitoreo en Tiempo Real desde Consola Web Operativa | Como administrador de operaciones, deseo visualizar en un tablero web el estado de todos los carritos activos en tienda (en compra, con discrepancia, pagado) para intervenir oportunamente. | **Escenario 1: Visualización del mapa y estado de carritos**<br>Dado que el administrador inicia sesión en la aplicación web de operaciones, cuando carga el módulo de monitoreo, entonces el sistema expone el listado completo de unidades activas, indicando su ID, estado de sesión, saldo actual y alertas vigentes.<br><br>**Escenario 2: Asistencia y desbloqueo manual por supervisor**<br>Dado que un carrito se encuentra bloqueado por discrepancia de peso, cuando el supervisor acude, verifica el contenido e ingresa sus credenciales de auditoría, entonces el sistema restablece la sesión y permite al cliente continuar su compra. | EP05 |
+| **US12** | Control Perimetral y Bloqueo por Geofencing | Como administrador de operaciones, deseo que el sistema bloquee las ruedas del carrito e impida la salida si una unidad cruza el perímetro sin autorización de pago emitida. | **Escenario 1: Intento de cruce perimetral sin pago**<br>Dado que una unidad se aproxima al perímetro de salida sin un comprobante de pago emitido, cuando el sensor perimetral detecta la proximidad del carrito, entonces el sistema dispara una alarma acústica y activa el freno electromecánico del carrito.<br><br>**Escenario 2: Tránsito de salida autorizado**<br>Dado que el carrito posee estado "Paid" con autorización de salida vigente, cuando cruza el arco perimetral de la tienda, entonces el sistema registra la salida conforme y concluye la sesión sin disparar bloqueos. | EP05 |
+| **US13** | Gestión y Actualización del Catálogo de Productos y Tolerancias | Como administrador de operaciones, deseo actualizar precios, pesos nominales y márgenes de tolerancia de los productos para mantener calibrada la validación de los carritos inteligentes. | **Escenario 1: Actualización de parámetros de peso**<br>Dado que el administrador accede al módulo de inventario, cuando modifica el peso nominal o el rango de tolerancia de un SKU y guarda los cambios, entonces el sistema propaga la nueva regla a la base de datos central y a los servicios edge. | EP05 |
+| **EP06** | Servicios RESTful y Telemetría IoT en la Nube | Como desarrollador de software, deseo contar con servicios web RESTful robustos y seguros para sincronizar la telemetría del carrito, procesar órdenes de compra y conectar el backend central con los dispositivos edge. | N/A (Contenedor de alto nivel) | N/A |
+| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | Como desarrollador del backend, deseo exponer un endpoint RESTful HTTP POST para recibir lecturas periódicas de peso, estado de carga de batería e identificadores de artículos desde el Edge API del carrito. | **Escenario 1: Procesamiento exitoso de telemetría**<br>Dado un payload JSON válido que contiene el identificador único del carrito, valor numérico de peso y lista de etiquetas RFID detectadas, cuando el Edge Service realiza una petición HTTP POST al endpoint `/api/v1/telemetry`, entonces el servicio responde con código HTTP 201 Created y persiste el evento en la base de datos.<br><br>**Escenario 2: Payload con estructura o datos corruptos**<br>Dado un cuerpo de solicitud JSON con atributos obligatorios ausentes o tipos de datos inconsistentes, cuando se envía la petición HTTP POST a `/api/v1/telemetry`, entonces el servicio rechaza la solicitud retornando código HTTP 400 Bad Request y un detalle del error de validación. | EP06 |
+| **TS02** | Creación y Consulta de Órdenes de Compra | Como desarrollador de aplicaciones cliente, deseo disponer de endpoints RESTful para aperturar sesiones de compra y consultar el balance económico consolidado en cualquier instante. | **Escenario 1: Creación de nueva orden de compra**<br>Dado que una unidad inicia recorrido, cuando la aplicación envía una petición HTTP POST al recurso `/api/v1/orders` con el ID del carrito, entonces el API responde con código HTTP 201 Created retornando el identificador único de la orden generada.<br><br>**Escenario 2: Consulta del balance acumulado de orden**<br>Dado un identificador de orden existente, cuando el cliente efectúa una solicitud HTTP GET al recurso `/api/v1/orders/{orderId}`, entonces el servicio retorna código HTTP 200 OK con el objeto JSON que desglosa los artículos registrados, subtotales y el monto acumulado actual. | EP06 |
+| **TS03** | Webhook de Confirmación de Pagos Externos | Como desarrollador del backend, deseo procesar notificaciones asíncronas vía webhook desde la pasarela de pagos digitales para conciliar transacciones en tiempo real. | **Escenario 1: Notificación de abono confirmada por pasarela**<br>Dado que la pasarela externa despacha una petición HTTP POST al endpoint `/api/v1/payments/webhook` con firma criptográfica válida y estado aprobado, cuando el servicio valida el webhook, entonces actualiza el estado de la orden a "Paid" y retorna código HTTP 200 OK.<br><br>**Escenario 2: Firma de seguridad no verificada**<br>Dado que la solicitud webhook presenta una firma digital adulterada o ausente, cuando el servicio valida las cabeceras de autenticación, entonces deniega el procesamiento retornando código HTTP 401 Unauthorized. | EP06 |
 
 ## 3.2. Impact Mapping
 
@@ -1024,7 +1104,59 @@ El siguiente **Component Diagram (C4 Model – Level 3)** descompone el containe
 ## 5.1. Style Guidelines
 
 ### 5.1.1. General Style Guidelines
-*(Pendiente — Responsable: Kevin)*
+
+Esta sección formaliza los lineamientos visuales y de diseño que unifican la identidad de marca en todos los productos del ecosistema Innova Carty (Landing Page estática, consola web de administración y pantalla táctil integrada al Smart Cart). Las decisiones se sustentan en los principios de diseño de Material Design 3 y en las heurísticas de claridad visual y accesibilidad universal (WCAG 2.1 nivel AA).
+
+#### A. Branding
+
+Innova Carty proyecta una identidad tecnológica, eficiente y confiable para el sector *retail*. El imagotipo oficial de la solución integra la silueta de un carrito de supermercado combinado con trazos de circuitos electrónicos de IoT, un haz de censado y una pantalla central con visualización de montos y código QR, sintetizando el valor del proyecto: "Compra inteligente, pago instantáneo". Esta construcción visual equilibra la agilidad del comercio sin fricciones con la solidez de una plataforma de seguridad y control en tienda.
+
+#### B. Tono de Comunicación y Dimensiones de Voz
+
+Siguiendo el marco de las cuatro dimensiones de tono de voz de Nielsen Norman Group, la comunicación de Innova Carty se estructura de la siguiente manera:
+
+* **Serio vs. Divertido (Tendencia: Serio - 75%):** Prioriza la precisión, la transparencia en los montos cobrados y la certidumbre financiera. Se prescinde de humor o expresiones coloquiales ambiguas que puedan generar desconfianza en el momento del pesaje o la transacción de pago.
+* **Formal vs. Casual (Tendencia: Casual balanceado - 60%):** Utiliza un lenguaje directo, accesible y moderno tanto para compradores de diversos perfiles como para el personal de piso de venta, omitiendo tecnicismos complejos de desarrollo de software.
+* **Respetuoso vs. Irreverente (Tendencia: Respetuoso - 90%):** Trata las finanzas del usuario con rigurosidad y empatía, guiando de manera clara y cordial al comprador ante inconsistencias o alertas operativas.
+* **Entusiasta vs. Sereno (Tendencia: Sereno - 70%):** Transmite calma y seguridad al usuario durante el seguimiento continuo de su presupuesto, proyectando control y estabilidad operativa en los paneles de supervisión.
+
+#### C. Paleta de Colores (Colors)
+
+La identidad cromática se fundamenta directamente en el imagotipo oficial de Innova Carty, utilizando el contraste entre el azul institucional y el verde tecnológico para transmitir innovación, seguridad operativa y agilidad en el flujo comercial:
+
+| Categoría | Nombre del Color | Código Hex | Uso y Principio de Sustento |
+| :--- | :--- | :--- | :--- |
+| **Primario** | Azul Carty Institucional | `#004F8C` | Extraído de la estructura del carrito y la palabra "INNOVA". Representa la solidez de la infraestructura, confianza transaccional y estabilidad del sistema. |
+| **Secundario** | Verde Smart Retail | `#009E60` | Extraído de la palabra "CARTY" y el área de censado. Destinado a llamadas a la acción (*CTAs*), confirmación de escaneo RFID y elementos de ahorro. |
+| **Éxito / Autorización** | Verde Lima Conforme | `#2ECC71` | Señalización de pago completado con éxito, autorización de salida perimetral y validación física de peso correcta. |
+| **Alerta / Warning** | Ámbar Presupuesto | `#F39C12` | Advertencia de proximidad al límite de presupuesto configurado (90%) y solicitud de reintento de pesaje. |
+| **Error / Bloqueo** | Rojo Discrepancia | `#E74C3C` | Detención del flujo de cobro por inconsistencia de masa en la canasta, bloqueo electromecánico perimetral y alerta a supervisión. |
+| **Neutro Oscuro** | Azul Carbón Profundo | `#102A43` | Títulos, textos principales e interfaz de pantalla para garantizar una relación de contraste superior a 7:1 (estándar WCAG AAA). |
+| **Neutro Claro** | Blanco Nieve | `#FFFFFF` | Fondo del imagotipo, áreas de descanso visual y contenedores de tarjetas para máxima legibilidad bajo la iluminación del supermercado. |
+
+#### D. Tipografía (Typography)
+
+Se seleccionaron familias tipográficas de libre distribución optimizadas para lectura en pantallas digitales y dispositivos embebidos:
+
+* **Fuente Primaria (Títulos y Números):** *Inter* (SemiBold y Bold). Se aplica en encabezados, montos de presupuesto y números en tiempo real por su legibilidad en pantallas táctiles de baja y media resolución montadas en el carrito.
+* **Fuente Secundaria (Cuerpo y Etiquetas):** *Roboto* (Regular y Medium). Empleada en descripciones de productos, alertas, tablas del Landing Page y consola administrativa por su rendimiento optimizado en interfaces web y móviles.
+
+| Jerarquía | Fuente | Peso | Tamaño (Desktop / Consola) | Tamaño (On-Cart Display) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Display / H1** | Inter | Bold (700) | 32px | 28px |
+| **Headline / H2** | Inter | SemiBold (600) | 24px | 22px |
+| **Title / H3** | Inter | Medium (500) | 20px | 18px |
+| **Body / Párrafos** | Roboto | Regular (400) | 16px | 16px |
+| **Monto / Contador** | Inter | Bold (700) | 28px | 32px |
+| **Caption / Metadatos**| Roboto | Light (300) | 12px | 14px |
+
+#### E. Espaciado y Cuadrícula (Spacing & Layout Grid)
+
+Se adopta un sistema de cuadrícula modular basado en múltiplos de 8dp (8-point grid system), utilizando 4dp como subunidad para ajustes finos de alineación:
+
+* **Espaciado base:** 8px, 16px, 24px, 32px, 48px y 64px para definir márgenes exteriores y separación entre componentes.
+* **Touch Targets:** En la pantalla física del carrito y vistas táctiles, todos los botones interactivos mantienen una zona táctil mínima de 48px x 48px para evitar pulsaciones erróneas durante el recorrido en tienda.
+* **Elevaciones y Sombras:** Se definen elevaciones estándar de 1dp a 4dp (sombras sutiles) para separar visualmente las tarjetas de productos de los contenedores de fondo sin saturar la interfaz.
 
 ### 5.1.2. Web, Mobile and IoT Style Guidelines
 *(Pendiente — Responsable: Jorge)*
@@ -1040,8 +1172,95 @@ El siguiente **Component Diagram (C4 Model – Level 3)** descompone el containe
 *(Pendiente — Responsable: July)*
 
 ### 5.2.3. SEO Tags and Meta Tags
-*(Pendiente — Responsable: Kevin)*
 
+En esta sección se definen las etiquetas meta y metadatos de posicionamiento orgánico (SEO) y optimización para tiendas de aplicaciones (ASO) correspondientes al ecosistema digital de Innova Carty. La configuración garantiza la correcta indexación en motores de búsqueda para el sitio web estático (Landing Page), la adecuada configuración del shell para la aplicación web de gestión (Web Application de Administración), la visualización enriquecida en redes sociales (Open Graph y Twitter Cards) y el posicionamiento en Google Play Store y Apple App Store para las aplicaciones móviles orientadas a clientes y supervisores.
+
+---
+
+#### A. Sitio Web Estático — Landing Page (Página Principal)
+
+Metadatos esenciales de cabecera HTML configurados para indexación pública, descubrimiento comercial y captación de clientes y socios de retail:
+
+| Meta / Etiqueta | Valor Propuesto | Justificación y Regla |
+| :--- | :--- | :--- |
+| `<title>` | Innova Carty \| Carritos Inteligentes IoT y Pago Instantáneo sin Colas | Título optimizado (< 60 caracteres) que resalta la propuesta de valor y palabras clave estratégicas. |
+| `<meta name="description">` | Transforma tu experiencia en el supermercado con Innova Carty: carritos autónomos con escaneo RFID, control de presupuesto en tiempo real y cobro inmediato con QR. | Descripción atractiva (< 160 caracteres) enfocada en maximizar el CTR en los resultados de búsqueda. |
+| `<meta name="keywords">` | Innova Carty, carrito inteligente, smart cart retail, IoT supermercados, compras sin colas, escaneo RFID retail, pago QR Yape Plin, control de presupuesto compra, retail tech Peru | Términos clave del dominio que abarcan tecnología IoT, segmento retail y soluciones de cobro digital local. |
+| `<meta name="author">` | Innova Carty Tech S.A.C. | Identificación formal del equipo y la organización responsable de la plataforma. |
+| `<meta name="robots">` | `index, follow` | Instrucción directa a rastreadores para indexar la página y seguir sus enlaces. |
+| `<link rel="canonical">` | `https://www.innovacarty.pe/` | Declaración de la URL canónica principal para evitar penalizaciones por contenido duplicado. |
+
+---
+
+#### B. Aplicación Web — Consola de Operaciones y Supervisión (Web Application)
+
+Metadatos para el shell SPA (`index.html`) del panel de administración y auditoría de tiendas de conveniencia y supermercados:
+
+| Meta / Etiqueta | Valor Propuesto | Justificación y Regla |
+| :--- | :--- | :--- |
+| `<title>` | Innova Carty Console \| Monitoreo de Flota, Mermas y Piso de Venta | Identificador de entorno operativo restringido para jefes de piso y administradores de tienda. |
+| `<meta name="description">` | Panel de supervisión en tiempo real para flotas de carritos inteligentes, control de alertas por discrepancia de peso y gestión perimetral en piso de venta. | Síntesis de las capacidades funcionales y operativas de la consola web. |
+| `<meta name="keywords">` | Innova Carty Console, supervisión retail, prevención mermas supermercado, monitoreo IoT carritos, telemetría balanza retail | Palabras clave operativas de auditoría, seguridad en tienda y gestión de hardware. |
+| `<meta name="author">` | Innova Carty Tech S.A.C. | Autoría corporativa. |
+| `<meta name="robots">` | `noindex, nofollow` | Exclusión deliberada de motores de búsqueda por tratarse de un entorno privado de uso interno. |
+
+---
+
+#### C. Páginas Web Secundarias e Informativas (Landing Page)
+
+Configuración recomendada para las subpáginas estáticas de soporte y marco regulatorio:
+
+| Página | `<title>` | Indexación Sugerida | Propósito y Descripción |
+| :--- | :--- | :--- | :--- |
+| **Términos y Condiciones** | Términos del Servicio \| Innova Carty | `index, follow` | Define las condiciones de uso del hardware Smart Cart, cobros electrónicos y responsabilidades de tienda. |
+| **Política de Privacidad** | Política de Privacidad y Tratamiento de Datos \| Innova Carty | `index, follow` | Transparencia sobre el tratamiento de datos personales y registros de compras bajo la legislación local. |
+| **Contacto y Alianzas Retail** | Alianzas Comerciales y Soporte \| Innova Carty | `index, follow` | Formulario para cadenas de supermercados que solicitan pilotos o demos corporativos. |
+
+---
+
+#### D. Metadatos de Previsualización en Redes Sociales (Open Graph y Twitter Cards)
+
+Valores configurados en la raíz del Landing Page para asegurar vistas previas atractivas al compartir enlaces por mensajería (WhatsApp, Telegram) o redes sociales (LinkedIn, X):
+
+| Etiqueta Open Graph / Twitter | Valor Propuesto |
+| :--- | :--- |
+| `<meta property="og:title">` | Innova Carty — Compra Inteligente, Pago Instantáneo |
+| `<meta property="og:description">` | Olvídate de las colas en caja. Carritos de supermercado con lectura automática, cálculo de presupuesto en vivo y salida rápida. |
+| `<meta property="og:type">` | `website` |
+| `<meta property="og:url">` | `https://www.innovacarty.pe/` |
+| `<meta property="og:image">` | `https://www.innovacarty.pe/assets/common/og-preview-carty.png` |
+| `<meta name="twitter:card">` | `summary_large_image` |
+| `<meta name="twitter:title">` | Innova Carty \| Smart Carts con IoT y Edge Computing |
+| `<meta name="twitter:description">` | Innovación en retail: carritos inteligentes que totalizan tu cuenta al instante y permiten auto-pago inmediato. |
+| `<meta name="twitter:image">` | `https://www.innovacarty.pe/assets/common/twitter-card-carty.png` |
+
+---
+
+#### E. App Store Optimization (ASO) — Google Play y Apple App Store
+
+Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expuestas a través de tiendas digitales:
+
+##### 1. Aplicación Consumidor: "Innova Carty" (Comprador Moderno)
+
+| Campo ASO | Valor Propuesto | Restricción / Nota |
+| :--- | :--- | :--- |
+| **App Title** | Innova Carty: Compras y Pago QR | Optimizado para búsqueda rápida (< 30 caracteres). |
+| **App Subtitle** | Tu carrito inteligente en tienda | Subtítulo visible en iOS App Store (< 30 caracteres). |
+| **App Keywords** | compras, carrito, supermercado, escanear, presupuesto, retail, autoservicio, Yape, Plin, pagar, boleta, tienda | Separadas por coma, enfocadas en intención de búsqueda de compra y pagos sin colas. |
+| **Descripción Corta** | Controla tu gasto en tiempo real, vincula tu carrito inteligente y paga con QR sin hacer filas en caja. | Preview de Google Play (< 80 caracteres). |
+| **Descripción Larga** | Innova Carty moderniza la forma de comprar en tu supermercado habitual. Vincula tu smartphone al Smart Cart escaneando el código de inicio, establece un presupuesto máximo antes de recorrer los pasillos y visualiza cómo se actualiza tu lista y total acumulado automáticamente cada vez que agregas un producto con tecnología RFID y pesaje inteligente.<br><br>Al terminar tus compras, no hagas fila en caja: genera tu código de pago QR dinámico, cancela al instante desde tu billetera digital favorita (Yape, Plin o tarjeta bancaria) y recibe tu comprobante electrónico de inmediato para cruzar la salida de forma ágil y segura. Disfruta de un recorrido transparente, ordenado y sin sorpresas presupuestarias en caja. | Texto estructurado para conversión y posicionamiento orgánico en Play Store y App Store. |
+
+---
+
+##### 2. Aplicación Operativa: "Innova Carty Ops" (Supervisores y Personal de Tienda)
+
+| Campo ASO | Valor Propuesto | Restricción / Nota |
+| :--- | :--- | :--- |
+| **App Title** | Innova Carty Ops: Piso de Venta | Orientado a personal de operaciones y seguridad de tienda (< 30 caracteres). |
+| **App Subtitle** | Auditoría y control de carritos | Subtítulo descriptivo en App Store (< 30 caracteres). |
+| **App Keywords** | retail, operaciones, supervisión, mermas, auditoría tienda, carrito inteligente, inventario, alertas, geofencing | Palabras clave específicas de gestión interna y prevención de pérdidas. |
+| **Descripción Corta** | Monitoriza carritos activos, atiende discrepancias de peso y autoriza salidas desde tu celular. | Preview de Google Play (< 80 caracteres). |
+| **Descripción Larga** | Herramienta móvil para supervisores de tienda y jefes de prevención de mermas de cadenas aliadas a Innova Carty. Permite supervisar en tiempo real el desplazamiento y estado de la flota de carritos inteligentes en el piso de venta, recibir notificaciones inmediatas ante discrepancias físicas entre el peso de canasta y las lecturas de productos, y realizar desbloqueos auditados de unidades con código maestro.<br><br>Integra control perimetral por geofencing para verificar transacciones pagadas y optimizar la rotación de mercancía en sala sin generar cuellos de botella para los clientes. | Destinado a la distribución corporativa e instalación en terminales de trabajo móvil de la tienda. |
 ### 5.2.4. Searching Systems
 *(Pendiente — Responsable: Omar)*
 

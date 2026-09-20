@@ -671,7 +671,7 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 
 | Atributo | Detalle |
 | --- | --- |
-| Nombre | Karina Vanessa Millán García |
+| Nombre | Vanessa Samillan Garcia |
 | Edad | 23 años |
 | Distrito | Parcona (Ica) |
 | Ocupación | Estudiante de Medicina Humana |
@@ -679,7 +679,7 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 | Timing | 00:00 - 03:33 (Duración: 3 min 33 s) |
 | Enlace a la grabación | *[Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQA7Hyr_M3qiRLRqvRt78HfwASxywEBzCxnvKRJ_pO5RJgQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=NbgLXX)* |
 | Captura de pantalla de la grabación | ![entrevista-gustavo.jpg](assets/common/team/entrevista-gustavo.jpg) |
-| Resumen | Vanessa es estudiante de Medicina Humana, tiene 23 años y reside en Parcona, Ica, junto a su hermana. Usa principalmente laptop y celular; sus billeteras digitales de uso cotidiano son Yape y Plin. Prefiere supermercados grandes con buenos precios, sobre todo Metro y Plaza Vea, y suele hacer una compra mensual de alimentos. Lleva el gasto calculando mentalmente los precios durante el recorrido. Describe la espera en caja como bastante estresante: incluso cuando hace compras pequeñas y va a caja rápida, debe hacer colas largas y pierde mucho tiempo. En compras pequeñas paga en efectivo y en compras más grandes usa tarjeta. Se muestra dispuesta a probar un carrito inteligente que muestre el total en tiempo real a medida que coloca productos y permita pagar sin pasar por caja, porque le ahorraría tiempo innecesario en colas. |
+| Resumen | Vanessa Samillan Garcia es estudiante de Medicina Humana, tiene 23 años y reside en Parcona, Ica, junto a su hermana. Usa principalmente laptop y celular; sus billeteras digitales de uso cotidiano son Yape y Plin. Prefiere supermercados grandes con buenos precios, sobre todo Metro y Plaza Vea, y suele hacer una compra mensual de alimentos. Lleva el gasto calculando mentalmente los precios durante el recorrido. Describe la espera en caja como bastante estresante: incluso cuando hace compras pequeñas y va a caja rápida, debe hacer colas largas y pierde mucho tiempo. En compras pequeñas paga en efectivo y en compras más grandes usa tarjeta. Se muestra dispuesta a probar un carrito inteligente que muestre el total en tiempo real a medida que coloca productos y permita pagar sin pasar por caja, porque le ahorraría tiempo innecesario en colas. |
 
 #### Segmento 2: Administrador de Tienda / Operaciones
 

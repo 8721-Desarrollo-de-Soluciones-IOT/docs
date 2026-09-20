@@ -201,7 +201,7 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 | **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120">  |
 | **Paico Calderon, July Zelmira** <br><br> **Código:** U20211D760 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo    | Estudiante de Ingeniería de Software con interés en arquitecturas web y gestión de proyectos de software. Posee conocimientos en C# (ASP.NET Core, Entity Framework Core), Java (Spring Boot), Angular y bases de datos relacionales como MySQL, así como el manejo de sprints en Jira y gestión en MS Project.  | <img src="assets/common/team/July.png" width="120">    |
 | **Trillo Hernández, Anghel Melanie** <br><br> **Código:** u201912401 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo                          | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), lo que me gusta de la carrera es desarrollar soluciones innovadoras que contribuyen a la sociedad. Me considero una persona responsable y orientada a resultados. Asimismo, me comprometo a colaborar en el equipo de forma continua. | <img src="assets/common/team/Anghel_Trillo.jpg" width="120"> |
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo                          | [Breve perfil] | <img src="assets/common/team/nombre.jpeg" width="120"> |
+| **Crisanto Calle Deybi Anderson** <br><br> **Código:** U202120569 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo                          | Estudiante de la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC). Soy muy colaborativo al momento de trabajar en equipo, me gusta aprender de los demás y compartir mis conocimientos respecto a un tema. Fuera del ámbito académico, soy músico y me gusta tocar el piano, así como los videojuegos en primera persona. | <img src="assets/common/team/Deybbi.jpeg" width="120"> |
 
 ---
 
@@ -1290,8 +1290,7 @@ El siguiente **Component Diagram (C4 Model – Level 3)** descompone el containe
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
-*(Pendiente — Responsable: Deybbi)*
-
+![Bounded Context Domain Layer Class Diagrams.png](assets/chapter-4/software-architecture/Bounded%20Context%20Domain%20Layer%20Class%20Diagrams.png)
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 *(Pendiente — Responsable: Melanie)*
 

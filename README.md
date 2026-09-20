@@ -890,13 +890,36 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 ### 4.1.1. Design-Level EventStorming
 
 #### 4.1.1.1. Candidate Context Discovery
-*(Pendiente — Responsable: Melanie)*
+
+![Candidate Context Discovery](assets/chapter-4/Candidate%20Context%20Discovery.png)
 
 #### 4.1.1.2. Domain Message Flows Modeling
 *(Pendiente — Responsable: Melanie)*
 
 #### 4.1.1.3. Bounded Context Canvases
-*(Pendiente — Responsable: Melanie)*
+
+##### Operations and security context
+
+Modela el monitoreo de discrepancias físicas, gestión de alertas a la consola de supervisores, auditoría con credenciales de personal y control perimetral por *geofencing* (bloqueo electromecánico de ruedas).
+
+![context operations](assets/chapter-4/bounded/operations.png)
+
+#####  Catalog and Pricing Context
+
+Especifica la sincronización del catálogo maestro de productos, mapeo de etiquetas RFID, precios vigentes y márgenes de tolerancia de peso nominal.
+
+![context catalog](assets/chapter-4/bounded/catalog.png)
+
+#####  Payment and Checkout Context
+
+Detalla la generación de QR dinámicos, consumo de webhooks de billeteras digitales (Yape/Plin), emisión de comprobante electrónico y generación del token de liberación para la salida.
+
+![context payment](assets/chapter-4/bounded/payment.png)
+
+##### Smart Shopping Context
+Define las responsabilidades principales de la sesión de compra, gestión de canasta, cálculo de total en tiempo real, reglas de consistencia peso/RFID y alertas de límite de presupuesto.
+
+![context shopping](assets/chapter-4/bounded/shopping.png)
 
 ### 4.1.2. Context Mapping
 *(Pendiente — Responsable: Kevin)*

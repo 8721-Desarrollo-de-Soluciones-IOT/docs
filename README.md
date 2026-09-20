@@ -346,35 +346,30 @@ Para entender el contexto del problema, aplicamos la técnica de análisis de la
 
 ## 1.3. Segmentos objetivo
 
+Innova Carty fue diseñada pensando en que los clientes de supermercados logren comprar de forma ágil, con control de su gasto y sin depender de las filas de pago tradicionales. A su vez, buscamos que el personal encargado de la operación en tienda cuente con herramientas para reducir las mermas y los cuellos de botella en caja, de modo que la compra termine con una salida verificada y segura. En ese sentido, estamos tomando en cuenta estos dos segmentos objetivos, centrados en Lima Metropolitana.
+
 ### Segmento 1: Comprador Moderno / Consumidor Final
 
-Jóvenes y adultos que manejan presupuestos ajustados, usan billeteras digitales de forma cotidiana y buscan optimizar su tiempo en el supermercado.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | 20 – 50 años |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente: agregar cifras con fuente, ej. penetración de billeteras digitales, tiempo promedio en cola] |
-| **Problema** | Desconoce el monto acumulado de su compra durante el recorrido y pierde tiempo en filas de pago tradicionales. |
-
----
+- Rango de edad: 20 – 50 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Secundaria completa a superior
+- Idioma: Español
+- Descripción:
+  Los compradores modernos son jóvenes y adultos que estudian o trabajan y realizan compras en supermercados de forma periódica, normalmente una o dos veces por semana. Manejan un presupuesto delimitado y utilizan a diario billeteras digitales (Yape, Plin) y banca móvil como medio de pago, en muchos casos evitando el efectivo. Cuentan con un smartphone y están acostumbrados a resolver sus trámites de forma digital. Suelen elegir el supermercado por su cercanía y por las promociones vigentes.
+- Preocupaciones:
+  A los compradores les preocupa no saber cuánto llevan gastado mientras recorren los pasillos, porque descubrir el total recién en caja puede descuadrar su presupuesto. En ese momento tienen que pedir que retiren productos frente al cajero, lo que les genera incomodidad. También les preocupa perder mucho tiempo en las filas de pago, sobre todo los fines de semana y en quincena. Además, desean que el cobro digital sea rápido y confiable, y que los precios que ven en el carrito sean correctos.
 
 ### Segmento 2: Administrador de Tienda / Operaciones
 
-Personal del supermercado encargado de supervisar el inventario, la seguridad del perímetro y el flujo de los carritos en el establecimiento.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | [Pendiente] |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente] |
-| **Problema** | Riesgo de salida de mercancía sin registrar pago y cuellos de botella operativos en caja durante horas de alta demanda. |
-
-
-
-
-
-
+- Rango de edad: 25 – 55 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Técnico a universitario
+- Idioma: Español
+- Descripción:
+  El administrador de tienda abarca a los gerentes de tienda, jefes de operaciones, supervisores de piso de venta y personal de prevención de pérdidas de supermercados y cadenas retail. Son responsables del flujo de clientes, del inventario, de la seguridad del perímetro y del control de los carritos dentro del establecimiento. Trabajan con sistemas de punto de venta e inventario y necesitan información en tiempo real para intervenir a tiempo ante cualquier incidencia.
+- Preocupaciones:
+  Al administrador le preocupan las mermas por mercancía que sale sin registrar pago y los cuellos de botella en caja en horas de alta demanda, que afectan la experiencia del cliente. También le inquieta que un sistema automatizado genere falsos bloqueos a clientes legítimos, que la inversión en una flota de carritos sea difícil de recuperar y que el hardware sufra daños o vandalismo. Por último, necesita que la solución se integre con los sistemas de caja e inventario que la tienda ya utiliza, sin interrumpir su operación.
+  
 
 <div style="page-break-after: always;"></div>
 

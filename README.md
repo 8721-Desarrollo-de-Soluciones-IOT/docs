@@ -1387,11 +1387,14 @@ El siguiente **Component Diagram (C4 Model – Level 3)** descompone el containe
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 *(Pendiente — Responsable: Deybbi)*
 
-##### 4.2.1.6.2. Bounded Context Database Design Diagram
-*(Pendiente — Responsable: Melanie)*
-
 ### 4.2.2. Bounded Context: [Nombre]
 *(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*
+
+### 4.3 Database Design Diagram
+
+El diseño del modelo relacional de base de datos para la solución Innova Carty da soporte a la interacción entre los dispositivos físicos de compra (Smart Carts con tecnología IoT/Edge Computing) y los servicios centrales en la nube. Su estructura se alinea directamente con los lineamientos tácticos del Smart Shopping Bounded Context y las reglas de negocio descritas en el proyecto, garantizando consistencia transaccional, trazabilidad de eventos y baja latencia en la sincronización de datos.
+
+![database model](assets/chapter-4/software-architecture/database.png)
 
 <div style="page-break-after: always;"></div>
 

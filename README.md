@@ -194,12 +194,13 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-| **Integrante** | **Perfil** | **Foto** |
-|----------------|------------|----------|
-| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
-| **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
-| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120"> |
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
+| **Integrante**                                                                                                                                       | **Perfil** | **Foto**                                               |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------|
+| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo         | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">    |
+| **Omar Christian Berrocal Ramirez** <br><br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120">    |
+| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120">  |
+| **Paico Calderon, July Zelmira** <br><br> **Código:** U20211D760 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo    | Estudiante de Ingeniería de Software con interés en arquitecturas web y gestión de proyectos de software. Posee conocimientos en C# (ASP.NET Core, Entity Framework Core), Java (Spring Boot), Angular y bases de datos relacionales como MySQL, así como el manejo de sprints en Jira y gestión en MS Project.  | <img src="assets/common/team/July.png" width="120">    |
+| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo                          | [Breve perfil] | <img src="assets/common/team/nombre.jpeg" width="120"> |
 
 ---
 
@@ -345,35 +346,30 @@ Para entender el contexto del problema, aplicamos la técnica de análisis de la
 
 ## 1.3. Segmentos objetivo
 
+Innova Carty fue diseñada pensando en que los clientes de supermercados logren comprar de forma ágil, con control de su gasto y sin depender de las filas de pago tradicionales. A su vez, buscamos que el personal encargado de la operación en tienda cuente con herramientas para reducir las mermas y los cuellos de botella en caja, de modo que la compra termine con una salida verificada y segura. En ese sentido, estamos tomando en cuenta estos dos segmentos objetivos, centrados en Lima Metropolitana.
+
 ### Segmento 1: Comprador Moderno / Consumidor Final
 
-Jóvenes y adultos que manejan presupuestos ajustados, usan billeteras digitales de forma cotidiana y buscan optimizar su tiempo en el supermercado.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | 20 – 50 años |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente: agregar cifras con fuente, ej. penetración de billeteras digitales, tiempo promedio en cola] |
-| **Problema** | Desconoce el monto acumulado de su compra durante el recorrido y pierde tiempo en filas de pago tradicionales. |
-
----
+- Rango de edad: 20 – 50 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Secundaria completa a superior
+- Idioma: Español
+- Descripción:
+  Los compradores modernos son jóvenes y adultos que estudian o trabajan y realizan compras en supermercados de forma periódica, normalmente una o dos veces por semana. Manejan un presupuesto delimitado y utilizan a diario billeteras digitales (Yape, Plin) y banca móvil como medio de pago, en muchos casos evitando el efectivo. Cuentan con un smartphone y están acostumbrados a resolver sus trámites de forma digital. Suelen elegir el supermercado por su cercanía y por las promociones vigentes.
+- Preocupaciones:
+  A los compradores les preocupa no saber cuánto llevan gastado mientras recorren los pasillos, porque descubrir el total recién en caja puede descuadrar su presupuesto. En ese momento tienen que pedir que retiren productos frente al cajero, lo que les genera incomodidad. También les preocupa perder mucho tiempo en las filas de pago, sobre todo los fines de semana y en quincena. Además, desean que el cobro digital sea rápido y confiable, y que los precios que ven en el carrito sean correctos.
 
 ### Segmento 2: Administrador de Tienda / Operaciones
 
-Personal del supermercado encargado de supervisar el inventario, la seguridad del perímetro y el flujo de los carritos en el establecimiento.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | [Pendiente] |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente] |
-| **Problema** | Riesgo de salida de mercancía sin registrar pago y cuellos de botella operativos en caja durante horas de alta demanda. |
-
-
-
-
-
-
+- Rango de edad: 25 – 55 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Técnico a universitario
+- Idioma: Español
+- Descripción:
+  El administrador de tienda abarca a los gerentes de tienda, jefes de operaciones, supervisores de piso de venta y personal de prevención de pérdidas de supermercados y cadenas retail. Son responsables del flujo de clientes, del inventario, de la seguridad del perímetro y del control de los carritos dentro del establecimiento. Trabajan con sistemas de punto de venta e inventario y necesitan información en tiempo real para intervenir a tiempo ante cualquier incidencia.
+- Preocupaciones:
+  Al administrador le preocupan las mermas por mercancía que sale sin registrar pago y los cuellos de botella en caja en horas de alta demanda, que afectan la experiencia del cliente. También le inquieta que un sistema automatizado genere falsos bloqueos a clientes legítimos, que la inversión en una flota de carritos sea difícil de recuperar y que el hardware sufra daños o vandalismo. Por último, necesita que la solución se integre con los sistemas de caja e inventario que la tienda ya utiliza, sin interrumpir su operación.
+  
 
 <div style="page-break-after: always;"></div>
 
@@ -494,9 +490,63 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 </table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
-*(Pendiente — Responsable: July)*
 
----
+Las estrategias preliminares de Innova Carty se construyen a partir del análisis competitivo anterior. Buscan contrarrestar las fortalezas de cada competidor, aprovechar sus debilidades y ubicar a la startup en el espacio que hoy ninguno ocupa: un carrito físico de costo medio, con pago por QR peruano (Yape/Plin) y control estricto del presupuesto del cliente.
+
+#### Estrategia general
+
+Innova Carty se posicionará como la opción **intermedia y localizada**. Es más económica que las soluciones con cámaras de IA (Caper Cart) y con POS físico (Smart-Cart). Es menos incómoda que las apps móviles (Scan & Go), porque el usuario no depende de su batería ni de su celular para escanear. Y está adaptada a los hábitos de pago del consumidor peruano.
+
+#### Estrategias y tácticas por competidor
+
+**Frente a Scan & Go (Apps)**
+
+- **Fortaleza a contrarrestar:** no exige que el supermercado invierta en hardware, por lo que escala rápido.
+- **Debilidad a aprovechar:** genera alta fricción, porque el usuario gasta batería y maniobra con el celular y los productos.
+- **Estrategia:** diferenciación por experiencia de compra. El carrito tiene lector y pantalla propios, así que el cliente no necesita el celular para comprar.
+- **Tácticas:**
+  - Mostrar en las demostraciones piloto la comodidad de comprar con las manos libres, frente a comprar con el celular.
+  - Ofrecer un modelo de alquiler o renting del hardware, para que el supermercado no asuma toda la inversión inicial y se reduzca su ventaja de "cero hardware".
+  - Mantener la app móvil solo como complemento (consulta del presupuesto, historial de compras), sin hacerla obligatoria.
+
+**Frente a Smart-Cart**
+
+- **Fortaleza a contrarrestar:** cuenta con el respaldo de una red de pagos (Credibanco) y acepta tarjetas físicas.
+- **Debilidad a aprovechar:** el POS físico es pesado, tosco y propenso a dañarse. Además, su costo B2B es alto.
+- **Estrategia:** liderazgo en costos y adaptación al mercado local. Se reemplaza el terminal físico por un pago digital ligero mediante QR.
+- **Tácticas:**
+  - Integrar Yape y Plin, billeteras de uso masivo en Perú que no requieren terminal físico ni comisiones de datáfono tradicionales.
+  - Destacar en la propuesta comercial el menor costo de mantenimiento por carrito, al no tener partes de pago pesadas ni frágiles.
+  - Comunicar el pago por QR como una opción de inclusión financiera para clientes que no usan tarjeta de crédito.
+
+**Frente a Caper Cart**
+
+- **Fortaleza a contrarrestar:** ofrece tecnología de punta, una marca global y una experiencia sin fricción ("Throw & Go").
+- **Debilidad a aprovechar:** sus costos son prohibitivos para Latinoamérica y su infraestructura es muy compleja de mantener.
+- **Estrategia:** no competir en tecnología sino en accesibilidad. Se ofrece una solución "suficientemente inteligente" a una fracción del costo.
+- **Tácticas:**
+  - Dirigirse a supermercados medianos y de barrio, que no pueden pagar miles de dólares por carrito.
+  - Usar sensores de peso y lector de productos, más simples que las cámaras de IA, para mantener bajos el costo y la complejidad del mantenimiento.
+  - Comunicar que el carrito puede desplegarse por etapas, empezando con pocas unidades en un piloto, sin transformar toda la tienda.
+
+#### Aprovechamiento de oportunidades y respuesta a amenazas
+
+| Contexto                                                                                                 | Táctica de Innova Carty                                                                                                          |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **Oportunidad:** adopción masiva de billeteras digitales en Perú                                         | Convertir el pago por QR en el eje del mensaje comercial y del producto.                                                         |
+| **Oportunidad:** demanda por evitar colas                                                                | Medir y demostrar en los pilotos el tiempo ahorrado en caja.                                                                     |
+| **Oportunidad:** programas de fidelidad (CMR, Tarjeta Oh!) que los competidores integran de forma nativa | Plantear integraciones de fidelización como una fase posterior de la hoja de ruta.                                               |
+| **Amenaza:** vandalismo a la pantalla o a los sensores                                                   | Diseñar carcasas resistentes y sumar el sensor de peso y la alarma antirrobo, con notificación al panel del supermercado.        |
+| **Amenaza:** rechazo de cadenas conservadoras                                                            | Ofrecer pilotos de bajo riesgo y compartir con el supermercado los datos de uso y de ahorro de tiempo.                           |
+| **Amenaza:** tiendas sin cajeros (tecnología tipo Caper Cart)                                            | Enfocarse en el segmento de costo medio, donde esa tecnología aún no es viable, y mantener actualizable el software del carrito. |
+| **Debilidad propia:** inversión inicial en hardware                                                      | Aplicar el modelo de renting o de pago por uso, y priorizar pocas unidades por local al inicio.                                  |
+
+#### Ventajas que se buscan reforzar
+
+1. **Pago local y universal:** QR con Yape/Plin, sin terminales físicos.
+2. **Control estricto del presupuesto:** alerta al cliente cuando se acerca a su límite de gasto, algo que ninguno de los tres competidores destaca.
+3. **Costo intermedio:** más accesible que Smart-Cart y Caper Cart, sin depender del celular del usuario como Scan & Go.
+
 
 ## 2.2. Entrevistas
 
@@ -582,7 +632,13 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas
-*(Pendiente — Responsable: July)*
+
+#### Comprador Moderno / Consumidor Final
+
+![user-persona-segmento1.png](assets/chapter-2/user-persona-segmento1.png)
+
+
+#### Administrador de Tienda / Operaciones
 
 ### 2.3.2. User Task Matrix
 
@@ -689,7 +745,27 @@ En esta sección se formalizan los requisitos funcionales de la solución Innova
 ---
 
 ## 3.3. Product Backlog
-*(Pendiente — Responsable: July)*
+
+El Product Backlog de Innova Carty se ordena según el valor que cada historia aporta al negocio. Las historias del Landing Page van al inicio para que se consideren desde el primer sprint. Les siguen los servicios base y el flujo central de la solución: registro de productos, control de presupuesto, validación por peso y pago por QR. Al final quedan las funcionalidades de supervisión y de gestión operativa. Las estimaciones usan la escala de Story Points 1 / 2 / 3 / 5 / 8.
+
+| # Orden   | User Story Id   | Título                                                          | Descripción                                                                                                                                                                                                               | Story Points (1 / 2 / 3 / 5 / 8)   |
+|:---------:|:---------------:|:----------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------:|
+|     1     |      US01       | Presentación de la Propuesta de Valor en Landing Page           | Como visitante consumidor, deseo visualizar la explicación del funcionamiento del carrito inteligente en la página de inicio para entender cómo me ayuda a ahorrar tiempo y controlar mi presupuesto.                     |                 3                  |
+|     2     |      US02       | Registro de Contacto Corporativo para Supermercados             | Como visitante del segmento administrador de retail, deseo enviar una solicitud de información comercial a través de un formulario web para evaluar la implementación de los Smart Carts en mi cadena de tiendas.         |                 3                  |
+|     3     |      US03       | Consulta de Términos del Servicio y Políticas de Privacidad     | Como visitante, deseo consultar los términos y condiciones de servicio y las políticas de protección de datos personales en el pie de página para verificar la confiabilidad de la plataforma.                            |                 1                  |
+|     4     |      TS02       | Creación y Consulta de Órdenes de Compra                        | Como desarrollador de aplicaciones cliente, deseo disponer de endpoints RESTful para aperturar sesiones de compra y consultar el balance económico consolidado para conocer en cualquier instante el estado de una orden. |                 5                  |
+|     5     |      TS01       | Recepción e Ingesta de Telemetría desde Dispositivo Edge        | Como desarrollador del backend, deseo exponer un endpoint RESTful HTTP POST para recibir las lecturas de peso, batería e identificadores de artículos del Edge API para persistir la telemetría del carrito en la nube.   |                 5                  |
+|     6     |      US06       | Registro Automático de Artículo mediante Lectura RFID           | Como comprador moderno, deseo que el carrito detecte el producto al introducirlo en la canasta para agregarlo a mi orden sin necesidad de buscar códigos de barras manualmente.                                           |                 8                  |
+|     7     |      US05       | Visualización Dinámica del Total Acumulado                      | Como comprador moderno, deseo ver reflejado el costo total y el desglose de productos al instante en la pantalla del carrito para conocer exactamente cuánto voy a pagar.                                                 |                 5                  |
+|     8     |      US04       | Configuración de Presupuesto Límite de Compra                   | Como comprador moderno, deseo ingresar un monto tope de dinero al iniciar mi sesión de compra para recibir avisos preventivos si estoy próximo a superarlo.                                                               |                 3                  |
+|     9     |      US08       | Liquidación de Orden y Pago Autónomo con QR Dinámico            | Como comprador moderno, deseo generar un código QR único por el total de mi canasta en la pantalla del carrito para pagar con mi billetera digital sin pasar por cajas.                                                   |                 8                  |
+|    10     |      TS03       | Webhook de Confirmación de Pagos Externos                       | Como desarrollador del backend, deseo procesar notificaciones asíncronas vía webhook desde la pasarela de pagos digitales para conciliar las transacciones en tiempo real.                                                |                 5                  |
+|    11     |      US09       | Validación de Peso en Canasta contra Catálogo                   | Como administrador de operaciones, deseo que el carrito contraste el incremento de peso medido por las celdas de carga con el peso teórico del catálogo para certificar que el producto ingresado sea auténtico.          |                 8                  |
+|    12     |      US07       | Retiro y Descuento de Artículo de la Canasta                    | Como comprador moderno, deseo retirar un artículo del carrito y que el monto total se descuente de manera automática para prescindir de los productos que decida no llevar.                                               |                 5                  |
+|    13     |      US10       | Detección de Retiro No Registrado de Productos                  | Como administrador de operaciones, deseo que el carrito alerte si se retira mercancía sin pasar por el proceso formal de devolución para evitar manipulaciones indebidas en los pasillos.                                 |                 5                  |
+|    14     |      US11       | Monitoreo en Tiempo Real desde Consola Web Operativa            | Como administrador de operaciones, deseo visualizar en un tablero web el estado de todos los carritos activos en tienda para intervenir oportunamente ante cualquier incidencia.                                          |                 8                  |
+|    15     |      US12       | Control Perimetral y Bloqueo por Geofencing                     | Como administrador de operaciones, deseo que el sistema bloquee las ruedas del carrito e impida la salida si una unidad cruza el perímetro sin autorización de pago para asegurar la integridad de la tienda.             |                 8                  |
+|    16     |      US13       | Gestión y Actualización del Catálogo de Productos y Tolerancias | Como administrador de operaciones, deseo actualizar precios, pesos nominales y márgenes de tolerancia de los productos para mantener calibrada la validación de los carritos inteligentes.                                |                 5                  |
 
 <div style="page-break-after: always;"></div>
 

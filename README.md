@@ -194,12 +194,14 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-| **Integrante** | **Perfil** | **Foto** |
-|----------------|------------|----------|
-| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
-| **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
-| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120"> |
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
+| **Integrante**                                                                                                                                       | **Perfil** | **Foto**                                               |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------|
+| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo         | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">    |
+| **Omar Christian Berrocal Ramirez** <br><br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120">    |
+| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120">  |
+| **Paico Calderon, July Zelmira** <br><br> **Código:** U20211D760 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo    | Estudiante de Ingeniería de Software con interés en arquitecturas web y gestión de proyectos de software. Posee conocimientos en C# (ASP.NET Core, Entity Framework Core), Java (Spring Boot), Angular y bases de datos relacionales como MySQL, así como el manejo de sprints en Jira y gestión en MS Project.  | <img src="assets/common/team/July.png" width="120">    |
+| **Trillo Hernández, Anghel Melanie** <br><br> **Código:** u201912401 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo                          | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), lo que me gusta de la carrera es desarrollar soluciones innovadoras que contribuyen a la sociedad. Me considero una persona responsable y orientada a resultados. Asimismo, me comprometo a colaborar en el equipo de forma continua. | <img src="assets/common/team/Anghel_Trillo.jpg" width="120"> |
+| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo                          | [Breve perfil] | <img src="assets/common/team/nombre.jpeg" width="120"> |
 
 ---
 
@@ -345,35 +347,30 @@ Para entender el contexto del problema, aplicamos la técnica de análisis de la
 
 ## 1.3. Segmentos objetivo
 
+Innova Carty fue diseñada pensando en que los clientes de supermercados logren comprar de forma ágil, con control de su gasto y sin depender de las filas de pago tradicionales. A su vez, buscamos que el personal encargado de la operación en tienda cuente con herramientas para reducir las mermas y los cuellos de botella en caja, de modo que la compra termine con una salida verificada y segura. En ese sentido, estamos tomando en cuenta estos dos segmentos objetivos, centrados en Lima Metropolitana.
+
 ### Segmento 1: Comprador Moderno / Consumidor Final
 
-Jóvenes y adultos que manejan presupuestos ajustados, usan billeteras digitales de forma cotidiana y buscan optimizar su tiempo en el supermercado.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | 20 – 50 años |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente: agregar cifras con fuente, ej. penetración de billeteras digitales, tiempo promedio en cola] |
-| **Problema** | Desconoce el monto acumulado de su compra durante el recorrido y pierde tiempo en filas de pago tradicionales. |
-
----
+- Rango de edad: 20 – 50 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Secundaria completa a superior
+- Idioma: Español
+- Descripción:
+  Los compradores modernos son jóvenes y adultos que estudian o trabajan y realizan compras en supermercados de forma periódica, normalmente una o dos veces por semana. Manejan un presupuesto delimitado y utilizan a diario billeteras digitales (Yape, Plin) y banca móvil como medio de pago, en muchos casos evitando el efectivo. Cuentan con un smartphone y están acostumbrados a resolver sus trámites de forma digital. Suelen elegir el supermercado por su cercanía y por las promociones vigentes.
+- Preocupaciones:
+  A los compradores les preocupa no saber cuánto llevan gastado mientras recorren los pasillos, porque descubrir el total recién en caja puede descuadrar su presupuesto. En ese momento tienen que pedir que retiren productos frente al cajero, lo que les genera incomodidad. También les preocupa perder mucho tiempo en las filas de pago, sobre todo los fines de semana y en quincena. Además, desean que el cobro digital sea rápido y confiable, y que los precios que ven en el carrito sean correctos.
 
 ### Segmento 2: Administrador de Tienda / Operaciones
 
-Personal del supermercado encargado de supervisar el inventario, la seguridad del perímetro y el flujo de los carritos en el establecimiento.
-
-| **Aspecto** | **Detalle** |
-| --- | --- |
-| **Rango de edad** | [Pendiente] |
-| **Geografía** | [Pendiente] |
-| **Estadísticas** | [Pendiente] |
-| **Problema** | Riesgo de salida de mercancía sin registrar pago y cuellos de botella operativos en caja durante horas de alta demanda. |
-
-
-
-
-
-
+- Rango de edad: 25 – 55 años
+- Lugar de residencia: Lima Metropolitana, Perú
+- Nivel educativo: Técnico a universitario
+- Idioma: Español
+- Descripción:
+  El administrador de tienda abarca a los gerentes de tienda, jefes de operaciones, supervisores de piso de venta y personal de prevención de pérdidas de supermercados y cadenas retail. Son responsables del flujo de clientes, del inventario, de la seguridad del perímetro y del control de los carritos dentro del establecimiento. Trabajan con sistemas de punto de venta e inventario y necesitan información en tiempo real para intervenir a tiempo ante cualquier incidencia.
+- Preocupaciones:
+  Al administrador le preocupan las mermas por mercancía que sale sin registrar pago y los cuellos de botella en caja en horas de alta demanda, que afectan la experiencia del cliente. También le inquieta que un sistema automatizado genere falsos bloqueos a clientes legítimos, que la inversión en una flota de carritos sea difícil de recuperar y que el hardware sufra daños o vandalismo. Por último, necesita que la solución se integre con los sistemas de caja e inventario que la tienda ya utiliza, sin interrumpir su operación.
+  
 
 <div style="page-break-after: always;"></div>
 
@@ -494,9 +491,63 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 </table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
-*(Pendiente — Responsable: July)*
 
----
+Las estrategias preliminares de Innova Carty se construyen a partir del análisis competitivo anterior. Buscan contrarrestar las fortalezas de cada competidor, aprovechar sus debilidades y ubicar a la startup en el espacio que hoy ninguno ocupa: un carrito físico de costo medio, con pago por QR peruano (Yape/Plin) y control estricto del presupuesto del cliente.
+
+#### Estrategia general
+
+Innova Carty se posicionará como la opción **intermedia y localizada**. Es más económica que las soluciones con cámaras de IA (Caper Cart) y con POS físico (Smart-Cart). Es menos incómoda que las apps móviles (Scan & Go), porque el usuario no depende de su batería ni de su celular para escanear. Y está adaptada a los hábitos de pago del consumidor peruano.
+
+#### Estrategias y tácticas por competidor
+
+**Frente a Scan & Go (Apps)**
+
+- **Fortaleza a contrarrestar:** no exige que el supermercado invierta en hardware, por lo que escala rápido.
+- **Debilidad a aprovechar:** genera alta fricción, porque el usuario gasta batería y maniobra con el celular y los productos.
+- **Estrategia:** diferenciación por experiencia de compra. El carrito tiene lector y pantalla propios, así que el cliente no necesita el celular para comprar.
+- **Tácticas:**
+  - Mostrar en las demostraciones piloto la comodidad de comprar con las manos libres, frente a comprar con el celular.
+  - Ofrecer un modelo de alquiler o renting del hardware, para que el supermercado no asuma toda la inversión inicial y se reduzca su ventaja de "cero hardware".
+  - Mantener la app móvil solo como complemento (consulta del presupuesto, historial de compras), sin hacerla obligatoria.
+
+**Frente a Smart-Cart**
+
+- **Fortaleza a contrarrestar:** cuenta con el respaldo de una red de pagos (Credibanco) y acepta tarjetas físicas.
+- **Debilidad a aprovechar:** el POS físico es pesado, tosco y propenso a dañarse. Además, su costo B2B es alto.
+- **Estrategia:** liderazgo en costos y adaptación al mercado local. Se reemplaza el terminal físico por un pago digital ligero mediante QR.
+- **Tácticas:**
+  - Integrar Yape y Plin, billeteras de uso masivo en Perú que no requieren terminal físico ni comisiones de datáfono tradicionales.
+  - Destacar en la propuesta comercial el menor costo de mantenimiento por carrito, al no tener partes de pago pesadas ni frágiles.
+  - Comunicar el pago por QR como una opción de inclusión financiera para clientes que no usan tarjeta de crédito.
+
+**Frente a Caper Cart**
+
+- **Fortaleza a contrarrestar:** ofrece tecnología de punta, una marca global y una experiencia sin fricción ("Throw & Go").
+- **Debilidad a aprovechar:** sus costos son prohibitivos para Latinoamérica y su infraestructura es muy compleja de mantener.
+- **Estrategia:** no competir en tecnología sino en accesibilidad. Se ofrece una solución "suficientemente inteligente" a una fracción del costo.
+- **Tácticas:**
+  - Dirigirse a supermercados medianos y de barrio, que no pueden pagar miles de dólares por carrito.
+  - Usar sensores de peso y lector de productos, más simples que las cámaras de IA, para mantener bajos el costo y la complejidad del mantenimiento.
+  - Comunicar que el carrito puede desplegarse por etapas, empezando con pocas unidades en un piloto, sin transformar toda la tienda.
+
+#### Aprovechamiento de oportunidades y respuesta a amenazas
+
+| Contexto                                                                                                 | Táctica de Innova Carty                                                                                                          |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **Oportunidad:** adopción masiva de billeteras digitales en Perú                                         | Convertir el pago por QR en el eje del mensaje comercial y del producto.                                                         |
+| **Oportunidad:** demanda por evitar colas                                                                | Medir y demostrar en los pilotos el tiempo ahorrado en caja.                                                                     |
+| **Oportunidad:** programas de fidelidad (CMR, Tarjeta Oh!) que los competidores integran de forma nativa | Plantear integraciones de fidelización como una fase posterior de la hoja de ruta.                                               |
+| **Amenaza:** vandalismo a la pantalla o a los sensores                                                   | Diseñar carcasas resistentes y sumar el sensor de peso y la alarma antirrobo, con notificación al panel del supermercado.        |
+| **Amenaza:** rechazo de cadenas conservadoras                                                            | Ofrecer pilotos de bajo riesgo y compartir con el supermercado los datos de uso y de ahorro de tiempo.                           |
+| **Amenaza:** tiendas sin cajeros (tecnología tipo Caper Cart)                                            | Enfocarse en el segmento de costo medio, donde esa tecnología aún no es viable, y mantener actualizable el software del carrito. |
+| **Debilidad propia:** inversión inicial en hardware                                                      | Aplicar el modelo de renting o de pago por uso, y priorizar pocas unidades por local al inicio.                                  |
+
+#### Ventajas que se buscan reforzar
+
+1. **Pago local y universal:** QR con Yape/Plin, sin terminales físicos.
+2. **Control estricto del presupuesto:** alerta al cliente cuando se acerca a su límite de gasto, algo que ninguno de los tres competidores destaca.
+3. **Costo intermedio:** más accesible que Smart-Cart y Caper Cart, sin depender del celular del usuario como Scan & Go.
+
 
 ## 2.2. Entrevistas
 
@@ -575,17 +626,145 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 
 
 ### 2.2.3. Análisis de entrevistas
-*(Pendiente — Responsable: Melanie)*
 
----
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+##### Perfil
+* **Demografía:** Jóvenes y adultos de 20 a 30 años (estudiantes universitarios y analistas júnior) residentes en distritos urbanos de Lima Metropolitana (ej. Santiago de Surco).
+* **Ecosistema Tecnológico:** Usuarios intensivos de smartphones con sistemas operativos Android e iOS.
+* **Canales Financieros:** Operación 100% digital a través de billeteras móviles (**Yape**, **Plin**), tarjetas digitalizadas en **Apple Wallet** y aplicativos de banca móvil (**BCP**, **Interbank**). Desestiman el uso de efectivo en supermercados.
+* **Hábitos de Compra:** Acuden entre 1 y 2 veces por semana a cadenas como Plaza Vea, Metro e Hiperbodegas, motivados principalmente por la proximidad a su domicilio y las promociones comerciales activas.
+
+##### Hallazgos Cualitativos
+
+| Variable de Análisis | Hallazgo Cualitativo Extraído |
+| :--- | :--- |
+| **Control Presupuestal** | Ante la falta de herramientas en tienda, recurren a métodos analógicos de cálculo mental: sumas aproximadas, redondeo hacia arriba y separación deliberada de saldos en cuentas bancarias para evitar sobregiros. |
+| **Fricción en Caja (Dolor 1)** | **Incomodidad social y vergüenza:** Al descubrir el total recién frente a la cajera, se ven obligados a solicitar la anulación o retiro de productos en público frente a otros clientes en la fila. |
+| **Pérdida de Tiempo (Dolor 2)** | **Esperas prolongadas:** Filas de 20 a 25 minutos en quincenas y fines de semana descritas como "brutales e innecesarias", agravadas por la inoperatividad de cajas rápidas de autoservicio. |
+| **Transparencia de Precios** | Desconfianza recurrente provocada por discrepancias entre los precios exhibidos en las etiquetas de góndola y los valores cobrados en la terminal de caja. |
+| **Receptividad Tecnológica** | Adopción entusiasta de la solución IoT. Valoran el cálculo en tiempo real y el autopago; manifiestan que erradicar las colas incrementaría su frecuencia de visita física a la tienda. |
+
+
+##### Pains, Needs y Drivers de Adopción
+
+* **Pains (Dolores Críticos):**
+  * Incertidumbre financiera durante el recorrido.
+  * Vergüenza social por anulación de productos en caja.
+  * Tiempos muertos de 20 a 25 minutos en filas tradicionales.
+  * Errores de precios de góndola versus sistema.
+
+* **Needs (Necesidades Clave):**
+  * Visibilidad instantánea y acumulada del subtotal en el carrito.
+  * Verificación inmediata de precios y promociones automáticas al escanear.
+  * Proceso de egreso autónomo y rápido.
+
+* **Drivers de Adopción (Ganancias Esperadas):**
+  * Autopago digital directo en la pantalla del carrito vía QR interoperable (Yape/Plin) y pagos sin contacto (NFC / Apple Wallet).
+  * Eliminación total de la descarga de productos hacia fajas de cobro tradicionales.
+
+##### Insights Clave 
+
+* **Insight 1 (La carga cognitiva del cálculo analógico):**
+  > *"Comprar en el supermercado no es solo elegir productos, es un ejercicio de estrés mental donde debo sumar, redondear y rezar para que el total en caja coincida con lo que tengo en mi cuenta bancaria."*  
+
+  **Interpretación:** El usuario no carece de dinero, carece de predictibilidad. Obligar al cliente a asumir el rol de calculadora humana genera fatiga de decisión y frustración prematura antes de terminar el recorrido.
+
+* **Insight 2 (El costo emocional de la anulación pública):**
+  > *"Llegar a la caja y pedir que me retiren un producto me hace sentir juzgado por la cajera y por toda la fila que espera detrás de mí."*  
+
+  **Interpretación:** La falta de visibilidad del monto acumulado trasciende el aspecto financiero: se convierte en un problema de estatus y vergüenza social. El carrito inteligente actúa como un escudo que devuelve la dignidad y el control privado sobre el presupuesto.
+
+* **Insight 3 (El tiempo como factor de lealtad comercial):**
+  > *"No dejo de ir al supermercado por falta de ganas de comprar, sino porque sé que perder 25 minutos en una fila arruina el resto de mi tarde."*  
+
+  **Interpretación:** Las cajas tradicionales actúan como un detractor activo de la compra física. Eliminar el punto de cobro centralizado no es solo una mejora de conveniencia; desbloquea una mayor frecuencia de visita y ticket acumulado en clientes jóvenes.
+
+#### Segmento 2: Administrador de Tienda / Operaciones
+
+##### Perfil
+* **Demografía y Rol:** Jefes de tienda, supervisores de piso de venta y encargados de prevención de pérdidas (28 a 50 años) en supermercados de cadena en Lima Metropolitana.
+* **Formación:** Nivel técnico o universitario en Administración, Ingeniería Industrial o carreras afines.
+* **Entorno de Trabajo:** Manejan software ERP de retail (SAP, Oracle Retail), terminales de Punto de Venta (POS), dispositivos móviles de inventario (PDAs/handhelds) y circuitos cerrados de televisión (CCTV).
+* **Objetivos de Negocio:** Maximizar el flujo y rotación de clientes por hora, reducir las colas en horas pico, salvaguardar la rentabilidad y mantener el índice de merma desconocida dentro de los márgenes tolerados.
+
+##### Hallazgos Cualitativos
+
+| Variable de Análisis | Hallazgo Operativo Simulado |
+| :--- | :--- |
+| **Cuellos de Botella** | En horas punta (viernes tarde, fines de semana y quincenas) la línea de cajas colapsa. Pese a habilitar el 100% de terminales, el tiempo físico de descarga, escaneo y embolsado limita el flujo, generando abandono de carritos en pasillos y caídas en satisfacción (NPS). |
+| **Riesgo de Merma** | Alerta ante la "merma invisible". Las cajas de auto-cobro ya sufren de omisión de ítems o sustitución de códigos. Se exige que el carrito cuente con validaciones mecánicas o volumétricas para evitar el retiro de productos sin registrar pago. |
+| **Sincronización Técnica** | Resistencia a herramientas no integradas. Es obligatorio que el carrito sincronice su base de datos en tiempo real con el inventario central, promociones vigentes y reglas de precios del ERP/POS de la cadena. |
+| **Durabilidad de Hardware** | Alta preocupación por el mantenimiento. Los carritos sufren maltrato continuo: choques en piso de venta, exposición a líquidos y traslado brusco en playas de estacionamiento exteriores. |
+
+##### Pains, Needs y Drivers de Adopción
+
+* **Pains (Dolores Críticos):**
+  * Sobrecarga operativa y costo de horas extras en cajas tradicionales durante picos de demanda.
+  * Pérdida desconocida (merma no detectada) derivada del auto-escaneo desatendido.
+  * Descuadres contables generados por discrepancias de inventario en tiempo real.
+  * Costo elevado por rotura o mantenimiento de equipamiento electrónico en tienda.
+
+* **Needs (Necesidades Clave):**
+  * Mecanismos de auditoría rápidos y confiables en la zona perimetral de salida.
+  * Integración nativa con la infraestructura tecnológica de inventario y facturación preexistente.
+  * Materiales de alta resistencia física e impermeabilidad en pantallas y sensores.
+
+* **Drivers de Adopción (Ganancias Esperadas):**
+  * Descongestión de la zona frontal de cajas y redistribución de personal hacia tareas de reposición y atención al cliente.
+  * Proceso de salida validado en menos de 5 segundos mediante tótems o balizas de comprobación de ticket digital.
+  * Reducción verificada del porcentaje de merma mediante sensores de concordancia de peso en la cesta.
+
+##### Insights Clave
+
+* **Insight 1 (El dilema de la velocidad frente al control):**
+  > *"Quiero que el cliente salga lo más rápido posible para rotar la tienda, pero cada segundo que le quito al proceso de cobro tradicional siento que le abro la puerta a la merma no detectada."*  
+
+  **Interpretación:** La agilidad sin trazabilidad es percibida como un riesgo inaceptable para los mandos de tienda. Para operaciones, la innovación no reside en quitar al cajero, sino en reemplazar la supervisión humana por una validación algorítmica y física (sensores de peso) que no incremente las pérdidas.
+
+* **Insight 2 (El rechazo a la fricción tecnológica aislada):**
+  > *"Si la tecnología no se habla de forma transparente con el ERP que ya usamos, no me está resolviendo un problema de colas; me está creando una pesadilla contable y de auditoría al final del turno."*  
+
+  **Interpretación:** Los administradores priorizan la coherencia de datos sobre la novedad visual. Cualquier hardware en piso debe integrarse a la lógica de negocio preexistente sin exigir reprocesos de conciliación al cierre de jornada.
+
+* **Insight 3 (La dura realidad del piso de venta):**
+  > *"Un carrito de supermercado en Lima es tratado como una herramienta de carga pesada, no como un iPad. Si no resiste golpes, lluvia y rampas de estacionamiento, la inversión muere en el taller de mantenimiento."*  
+
+  **Interpretación:** El éxito de la solución en tienda depende tanto de la robustez mecánica e industrial del hardware como de la calidad del software. La confiabilidad física es la condición previa para que operaciones acepte la tecnología.
+
+#### Matriz Comparativa Cruzada
+
+| Dimensión | Segmento 1: Comprador Moderno | Segmento 2: Administrador de Tienda |
+| :--- | :--- | :--- |
+| **Métrica Principal** | Reducción del tiempo total de compra y control exacto del presupuesto. | Reducción del porcentaje de merma y aumento de tickets facturados por hora. |
+| **Principal Fricción** | Espera en filas y vergüenza social al anular productos en caja. | Cuellos de botella en picos comerciales y riesgo de hurto en autopago. |
+| **Requerimiento Crítico** | Pantalla con saldo acumulado en vivo y cobro con Yape, Plin o Apple Wallet. | Integración nativa con ERP de inventario y sensores de peso antifraude. |
+| **Riesgo Percibido** | Errores en precios de oferta o pérdida de señal de red al momento de pagar. | Vandalismo, rotura de pantallas y salida de mercancía no facturada. |
 
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas
-*(Pendiente — Responsable: July)*
+
+#### Comprador Moderno / Consumidor Final
+
+![user-persona-segmento1.png](assets/chapter-2/user-persona-segmento1.png)
+
+
+#### Administrador de Tienda / Operaciones
 
 ### 2.3.2. User Task Matrix
-*(Pendiente — Responsable: Omar)*
+
+|Tarea |Frecuencia|Importancia|
+|------- |---------|----------|
+|Activar el carrito inteligente| Alta | Media |
+|Escanear productos  | Alta | Alta |
+|Consultar acumulado de compra  | Alta | Alta |
+|Registrar presupuesto límite | Media | Media |
+|Actualizar lista del carrito | Alta | Alta|
+|Alertas de inconsistencia | Baja | Alta |
+|Pagar con QR | Alta | Alta |
+|Validar comprobante | Alta | Media |
+
 
 ### 2.3.3. User Journey Mapping
 
@@ -684,12 +863,32 @@ En esta sección se formalizan los requisitos funcionales de la solución Innova
 | **TS03** | Webhook de Confirmación de Pagos Externos | Como desarrollador del backend, deseo procesar notificaciones asíncronas vía webhook desde la pasarela de pagos digitales para conciliar transacciones en tiempo real. | **Escenario 1: Notificación de abono confirmada por pasarela**<br>Dado que la pasarela externa despacha una petición HTTP POST al endpoint `/api/v1/payments/webhook` con firma criptográfica válida y estado aprobado, cuando el servicio valida el webhook, entonces actualiza el estado de la orden a "Paid" y retorna código HTTP 200 OK.<br><br>**Escenario 2: Firma de seguridad no verificada**<br>Dado que la solicitud webhook presenta una firma digital adulterada o ausente, cuando el servicio valida las cabeceras de autenticación, entonces deniega el procesamiento retornando código HTTP 401 Unauthorized. | EP06 |
 
 ## 3.2. Impact Mapping
-*(Pendiente — Responsable: Omar)*
 
+![Impact Mapping](assets/chapter-3/Impact-map.png)
 ---
 
 ## 3.3. Product Backlog
-*(Pendiente — Responsable: July)*
+
+El Product Backlog de Innova Carty se ordena según el valor que cada historia aporta al negocio. Las historias del Landing Page van al inicio para que se consideren desde el primer sprint. Les siguen los servicios base y el flujo central de la solución: registro de productos, control de presupuesto, validación por peso y pago por QR. Al final quedan las funcionalidades de supervisión y de gestión operativa. Las estimaciones usan la escala de Story Points 1 / 2 / 3 / 5 / 8.
+
+| # Orden   | User Story Id   | Título                                                          | Descripción                                                                                                                                                                                                               | Story Points (1 / 2 / 3 / 5 / 8)   |
+|:---------:|:---------------:|:----------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------:|
+|     1     |      US01       | Presentación de la Propuesta de Valor en Landing Page           | Como visitante consumidor, deseo visualizar la explicación del funcionamiento del carrito inteligente en la página de inicio para entender cómo me ayuda a ahorrar tiempo y controlar mi presupuesto.                     |                 3                  |
+|     2     |      US02       | Registro de Contacto Corporativo para Supermercados             | Como visitante del segmento administrador de retail, deseo enviar una solicitud de información comercial a través de un formulario web para evaluar la implementación de los Smart Carts en mi cadena de tiendas.         |                 3                  |
+|     3     |      US03       | Consulta de Términos del Servicio y Políticas de Privacidad     | Como visitante, deseo consultar los términos y condiciones de servicio y las políticas de protección de datos personales en el pie de página para verificar la confiabilidad de la plataforma.                            |                 1                  |
+|     4     |      TS02       | Creación y Consulta de Órdenes de Compra                        | Como desarrollador de aplicaciones cliente, deseo disponer de endpoints RESTful para aperturar sesiones de compra y consultar el balance económico consolidado para conocer en cualquier instante el estado de una orden. |                 5                  |
+|     5     |      TS01       | Recepción e Ingesta de Telemetría desde Dispositivo Edge        | Como desarrollador del backend, deseo exponer un endpoint RESTful HTTP POST para recibir las lecturas de peso, batería e identificadores de artículos del Edge API para persistir la telemetría del carrito en la nube.   |                 5                  |
+|     6     |      US06       | Registro Automático de Artículo mediante Lectura RFID           | Como comprador moderno, deseo que el carrito detecte el producto al introducirlo en la canasta para agregarlo a mi orden sin necesidad de buscar códigos de barras manualmente.                                           |                 8                  |
+|     7     |      US05       | Visualización Dinámica del Total Acumulado                      | Como comprador moderno, deseo ver reflejado el costo total y el desglose de productos al instante en la pantalla del carrito para conocer exactamente cuánto voy a pagar.                                                 |                 5                  |
+|     8     |      US04       | Configuración de Presupuesto Límite de Compra                   | Como comprador moderno, deseo ingresar un monto tope de dinero al iniciar mi sesión de compra para recibir avisos preventivos si estoy próximo a superarlo.                                                               |                 3                  |
+|     9     |      US08       | Liquidación de Orden y Pago Autónomo con QR Dinámico            | Como comprador moderno, deseo generar un código QR único por el total de mi canasta en la pantalla del carrito para pagar con mi billetera digital sin pasar por cajas.                                                   |                 8                  |
+|    10     |      TS03       | Webhook de Confirmación de Pagos Externos                       | Como desarrollador del backend, deseo procesar notificaciones asíncronas vía webhook desde la pasarela de pagos digitales para conciliar las transacciones en tiempo real.                                                |                 5                  |
+|    11     |      US09       | Validación de Peso en Canasta contra Catálogo                   | Como administrador de operaciones, deseo que el carrito contraste el incremento de peso medido por las celdas de carga con el peso teórico del catálogo para certificar que el producto ingresado sea auténtico.          |                 8                  |
+|    12     |      US07       | Retiro y Descuento de Artículo de la Canasta                    | Como comprador moderno, deseo retirar un artículo del carrito y que el monto total se descuente de manera automática para prescindir de los productos que decida no llevar.                                               |                 5                  |
+|    13     |      US10       | Detección de Retiro No Registrado de Productos                  | Como administrador de operaciones, deseo que el carrito alerte si se retira mercancía sin pasar por el proceso formal de devolución para evitar manipulaciones indebidas en los pasillos.                                 |                 5                  |
+|    14     |      US11       | Monitoreo en Tiempo Real desde Consola Web Operativa            | Como administrador de operaciones, deseo visualizar en un tablero web el estado de todos los carritos activos en tienda para intervenir oportunamente ante cualquier incidencia.                                          |                 8                  |
+|    15     |      US12       | Control Perimetral y Bloqueo por Geofencing                     | Como administrador de operaciones, deseo que el sistema bloquee las ruedas del carrito e impida la salida si una unidad cruza el perímetro sin autorización de pago para asegurar la integridad de la tienda.             |                 8                  |
+|    16     |      US13       | Gestión y Actualización del Catálogo de Productos y Tolerancias | Como administrador de operaciones, deseo actualizar precios, pesos nominales y márgenes de tolerancia de los productos para mantener calibrada la validación de los carritos inteligentes.                                |                 5                  |
 
 <div style="page-break-after: always;"></div>
 
@@ -724,21 +923,7 @@ El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una 
 sin exponer su arquitectura interna, junto con las personas que lo usan y los sistemas
 externos con los que se conecta.
 
-```mermaid
-graph TD
-    Cliente["Cliente / comprador<br/>Compra en el supermercado"]
-    Admin["Administrador de tienda<br/>Supervisa inventario y caja"]
-    Sistema["Innova Carty<br/>Sistema de carrito inteligente"]
-    Yape["Yape / Plin<br/>Sistema externo"]
-    Bancos["Red de tarjetas<br/>Sistema externo"]
-    POS["Sistema POS<br/>Inventario existente"]
-
-    Cliente -->|Escanea productos y paga desde el carrito| Sistema
-    Admin -->|Supervisa alertas e inventario en tiempo real| Sistema
-    Sistema -->|Genera cobro vía QR| Yape
-    Sistema -->|Procesa pagos con tarjeta| Bancos
-    Sistema -->|Sincroniza ventas y valida salida| POS
-```
+<img src="assets/chapter-4/software-architecture/system-context-diagram.png" width="900">
 
 | Elemento | Tipo | Descripción |
 |---|---|---|
@@ -769,16 +954,337 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 *(Pendiente — Responsable: Deybbi)*
 
 #### 4.2.1.2. Interface Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Interface Layer** del Smart Shopping Bounded Context contiene los puntos de entrada mediante los cuales las aplicaciones cliente y el Edge API interactúan con las capacidades del contexto. Su responsabilidad es recibir solicitudes o eventos, validar su estructura, transformar los datos de transporte a comandos o consultas de la Application Layer y construir las respuestas que se devuelven al consumidor. Esta capa no implementa reglas de negocio del carrito.
+
+##### Controllers / Consumers
+
+**1. ShoppingSessionController**
+
+**Propósito:** exponer las operaciones HTTP relacionadas con la sesión de compra activa del cliente.
+
+**Endpoints propuestos:**
+
+- `POST /api/v1/shopping-sessions`: inicia una nueva sesión de compra para un carrito disponible.
+- `GET /api/v1/shopping-sessions/{sessionId}`: obtiene el estado actual de la sesión, productos registrados, total acumulado, presupuesto y estado de validación.
+- `PUT /api/v1/shopping-sessions/{sessionId}/budget`: registra o actualiza el límite de presupuesto definido por el usuario.
+- `DELETE /api/v1/shopping-sessions/{sessionId}/items/{itemId}`: solicita retirar un producto previamente registrado.
+- `POST /api/v1/shopping-sessions/{sessionId}/checkout`: solicita preparar y validar la sesión antes de enviarla al contexto de Payment & Checkout.
+- `POST /api/v1/shopping-sessions/{sessionId}/cancel`: cancela una sesión que todavía no ha sido pagada.
+
+**Dependencias principales:**
+
+- `ShoppingSessionCommandService`
+- `ShoppingSessionQueryService`
+- `CheckoutPreparationService`
+
+**2. EdgeEventController / EdgeEventConsumer**
+
+**Propósito:** recibir desde el Edge API los eventos originados por el hardware del carrito, desacoplando la lógica de aplicación de los detalles del ESP32, lector RFID y celda de carga.
+
+**Operaciones o eventos de entrada propuestos:**
+
+- `ProductDetected`: RFID de un producto detectado en el carrito.
+- `ProductRemoved`: RFID de un producto que dejó de detectarse.
+- `WeightMeasured`: lectura de peso consolidada por el Edge API.
+- `CartHeartbeat`: señal opcional de estado/conectividad del carrito.
+
+**Dependencias principales:**
+
+- `ShoppingSessionCommandService`
+- `WeightValidationEventHandler`
+
+##### Resources / DTOs
+
+**StartShoppingSessionResource**
+
+Representa la información necesaria para iniciar una sesión.
+
+- `cartId`
+- `customerId` *(opcional si el flujo permite compra invitada)*
+- `budgetLimit` *(opcional)*
+
+**ShoppingSessionResource**
+
+Representa la sesión que consume la aplicación web/móvil o la pantalla del carrito.
+
+- `sessionId`
+- `cartId`
+- `status`
+- `items`
+- `subtotal`
+- `budgetLimit`
+- `remainingBudget`
+- `weightValidationStatus`
+- `createdAt`
+
+**EdgeProductEventResource**
+
+Representa un evento de producto enviado por el Edge API.
+
+- `cartId`
+- `sessionId`
+- `rfidTag`
+- `eventType`
+- `timestamp`
+
+**WeightMeasurementResource**
+
+Representa una lectura de peso procesada por el Edge API.
+
+- `cartId`
+- `sessionId`
+- `measuredWeight`
+- `timestamp`
+
+##### Assemblers / Mappers
+
+**ShoppingSessionResourceFromEntityAssembler**
+
+Convierte el agregado `ShoppingSession` en `ShoppingSessionResource`, evitando exponer directamente objetos de dominio.
+
+**StartShoppingSessionCommandFromResourceAssembler**
+
+Convierte `StartShoppingSessionResource` en `StartShoppingSessionCommand`.
+
+**EdgeProductCommandFromResourceAssembler**
+
+Convierte un `EdgeProductEventResource` en `RegisterDetectedProductCommand` o `RemoveDetectedProductCommand`, según el tipo de evento.
+
+**WeightMeasurementCommandFromResourceAssembler**
+
+Convierte la lectura recibida en `RegisterWeightMeasurementCommand`.
+
+##### Relaciones entre componentes
+
+- Los controllers y consumers reciben datos externos y delegan la ejecución a la Application Layer.
+- Los assemblers transforman DTOs en Commands/Queries y entidades de dominio en Resources.
+- La Interface Layer desconoce la persistencia y no accede directamente a la base de datos.
+- Las reglas de consistencia entre RFID, peso, presupuesto y estado de la sesión permanecen fuera de esta capa.
+
+---
 
 #### 4.2.1.3. Application Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Application Layer** coordina los casos de uso del Smart Shopping Bounded Context. Actúa como intermediario entre la Interface Layer, el modelo de dominio y los adaptadores de infraestructura. Su función es orquestar Commands, Queries y Events, mantener los límites transaccionales y ejecutar los flujos de aplicación sin trasladar a esta capa las reglas propias del negocio.
+
+##### Command Services / Command Handlers
+
+**1. ShoppingSessionCommandService**
+
+**Propósito:** ejecutar los casos de uso que modifican el estado de una sesión de compra.
+
+**Operaciones principales:**
+
+- `handle(StartShoppingSessionCommand)`: crea una sesión asociada a un carrito disponible.
+- `handle(SetBudgetLimitCommand)`: registra o modifica el presupuesto máximo de la sesión.
+- `handle(RegisterDetectedProductCommand)`: obtiene la información comercial del producto detectado y solicita al agregado incorporarlo.
+- `handle(RemoveDetectedProductCommand)`: retira de la sesión un producto que ya no se encuentra en el carrito.
+- `handle(RegisterWeightMeasurementCommand)`: incorpora una nueva lectura de peso para su posterior validación.
+- `handle(CancelShoppingSessionCommand)`: cancela una sesión no pagada.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `CatalogPricingPort`
+- `DomainEventPublisher`
+
+**2. CheckoutPreparationService**
+
+**Propósito:** verificar que una sesión se encuentre en condiciones de pasar al checkout.
+
+**Operaciones principales:**
+
+- `prepareCheckout(sessionId)`: comprueba que la sesión esté activa, que no existan inconsistencias pendientes y que el total sea válido.
+- `requestCheckout(sessionId)`: envía al contexto **Payment & Checkout** el identificador de sesión y el monto final mediante un puerto/ACL.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `PaymentCheckoutPort`
+
+##### Query Services / Query Handlers
+
+**ShoppingSessionQueryService**
+
+**Propósito:** recuperar información de la sesión sin modificar su estado.
+
+**Operaciones principales:**
+
+- `handle(GetShoppingSessionByIdQuery)`
+- `handle(GetActiveSessionByCartIdQuery)`
+- `handle(GetShoppingSessionSummaryQuery)`
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+
+##### Event Handlers
+
+**WeightValidationEventHandler**
+
+**Propósito:** reaccionar a una nueva lectura de peso y verificar que el peso físico observado sea coherente con los productos registrados por RFID.
+
+**Flujo propuesto:**
+
+1. Recupera la sesión activa.
+2. Calcula el peso esperado a partir de los productos registrados.
+3. Aplica `WeightConsistencyPolicy`.
+4. Actualiza el estado de validación de la sesión.
+5. Si existe una diferencia superior a la tolerancia, publica `WeightMismatchDetected`.
+6. Cuando la lectura vuelve a ser consistente, publica `WeightConsistencyRestored`.
+
+**Dependencias:**
+
+- `ShoppingSessionRepository`
+- `WeightConsistencyPolicy`
+- `DomainEventPublisher`
+
+##### Capabilities cubiertos por la Application Layer
+
+- Inicio y finalización lógica de una sesión de compra.
+- Registro y retiro de productos detectados por RFID.
+- Actualización continua del total acumulado.
+- Control del presupuesto máximo configurado por el usuario.
+- Correlación entre productos registrados y peso medido.
+- Gestión del estado de anomalía.
+- Preparación de una sesión para el checkout.
+- Consulta del estado actual del carrito.
+
+##### Relaciones entre componentes
+
+- Los Command Handlers modifican el agregado `ShoppingSession` y persisten sus cambios mediante `ShoppingSessionRepository`.
+- Los Query Handlers consultan el repositorio sin alterar el estado.
+- Los Event Handlers reaccionan a eventos producidos por el Edge API o por el dominio.
+- Las integraciones con otros bounded contexts se realizan mediante puertos definidos por la aplicación y adaptadores implementados en Infrastructure.
+
+---
 
 #### 4.2.1.4. Infrastructure Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Infrastructure Layer** proporciona las implementaciones técnicas requeridas por las capas superiores. En el Smart Shopping Bounded Context concentra la persistencia, los clientes de integración con otros bounded contexts, la publicación de eventos y los detalles de transporte necesarios para comunicarse con servicios externos. Esta capa implementa las abstracciones definidas por el Domain Layer o la Application Layer.
+
+##### Persistence
+
+**1. PostgresShoppingSessionRepository**
+
+**Propósito:** implementar `ShoppingSessionRepository` y persistir el agregado de sesión de compra.
+
+**Operaciones principales:**
+
+- `save(ShoppingSession session)`
+- `findById(ShoppingSessionId id)`
+- `findActiveByCartId(CartId cartId)`
+- `existsActiveSessionByCartId(CartId cartId)`
+
+**Persistencia esperada:**
+
+- `shopping_sessions`
+- `shopping_session_items`
+- estados de validación y timestamps asociados a la sesión
+
+
+##### Outbound Adapters / Anti-Corruption Layer
+
+**2. CatalogPricingClient**
+
+**Propósito:** consultar el contexto de Catalog & Pricing sin incorporar su modelo externo directamente al dominio de Smart Shopping.
+
+**Operaciones principales:**
+
+- `getProductByRfid(rfidTag)`
+- `getCurrentPrice(productId)`
+- `getExpectedWeight(productId)`
+
+**Resultado interno:** transforma la respuesta externa a un objeto propio, por ejemplo `ProductSnapshot`.
+
+**3. PaymentContextClient**
+
+**Propósito:** solicitar al bounded context Payment & Checkout la creación del proceso de pago para una sesión validada.
+
+**Operaciones principales:**
+
+- `createCheckout(sessionId, amount)`
+- `getPaymentStatus(checkoutId)`
+
+La respuesta del contexto de pagos se traduce a tipos propios del contexto Smart Shopping para evitar dependencia directa de su modelo.
+
+##### Messaging / Event Publication
+
+**4. DomainEventPublisher**
+
+**Propósito:** publicar eventos relevantes para otros componentes o bounded contexts.
+
+**Eventos candidatos:**
+
+- `ShoppingSessionStarted`
+- `ProductAddedToShoppingSession`
+- `ProductRemovedFromShoppingSession`
+- `BudgetLimitReached`
+- `WeightMismatchDetected`
+- `ShoppingSessionReadyForCheckout`
+- `ShoppingSessionCancelled`
+
+La implementación puede comenzar con eventos internos/in-process durante el MVP y evolucionar a un broker cuando el diseño de despliegue lo requiera.
+
+##### Relaciones entre componentes
+
+- `PostgresShoppingSessionRepository` implementa la interfaz `ShoppingSessionRepository` definida en el dominio.
+- `CatalogPricingClient` implementa `CatalogPricingPort` y actúa como ACL frente a Catalog & Pricing.
+- `PaymentContextClient` implementa `PaymentCheckoutPort` y actúa como ACL frente a Payment & Checkout.
+- `DomainEventPublisher` desacopla el núcleo de negocio del mecanismo concreto de mensajería.
+- Ningún controller accede directamente a estas implementaciones: la interacción ocurre a través de la Application Layer.
+
+---
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
-*(Pendiente — Responsable: Gustavo)*
+
+El siguiente **Component Diagram (C4 Model – Level 3)** descompone el container correspondiente al backend/cloud API del **Smart Shopping Bounded Context** y muestra sus componentes estructurales principales, responsabilidades e interacciones. Esta representación se alinea con la exigencia de que cada component evidencie su función y su relación con otros components, containers y sistemas externos.
+
+
+![C4 Component Diagram - Smart Shopping Bounded Context](assets/common/team/smart-shopping-component.png)
+
+
+
+##### Componentes representados
+
+**Interface Layer**
+
+- `ShoppingSessionController`: expone los endpoints usados por la aplicación cliente.
+- `EdgeEventController / Consumer`: recibe eventos generados por el Edge API.
+- `ShoppingSessionResourceAssembler`: transforma DTOs, commands y recursos.
+
+**Application Layer**
+
+- `ShoppingSessionCommandService`: orquesta las operaciones que cambian el estado de la sesión.
+- `ShoppingSessionQueryService`: resuelve consultas del carrito activo.
+- `WeightValidationEventHandler`: procesa lecturas de peso y genera el flujo de anomalías.
+- `CheckoutPreparationService`: verifica una sesión y coordina el paso al checkout.
+
+**Domain Layer**
+
+- `ShoppingSession`: aggregate root del contexto.
+- `CartItem`, `Budget` y `WeightSnapshot`: entidades/value objects asociados.
+- `WeightConsistencyPolicy`: domain service para la validación RFID-peso.
+- `ShoppingSessionRepository`: contrato de persistencia.
+
+**Infrastructure Layer**
+
+- `PostgresShoppingSessionRepository`: implementación del repositorio.
+- `CatalogPricingClient`: ACL hacia Catalog & Pricing.
+- `PaymentContextClient`: ACL hacia Payment & Checkout.
+- `DomainEventPublisher`: adaptador de publicación de eventos.
+
+##### Interacciones principales
+
+1. La Web/Mobile App invoca `ShoppingSessionController` mediante JSON/HTTPS.
+2. El Edge API envía eventos de RFID y peso a `EdgeEventController / Consumer`.
+3. La Interface Layer traduce la entrada a comandos o consultas.
+4. Los servicios de aplicación orquestan el agregado y las políticas del Domain Layer.
+5. La persistencia se ejecuta mediante la implementación del repositorio en Infrastructure.
+6. Los datos de producto se consultan al Catalog & Pricing Context a través de una ACL.
+7. Una sesión consistente puede solicitar checkout al Payment & Checkout Context.
+8. Los eventos de anomalía o cambio de estado se publican mediante `DomainEventPublisher`.
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 

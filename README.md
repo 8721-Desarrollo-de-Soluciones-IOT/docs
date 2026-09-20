@@ -947,11 +947,12 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
-### 4.2.1. Bounded Context: [Nombre]
+### 4.2.1. Bounded Context: Smart Shopping Bounded Context
 *(Duplicar este bloque completo — 4.2.2, 4.2.3, etc. — por cada Bounded Context que definan)*
 
 #### 4.2.1.1. Domain Layer
-*(Pendiente — Responsable: Deybbi)*
+
+![BC 1 Usuario y Carrito - Domain Layer.png](assets/chapter-4/software-architecture/BC%201%20Usuario%20y%20Carrito%20-%20Domain%20Layer.png)
 
 #### 4.2.1.2. Interface Layer
 

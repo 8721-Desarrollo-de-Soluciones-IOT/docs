@@ -588,8 +588,17 @@ Personal del supermercado encargado de supervisar el inventario, la seguridad de
 *(Pendiente — Responsable: Omar)*
 
 ### 2.3.3. User Journey Mapping
-*(Pendiente — Responsable: Deybbi)*
 
+En esta sección se muestran los User Journey Maps, que describen de principio a fin el recorrido que viven nuestros segmentos objetivo antes de la implementación de la solución propuesta.
+
+**Segmento 1: Comprador Moderno / Consumidor Final**
+
+![Joruning map Segmento 1.png](assets/needfinding/Joruning%20map%20Segmento%201.png)
+
+
+**Segmento 2: Administrador de Tienda / Operaciones**
+
+![Journing map Segmento 2.png](assets/needfinding/Journing%20map%20Segmento%202.png)
 ### 2.3.4. Empathy Mapping
 
 En esta sección se sintetizan los hallazgos cualitativos y conductuales obtenidos durante la fase de entrevistas de investigación. Para comprender a profundidad las necesidades, frustraciones y motivaciones de nuestros usuarios, el equipo estructuró los mapas de empatía utilizando la plataforma UXPressia. El proceso se centró en posicionar al arquetipo de cada segmento en el centro para responder metódicamente a los cuadrantes clave: qué piensa y siente, qué ve, qué oye, qué dice y hace, identificando a partir de ello sus principales dolores (*Pains*) y beneficios esperados (*Gains*).
@@ -610,7 +619,9 @@ El mapa de empatía para el Segmento 1 representa a jóvenes y adultos que reali
 *(Pendiente — En proceso de elaboración tras consolidación de entrevistas del segmento)*
 
 ## 2.4. Big Picture EventStorming
-*(Pendiente — Responsable: Deybbi)*
+El Big Picture Event Storming nos permite tener una visión clara y completa de cómo funcionan los procesos dentro de nuestra solución. A través de esta técnica visual identificamos los eventos más importantes, los posibles problemas y también las oportunidades de mejora. De esta manera, podemos centrarnos en procesos clave para analizarlos de forma más detallada. Algunos de estos procesos claves son los siguientes:
+
+![Event Sorming.png](assets/needfinding/Event%20Sorming.png)
 
 ---
 
@@ -708,7 +719,6 @@ En esta sección se formalizan los requisitos funcionales de la solución Innova
 *(Pendiente — Responsable: Omar)*
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
-#### 4.1.3.2. Software Architecture Context Level Diagrams
 
 El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una sola caja,
 sin exponer su arquitectura interna, junto con las personas que lo usan y los sistemas
@@ -740,10 +750,13 @@ graph TD
 | Sistema POS | Sistema externo | Sistema de punto de venta/inventario que ya usa el supermercado, con el que se sincronizan las ventas. |
 
 #### 4.1.3.3. Software Architecture Container Level Diagrams
-*(Pendiente — Responsable: July)*
+
+![Containers-dark.png](assets/needfinding/Containers-dark.png)
 
 #### 4.1.3.4. Software Architecture Deployment Diagrams
-*(Pendiente — Responsable: Deybbi)*
+En esta sección se muestra como se distribuye nuestro diagrama de despliegue de arquitectura: 
+
+![Software Architecture Deployment Diagrams..jpg](assets/needfinding/Software%20Architecture%20Deployment%20Diagrams..jpg)
 
 ---
 

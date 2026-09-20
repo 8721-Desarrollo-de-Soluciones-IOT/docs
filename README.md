@@ -199,7 +199,7 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 | **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
 | **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
 | **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120"> |
-| **[Apellidos y Nombres]** <br><br> **Código:** [código] <br><br> **Carrera:** [carrera] <br><br> **Rol:** Miembro de equipo | [Breve perfil] | `assets/common/team/[nombre].jpg` |
+| **Huanca Navarro, Gustavo Esau** <br><br> **Código:** U202215285 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con conocimientos en Java, Spring Boot y .NET, orientado al desarrollo de aplicaciones y servicios backend. En el proyecto colabora en la documentación de entrevistas, el diseño de la arquitectura de software y la definición de servicios e interfaces para la solución IoT. | <img src="assets/common/team/Gustavo.jpg" alt="Gustavo Esau Huanca Navarro" width="120"> |
 
 ---
 
@@ -635,6 +635,8 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 * **Adopción tecnológica:** ¿Qué iniciativas de auto-atención o control automatizado han implementado previamente y qué limitaciones o resistencias observaron en el personal o en los clientes?
 * **Cierre:** Si pudiera implementar una solución tecnológica para automatizar el cobro y la validación de mercancía en sala, ¿qué requerimientos críticos de control y seguridad exigiría su equipo de operaciones?
 
+### 2.2.2. Registro de entrevistas
+
 #### Segmento 1: Comprador Moderno / Consumidor Final
 
 ##### Entrevista 1:
@@ -664,6 +666,20 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 | Enlace a la grabación | *[Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202120569_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202120569%5Fupc%5Fedu%5Fpe%2FDocuments%2FEntrevista%202%20Max%20Sifuentes%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E9e52c550%2D7f7d%2D43d5%2Da457%2D26843fc11f20)* |
 | Captura de pantalla de la grabación | ![Entrevista2.png](assets/common/team/Entrevista2.png) |
 | Resumen | Max es un estudiante de Ingeniería de Sistemas en la UPC de 20 años. Realiza compras en supermercados entre una y dos veces por semana, acudiendo principalmente a Hiperbodegas y Plaza Vea por su cercanía. Para controlar sus gastos, redondea mentalmente los precios hacia arriba y maneja saldos específicos en cuentas separadas de Interbank, ya que su método de pago exclusivo es digital a través de Apple Wallet y Plin. Manifiesta que su principal frustración son las esperas "brutales" e innecesarias al momento de pagar en caja, causadas por la mala organización de las tiendas y la inhabilitación de cajas rápidas. Max se muestra sumamente receptivo e interesado ante la adopción de un carrito inteligente IoT; destaca que contar con el presupuesto exacto en tiempo real, evitar problemas de verificación de precios y tener la capacidad de auto-pago rápido sin pasar por la caja tradicional optimizaría significativamente su experiencia de compra, e incluso lo motivaría a visitar las tiendas con mayor frecuencia. |
+
+##### Entrevista 3:
+
+| Atributo | Detalle |
+| --- | --- |
+| Nombre | Karina Vanessa Millán García |
+| Edad | 23 años |
+| Distrito | Parcona (Ica) |
+| Ocupación | Estudiante de Medicina Humana |
+| Fecha de entrevista | 20 de setiembre de 2026 |
+| Timing | 00:00 - 03:33 (Duración: 3 min 33 s) |
+| Enlace a la grabación | *[Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQA7Hyr_M3qiRLRqvRt78HfwASxywEBzCxnvKRJ_pO5RJgQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=NbgLXX)* |
+| Captura de pantalla de la grabación | ![entrevista-gustavo.jpg](assets/common/team/entrevista-gustavo.jpg) |
+| Resumen | Vanessa es estudiante de Medicina Humana, tiene 23 años y reside en Parcona, Ica, junto a su hermana. Usa principalmente laptop y celular; sus billeteras digitales de uso cotidiano son Yape y Plin. Prefiere supermercados grandes con buenos precios, sobre todo Metro y Plaza Vea, y suele hacer una compra mensual de alimentos. Lleva el gasto calculando mentalmente los precios durante el recorrido. Describe la espera en caja como bastante estresante: incluso cuando hace compras pequeñas y va a caja rápida, debe hacer colas largas y pierde mucho tiempo. En compras pequeñas paga en efectivo y en compras más grandes usa tarjeta. Se muestra dispuesta a probar un carrito inteligente que muestre el total en tiempo real a medida que coloca productos y permita pagar sin pasar por caja, porque le ahorraría tiempo innecesario en colas. |
 
 #### Segmento 2: Administrador de Tienda / Operaciones
 
@@ -1241,4 +1257,3 @@ Yuziv Duda, I. (2024). *Desarrollo de un carrito de compras inteligente con tecn
 # Anexos
 
 *(Pendiente — evidencias adicionales: consentimientos de entrevista, capturas, etc.)*
-

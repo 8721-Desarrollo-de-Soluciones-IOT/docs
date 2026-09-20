@@ -632,7 +632,13 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas
-*(Pendiente — Responsable: July)*
+
+#### Comprador Moderno / Consumidor Final
+
+![user-persona-segmento1.png](assets/chapter-2/user-persona-segmento1.png)
+
+
+#### Administrador de Tienda / Operaciones
 
 ### 2.3.2. User Task Matrix
 

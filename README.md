@@ -702,17 +702,146 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 
 
 ### 2.2.3. Análisis de entrevistas
-*(Pendiente — Responsable: Melanie)*
 
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+##### Perfil
+* **Demografía:** Jóvenes y adultos de 20 a 30 años (estudiantes universitarios y analistas júnior) residentes en distritos urbanos de Lima Metropolitana (ej. Santiago de Surco).
+* **Ecosistema Tecnológico:** Usuarios intensivos de smartphones con sistemas operativos Android e iOS.
+* **Canales Financieros:** Operación 100% digital a través de billeteras móviles (**Yape**, **Plin**), tarjetas digitalizadas en **Apple Wallet** y aplicativos de banca móvil (**BCP**, **Interbank**). Desestiman el uso de efectivo en supermercados.
+* **Hábitos de Compra:** Acuden entre 1 y 2 veces por semana a cadenas como Plaza Vea, Metro e Hiperbodegas, motivados principalmente por la proximidad a su domicilio y las promociones comerciales activas.
+
+##### Hallazgos Cualitativos
+
+| Variable de Análisis | Hallazgo Cualitativo Extraído |
+| :--- | :--- |
+| **Control Presupuestal** | Ante la falta de herramientas en tienda, recurren a métodos analógicos de cálculo mental: sumas aproximadas, redondeo hacia arriba y separación deliberada de saldos en cuentas bancarias para evitar sobregiros. |
+| **Fricción en Caja (Dolor 1)** | **Incomodidad social y vergüenza:** Al descubrir el total recién frente a la cajera, se ven obligados a solicitar la anulación o retiro de productos en público frente a otros clientes en la fila. |
+| **Pérdida de Tiempo (Dolor 2)** | **Esperas prolongadas:** Filas de 20 a 25 minutos en quincenas y fines de semana descritas como "brutales e innecesarias", agravadas por la inoperatividad de cajas rápidas de autoservicio. |
+| **Transparencia de Precios** | Desconfianza recurrente provocada por discrepancias entre los precios exhibidos en las etiquetas de góndola y los valores cobrados en la terminal de caja. |
+| **Receptividad Tecnológica** | Adopción entusiasta de la solución IoT. Valoran el cálculo en tiempo real y el autopago; manifiestan que erradicar las colas incrementaría su frecuencia de visita física a la tienda. |
+
+
+##### Pains, Needs y Drivers de Adopción
+
+* **Pains (Dolores Críticos):**
+  * Incertidumbre financiera durante el recorrido.
+  * Vergüenza social por anulación de productos en caja.
+  * Tiempos muertos de 20 a 25 minutos en filas tradicionales.
+  * Errores de precios de góndola versus sistema.
+
+* **Needs (Necesidades Clave):**
+  * Visibilidad instantánea y acumulada del subtotal en el carrito.
+  * Verificación inmediata de precios y promociones automáticas al escanear.
+  * Proceso de egreso autónomo y rápido.
+
+* **Drivers de Adopción (Ganancias Esperadas):**
+  * Autopago digital directo en la pantalla del carrito vía QR interoperable (Yape/Plin) y pagos sin contacto (NFC / Apple Wallet).
+  * Eliminación total de la descarga de productos hacia fajas de cobro tradicionales.
+
+##### Insights Clave 
+
+* **Insight 1 (La carga cognitiva del cálculo analógico):**
+  > *"Comprar en el supermercado no es solo elegir productos, es un ejercicio de estrés mental donde debo sumar, redondear y rezar para que el total en caja coincida con lo que tengo en mi cuenta bancaria."*  
+
+  **Interpretación:** El usuario no carece de dinero, carece de predictibilidad. Obligar al cliente a asumir el rol de calculadora humana genera fatiga de decisión y frustración prematura antes de terminar el recorrido.
+
+* **Insight 2 (El costo emocional de la anulación pública):**
+  > *"Llegar a la caja y pedir que me retiren un producto me hace sentir juzgado por la cajera y por toda la fila que espera detrás de mí."*  
+
+  **Interpretación:** La falta de visibilidad del monto acumulado trasciende el aspecto financiero: se convierte en un problema de estatus y vergüenza social. El carrito inteligente actúa como un escudo que devuelve la dignidad y el control privado sobre el presupuesto.
+
+* **Insight 3 (El tiempo como factor de lealtad comercial):**
+  > *"No dejo de ir al supermercado por falta de ganas de comprar, sino porque sé que perder 25 minutos en una fila arruina el resto de mi tarde."*  
+
+  **Interpretación:** Las cajas tradicionales actúan como un detractor activo de la compra física. Eliminar el punto de cobro centralizado no es solo una mejora de conveniencia; desbloquea una mayor frecuencia de visita y ticket acumulado en clientes jóvenes.
+
+#### Segmento 2: Administrador de Tienda / Operaciones
+
+##### Perfil
+* **Demografía y Rol:** Jefes de tienda, supervisores de piso de venta y encargados de prevención de pérdidas (28 a 50 años) en supermercados de cadena en Lima Metropolitana.
+* **Formación:** Nivel técnico o universitario en Administración, Ingeniería Industrial o carreras afines.
+* **Entorno de Trabajo:** Manejan software ERP de retail (SAP, Oracle Retail), terminales de Punto de Venta (POS), dispositivos móviles de inventario (PDAs/handhelds) y circuitos cerrados de televisión (CCTV).
+* **Objetivos de Negocio:** Maximizar el flujo y rotación de clientes por hora, reducir las colas en horas pico, salvaguardar la rentabilidad y mantener el índice de merma desconocida dentro de los márgenes tolerados.
+
+##### Hallazgos Cualitativos
+
+| Variable de Análisis | Hallazgo Operativo Simulado |
+| :--- | :--- |
+| **Cuellos de Botella** | En horas punta (viernes tarde, fines de semana y quincenas) la línea de cajas colapsa. Pese a habilitar el 100% de terminales, el tiempo físico de descarga, escaneo y embolsado limita el flujo, generando abandono de carritos en pasillos y caídas en satisfacción (NPS). |
+| **Riesgo de Merma** | Alerta ante la "merma invisible". Las cajas de auto-cobro ya sufren de omisión de ítems o sustitución de códigos. Se exige que el carrito cuente con validaciones mecánicas o volumétricas para evitar el retiro de productos sin registrar pago. |
+| **Sincronización Técnica** | Resistencia a herramientas no integradas. Es obligatorio que el carrito sincronice su base de datos en tiempo real con el inventario central, promociones vigentes y reglas de precios del ERP/POS de la cadena. |
+| **Durabilidad de Hardware** | Alta preocupación por el mantenimiento. Los carritos sufren maltrato continuo: choques en piso de venta, exposición a líquidos y traslado brusco en playas de estacionamiento exteriores. |
+
+##### Pains, Needs y Drivers de Adopción
+
+* **Pains (Dolores Críticos):**
+  * Sobrecarga operativa y costo de horas extras en cajas tradicionales durante picos de demanda.
+  * Pérdida desconocida (merma no detectada) derivada del auto-escaneo desatendido.
+  * Descuadres contables generados por discrepancias de inventario en tiempo real.
+  * Costo elevado por rotura o mantenimiento de equipamiento electrónico en tienda.
+
+* **Needs (Necesidades Clave):**
+  * Mecanismos de auditoría rápidos y confiables en la zona perimetral de salida.
+  * Integración nativa con la infraestructura tecnológica de inventario y facturación preexistente.
+  * Materiales de alta resistencia física e impermeabilidad en pantallas y sensores.
+
+* **Drivers de Adopción (Ganancias Esperadas):**
+  * Descongestión de la zona frontal de cajas y redistribución de personal hacia tareas de reposición y atención al cliente.
+  * Proceso de salida validado en menos de 5 segundos mediante tótems o balizas de comprobación de ticket digital.
+  * Reducción verificada del porcentaje de merma mediante sensores de concordancia de peso en la cesta.
+
+##### Insights Clave
+
+* **Insight 1 (El dilema de la velocidad frente al control):**
+  > *"Quiero que el cliente salga lo más rápido posible para rotar la tienda, pero cada segundo que le quito al proceso de cobro tradicional siento que le abro la puerta a la merma no detectada."*  
+
+  **Interpretación:** La agilidad sin trazabilidad es percibida como un riesgo inaceptable para los mandos de tienda. Para operaciones, la innovación no reside en quitar al cajero, sino en reemplazar la supervisión humana por una validación algorítmica y física (sensores de peso) que no incremente las pérdidas.
+
+* **Insight 2 (El rechazo a la fricción tecnológica aislada):**
+  > *"Si la tecnología no se habla de forma transparente con el ERP que ya usamos, no me está resolviendo un problema de colas; me está creando una pesadilla contable y de auditoría al final del turno."*  
+
+  **Interpretación:** Los administradores priorizan la coherencia de datos sobre la novedad visual. Cualquier hardware en piso debe integrarse a la lógica de negocio preexistente sin exigir reprocesos de conciliación al cierre de jornada.
+
+* **Insight 3 (La dura realidad del piso de venta):**
+  > *"Un carrito de supermercado en Lima es tratado como una herramienta de carga pesada, no como un iPad. Si no resiste golpes, lluvia y rampas de estacionamiento, la inversión muere en el taller de mantenimiento."*  
+
+  **Interpretación:** El éxito de la solución en tienda depende tanto de la robustez mecánica e industrial del hardware como de la calidad del software. La confiabilidad física es la condición previa para que operaciones acepte la tecnología.
+
+#### Matriz Comparativa Cruzada
+
+| Dimensión | Segmento 1: Comprador Moderno | Segmento 2: Administrador de Tienda |
+| :--- | :--- | :--- |
+| **Métrica Principal** | Reducción del tiempo total de compra y control exacto del presupuesto. | Reducción del porcentaje de merma y aumento de tickets facturados por hora. |
+| **Principal Fricción** | Espera en filas y vergüenza social al anular productos en caja. | Cuellos de botella en picos comerciales y riesgo de hurto en autopago. |
+| **Requerimiento Crítico** | Pantalla con saldo acumulado en vivo y cobro con Yape, Plin o Apple Wallet. | Integración nativa con ERP de inventario y sensores de peso antifraude. |
+| **Riesgo Percibido** | Errores en precios de oferta o pérdida de señal de red al momento de pagar. | Vandalismo, rotura de pantallas y salida de mercancía no facturada. |
 ---
 
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas
-*(Pendiente — Responsable: July)*
+
+#### Comprador Moderno / Consumidor Final
+
+![user-persona-segmento1.png](assets/chapter-2/user-persona-segmento1.png)
+
+
+#### Administrador de Tienda / Operaciones
 
 ### 2.3.2. User Task Matrix
-*(Pendiente — Responsable: Omar)*
+
+|Tarea |Frecuencia|Importancia|
+|------- |---------|----------|
+|Activar el carrito inteligente| Alta | Media |
+|Escanear productos  | Alta | Alta |
+|Consultar acumulado de compra  | Alta | Alta |
+|Registrar presupuesto límite | Media | Media |
+|Actualizar lista del carrito | Alta | Alta|
+|Alertas de inconsistencia | Baja | Alta |
+|Pagar con QR | Alta | Alta |
+|Validar comprobante | Alta | Media |
+
 
 ### 2.3.3. User Journey Mapping
 

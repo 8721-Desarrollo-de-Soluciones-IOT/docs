@@ -973,12 +973,6 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 ---
 
-## 3.3. Product Backlog
-*(Pendiente — Responsable: July)*
-
-<div style="page-break-after: always;"></div>
-
----
 
 # Capítulo IV: Solution Software Design
 

@@ -195,13 +195,14 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 ### 1.1.2. Perfiles de integrantes del equipo
 
 | **Integrante** | **Perfil** | **Foto** |
-|----------------|------------|----------|
-| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo frontend/backend (React, TypeScript, NestJS, Python) y automatización. En el proyecto lidera el diseño del Edge API, la integración del microcontrolador ESP32 y la sincronización con la nube. | <img src="assets/common/team/Luis.png" width="120">|
-| **[Apellidos y Nombres]** <br>Omar Christian Berrocal Ramirez<br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto colabora en la planificación y desarrollo de los servicios. | <img src="assets/common/team/Omar.jpg" width="120"> |
-| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado a arquitecturas web y servicios distribuidos. Posee conocimientos en lenguajes de programación como Java, C#, TypeScript y bases de datos relacionales. En el proyecto colabora en la especificación de requisitos, diseño de bounded contexts y soporte en la integración de servicios. | <img src="assets/common/team/Kevin.jpeg" width="120"> |
-| **Huanca Navarro, Gustavo Esau** <br><br> **Código:** U202215285 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con conocimientos en Java, Spring Boot y .NET, orientado al desarrollo de aplicaciones y servicios backend.  | <img src="assets/common/team/Gustavo.jpg" alt="Gustavo Esau Huanca Navarro" width="120"> |
-
----
+|---|---|---|
+| **Jorge Luis Díaz Fiestas** <br><br> **Código:** U20231D534 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Fullstack Developer e IA Automation Specialist. Con experiencia en arquitecturas distribuidas, desarrollo web y móvil con Angular, Ionic, Node.js y Spring Boot. | |
+| **Omar Christian Berrocal Ramirez** <br><br> **Código:** U20201B529 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Con experiencia en desarrollo fullstack de sistemas y su arquitectura. En el proyecto se enfoca en el desarrollo de la arquitectura del sistema, su integración con hardware IoT y análisis de datos. | |
+| **Pardo Chumpitazi, Kevin Patrick** <br><br> **Código:** U20221A525 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en el desarrollo de software orientado al diseño de soluciones tecnológicas e IoT. Enfocado en el análisis de requerimientos, diseño de interfaces, gestión ágil de proyectos y desarrollo backend y frontend. | |
+| **Paico Calderon, July Zelmira** <br><br> **Código:** U20211D760 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con interés en arquitecturas web y gestión de proyectos. | |
+| **Trillo Hernández, Anghel Melanie** <br><br> **Código:** u201912401 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC). Con conocimientos en desarrollo web frontend y backend, bases de datos relacionales y no relacionales, y metodologías ágiles. | |
+| **Crisanto Calle Deybi Anderson** <br><br> **Código:** U202120569 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de la carrera de Software en la Universidad Peruana de Ciencias Aplicadas con conocimientos en Java, C++, TypeScript, y en metodologías de desarrollo ágil como Scrum. | |
+| **Huanca Navarro, Gustavo Esau** <br><br> **Código:** U202215285 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software con conocimientos en Java, Spring Boot y .NET, orientado al desarrollo backend y diseño de arquitecturas robustas. | |
 
 ## 1.2. Solution Profile
 
@@ -934,7 +935,9 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
-*(Pendiente — Responsable: Deybbi)*
+![Bounded Context Domain Layer Class Diagrams.png](assets/chapter-4/software-architecture/Bounded%20Context%20Domain%20Layer%20Class%20Diagrams.png)
+##### 4.2.1.6.2. Bounded Context Database Design Diagram
+*(Pendiente — Responsable: Melanie)*
 
 ### 4.2.2. Bounded Context: [Nombre]
 *(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*

@@ -701,6 +701,20 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 |               Resumen               | El entrevistado es un jefe de operaciones de 35 años, con unos 10 años de experiencia en retail (cajero, supervisor de piso y ahora jefatura) y cuatro en el cargo actual, en una sede de Lima. Supervisa el piso de venta, las cajas y la seguridad, apoyándose en laptop o tablet, el punto de venta, el inventario central, las cámaras y un grupo de mensajería. Identifica la zona de cajas como el principal cuello de botella, sobre todo los viernes por la tarde, los fines de semana y en quincena, por la falta de personal, las fallas de equipos y las cajas de autoservicio que requieren ayuda. La mercadería que sale sin pago se controla con revisiones aleatorias de boletas y bolsas en la salida y con cámaras. Ese control no alcanza en horas punta sin generar más cola, y las mermas solo se detectan tarde, en el inventario. Las colas se miden de forma indirecta (libro de reclamaciones, encuestas y conteos ocasionales), sin datos en tiempo real. Está abierto a evaluar la solución si demuestra ahorro en personal de caja y en mermas, y empezaría con un piloto de pocas unidades. Para confiar en el pago dentro del carrito pide cuatro condiciones: que no haya falsos bloqueos a clientes honestos, que los pagos se concilien con su sistema de ventas, que el hardware resista el uso rudo y que haya un panel en tiempo real con las alertas de los carritos. Además, insiste en que la tecnología nueva debe integrarse con los sistemas que ya usa.   |
 
 
+##### Entrevista 2:
+
+| Atributo | Detalle |
+| :--- | :--- |
+| Nombre | Camila [apellido — completar] |
+| Edad | 28 años |
+| Distrito | [completar] |
+| Ocupación | Encargada de operaciones en tienda retail |
+| Fecha de entrevista | [completar] |
+| Timing | [completar duración] |
+| Enlace a la grabación | [Ver en YouTube](https://youtu.be/kIMXW7XIeIk) |
+| Captura de pantalla de la grabación | <a href="https://youtu.be/kIMXW7XIeIk" target="_blank"><img src="https://img.youtube.com/vi/kIMXW7XIeIk/hqdefault.jpg" width="320" alt="Entrevista 2 - Segmento 2"></a> |
+| Resumen | Camila tiene 28 años y se desempeña como encargada de operaciones en una tienda retail, con cinco años de experiencia en el sector y dos en su puesto actual. Supervisa el funcionamiento general de la tienda: inventario, atención al cliente, cajas, reposición y coordinación de personal en horas de alta afluencia. Identifica las colas en caja como el principal problema en horarios punta, lo que obliga a movilizar personal de otras áreas y genera quejas de clientes, sobre todo en fines de semana y quincenas. Sobre el control de mercancía, señala que el proceso actual (paso por caja más supervisión interna) siempre conlleva el riesgo de que algún producto no se registre correctamente, generando diferencias de inventario, pérdidas económicas y revisiones adicionales del personal. Actualmente gestionan ventas e inventario mediante sistemas de punto de venta. Se muestra receptiva a la idea de un carrito que identifique productos y envíe información en tiempo real al sistema, y considera positivo que el cliente pueda escanear, ver el total y pagar desde el carrito, ya que reduciría la afluencia en cajas en momentos de alta demanda. Condiciona su adopción a que el sistema sea seguro y confiable, se integre con el punto de venta e inventario existentes, sea fácil de usar tanto para clientes como para trabajadores, y cuente con mecanismos para detectar productos no registrados. Considera que podría reducir costos operativos de caja, aunque señala que habría que evaluar el costo de implementar y mantener los equipos. Se muestra dispuesta a probar el sistema, siempre que primero se haga una prueba piloto controlada que demuestre seguridad y correcto funcionamiento. |
+
 ### 2.2.3. Análisis de entrevistas
 
 #### Segmento 1: Comprador Moderno / Consumidor Final

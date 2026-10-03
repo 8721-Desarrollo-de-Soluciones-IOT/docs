@@ -1451,15 +1451,16 @@ Las decisiones de diseño traducen lo definido en los capítulos anteriores:
 * **Diseño inclusivo:** contraste mínimo AA en todo el texto, iconos siempre acompañados de texto, orden de lectura lineal compatible con lectores de pantalla y selector de idioma EN/ES visible en el encabezado (el idioma por defecto de la interfaz es inglés, según el enunciado).
 * **SEO (5.2.3):** la estructura de encabezados (un único H1 en el hero, H2 por sección) coincide con las palabras clave definidas en los Meta Tags del sitio.
 
-Las pantallas se diseñaron con una sola fuente de componentes para todos los productos (*design-as-code* en HTML/CSS con los *tokens* de 5.1.1), lo que permite generar desde el mismo origen el wireframe, el mock-up y el prototipo navegable. El código está en [`design/chapter-5`](design/chapter-5/README.md).
+**Herramientas utilizadas.** Siguiendo el enunciado, los wireframes, mock-ups y prototipos se elaboraron en **Figma**, y los wireflows y user flows en **FigJam**. Todas las pantallas aplican el Design System de 5.1 (Material Design 3, *tokens* de color, tipografía *Inter*/*Roboto*, iconos *Material Symbols Rounded*, cuadrícula de 8 px) y se organizan por producto: Landing Page, Web Console, Mobile App y On-Cart Display.
 
-**Herramientas utilizadas.** Los componentes siguen el Design System de 5.1.2 (Material Design 3 / Angular Material, *tokens* de color, tipografía y espaciado de 5.1.1), el mismo que se centraliza en Figma. Para que todos los artefactos del capítulo se mantengan sincronizados con un único origen, las pantallas se escribieron como código y se exportan automáticamente con Playwright (Chromium):
-
-| Artefacto | Herramienta | Salida |
+| Artefacto | Herramienta | Enlace |
 | :--- | :--- | :--- |
-| Wireframes y Mock-ups (5.3, 5.4.1, 5.4.3) | HTML/CSS con los *tokens* del Design System, modo *wireframe* y modo *mock-up* | `assets/chapter-5/wireframes`, `assets/chapter-5/mockups` |
-| Wireflows y User Flows (5.4.2, 5.4.4) | Diagramas generados desde `flows/flows.js` con notación de diagrama de flujo (inicio/fin, pantalla, decisión, respuesta del sistema) | `assets/chapter-5/wireflows`, `assets/chapter-5/user-flows` |
-| Prototipo navegable (5.5) | `design/chapter-5/app/index.html` (abre en cualquier navegador) | Videos `.mp4` por aplicación |
+| Wireframes (5.3.1, 5.4.1) | Figma, página *Wireframes* | [Innova Carty · Cap. 5 UI/UX Design](https://www.figma.com/design/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-) |
+| Mock-ups (5.3.2, 5.4.3) | Figma, página *Mock-ups & Prototypes* | [Innova Carty · Cap. 5 UI/UX Design](https://www.figma.com/design/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-) |
+| Prototipos (5.5) | Figma, modo *Prototype* con 5 flujos de inicio | [Ver prototipo](https://www.figma.com/proto/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-?node-id=3-4861&starting-point-node-id=3%3A4861) |
+| Wireflows y User Flows (5.4.2, 5.4.4) | FigJam | [Innova Carty · Cap. 5 Wireflows & User Flows](https://www.figma.com/board/tqjtVpruUDlH0AL9PVZgYA/Innova-Carty-%C2%B7-Cap.-5-Wireflows---User-Flows--Copy-) |
+
+Como apoyo, la carpeta [`design/chapter-5`](design/chapter-5/README.md) conserva la versión HTML/CSS de las mismas pantallas, que se usó para grabar los videos del prototipo (5.5).
 
 ### 5.3.1. Landing Page Wireframe
 
@@ -1685,10 +1686,9 @@ Los mock-ups aplican el Design System de Innova Carty sobre los wireframes. Los 
 
 ### 5.4.4. Applications User Flow Diagrams
 
-Cada User Flow parte del wireflow del mismo *user goal* (5.4.2) y lo completa con los mock-ups de las pantallas, las decisiones del sistema o del usuario (rombos) y las respuestas del sistema que no tienen una pantalla propia (recuadros punteados). Las líneas usan la siguiente convención:
+Cada User Flow parte del wireflow del mismo *user goal* (5.4.2) y lo completa con los mock-ups de las pantallas, las decisiones del sistema o del usuario (rombos ámbar), el inicio y el fin del flujo (óvalos verdes) y las respuestas del sistema que no tienen una pantalla propia (recuadros rojos). Se elaboraron en [FigJam](https://www.figma.com/board/tqjtVpruUDlH0AL9PVZgYA/Innova-Carty-%C2%B7-Cap.-5-Wireflows---User-Flows--Copy-) con la siguiente convención de líneas:
 
-* **Línea azul oscuro:** ruta esperada (*happy path*).
-* **Línea verde:** ruta alternativa válida que también cumple el objetivo (por ejemplo, hacer lo mismo desde la app móvil).
+* **Línea azul continua:** ruta esperada (*happy path*) y rutas alternativas válidas que también cumplen el objetivo (por ejemplo, hacer lo mismo desde la app móvil).
 * **Línea roja punteada:** rutas no esperadas (*unhappy paths*) y cómo el usuario vuelve al flujo.
 
 #### User goal 1: Start a shopping session with a budget
@@ -1744,13 +1744,13 @@ Cada User Flow parte del wireflow del mismo *user goal* (5.4.2) y lo completa co
 
 ## 5.5. Applications Prototyping
 
-El prototipo de Innova Carty es navegable y simula la interacción de los cuatro productos sobre Desktop y Mobile Web Browser: Landing Page (desktop y mobile), Web Console, Mobile App y On-Cart Display. Se construyó sobre los mismos componentes de los mock-ups, de modo que lo que se prueba es exactamente lo diseñado. Se abre desde [`design/chapter-5/app/index.html`](design/chapter-5/app/index.html) en cualquier navegador, sin instalar nada.
+El prototipo de Innova Carty es navegable y simula la interacción de los cuatro productos sobre Desktop y Mobile Web Browser: Landing Page (desktop y mobile), Web Console, Mobile App y On-Cart Display. Se construyó en **Figma** sobre los mismos mock-ups de 5.3.2 y 5.4.3, con 124 interacciones (*On click → Navigate to*, *Scroll to* en el Landing Page y *After delay* para los eventos de la pasarela de pago) y cinco puntos de inicio, uno por producto: **[ver prototipo en Figma](https://www.figma.com/proto/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-?node-id=3-4861&starting-point-node-id=3%3A4861)**.
 
 Los criterios de interacción fueron:
 
 * **Rutas de los User Flows:** cada enlace del prototipo corresponde a una flecha de los diagramas de 5.4.4, incluidas las rutas alternativas y las principales rutas no esperadas.
 * **Sistema de navegación (5.2.5):** barra superior con anclas en el Landing Page, menú lateral persistente en la Consola, barra inferior de cuatro destinos en la app móvil y navegación lineal sin menú en el carrito, donde cada pantalla tiene una sola acción principal.
-* **Eventos físicos simulados:** el carrito reacciona a sensores (RFID, celda de carga, geofence) y a la confirmación de la pasarela de pago. Como esos eventos no los provoca un clic del usuario, el prototipo incluye un panel **"Simulate an event"** que dispara cada uno (leer un producto, retirarlo, etiqueta dañada, peso sin etiqueta, 90 % del presupuesto, webhook de pago).
+* **Eventos físicos simulados:** el carrito reacciona a sensores (RFID, celda de carga, geofence) y a la confirmación de la pasarela de pago. Como esos eventos no los provoca un clic del usuario, en Figma la confirmación del pago avanza sola con una interacción *After delay*, y la versión HTML del prototipo ([`design/chapter-5/app/index.html`](design/chapter-5/app/index.html)), usada para grabar los videos, incluye un panel **"Simulate an event"** que dispara cada evento (leer un producto, retirarlo, etiqueta dañada, peso sin etiqueta, 90 % del presupuesto, webhook de pago).
 * **Tipos de interacción:** *tap* para acciones principales, diálogos modales solo para acciones que bloquean o necesitan auditoría, *toasts* para confirmar cambios sin interrumpir y banners para avisos que el usuario puede resolver a su ritmo.
 * **Fidelidad:** un botón alterna entre la vista de mock-up y la de wireframe sobre la misma pantalla.
 
@@ -1796,16 +1796,61 @@ Para cada aplicación se grabó un video que recorre sus flujos principales con 
 *(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
 
 #### 6.2.1.1. Sprint Planning 1
-*(Pendiente — Responsable: Gustavo)*
+
+El Sprint 1 es el primer sprint de implementación de Innova Carty. Su objetivo es poner en línea los dos productos que el cliente ve primero: el Landing Page, que presenta la propuesta de valor y capta supermercados interesados en un piloto, y la primera versión de la consola web de operaciones, donde el administrador de tienda supervisa la flota de carritos y calibra el catálogo. Como los servicios en Spring Boot se implementan en el Sprint 2, la consola consume en este sprint una API fake (json-server) que expone los mismos recursos y el mismo prefijo `/api/v1` definidos en el capítulo IV, de modo que el cambio al backend real no requiera modificar las vistas.
+
+| Sprint # | Sprint 1 |
+| :--- | :--- |
+| **Sprint Planning Background** | |
+| Date | 2026-09-28 |
+| Time | 08:00 PM |
+| Location | Reunión virtual (Discord) |
+| Prepared By | Huanca Navarro, Gustavo Esau |
+| Attendees (to planning meeting) | Huanca Navarro, Gustavo Esau / Díaz Fiestas, Jorge Luis / Berrocal Ramirez, Omar Christian / Pardo Chumpitazi, Kevin Patrick / Paico Calderon, July Zelmira / Trillo Hernández, Anghel Melanie / Crisanto Calle, Deybbi Anderson |
+| Sprint 0 Review Summary | No aplica: es el primer sprint de implementación. En las entregas previas el equipo validó el problema y los segmentos (capítulos I y II), definió los requisitos y el Product Backlog (capítulo III), diseñó la arquitectura y el dominio (capítulo IV) y elaboró la guía de estilo, wireframes, mock-ups y prototipos (capítulo V), que sirven de base para este sprint. |
+| Sprint 0 Retrospective Summary | No aplica: es el primer sprint. Como acuerdo de inicio, el equipo adopta GitFlow con ramas `feature/*` por integrante, Conventional Commits y revisión de los cambios antes de integrarlos a `develop`. |
+| **Sprint Goal & User Stories** | |
+| Sprint 1 Goal | *Our focus is on* publicar el Landing Page de Innova Carty y la primera versión de la consola web de operaciones. *We believe it delivers* una presentación clara de la propuesta de valor para compradores y supermercados, un canal para solicitar pilotos y una vista en tiempo real del estado de los carritos con gestión de pesos y tolerancias del catálogo *to* compradores modernos y administradores de operaciones de supermercados. *This will be confirmed when* el Landing Page y la consola están desplegados y accesibles por URL pública, un visitante puede enviar una solicitud de demo, y un administrador puede iniciar sesión, revisar y desbloquear un carrito con discrepancia de peso y editar la tolerancia de un producto. |
+| Sprint 1 Velocity | 20 Story Points |
+| Sum of Story Points | 20 Story Points (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5) |
+
+Las historias se tomaron en el orden del Product Backlog (3.3). Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazan a la API fake. La velocidad se fijó en 20 Story Points porque es el primer sprint del equipo y una parte del tiempo se destina a configurar los repositorios, el flujo de GitFlow y los despliegues en Vercel.
 
 #### 6.2.1.2. Aspect Leaders and Collaborators
-*(Pendiente — Responsable: Gustavo)*
+
+Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene un líder (L), responsable de coordinar las tareas, integrar los cambios en `develop` y validar el resultado con el equipo, y colaboradores (C), que implementan tareas del aspecto en sus propias ramas `feature/*`. La matriz de liderazgo y colaboración (LACX) queda así:
+
+| Team Member (Last Name, First Name) | GitHub Username | Landing Page | Frontend Web App | API fake y documentación de servicios | Testing | Despliegue | Gestión del Sprint |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Huanca Navarro, Gustavo Esau | petitavo | L | L | C | C | C | C |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | C | C | L | C | C | C |
+| Berrocal Ramirez, Omar Christian | OmBRz | C | C | C | C | C | C |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | C | C | C | C | L | C |
+| Paico Calderon, July Zelmira | u20211d760 | C | C | C | C | C | L |
+| Trillo Hernández, Anghel Melanie | AM27TH | C | C | C | C | C | C |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | C | C | C | L | C | C |
+
+* **Landing Page:** secciones, formulario de demo, páginas legales, SEO e idioma ES/EN (US01, US02, US03).
+* **Frontend Web App:** consola de operaciones en Angular y Angular Material: dashboard, carritos, alertas, desbloqueo y catálogo (US11, US13).
+* **API fake y documentación de servicios:** recursos de json-server bajo `/api/v1` y su documentación para 6.2.1.7.
+* **Testing:** pruebas unitarias de la Web App y pruebas de aceptación de las historias del sprint (6.2.1.5).
+* **Despliegue:** configuración de Vercel para los dos productos y evidencia de 6.2.1.8.
+* **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
 *(Pendiente — Responsable: July)*
 
 #### 6.2.1.4. Development Evidence for Sprint Review
-*(Pendiente — Responsable: Gustavo)*
+
+En el Sprint 1 el equipo implementó los dos productos del objetivo del sprint, cada uno en su propio repositorio:
+
+* **Landing Page** (US01, US02, US03): sitio estático en HTML5, CSS3 y JavaScript con Material Design. Tiene las secciones de propuesta de valor, cómo funciona, beneficios por segmento, hardware del carrito, app para compradores, formulario de solicitud de demo con validación, preguntas frecuentes y equipo. Incluye además las páginas de Términos y Condiciones y de Política de Privacidad, los meta tags SEO, Open Graph y Twitter Cards definidos en 5.2.3, y el cambio de idioma ES/EN.
+* **Frontend Web Application** (US11, US13): consola de operaciones en Angular 22, TypeScript y Angular Material, organizada por bounded context (`iam`, `monitoring`, `catalog` y `shared`). Tiene inicio de sesión del personal, un dashboard que se refresca cada 5 segundos, la lista de carritos con filtros, el detalle del carrito con la discrepancia de peso y el desbloqueo con PIN de supervisor, las alertas por tipo y el catálogo con edición de pesos nominales y tolerancias. Como los servicios en Spring Boot se implementan en el Sprint 2, la consola consume una API fake (json-server) que expone los recursos bajo `/api/v1`, el mismo prefijo de los endpoints del capítulo IV.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [petitavo/innova-carty-landing-page](https://github.com/petitavo/innova-carty-landing-page) | main | f1d2019 | feat: initial version of landing page | Secciones de la propuesta de valor, formulario de demo, páginas legales, SEO, idioma ES/EN y equipo (US01, US02, US03). | 03/10/2026 |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | main | 4e5c8d1 | feat: initial version of web app console | Consola Angular con inicio de sesión, dashboard, carritos, detalle y desbloqueo, alertas y catálogo, más la API fake con json-server (US11, US13). | 03/10/2026 |
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 *(Pendiente — Responsable: Deybbi)*

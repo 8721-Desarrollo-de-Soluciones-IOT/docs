@@ -1178,14 +1178,324 @@ Se adopta un sistema de cuadrícula modular basado en múltiplos de 8dp (8-point
 * **Elevaciones y Sombras:** Se definen elevaciones estándar de 1dp a 4dp (sombras sutiles) para separar visualmente las tarjetas de productos de los contenedores de fondo sin saturar la interfaz.
 
 ### 5.1.2. Web, Mobile and IoT Style Guidelines
-*(Pendiente — Responsable: Jorge)*
+En esta sección se definen los lineamientos específicos de diseño e interacción para
+los distintos puntos de contacto del ecosistema Innova Carty, asegurando coherencia
+con los General Style Guidelines (5.1.1) y adaptando la experiencia a las
+particularidades de cada entorno: web, mobile e interfaces físicas IoT.
+
+Estos lineamientos serán materializados y centralizados en un Design System en
+Figma, que funcionará como repositorio vivo de componentes, patrones y prototipos
+interactivos.
+
+#### A. Web Style Guidelines (Consola de Operaciones — Administradores de Tienda)
+
+La Consola de Operaciones está orientada principalmente a administradores de
+tienda, quienes requieren supervisar múltiples carritos, monitorear métricas y
+resolver alertas operativas.
+
+**Enfoque de diseño**
+
+El diseño web prioriza:
+
+* Alta densidad de información controlada.
+* Visualización estructurada tipo dashboard.
+* Eficiencia en tareas recurrentes de supervisión.
+* Escalabilidad para múltiples carritos y tiendas.
+
+**Estructura de interfaz**
+
+Se adopta un patrón de Dashboard Layout:
+
+* **Sidebar lateral (izquierda):** navegación principal (Inicio, Carritos, Alertas, Inventario, Reportes, Configuración, Ayuda), con íconos + texto colapsable.
+* **Topbar superior:** búsqueda global, notificaciones y perfil de usuario.
+* **Main Content:** visualización dinámica según el módulo seleccionado.
+
+**Componentes clave**
+
+1. **Cards de métricas**
+   * KPIs: carritos activos, mermas detectadas, tiempo promedio de checkout.
+   * Colores: Azul → información; Ámbar → alerta leve (`Budget Threshold Alert`); Rojo (derivado) → discrepancia crítica.
+2. **Tablas inteligentes**
+   * Ordenamiento, filtros, búsqueda.
+   * Paginación optimizada.
+   * Acciones rápidas (ver detalle, resolver alerta, desbloquear carrito).
+3. **Gráficos y visualización**
+   * Line charts → ventas en el tiempo.
+   * Bar charts → comparativa de mermas por tienda o zona.
+   * Pie charts → distribución de discrepancias por tipo.
+4. **Estados visuales**
+   * En compra → indicador verde.
+   * Con discrepancia → indicador ámbar.
+   * Bloqueado → indicador rojo.
+   * Fuera de línea → gris.
+
+**Interacciones**
+
+* Hover states claros en botones y filas.
+* Feedback inmediato en acciones CRUD.
+* Confirmaciones para acciones críticas (ej. desbloqueo manual de un carrito).
+* Uso de modales para edición rápida (ej. ajustar tolerancia de peso de un SKU).
+
+**Responsive Design**
+
+* Breakpoints: Desktop ≥ 1280px; Tablet ≥ 768px.
+* Sidebar colapsable en tablet.
+* Priorización de métricas clave en pantallas pequeñas.
+
+**Principios aplicados**
+
+* **Optimización cognitiva:** organización jerárquica.
+* **Scan rápido:** uso de patrones visuales repetitivos.
+* **Eficiencia operativa:** reducción de clics para resolver una alerta.
+
+#### B. Mobile Style Guidelines (Innova Carty e Innova Carty Ops)
+
+La app **Innova Carty** está orientada a compradores, cuyo objetivo principal es
+controlar su compra y presupuesto de manera rápida, simple e intuitiva. La app
+**Innova Carty Ops** está orientada a supervisores de tienda que necesitan
+monitoreo remoto desde el piso de venta.
+
+**Navegación principal**
+
+Ambas apps utilizan una barra de navegación inferior (bottom navigation) de máximo
+4-5 destinos, con iconografía consistente con la Consola Web.
+
+**Pantallas clave — Innova Carty (Comprador)**
+
+1. **Home (resumen simplificado):** estado del carrito activo, accesos rápidos.
+2. **Carrito activo:** lista de productos escaneados, `Real-Time Total`, alerta de presupuesto.
+3. **Pago:** generación y confirmación del QR dinámico.
+4. **Historial:** compras y comprobantes anteriores.
+
+**Pantallas clave — Innova Carty Ops (Supervisor)**
+
+1. **Monitoreo:** mapa/lista de carritos activos en tienda.
+2. **Alertas:** lista y detalle de discrepancias pendientes.
+3. **Inventario:** consulta rápida de stock y tolerancias.
+
+**Patrones de interacción**
+
+* **Gestos táctiles:**
+  * Swipe → navegación entre secciones.
+  * Tap → acción principal.
+  * Long press → opciones avanzadas (ej. forzar resincronización).
+* **Feedback inmediato:**
+  * Animaciones suaves (150–300ms).
+  * Cambio de estado visual instantáneo al escanear o pagar.
+
+**Componentes clave**
+
+* Toggles grandes (uso con pulgar) para activar/desactivar alertas.
+* Botones con alto contraste (verde/ámbar según la acción).
+* Cards con sombras suaves (elevación) para cada producto del carrito.
+
+**Accesibilidad**
+
+* Tamaño mínimo táctil: 48px (consistente con 5.1.1).
+* Alto contraste.
+* Uso de iconografía clara, sin depender solo del color.
+
+**Principios aplicados**
+
+* Mobile-first.
+* Minimización de esfuerzo.
+* Control en tiempo real.
+
+#### C. IoT Style Guidelines (Interfaz Física del Smart Cart)
+
+Esta sección define los lineamientos para la interacción con el dispositivo físico
+IoT (el carrito inteligente) dentro del ecosistema Innova Carty. A diferencia de web
+y mobile, aquí se consideran interfaces embebidas y comportamiento físico-digital,
+en un contexto donde el usuario tiene las manos ocupadas con productos.
+
+**Enfoque de diseño**
+
+* Interacción mínima.
+* Feedback inmediato físico/visual.
+* Alta claridad de estado.
+* Bajo margen de error.
+
+**Tipos de interfaz IoT**
+
+1. **Interfaces sin pantalla:**
+   * Tira LED de estado.
+   * Botón físico único (ayuda / cancelar sesión).
+   * Indicador sonoro (buzzer).
+2. **Interfaces con pantalla:**
+   * On-Cart Display táctil (pantalla integrada al carrito, ver 4.2.1).
+
+**Estándares de feedback**
+
+Colores LED (alineados con la paleta de 5.1.1):
+
+* Verde (`#2ECC71`) → validado / pago exitoso / `Exit Clearance`.
+* Ámbar (`#F39C12`) → proceso / `Budget Threshold Alert`.
+* Rojo (`#E74C3C`) → `Discrepancy` / `Shopping Cart Lock` activado.
+* Azul (`#004F8C`) → sincronización con la nube.
+
+**Interacciones físicas**
+
+* Botón único: pulsación corta → llamar a un supervisor; pulsación larga → cancelar la sesión de compra.
+* Ejemplo de automatización interna: si se detecta `Discrepancy` (peso vs. RFID), el sistema bloquea automáticamente el pago sin intervención del usuario.
+
+**Sincronización con App**
+
+* Cada acción física (escaneo, pago, alerta) debe reflejarse en:
+  * La app móvil correspondiente.
+  * La Consola Web de Operaciones.
+* Latencia máxima aceptable: < 1 segundo (ideal).
+
+**Estados del dispositivo**
+
+* Disponible, En sesión, Con discrepancia, Bloqueado (`Shopping Cart Lock`), Autorizado para salida (`Exit Clearance`), Fuera de línea, Batería baja.
+
+Todos los estados deben ser visibles mediante: LED, On-Cart Display, app móvil y
+Consola Web.
+
+**Principios de diseño IoT**
+
+* Visibilidad del estado.
+* Redundancia de feedback (visual + sonoro + digital).
+* Robustez operativa (uso rudo en piso de venta).
+* Consistencia cross-platform.
+
+#### D. Implementación en Figma (Design System Innova Carty)
+
+Para garantizar consistencia y escalabilidad, todos los lineamientos se
+implementarán en un Design System centralizado en Figma, que incluirá:
+
+**Librerías compartidas**
+
+* Componentes UI (botones, inputs, cards).
+* Iconografía.
+* Tipografía (Inter, Roboto — ver 5.1.1).
+* Colores y tokens de diseño.
+
+**Sistemas definidos**
+
+1. **Web Design System:** dashboards, tablas, gráficos.
+2. **Mobile Design System:** navegación, componentes táctiles, microinteracciones.
+3. **IoT Interaction System:** estados del carrito, flujos de sesión de compra, feedback visual.
+
+**Prototipos — Flujos completos**
+
+* Registro / inicio de sesión.
+* Emparejamiento del carrito (`CartPaired`).
+* Sesión de compra end-to-end (escaneo → presupuesto → pago).
+* Validación de salida (`Exit Clearance`).
+* Panel de supervisión y resolución de alertas.
+
+**Beneficios**
+
+* Consistencia visual total.
+* Reducción de errores en desarrollo.
+* Escalabilidad del producto.
+* Mejor comunicación entre equipos.
 
 ---
 
 ## 5.2. Information Architecture
 
 ### 5.2.1. Organization Systems
-*(Pendiente — Responsable: Jorge)*
+En esta sección se define cómo se organiza la información dentro del sistema
+Innova Carty, considerando tanto la estructura visual del contenido como los
+esquemas de categorización aplicados. Estas decisiones responden a la necesidad de
+gestionar información en tiempo real en un entorno IoT aplicado al sector retail,
+garantizando claridad, accesibilidad y eficiencia en la interacción para los dos
+segmentos principales: compradores y administradores de tienda.
+
+**Organización visual del contenido**
+
+La organización visual en Innova Carty se basa en tres enfoques principales:
+jerárquico, secuencial y matricial. Cada uno se aplica según el tipo de interacción
+y la naturaleza de la información.
+
+**a) Organización jerárquica (Visual Hierarchy)**
+
+Constituye la base estructural del sistema, especialmente en dashboards y vistas
+generales. La información se presenta en niveles de prioridad, destacando primero
+los elementos críticos —alertas en tiempo real, estado de carritos y métricas
+clave— seguidos de información secundaria como históricos o configuraciones.
+
+* **Administradores de tienda:** se prioriza una visión global del estado de
+  múltiples carritos, resaltando alertas críticas (`Discrepancy`), indicadores de
+  merma y métricas comparativas de ventas.
+* **Compradores:** se prioriza la información individual de su propia sesión,
+  como el `Real-Time Total`, alertas de presupuesto y estado de su carrito.
+
+El uso de los colores definidos en el sistema (ej. ámbar para alertas de
+presupuesto) y la tipografía establecida refuerzan esta jerarquía, permitiendo una
+rápida identificación de la información relevante.
+
+**b) Organización secuencial (Step-by-step)**
+
+Se aplica en procesos que requieren una interacción guiada mediante pasos
+consecutivos, clave para garantizar una experiencia clara y sin errores. En Innova
+Carty se utiliza en flujos como:
+
+* Emparejamiento del carrito (`CartPaired`) al iniciar la compra.
+* Configuración del `Budget Limit`.
+* Proceso de pago mediante `Instant QR Payment`.
+* Reporte y resolución de una `Discrepancy`.
+
+Cada proceso conduce al usuario desde el inicio de la acción hasta su confirmación,
+reforzando la percepción de control.
+
+**c) Organización matricial**
+
+Se emplea en contextos donde es necesario visualizar múltiples variables de forma
+simultánea y comparativa. En Innova Carty se aplica principalmente en:
+
+* Reportes de ventas y mermas.
+* Historial de `Discrepancy` y alertas.
+* Gestión de múltiples carritos por tienda.
+
+La información se presenta en tablas o dashboards que cruzan datos como fecha,
+tipo de incidencia, carrito/ubicación y estado. Este tipo de organización tiene
+mayor relevancia para los administradores, quienes analizan múltiples unidades de
+forma simultánea; en los compradores su uso es más limitado, priorizando una vista
+simplificada centrada en su propia sesión.
+
+**Sistemas de categorización de contenido**
+
+Complementando la organización visual, Innova Carty utiliza distintos esquemas de
+categorización para agrupar la información de manera lógica e intuitiva.
+
+**a) Categorización por tópicos**
+
+Esquema principal del sistema. La información se organiza en módulos funcionales
+que responden a las tareas del usuario:
+
+* Sesión de compra.
+* Pagos.
+* Seguridad y alertas (`Merchandise Shrinkage`).
+* Inventario y catálogo (`Item Catalog`).
+* Reportes y análisis.
+
+**b) Categorización por audiencia**
+
+Dado que Innova Carty se orienta a dos segmentos principales, se implementa una
+categorización por audiencia que adapta la estructura del contenido según el rol:
+
+* **Administradores de tienda:** acceden a una vista global de sus carritos, con
+  herramientas de monitoreo, análisis comparativo y supervisión.
+* **Compradores:** acceden a información específica de su propia sesión, incluyendo
+  total acumulado, historial de compras y alertas personalizadas.
+
+Esta diferenciación evita la sobrecarga de información y asegura que cada perfil
+interactúe únicamente con contenido relevante.
+
+**c) Categorización cronológica**
+
+Se utiliza en elementos donde el factor tiempo es determinante, como el historial
+de compras, el registro de `Discrepancy` y los reportes de ventas. La información
+se presenta de los eventos más recientes a los más antiguos.
+
+**d) Categorización alfabética**
+
+Se aplica en listados específicos, como el catálogo de productos o el listado de
+carritos por ID/nombre de tienda, facilitando la búsqueda rápida cuando se manejan
+múltiples elementos.
 
 ### 5.2.2. Labeling Systems
 *(Pendiente — Responsable: July)*
@@ -1320,7 +1630,170 @@ Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expues
 ---
 
 ## 5.6. IoT Device Design
-*(Pendiente — Responsable: Jorge)*
+### Introducción
+
+El diseño IoT de Innova Carty se basa en un dispositivo especializado —el Smart
+Cart— que integra todos los sensores necesarios para una sesión de compra
+autónoma, y transmite información al Edge API y luego al backend en la nube para
+su procesamiento, almacenamiento y visualización en la Consola de Operaciones y
+las aplicaciones móviles.
+
+A diferencia de un esquema con múltiples dispositivos independientes por ambiente,
+Innova Carty concentra el monitoreo en un único dispositivo físico por carrito, ya
+que la identificación de productos, la validación de peso, el control de
+presupuesto y la seguridad de salida corresponden a una misma entidad en
+movimiento —el carrito— y deben procesarse de forma conjunta y en tiempo real
+durante una misma sesión de compra. La escalabilidad se logra mediante múltiples
+unidades de Smart Cart registradas por tienda, no mediante distintos tipos de
+dispositivo.
+
+El flujo general de integración es el siguiente:
+
+**Smart Cart (Edge Device) → Edge API → Cloud API (Backend) → Dashboard web / Aplicación móvil**
+
+Los principales criterios considerados en el diseño son:
+
+* Integración directa con el Edge API y la RESTful API central de la nube.
+* Diseño compacto, resistente y fácil de instalar en la estructura de un carrito existente.
+* Indicadores físicos visibles y comprensibles para el comprador, incluso con las manos ocupadas.
+* Bajo consumo energético, con autonomía suficiente para una jornada completa de tienda.
+* Mantenimiento modular por componente (RFID, celda de carga, pantalla, batería).
+* Escalabilidad mediante múltiples unidades de Smart Cart registradas por tienda.
+* Coherencia con las interfaces diseñadas en Figma (5.1.2) y con el Smart Shopping Bounded Context (4.2.1).
+* Seguridad física para prevenir manipulación o salida no autorizada (`Shopping Cart Lock`).
+
+### Diseño físico del dispositivo
+
+Innova Carty utiliza un único tipo de dispositivo IoT —el Smart Cart— construido
+sobre ESP32, que integra distintos sensores y actuadores según la función que
+cumplen dentro de la sesión de compra.
+
+**Sensores y módulos integrados**
+
+| Módulo / Sensor | Función | Ubicación en el carrito |
+| :--- | :--- | :--- |
+| Lector RFID MFRC522 | Detectar productos mediante etiquetas RFID pasivas (`RFID Product Tag`) | Borde superior de la canasta |
+| Celdas de carga (×4) + amplificador HX711 | Validar el peso físico de los productos (`Weight Confirmation`) | Base de la canasta |
+| Pantalla táctil Nextion 5" | Mostrar presupuesto, QR de pago y alertas (`On-Cart Display`) | Panel frontal, sobre el manubrio |
+| Tira LED WS2812B | Indicar el estado general del carrito | Perímetro superior de la canasta, visible desde afuera |
+| Buzzer pasivo | Emitir alertas sonoras locales | Interior de la carcasa electrónica |
+| Módulo relé + solenoide | Bloquear la rueda delantera ante salida no autorizada (`Shopping Cart Lock`) | Base de una rueda delantera |
+
+**Componentes físicos del Smart Cart**
+
+| Componente | Función | Consideración de diseño |
+| :--- | :--- | :--- |
+| ESP32 DevKit V1 | Controlar lectura, validación local y transmisión de datos | Debe ubicarse en una carcasa sellada, con acceso para mantenimiento |
+| LED de estado (verde) | Representar sesión válida / `Exit Clearance` | Debe ser visible desde el exterior del carrito |
+| LED de advertencia (ámbar) | Representar `Budget Threshold Alert` | Debe diferenciarse visualmente del estado normal |
+| LED crítico (rojo) | Representar `Discrepancy` / bloqueo activo | Debe tener alta visibilidad, incluso para personal de seguridad |
+| Buzzer pasivo | Emitir alertas locales | Especialmente útil ante una `Discrepancy` |
+| Relé + solenoide | Ejecutar el bloqueo físico de rueda | Debe resistir uso rudo y exposición a golpes |
+| Puerto de carga (USB-C) | Suministrar energía / recarga | Debe permanecer protegido de líquidos |
+| Puerto de mantenimiento | Permitir reprogramación o diagnóstico técnico | Uso exclusivo para soporte técnico |
+
+### Diagramas físicos
+
+*(Pendiente: capturas del diseño físico del Smart Cart elaboradas en la herramienta de diagramación indicada — insertar imagen en `assets/chapter-5/iot-device/`)*
+
+### Diseño del circuito
+
+El circuito del Smart Cart se basa en un ESP32 encargado de leer los sensores de
+producto y peso, activar los indicadores físicos y el bloqueo de seguridad, y
+transmitir los eventos al Edge API de Innova Carty.
+
+**Componentes del circuito**
+
+| Elemento | Función |
+| :--- | :--- |
+| ESP32 DevKit V1 | Procesar lecturas y transmitir información al Edge API |
+| Lector RFID MFRC522 | Detectar productos por etiqueta RFID |
+| Celdas de carga + HX711 | Medir el peso de la canasta |
+| Pantalla táctil Nextion 5" | Mostrar el On-Cart Display |
+| Tira LED WS2812B | Representar estados operativos |
+| Buzzer pasivo | Emitir alertas locales |
+| Relé + solenoide | Ejecutar el bloqueo mecánico de rueda |
+| Batería Li-ion 2×18650 + TP4056 | Suministrar energía estable y permitir carga |
+
+**Flujo operativo del circuito**
+
+1. El lector RFID detecta un producto ingresado a la canasta.
+2. El ESP32 consulta el catálogo local (vía Edge API) y agrega el producto a la sesión activa.
+3. La celda de carga registra el peso y el ESP32 valida la consistencia RFID-peso.
+4. El dispositivo actualiza sus indicadores físicos (LED y On-Cart Display).
+5. El ESP32 transmite el evento al Edge API y este lo sincroniza con la nube.
+6. El backend actualiza el total, evalúa el `Budget Limit` y las reglas de negocio.
+7. La plataforma actualiza la Consola de Operaciones y la aplicación móvil correspondiente.
+
+**Diagramas de circuito**
+
+*(Pendiente: diagrama de circuito elaborado en Wokwi o Cirkit Designer, según la herramienta indicada en el enunciado del curso — insertar captura y enlace público)*
+
+### Flujos de interacción
+
+Los siguientes diagramas representan los principales flujos de interacción entre
+el Smart Cart, el Edge API, el backend y las plataformas de usuario, elaborados
+como Diagram-as-Code mediante Mermaid, según las tecnologías permitidas para el
+proyecto.
+
+**Flujo general de una sesión de compra IoT**
+
+\`\`\`mermaid
+flowchart TD
+    A[Lector RFID detecta producto] --> B[ESP32 interpreta la lectura]
+    B --> C[Celda de carga valida peso]
+    C --> D[Actualiza LED y On-Cart Display]
+    D --> E[ESP32 transmite evento al Edge API]
+    E --> F[Backend registra evento y evalúa presupuesto]
+    F --> G[Consola Web y App móvil se actualizan]
+\`\`\`
+
+**Flujo de alerta crítica (Discrepancy)**
+
+\`\`\`mermaid
+flowchart TD
+    A[Cambio de peso sin lectura RFID asociada] --> B{Discrepancia confirmada?}
+    B -->|Sí| C[LED rojo + buzzer activados]
+    C --> D[Pago bloqueado temporalmente]
+    D --> E[Evento enviado a Consola de Operaciones]
+    E --> F[Supervisor revisa y autoriza o corrige]
+    B -->|No| G[Sesión continúa con normalidad]
+\`\`\`
+
+**Flujo de actualización de estado del dispositivo**
+
+\`\`\`mermaid
+stateDiagram-v2
+    [*] --> Disponible
+    Disponible --> EnSesion: CartPaired
+    EnSesion --> ConDiscrepancia: WeightMismatchDetected
+    ConDiscrepancia --> EnSesion: Discrepancia resuelta
+    EnSesion --> Bloqueado: Intento de salida sin pago
+    EnSesion --> Autorizado: Pago confirmado (Exit Clearance)
+    Autorizado --> Disponible: Fin de sesión
+    Bloqueado --> Disponible: Desbloqueo por supervisor
+    Disponible --> FueraDeLinea: Pérdida de conexión
+    FueraDeLinea --> Disponible: Reconexión
+\`\`\`
+
+### Relación con la arquitectura del sistema
+
+Los Smart Carts de Innova Carty funcionan como dispositivos edge distribuidos por
+tienda. Cada carrito captura eventos de su propia sesión de compra y los transmite
+hacia el backend en la nube a través del Edge API.
+
+| Etapa | Componente | Responsabilidad |
+| :--- | :--- | :--- |
+| 1 | Smart Cart (Edge Device) | Capturar lecturas RFID y peso; generar eventos locales |
+| 2 | Edge API | Procesar eventos en el borde y sincronizarlos con la nube |
+| 3 | RESTful API / Backend | Persistir la sesión, aplicar reglas de negocio y generar alertas |
+| 4 | Base de datos | Almacenar sesiones, productos, eventos y alertas históricas |
+| 5 | Consola Web de Operaciones | Mostrar estado y alertas a los administradores de tienda |
+| 6 | Aplicación móvil (Innova Carty / Ops) | Notificar al comprador y al supervisor en tiempo real |
+
+Esta arquitectura permite administrar múltiples Smart Carts de forma independiente
+dentro de una misma tienda, manteniendo coherencia con el Smart Shopping Bounded
+Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.1.2).
 
 <div style="page-break-after: always;"></div>
 

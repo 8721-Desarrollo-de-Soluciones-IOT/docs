@@ -1273,6 +1273,8 @@ Ambas apps utilizan una barra de navegación inferior (bottom navigation) de má
 2. **Alertas:** lista y detalle de discrepancias pendientes.
 3. **Inventario:** consulta rápida de stock y tolerancias.
 
+<img src="assets/chapter-5/style-guidelines/mobile-nav-example.png" width="500" alt="Navegación inferior app Innova Carty">
+
 **Patrones de interacción**
 
 * **Gestos táctiles:**
@@ -1282,6 +1284,9 @@ Ambas apps utilizan una barra de navegación inferior (bottom navigation) de má
 * **Feedback inmediato:**
   * Animaciones suaves (150–300ms).
   * Cambio de estado visual instantáneo al escanear o pagar.
+
+
+<img src="assets/chapter-5/style-guidelines/web-dashboard-layout.png" width="800" alt="Estructura de la Consola de Operaciones">
 
 **Componentes clave**
 
@@ -1332,6 +1337,8 @@ Colores LED (alineados con la paleta de 5.1.1):
 * Ámbar (`#F39C12`) → proceso / `Budget Threshold Alert`.
 * Rojo (`#E74C3C`) → `Discrepancy` / `Shopping Cart Lock` activado.
 * Azul (`#004F8C`) → sincronización con la nube.
+
+<img src="assets/chapter-5/style-guidelines/led-status-colors.png" width="700" alt="Estados LED del Smart Cart">
 
 **Interacciones físicas**
 
@@ -1694,7 +1701,7 @@ cumplen dentro de la sesión de compra.
 
 ### Diagramas físicos
 
-*(Pendiente: capturas del diseño físico del Smart Cart elaboradas en la herramienta de diagramación indicada — insertar imagen en `assets/chapter-5/iot-device/`)*
+<img src="assets/chapter-5/iot-device/smart-cart-physical-layout.png" width="800" alt="Diseño físico del Smart Cart">
 
 ### Diseño del circuito
 
@@ -1727,7 +1734,7 @@ transmitir los eventos al Edge API de Innova Carty.
 
 **Diagramas de circuito**
 
-*(Pendiente: diagrama de circuito elaborado en Wokwi o Cirkit Designer, según la herramienta indicada en el enunciado del curso — insertar captura y enlace público)*
+<img src="assets/chapter-5/iot-device/smart-cart-circuit.png" width="800" alt="Diagrama de circuito del Smart Cart">
 
 ### Flujos de interacción
 

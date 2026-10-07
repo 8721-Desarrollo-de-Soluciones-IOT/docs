@@ -164,6 +164,16 @@
 ### [Capítulo VI: Product Implementation, Validation & Deployment](#capítulo-vi-product-implementation-validation--deployment)
 - [6.1. Software Configuration Management](#61-software-configuration-management)
 - [6.2. Landing Page, Services & Applications Implementation](#62-landing-page-services--applications-implementation)
+  - [6.2.1. Sprint 1](#621-Sprint-1)
+    - [6.2.1.1. Sprint Planning 1](#6211-Sprint-Planning-1)
+    - [6.2.1.2. Aspect Leaders and Collaborators](#6212-Aspect-Leaders-and-Collaborators)
+    - [6.2.1.3. Sprint Backlog 1](#6213-Sprint-Backlog-1)
+    - [6.2.1.4. Development Evidence for Sprint Review](#6214-Development-Evidence-for-Sprint-Review)
+    - [6.2.1.5. Testing Suite Evidence for Sprint Review](#6215-Testing-Suite-Evidence-for-Sprint-Review)
+    - [6.2.1.6. Execution Evidence for Sprint Review](#6216-Execution-Evidence-for-Sprint-Review)
+    - [6.2.1.7. Software Deployment Evidence for Sprint Review](#6217-Services-Documentation-Evidence-for-Sprint-Review)
+    - [6.2.1.8. Sprint Planning 1](#6218-Software-Deployment-Evidence-for-Sprint-Review)
+    - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-Team-Collaboration-Insights-during-Sprint)
 - [6.3. Validation Interviews](#63-validation-interviews)
 - [6.4. Video About-the-Product](#64-video-about-the-product)
 
@@ -2474,7 +2484,6 @@ Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.
 ## 6.2. Landing Page, Services & Applications Implementation
 
 ### 6.2.1. Sprint 1
-*(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
 
 #### 6.2.1.1. Sprint Planning 1
 

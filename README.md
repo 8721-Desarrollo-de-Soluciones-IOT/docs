@@ -1052,6 +1052,8 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 ### 4.1.1. Design-Level EventStorming
 
+El EventStorming, los Domain Message Flows y los Bounded Context Canvases de esta sección se elaboraron en un tablero colaborativo de Miro, disponible en el siguiente enlace: [Tablero de Miro de Innova Carty](https://miro.com/app/board/uXjVEd-agkM=/).
+
 #### 4.1.1.1. Candidate Context Discovery
 
 El equipo hizo el EventStorming de Innova Carty en Miro en diez pasos. Cada paso parte del tablero del paso anterior y le agrega una capa más, hasta llegar a los agregados y a los bounded contexts que se usan en el resto del capítulo. La notación de colores es la misma en todos los pasos: eventos en naranja, comandos en azul, actores en amarillo, políticas en rosado, *read models* en verde, sistemas externos en morado, *pain points* en rombos rojos e integraciones entre agregados en negro.
@@ -3052,7 +3054,6 @@ Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.
 ## 6.2. Landing Page, Services & Applications Implementation
 
 ### 6.2.1. Sprint 1
-*(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
 
 #### 6.2.1.1. Sprint Planning 1
 
@@ -3115,17 +3116,195 @@ En el Sprint 1 el equipo implementó los dos productos del objetivo del sprint, 
 *(Pendiente — Responsable: Deybbi)*
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
-*(Pendiente — Responsable: Melanie)*
+
+En el Sprint 1 el equipo puso en funcionamiento los dos productos del Sprint Goal. El **Landing Page** presenta la propuesta de valor a compradores y supermercados, permite solicitar una demostración y enlaza a la consola de operaciones (US01, US02, US03). La **Frontend Web Application** es la primera versión de la consola de operaciones: el personal inicia sesión, ve el estado de la flota en tiempo real, revisa los carritos y sus alertas, resuelve una discrepancia de peso o una salida bloqueada y mantiene el catálogo con sus pesos nominales y tolerancias (US11, US13). A continuación se muestran las vistas principales en el orden en que se navegan.
+
+##### Landing Page
+
+El Landing Page es una sola página con una barra de navegación fija. Los enlaces *How it works*, *Benefits*, *Product*, *For supermarkets* y *FAQ* llevan a cada sección y se resaltan según la sección visible; el selector **ES | EN** cambia el idioma y el botón **Request a demo** lleva al formulario.
+
+**1. Hero.** Es la primera vista al ingresar. Presenta el mensaje principal ("Shop smart. Pay instantly. Skip the line."), una descripción breve del carrito inteligente y dos llamadas a la acción por segmento: **Get the app** para el comprador e **I run a supermarket** para el supermercado. El enlace *Discover the solution* baja a la siguiente sección.
+
+![Landing Page - Hero](assets/chapter6/execution-evidence/landing1.png)
+
+**2. Cifras de impacto y "How it works".** Muestra los indicadores que respaldan la propuesta (−30 % de tiempo de espera, menos de 60 s del QR a la salida, −50 % de salidas no verificadas y telemetría 24/7) y explica el uso en cuatro pasos: vincular el carrito, fijar un presupuesto, colocar los productos y pagar con Yape o Plin.
+
+![Landing Page - How it works](assets/chapter6/execution-evidence/landing2.png)
+
+**3. Beneficios por segmento.** Separa los beneficios para compradores (sin colas, control del presupuesto, comprobantes digitales) y para operadores de tienda (consola en vivo, validación de peso y RFID, bloqueo por geofencing). Cada tarjeta termina en una acción: **Get the app** o **See the operations console**, que abre la Web Application.
+
+![Landing Page - Benefits](assets/chapter6/execution-evidence/landing3.png)
+
+**4. Producto.** Presenta el hardware del Smart Cart: lector RFID UHF, celdas de carga, pantalla de 10" y freno inteligente de ruedas, junto al espacio del video About-the-Product.
+
+![Landing Page - Product](assets/chapter6/execution-evidence/landing4.png)
+
+**5. App para compradores y sección para supermercados.** Anuncia la app móvil con los botones de Google Play y App Store, y abre la sección *For supermarkets* con el formulario de solicitud de demo.
+
+![Landing Page - App for shoppers](assets/chapter6/execution-evidence/landing5.png)
+
+**6. Solicitud de demo y preguntas frecuentes.** El formulario pide razón social, RUC, correo corporativo, número estimado de carritos y un mensaje, y exige aceptar la Política de Privacidad antes de enviar con **Request a demonstration** (US02). A la izquierda, las preguntas frecuentes se despliegan como acordeón.
+
+![Landing Page - Request a demo](assets/chapter6/execution-evidence/landing6.png)
+
+**7. Equipo y pie de página.** Presenta a los siete integrantes del equipo. El pie de página repite los enlaces del producto, da acceso a la consola de operaciones (*Operations console*) y a las páginas de Términos y Condiciones y Política de Privacidad (US03), además del correo de contacto.
+
+![Landing Page - Team and footer](assets/chapter6/execution-evidence/landing7.png)
+
+##### Frontend Web Application (consola de operaciones)
+
+Se ingresa a la consola desde el botón **See the operations console** o el enlace *Operations console* del Landing Page. Después del inicio de sesión, el menú lateral (**Dashboard**, **Carts**, **Alerts** y **Catalog**) permite moverse entre las vistas; la barra superior incluye la búsqueda de carritos, las notificaciones y el perfil del supervisor, y el panel inferior indica la tienda y el estado del gateway edge.
+
+**1. Inicio de sesión.** El personal de tienda ingresa con su correo de trabajo y contraseña. El acceso está restringido al personal autorizado y la actividad queda registrada para auditoría; para la revisión del sprint se muestra una cuenta de demostración.
+
+![Web App - Sign in](assets/chapter6/execution-evidence/app1.png)
+
+**2. Dashboard.** Es la vista de inicio. Resume los carritos activos, las alertas abiertas, el tiempo promedio de pago y las pérdidas evitadas; muestra las sesiones activas por hora, las alertas en vivo y el estado de la flota. Se refresca cada 5 segundos (US11). Desde *Live alerts* se abre directamente el carrito afectado.
+
+![Web App - Dashboard](assets/chapter6/execution-evidence/app2.png)
+
+**3. Carritos.** Lista todos los carritos con su estado, número de productos, total, presupuesto, zona, último evento, alertas y batería. Los filtros por estado (*In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Available*, *Offline*) y la búsqueda por carrito, orden o zona permiten encontrar un carrito; los que requieren atención se resaltan. Al hacer clic en una fila se abre su detalle.
+
+![Web App - Carts](assets/chapter6/execution-evidence/app3.png)
+
+**4. Alertas.** Agrupa las alertas abiertas por tipo (geofence, peso, RFID y dispositivos) y conserva las resueltas. Cada alerta explica qué ocurrió y ofrece una acción para ir al carrito (*Open cart*, *Go to exit*, *Locate*) o marcarla como atendida (*Acknowledge*).
+
+![Web App - Alerts](assets/chapter6/execution-evidence/app4.png)
+
+**5. Detalle del carrito con discrepancia de peso.** Al abrir el carrito con alerta de peso se compara el peso esperado según las lecturas RFID con el peso medido, la diferencia y la tolerancia; el pago queda en pausa. El supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también el comprador, el total frente al presupuesto, la línea de tiempo de la sesión y los productos del carrito. *Back to carts* regresa a la lista.
+
+![Web App - Cart detail with weight discrepancy](assets/chapter6/execution-evidence/app6.png)
+
+**6. Detalle del carrito bloqueado en la salida.** Cuando un carrito cruza la salida sin autorización de pago, la consola muestra la salida bloqueada con las ruedas trabadas, el monto pendiente y la línea de tiempo del cruce. El supervisor verifica la situación y desbloquea el carrito o lo marca para auditoría.
+
+![Web App - Locked cart detail](assets/chapter6/execution-evidence/app9.png)
+
+**7. Catálogo y tolerancias de peso.** Lista los productos con su SKU, categoría, prefijo de etiqueta RFID, precio, peso nominal y tolerancia, y resalta las tolerancias mayores a 5 %. Permite buscar por nombre, SKU o etiqueta, filtrar por categoría y ver la hora de la última sincronización con los carritos (US13).
+
+![Web App - Catalog](assets/chapter6/execution-evidence/app5.png)
+
+**8. Edición de peso nominal y tolerancia.** El ícono de lápiz abre el modal de edición del producto. Al cambiar el peso nominal o la tolerancia, el modal calcula el rango permitido y advierte que al guardar (**Save and sync**) la nueva regla se envía al gateway edge y a los carritos.
+
+![Web App - Edit product](assets/chapter6/execution-evidence/app7.png)
+
+**9. Registro de producto.** El botón **Add product** abre el mismo formulario vacío. Los campos se validan antes de guardar; por ejemplo, el SKU debe tener el formato `SKU-00000`.
+
+![Web App - Add product](assets/chapter6/execution-evidence/app8.png)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
-*(Pendiente — Responsable: Jorge)*
+
+En el Sprint 1 los servicios en Spring Boot todavía no se implementan (quedan para el Sprint 2 con TS01, TS02 y TS03). Por eso, en este sprint se documentan los recursos de la **API fake** construida con **json-server**, que usa la Web Console para las historias US11 y US13. La API expone los recursos bajo el prefijo `/api/v1`, con los mismos nombres y la misma forma de respuesta definidos en el capítulo IV, de modo que en el Sprint 2 solo cambie la URL base y no las vistas de Angular.
+
+La documentación de esta API se mantiene en el `README.md` del repositorio de la Web App (sección *Fake API*), junto con el archivo `server/db.json` que contiene los datos de prueba y el archivo `server/routes.json` que agrega el prefijo `/api/v1`. A partir del Sprint 2, los endpoints reales se documentarán con **OpenAPI** mediante `springdoc-openapi` y se publicarán en **Swagger UI**.
+
+**Cómo levantar la API fake en local**
+
+```bash
+npm install
+npm run fake-api     # json-server --watch server/db.json --routes server/routes.json --port 3000
+```
+
+**Endpoints documentados en el Sprint 1**
+
+| Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| Staff users | Iniciar sesión del personal | `GET` | `/api/v1/staff-users?username={u}&password={p}` | `username`, `password` (query) | `GET /api/v1/staff-users?username=lmedina&password=****` | `200` con el usuario (`id`, `fullName`, `role`, `storeId`); lista vacía si las credenciales no coinciden | US11 |
+| Carts | Listar carritos de la tienda | `GET` | `/api/v1/carts?storeId={id}` | `storeId`, `status` (opcional) | `GET /api/v1/carts?storeId=1&status=Discrepancy` | `200` con la lista de carritos (`id`, `code`, `status`, `zone`, `currentTotal`, `battery`, `lastEvent`) | US11 |
+| Carts | Ver detalle de un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/27` | `200` con el carrito `CART-0427`, sus productos, `expectedWeightGrams: 9314` y `measuredWeightGrams: 9726` | US11 |
+| Carts | Desbloquear carrito con discrepancia | `PATCH` | `/api/v1/carts/{id}` | `id` (path), body con `status` y `unlockedBy` | `PATCH /api/v1/carts/27` · `{"status":"Shopping","unlockedBy":3}` | `200` con el carrito actualizado en estado `Shopping` | US11 |
+| Alerts | Listar alertas abiertas | `GET` | `/api/v1/alerts?status={s}` | `status`, `type` (opcional) | `GET /api/v1/alerts?status=open&type=WeightDiscrepancy` | `200` con la lista de alertas (`id`, `cartId`, `type`, `severity`, `createdAt`) | US11 |
+| Alerts | Resolver una alerta | `PATCH` | `/api/v1/alerts/{id}` | `id` (path), body con `status` y `resolution` | `PATCH /api/v1/alerts/12` · `{"status":"resolved","resolution":"Producto verificado en persona"}` | `200` con la alerta resuelta | US11 |
+| Products | Listar el catálogo | `GET` | `/api/v1/products?q={texto}` | `q`, `_page`, `_limit` (opcional) | `GET /api/v1/products?q=arroz&_page=1&_limit=10` | `200` con los productos (`sku`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`) | US13 |
+| Products | Actualizar precio, peso y tolerancia | `PATCH` | `/api/v1/products/{id}` | `id` (path), body con los campos a cambiar | `PATCH /api/v1/products/8` · `{"nominalWeightGrams":1000,"weightToleranceGrams":30}` | `200` con el producto actualizado; `404` si el `id` no existe | US13 |
+
+**Captura de la API fake en ejecución**
+
+![Fake API json-server](assets/chapter-6/sprint-1/fake-api-endpoints.png)
+*[Reemplazar por la captura de la terminal con json-server corriendo y de una respuesta en el navegador o en Postman.]*
+
+**Commits relacionados con la documentación de servicios**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | feat(fake-api): add carts, alerts and products resources | Recursos de json-server bajo `/api/v1` con datos de prueba de la tienda Surco Store #01. | [completar] |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | docs(readme): document fake api endpoints | Tabla de endpoints, parámetros y ejemplos de request y response. | [completar] |
+
+---
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
-*(Pendiente — Responsable: Jorge)*
+
+En el Sprint 1 se desplegaron los dos productos del objetivo del sprint en **Vercel**, conectando cada repositorio de GitHub para que cada *push* a `main` genere un nuevo despliegue de producción y cada *pull request* genere una vista previa. La API fake se desplegó como servicio web en **Render**, para que la Web Console publicada pueda consumir datos sin depender de una máquina local.
+
+| Producto | Plataforma | Repositorio | URL pública |
+| :--- | :--- | :--- | :--- |
+| Landing Page | Vercel | [innova-carty-landing-page](https://github.com/petitavo/innova-carty-landing-page) | [completar URL] |
+| Web Console (Angular) | Vercel | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | [completar URL] |
+| API fake (json-server) | Render | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) (carpeta `server`) | [completar URL] |
+
+**Despliegue del Landing Page**
+
+1. En Vercel se eligió **Add New → Project** y se importó el repositorio `innova-carty-landing-page`.
+2. Como es un sitio estático, se usó el *Framework Preset* **Other**, sin comando de *build*, con la raíz del repositorio como *Output Directory*.
+3. Se asignó la rama `main` como rama de producción y se ejecutó el primer despliegue.
+4. Se verificó en la URL pública que cargan todas las secciones, el cambio de idioma ES/EN, la validación del formulario de demo y las páginas de Términos y Condiciones y Política de Privacidad.
+
+![Despliegue Landing Page en Vercel](assets/chapter-6/sprint-1/deploy-landing-vercel.png)
+
+**Despliegue de la API fake**
+
+1. En Render se creó un **Web Service** conectado al repositorio de la Web App, con *Root Directory* `server`.
+2. Se configuró el *Build Command* `npm install` y el *Start Command* `json-server db.json --routes routes.json --host 0.0.0.0 --port $PORT`.
+3. Se verificó que la URL pública responde, por ejemplo en `GET /api/v1/carts`.
+
+![Despliegue API fake en Render](assets/chapter-6/sprint-1/deploy-fake-api-render.png)
+
+**Despliegue de la Web Console**
+
+1. Se registró la URL de la API fake en `src/environments/environment.production.ts` (`apiBaseUrl`).
+2. Se agregó un archivo `vercel.json` con una regla de *rewrite* hacia `index.html`, para que las rutas de Angular (`/carts`, `/alerts`, `/catalog`) funcionen al recargar la página.
+3. En Vercel se importó el repositorio `innova-carty-frontend-web-app` con el *Framework Preset* **Angular**, *Build Command* `ng build` y *Output Directory* `dist/innova-carty-frontend-web-app/browser`.
+4. Se verificó en la URL pública el inicio de sesión, el dashboard, el detalle del carrito `CART-0427` con su discrepancia, el desbloqueo con PIN y la edición de tolerancias del catálogo.
+
+![Despliegue Web Console en Vercel](assets/chapter-6/sprint-1/deploy-webapp-vercel.png)
+
+**Resultado.** Los dos productos quedaron accesibles por URL pública, lo que cumple la condición de confirmación del objetivo del Sprint 1. En el Sprint 2 se reemplazará la API fake por el backend en Spring Boot y se actualizará solo la variable `apiBaseUrl` del entorno de producción.
+
+---
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
-*(Pendiente — Responsable: Jorge)*
 
+En el Sprint 1 el equipo trabajó con GitFlow: cada integrante desarrolló sus tareas en una rama `feature/*` creada desde `develop`, y los líderes de aspecto revisaron los cambios antes de integrarlos. Al cierre del sprint, `develop` se integró en `main` para generar la versión desplegada. Las tareas se asignaron según la matriz de liderazgo y colaboración (6.2.1.2) y se registraron en Jira (6.2.1.3).
+
+La colaboración se evidencia con los gráficos de **GitHub Insights** de cada repositorio: *Contributors*, que muestra los commits de cada integrante en el periodo del sprint, y *Network*, que muestra las ramas `feature/*` y sus integraciones en `develop` y `main`.
+
+**Landing Page**
+
+![Insights Contributors Landing Page](assets/chapter-6/sprint-1/insights-landing-contributors.png)
+![Insights Network Landing Page](assets/chapter-6/sprint-1/insights-landing-network.png)
+
+**Frontend Web Application**
+
+![Insights Contributors Web App](assets/chapter-6/sprint-1/insights-webapp-contributors.png)
+![Insights Network Web App](assets/chapter-6/sprint-1/insights-webapp-network.png)
+
+**Top committers del sprint**
+
+![Top committers](assets/chapter-6/sprint-1/insights-top-committers.png)
+
+| Integrante | GitHub Username | Aspecto que lideró | Aportes en el Sprint 1 | Commits | % del total |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| Trillo Hernández, Anghel Melanie | AM27TH | — | Botones de llamada a la acción; detalle del carrito con discrepancia; modal de edición de peso y tolerancia. | 15 | 38 % |
+| Paico Calderon, July Zelmira | u20211d760 | Gestión del Sprint | Configuración de repositorios y GitFlow; Sprint Backlog en Jira y seguimiento de tareas. | 9 | 23 % |
+| Berrocal Ramirez, Omar Christian | OmBRz | — | Beneficios por segmento y sección de hardware; validación del formulario; lista de carritos con filtros; listado del catálogo. | 5 | 13 % |
+| Huanca Navarro, Gustavo Esau | petitavo | Landing Page, Frontend Web App | Secciones de propuesta de valor y "Cómo funciona"; inicio de sesión del personal; integración de ramas en `develop`. | 4 | 10 % |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | API fake y documentación de servicios | Formulario de demo y mensaje de confirmación; dashboard con refresco cada 5 segundos; API fake con json-server y su documentación. | 3 | 8 % |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | Testing | Alertas por tipo; pruebas unitarias de la Web App; pruebas de aceptación de US11. | 2 | 5 % |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | Despliegue | Sección de app para compradores; páginas legales; desbloqueo con PIN; despliegue en Vercel. | 1 | 3 % |
+| **Total** | | | | **39** | **100 %** |
+
+**Análisis.** En el sprint se registraron 39 commits y los siete integrantes aportaron al menos uno, lo que muestra que todo el equipo participó en el repositorio. La distribución, sin embargo, no fue pareja: Anghel Melanie Trillo (15) y July Paico (9) concentran el 61 % de los commits. En el caso de July, esto responde a su rol de líder de Gestión del Sprint, que incluyó configurar los repositorios y el flujo de GitFlow. El número de commits no mide por sí solo el aporte de cada integrante, porque algunos líderes de aspecto dedicaron buena parte de su tiempo a revisar e integrar ramas `feature/*` en `develop`, y otros entregaron cambios grandes en pocos commits. Aun así, el equipo identificó que varios integrantes agruparon mucho trabajo en commits poco frecuentes.
+
+Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y frecuentes, cada uno con una sola tarea, siguiendo Conventional Commits; vincular cada commit con el código de la historia o tarea de Jira para mejorar la trazabilidad; e integrar los cambios en `develop` a lo largo del sprint, en lugar de concentrarlos en los últimos días, para repartir mejor la carga de integración.
 ---
 
 ## 6.3. Validation Interviews
@@ -3174,5 +3353,7 @@ Yuziv Duda, I. (2024). *Desarrollo de un carrito de compras inteligente con tecn
 ---
 
 # Anexos
+
+* **Tablero de Miro (Design-Level EventStorming, Domain Message Flows y Bounded Context Canvases):** https://miro.com/app/board/uXjVEd-agkM=/
 
 *(Pendiente — evidencias adicionales: consentimientos de entrevista, capturas, etc.)*

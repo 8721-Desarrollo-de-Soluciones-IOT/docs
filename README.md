@@ -1144,7 +1144,7 @@ Todos los diagramas usan la misma notación:
 
 ##### Escenario 1: Inicio de sesión de compra y registro de producto por RFID
 
-El Comprador inicia la sesión desde el carrito con el comando *Iniciar sesión de compra* (`cartId`, `budgetLimit`). Smart Shopping crea la sesión y publica *Sesión de compra iniciada*, que se muestra en el On-Cart Display y en la app. Cuando el comprador coloca un artículo, el Edge API envía *Producto detectado* con la etiqueta RFID leída. Smart Shopping consulta a Catalog & Pricing el producto por RFID para obtener su precio y peso nominal, y publica *Producto agregado a la sesión* con el subtotal actualizado (US04, US05).
+El Comprador inicia la sesión desde el carrito con el comando *Iniciar sesión de compra* (`cartId`, `budgetLimit`). Smart Shopping crea la sesión y publica *Sesión de compra iniciada*, que se muestra en el On-Cart Display y en la app. Cuando el comprador coloca un artículo, el Edge API envía *Producto detectado* con la etiqueta RFID leída. Smart Shopping consulta a Catalog & Pricing el producto por RFID para obtener su precio y peso nominal, y publica *Producto agregado a la sesión* con el subtotal actualizado (US04, US05, US06).
 
 ![Domain Message Flow - Inicio de sesión y registro de producto por RFID](assets/chapter-4/message-flow/domain-message-flow1.jpg)
 
@@ -1162,7 +1162,7 @@ El Comprador elige *Proceder al pago*. Smart Shopping valida la sesión y envía
 
 ##### Escenario 4: Intento de salida sin autorización de pago
 
-El sensor perimetral del arco de salida reporta *Cruce de perímetro detectado*. Operations & Security comprueba que el carrito no tiene una autorización de salida vigente y aplica la política de bloqueo: envía el comando *Bloquear carrito* al Smart Cart (ESP32), que activa el freno y la alarma. Luego publica *Freno del carrito activado*, que aparece como incidente en la Web Console para que el personal intervenga.
+El sensor perimetral del arco de salida reporta *Cruce de perímetro detectado*. Operations & Security comprueba que el carrito no tiene una autorización de salida vigente y aplica la política de bloqueo: envía el comando *Bloquear carrito* al Smart Cart (ESP32), que activa el freno y la alarma. Luego publica *Freno del carrito activado*, que aparece como incidente en la Web Console para que el personal intervenga (US12).
 
 ![Domain Message Flow - Intento de salida sin autorización de pago](assets/chapter-4/message-flow/domain-message-flow4.jpg)
 

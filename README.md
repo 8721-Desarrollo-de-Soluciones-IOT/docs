@@ -22,7 +22,7 @@
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Informe de Avance (AV1)</strong>
+  <strong>Trabajo Parcial (TB1)</strong>
 </p>
 
 <br>
@@ -93,7 +93,7 @@
 </div>
 
 <br>
-<p align="center">Setiembre 2026</p>
+<p align="center">Octubre 2026</p>
 
 <div style="page-break-after: always;"></div>
 
@@ -104,6 +104,7 @@
 | Versión | Fecha      | Autor(es)                                                                                                                                                                                                                                        | Descripción de modificación                                                                                                                                                 |
 |---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
+| 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
 
 <div style="page-break-after: always;"></div>
 
@@ -181,15 +182,10 @@
 
 ## ABET – EAC - Student Outcome 5
 
-**Criterio:**
-La capacidad de funcionar efectivamente en un equipo cuyos miembros juntos proporcionan liderazgo, crean un entorno de colaboración e inclusivo, establecen objetivos, planifican tareas y cumplen objetivos.
-
-En el siguiente cuadro se describen las acciones realizadas y conclusiones del grupo que sustentan el logro del criterio. *(Completar por cada integrante y por cada entrega — AV1, TB1, AV2, TB2, etc.)*
-
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **[Apellidos, Nombres] (AV1)** <br> [Describir en qué participó: qué diseñó, qué bounded context o módulo lideró, con quién coordinó] <br><br> **[Apellidos, Nombres] (AV1)** <br> [...] | **Conclusión general:** <br> [Resumen de cómo se distribuyó el liderazgo entre el equipo] |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **[Apellidos, Nombres] (AV1)** <br> [Describir cómo fomentó la colaboración: tableros usados, seguimiento de tareas, coordinación de plazos] <br><br> **[Apellidos, Nombres] (AV1)** <br> [...] | **Conclusión general:** <br> [Resumen de las herramientas/prácticas que usó el equipo para cumplir metas] |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page (US01), el detalle del carrito con discrepancia de peso (US11) y el modal de edición de peso nominal y tolerancia (US13). <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI del capítulo V también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances a mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los capítulos I a IV del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los 20 Story Points comprometidos, además de los capítulos IV y V del informe. |
 
 <div style="page-break-after: always;"></div>
 

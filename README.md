@@ -1336,9 +1336,38 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 
 ### 4.2.1. Bounded Context: Smart Shopping Bounded Context
 
+El Smart Shopping Bounded Context es el dominio core de Innova Carty: gestiona la sesión de compra desde que el comprador vincula el carrito hasta que la canasta queda pagada, registra los productos detectados por RFID, calcula el total y el presupuesto en tiempo real y valida que el peso medido coincida con los productos registrados. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ShoppingSession` | Aggregate Root | Representa una sesión de compra y protege sus reglas: una sola sesión activa por carrito, no pasar a checkout con una discrepancia abierta y alertar al 90 % del presupuesto. | `id`, `cartId`, `customerId`, `status`, `budget`, `items`, `weightSnapshot`, `paymentPaused`, `startedAt`, `closedAt` | `setBudgetLimit()`, `addItem()`, `removeItem()`, `getSubtotal()`, `updateWeightSnapshot()`, `canCheckout()`, `markPendingCheckout()`, `complete()`, `cancel()` | Compone 0..* `CartItem`, un `Budget` y un `WeightSnapshot`; registra `ShoppingSessionEvent`. |
+| `CartItem` | Entity | Producto registrado en la sesión tras la lectura RFID, con una copia del precio, peso nominal y tolerancia vigentes al momento de la detección. | `productId`, `rfidTag`, `productName`, `unitPrice`, `quantity`, `nominalWeight`, `weightTolerance`, `weightVerified`, `removed` | `getTotalPrice()`, `increaseQuantity()`, `markRemoved()`, `markWeightVerified()` | Pertenece a una `ShoppingSession`; se crea a partir de un `ProductSnapshot`. |
+| `Budget` | Value Object | Presupuesto límite del comprador y monto ya gastado. | `limit`, `spent`, `thresholdReached` | `withSpent()`, `remaining()`, `usedPercent()`, `isNearLimit()`, `isExceeded()` | Usa `Money`. |
+| `WeightSnapshot` | Value Object | Última comparación entre el peso medido y el esperado. | `measured`, `expected`, `status`, `mismatchSince` | `difference()`, `isConsistent()` | Usa `Weight` y `WeightValidationStatus`; lo produce `WeightConsistencyPolicy`. |
+| `ProductSnapshot` | Value Object | Datos del producto que devuelve Catalog & Pricing, traducidos al lenguaje de este contexto. | `productId`, `name`, `unitPrice`, `nominalWeight`, `weightTolerance` | — | Lo devuelve `CatalogPricingPort`. |
+| `Money` / `Weight` | Value Objects | Montos en soles y pesos en gramos, con sus operaciones aritméticas. | `amount`, `currency` / `grams` | `add()`, `subtract()`, `isGreaterThan()` / `difference()`, `isWithin()` | Usados por `Budget`, `CartItem` y `WeightSnapshot`. |
+| `SessionId`, `CartId`, `CustomerId`, `ProductId`, `RfidTag` | Value Objects | Identificadores tipados; evitan mezclar ids de distintos conceptos. | `value` | — | `CartId` y `ProductId` referencian objetos de otros contextos solo por id. |
+| `CheckoutReference` | Value Object | Respuesta de Payment & Checkout al solicitar la orden de pago. | `checkoutId`, `amount`, `status` | — | La devuelve `PaymentCheckoutPort`. |
+| `SessionStatus` | Enumeration | Estados de la sesión. | `ACTIVE`, `PENDING_CHECKOUT`, `COMPLETED`, `CANCELLED` | — | Atributo de `ShoppingSession`. |
+| `WeightValidationStatus` | Enumeration | Resultado de la validación de peso. | `CONSISTENT`, `MISMATCH` | — | Atributo de `WeightSnapshot`. |
+| `WeightConsistencyPolicy` / `DefaultWeightConsistencyPolicy` | Domain Service (interfaz e implementación) | Compara el peso medido con la suma de pesos nominales y tolerancias, y marca una discrepancia solo si persiste más de 3 s. | `gracePeriod` | `evaluate()` | Evalúa `CartItem` y produce `WeightSnapshot`. |
+| `ShoppingSessionRepository` | Repository (interfaz) | Contrato de persistencia del agregado. | — | `save()`, `findById()`, `findActiveByCartId()`, `existsActiveSessionByCartId()` | Persiste `ShoppingSession`; lo implementa la Infrastructure Layer. |
+| `CatalogPricingPort` / `PaymentCheckoutPort` | Ports (interfaces) | Contratos hacia otros bounded contexts, implementados por las ACL. | — | `getProductByRfid()` / `createCheckout()` | Devuelven `ProductSnapshot` y `CheckoutReference`. |
+| `ShoppingSessionEvent` y subclases | Domain Events | Hechos que publica el agregado: `ShoppingSessionStarted`, `ProductAddedToSession`, `ProductRemovedFromSession`, `BudgetThresholdReached`, `UnknownTagDetected`, `WeightMismatchDetected`, `WeightConsistencyRestored`, `ShoppingSessionReadyForCheckout`, `ShoppingSessionCompleted`, `ShoppingSessionCancelled`. | `sessionId`, `occurredAt` | — | Registrados por `ShoppingSession` y publicados por la Application Layer. |
+
 #### 4.2.1.1. Domain Layer
 
-![BC 1 Usuario y Carrito - Domain Layer.png](assets/chapter-4/software-architecture/BC%201%20Usuario%20y%20Carrito%20-%20Domain%20Layer.png)
+La **Domain Layer** contiene el núcleo del contexto: las clases que representan la sesión de compra y las reglas de negocio que no dependen de HTTP, de la base de datos ni de los otros contextos.
+
+* **Aggregate:** `ShoppingSession` es la única puerta de entrada para modificar la sesión. Toda operación (agregar o retirar un producto, fijar el presupuesto, actualizar el peso, pasar a checkout, cerrar o cancelar) se hace a través de sus métodos, que verifican primero que la sesión esté activa. Al cambiar de estado, el agregado registra el evento de dominio correspondiente para que la Application Layer lo publique.
+* **Entity:** `CartItem` tiene identidad propia dentro de la sesión, porque un mismo producto puede agregarse, retirarse o verificarse por peso de forma independiente.
+* **Value Objects:** `Budget`, `WeightSnapshot`, `ProductSnapshot`, `Money`, `Weight`, `CheckoutReference` y los identificadores tipados son inmutables y se comparan por valor. `Budget` encapsula la regla del 90 % (`isNearLimit()`) y `WeightSnapshot` el resultado de la validación de peso.
+* **Domain Service:** `WeightConsistencyPolicy` resuelve una regla que no pertenece a una sola entidad: suma los pesos nominales de los productos activos, aplica la tolerancia de cada uno y solo marca `MISMATCH` cuando la diferencia se mantiene más de 3 segundos, para no generar falsas alarmas por el movimiento del carrito.
+* **Factory:** el constructor de `ShoppingSession` cumple el rol de fábrica: crea la sesión en estado `ACTIVE`, con el presupuesto opcional y el evento `ShoppingSessionStarted`. `CartItem` se construye siempre a partir de un `ProductSnapshot`, de modo que el dominio no depende del modelo de Catalog & Pricing.
+* **Repositories y Ports:** `ShoppingSessionRepository`, `CatalogPricingPort` y `PaymentCheckoutPort` son interfaces del dominio; sus implementaciones (JPA y las *Anti-Corruption Layers*) están en la Infrastructure Layer.
+* **Enumerations y Domain Events:** `SessionStatus` y `WeightValidationStatus` limitan los estados válidos, y la jerarquía `ShoppingSessionEvent` define los hechos que este contexto comunica a Payment & Checkout, Operations & Security y a los clientes en tiempo real.
+
+El diagrama de clases completo se presenta en la sección 4.2.1.6.1.
 
 #### 4.2.1.2. Interface Layer
 
@@ -1506,8 +1535,13 @@ El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
+En esta sección se presentan los diagramas con mayor nivel de detalle sobre la implementación del Smart Shopping Bounded Context: el diagrama de clases UML de la Domain Layer y el diagrama de base de datos que persiste esos objetos.
+
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
-![Bounded Context Domain Layer Class Diagrams.png](assets/chapter-4/software-architecture/Bounded%20Context%20Domain%20Layer%20Class%20Diagrams.png)
+
+El siguiente diagrama de clases UML muestra las clases, interfaces y enumeraciones de la Domain Layer, agrupadas en Aggregates, Entities, Value Objects, Domain Services, Repositories y Domain Events. Cada miembro indica su visibilidad (`-` privado, `#` protegido, `+` público), y las relaciones indican su nombre, dirección y multiplicidad: por ejemplo, una `ShoppingSession` **contiene** 0..* `CartItem` y **controla** exactamente un `Budget`. El diagrama se elaboró con PlantUML; la fuente está en [`design/chapter-4/smart-shopping-class-diagram.puml`](design/chapter-4/smart-shopping-class-diagram.puml).
+
+![Smart Shopping Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/smart-shopping-class-diagram.png)
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
 El siguiente diagrama muestra el modelo relacional en PostgreSQL que persiste los objetos del Smart Shopping Bounded Context. El contexto es dueño de sus tablas: los datos de otros contextos (el carrito físico de Operations & Security y el producto de Catalog & Pricing) se guardan solo como identificadores (`cart_id`, `product_id`), sin clave foránea, para que cada bounded context pueda evolucionar y desplegarse por separado. El diagrama se elaboró en Redgate Data Modeler.

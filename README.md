@@ -1487,7 +1487,7 @@ La **Infrastructure Layer** contiene las implementaciones técnicas de los contr
 
 ##### Persistence
 
-**JpaShoppingSessionRepository** implementa `ShoppingSessionRepository` con Spring Data JPA sobre PostgreSQL (ver 4.3).
+**JpaShoppingSessionRepository** implementa `ShoppingSessionRepository` con Spring Data JPA sobre PostgreSQL (ver 4.2.1.6.2).
 
 | Operación | Implementación |
 | :--- | :--- |
@@ -2059,12 +2059,6 @@ El modelo relacional en PostgreSQL persiste tiendas, carritos, supervisores, inc
 * **Claves foráneas:** una tienda tiene 0..* carritos y 0..* supervisores; un carrito tiene 0..* incidentes y 0..* cruces; un incidente tiene 0..* alertas e intervenciones; cada intervención referencia al supervisor que la hizo; un cruce puede referenciar el incidente que originó (`incident_id` opcional).
 * **Checks:** `wheel_lock_state` solo admite `LOCKED` o `UNLOCKED`; `operational_status`, `incident_type`, `incident_status`, `severity_level`, `action` y `exit_result` solo admiten los valores de sus enumeraciones; `battery_level_percent` debe estar entre 0 y 100.
 * **Únicos e índices:** `branch_code`, `cart_code`, `device_mac` y `employee_code` son únicos; un índice único parcial sobre `security_incidents(cart_id, incident_type)` para los incidentes `OPEN` impide duplicar alertas del mismo problema; los índices por carrito y fecha aceleran el mapa de carritos y el historial de cruces.
-
-### 4.3 Database Design Diagram
-
-El diseño del modelo relacional de base de datos para la solución Innova Carty da soporte a la interacción entre los dispositivos físicos de compra (Smart Carts con tecnología IoT/Edge Computing) y los servicios centrales en la nube. Su estructura se alinea directamente con los lineamientos tácticos del Smart Shopping Bounded Context y las reglas de negocio descritas en el proyecto, garantizando consistencia transaccional, trazabilidad de eventos y baja latencia en la sincronización de datos.
-
-![database model](assets/chapter-4/software-architecture/database.png)
 
 <div style="page-break-after: always;"></div>
 

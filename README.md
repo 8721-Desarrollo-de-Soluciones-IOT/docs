@@ -146,7 +146,7 @@
 - [4.1. Strategic-Level Domain-Driven Design](#41-strategic-level-domain-driven-design)
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
-  - [4.2.2. Bounded Context: \[Nombre\]](#422-bounded-context)
+  - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
@@ -1564,8 +1564,164 @@ El siguiente diagrama muestra el modelo relacional en PostgreSQL que persiste lo
   * `edge_event_id` es único en `weight_telemetry_logs`, de modo que los reintentos del Edge API no registran la misma lectura dos veces (TS01).
   * Los índices sobre `session_id` aceleran la carga de la sesión con sus productos y el historial de peso.
 
-### 4.2.2. Bounded Context: [Nombre]
-*(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*
+### 4.2.2. Bounded Context: Payment & Checkout Bounded Context
+
+El Payment & Checkout Bounded Context convierte una sesión lista para pago en una transacción: genera el QR dinámico, procesa la confirmación de Yape o Plin por webhook, emite el comprobante electrónico y la autorización de salida que el carrito necesita para dejar la tienda. Es un dominio de soporte que se integra con pasarelas externas. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PaymentTransaction` | Aggregate Root | Orden de pago de una sesión. Controla el ciclo `PENDING` → `QR_GENERATED` → `CONFIRMED` y garantiza que solo una transacción confirmada emita comprobante y autorización de salida. | `id`, `sessionId`, `cartId`, `amount`, `method`, `status`, `qrCodes`, `callbacks`, `receipt`, `exitClearance`, `createdAt`, `confirmedAt`, `posSyncedAt` | `attachQr()`, `currentQr()`, `expireQr()`, `registerCallback()`, `confirm()`, `reject()`, `issueReceipt()`, `issueExitClearance()`, `markSyncedWithPos()` | Compone 0..* `QrDetails`, 0..* `GatewayCallback`, 0..1 `Receipt` y 0..1 `ExitClearanceToken`; registra `PaymentEvent`. |
+| `GatewayCallback` | Entity | Webhook recibido de la billetera digital, guardado para auditoría y para evitar procesar dos veces la misma notificación. | `provider`, `externalReference`, `payload`, `signature`, `signatureValid`, `receivedAt` | `markSignature()` | Pertenece a una `PaymentTransaction`; lo valida `WebhookSignatureVerifier`. |
+| `Receipt` | Entity | Comprobante electrónico (boleta o factura) de la compra. | `type`, `seriesNumber`, `totalAmount`, `receiptUrl`, `issuedAt` | — | Lo devuelve `ElectronicInvoicingService`. |
+| `QrDetails` | Value Object | QR dinámico único por orden y monto, válido por 5 minutos. | `payload`, `amount`, `generatedAt`, `expiresAt`, `VALIDITY` | `isExpired()` | Lo devuelve `DigitalWalletGateway`. |
+| `ExitClearanceToken` | Value Object | Autorización de salida que certifica que la canasta fue pagada. | `token`, `issuedAt`, `expiresAt`, `usedAt` | `isValid()`, `markUsed()` | Lo crea `ExitClearanceTokenFactory`; lo consulta Operations & Security. |
+| `Money`, `TransactionId`, `SessionId`, `CartId` | Value Objects | Monto en soles e identificadores tipados. `SessionId` y `CartId` referencian objetos de otros contextos solo por id. | `amount`, `currency` / `value` | — | Atributos de `PaymentTransaction`. |
+| `PaymentStatus`, `PaymentMethod`, `ReceiptType` | Enumerations | Estados del pago (`PENDING`, `QR_GENERATED`, `CONFIRMED`, `EXPIRED`, `REJECTED`), billetera (`YAPE`, `PLIN`) y tipo de comprobante (`BOLETA`, `FACTURA`). | — | — | Atributos de `PaymentTransaction`, `GatewayCallback` y `Receipt`. |
+| `WebhookSignatureVerifier` | Domain Service (interfaz) | Aplica la política de verificación HMAC: ningún webhook se procesa sin firma válida. | — | `verify()` | Valida `GatewayCallback`. |
+| `ExitClearanceTokenFactory` | Factory | Crea el token de salida con su vigencia a partir de una transacción confirmada. | `validity` | `create()` | Crea `ExitClearanceToken`. |
+| `DigitalWalletGateway`, `ElectronicInvoicingService`, `PosSalesPort` | Ports (interfaces) | Contratos hacia Yape / Plin, el proveedor de facturación electrónica y el Sistema POS. | — | `createDynamicQr()`, `issue()`, `registerSale()` | Implementados en la Infrastructure Layer. |
+| `PaymentTransactionRepository` | Repository (interfaz) | Contrato de persistencia del agregado. | — | `save()`, `findById()`, `findBySessionId()`, `findByExternalReference()`, `findExpiredQrBefore()`, `existsOpenBySessionId()` | Persiste `PaymentTransaction`. |
+| `PaymentEvent` y subclases | Domain Events | `PaymentOrderCreated`, `DynamicQrGenerated`, `QrExpired`, `WebhookSignatureRejected`, `PaymentConfirmed`, `ReceiptIssued`, `ExitClearanceIssued`, `SaleSyncedWithPos`. | `transactionId`, `sessionId`, `occurredAt` | — | Registrados por `PaymentTransaction`. |
+
+#### 4.2.2.1. Domain Layer
+
+La **Domain Layer** de Payment & Checkout modela el cobro sin cajero y sus reglas de seguridad, sin depender de los detalles técnicos de cada pasarela.
+
+* **Aggregate:** `PaymentTransaction` es la raíz que protege el ciclo de vida del pago. Solo acepta un QR nuevo si la transacción no está confirmada, solo pasa a `CONFIRMED` desde `QR_GENERATED` y solo emite comprobante y autorización de salida si el pago está confirmado. Una sesión tiene como máximo una transacción abierta.
+* **Entities:** `GatewayCallback` y `Receipt` tienen identidad propia: cada webhook se guarda con su referencia externa para descartar duplicados, y cada comprobante tiene una serie y un número únicos.
+* **Value Objects:** `QrDetails` encapsula la regla de expiración de 5 minutos (`isExpired()`), y `ExitClearanceToken` la vigencia de la autorización de salida (`isValid()`). `Money` y los identificadores tipados completan el modelo.
+* **Domain Service:** `WebhookSignatureVerifier` aplica la política HMAC sobre el contenido del webhook; si la firma no es válida, la transacción no cambia y se registra `WebhookSignatureRejected`.
+* **Factory:** `ExitClearanceTokenFactory` genera el token aleatorio y su fecha de expiración, de modo que la regla de vigencia no quede repartida en los servicios.
+* **Repositories y Ports:** `PaymentTransactionRepository`, `DigitalWalletGateway`, `ElectronicInvoicingService` y `PosSalesPort` son interfaces del dominio; sus implementaciones están en la Infrastructure Layer.
+* **Domain Events:** la jerarquía `PaymentEvent` comunica el avance del pago; `PaymentConfirmed` cierra la sesión en Smart Shopping y `ExitClearanceIssued` habilita la salida en Operations & Security.
+
+#### 4.2.2.2. Interface Layer
+
+La **Interface Layer** expone el contexto al On-Cart Display, a la app móvil, a las billeteras digitales y a Operations & Security mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`. Valida el formato de las solicitudes, las convierte en *Commands* o *Queries* y delega en la Application Layer.
+
+##### Controllers
+
+**1. PaymentsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/payments/{transactionId}` | Devuelve el estado de la transacción y su monto. | `200 PaymentTransactionResource` · `404` | US08 |
+| `GET` | `/api/v1/shopping-sessions/{sessionId}/payment` | Obtiene la transacción de una sesión (usado por el carrito y la app tras el checkout). | `200` · `404` | US08 |
+| `GET` | `/api/v1/payments/{transactionId}/qr` | Devuelve el QR vigente y su fecha de expiración. | `200 QrResource` · `410` si expiró | US08 |
+| `POST` | `/api/v1/payments/{transactionId}/qr` | Regenera el QR cuando el anterior expiró. | `201 QrResource` · `409` si ya está pagada | US08 |
+| `GET` | `/api/v1/payments/{transactionId}/receipt` | Devuelve el comprobante electrónico. | `200 ReceiptResource` · `404` | US08 |
+
+**2. WalletWebhooksController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/webhooks/{provider}` | Recibe la notificación de pago de Yape o Plin con la firma en la cabecera. Convierte la solicitud en `ConfirmPaymentFromWebhookCommand`. | `200` si se procesó o era un duplicado · `401` si la firma no es válida |
+
+**3. ExitClearancesController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/exit-clearances/{token}?cartId={cartId}` | Operations & Security verifica si un token de salida es válido para el carrito que cruza el perímetro. | `200 ExitClearanceResource` · `404` si no existe o expiró |
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `PaymentTransactionResource` | `transactionId`, `sessionId`, `amount`, `currency`, `status`, `method`, `confirmedAt` | Salida de las consultas de pago |
+| `QrResource` | `transactionId`, `qrPayload`, `amount`, `expiresAt` | Salida del QR para el On-Cart Display y la app |
+| `WalletWebhookResource` | `externalReference`, `transactionId`, `status`, `amount`, `paidAt` + cabecera de firma | Entrada del webhook |
+| `ReceiptResource` | `type`, `seriesNumber`, `totalAmount`, `receiptUrl`, `issuedAt` | Comprobante digital en la app |
+| `ExitClearanceResource` | `token`, `cartId`, `valid`, `expiresAt` | Respuesta a Operations & Security |
+
+`WalletWebhookCommandFromResourceAssembler` transforma el webhook en `ConfirmPaymentFromWebhookCommand`; `PaymentTransactionResourceFromEntityAssembler`, `QrResourceFromEntityAssembler` y `ReceiptResourceFromEntityAssembler` convierten el agregado en las respuestas. Un `@RestControllerAdvice` traduce `TransactionNotFoundException` → `404`, `QrExpiredException` → `410`, `InvalidWebhookSignatureException` → `401` y `PaymentAlreadyConfirmedException` → `409`.
+
+#### 4.2.2.3. Application Layer
+
+La **Application Layer** orquesta los casos de uso del cobro. Cada servicio es transaccional, carga el agregado desde el repositorio, delega las reglas al dominio, llama a los puertos externos y publica los eventos resultantes.
+
+##### Command Handlers
+
+**PaymentCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `CreatePaymentOrderCommand` | Verifica que la sesión no tenga una transacción abierta (`existsOpenBySessionId`) y crea `PaymentTransaction` en estado `PENDING` con el monto final. | `PaymentOrderCreated` | US08 |
+| `GenerateDynamicQrCommand` | Solicita el QR a `DigitalWalletGateway`, lo adjunta al agregado y lo pasa a `QR_GENERATED`. | `DynamicQrGenerated` | US08 |
+| `ExpireQrCommand` | Marca como `EXPIRED` el QR que superó los 5 minutos sin pago. | `QrExpired` | US08 |
+| `ConfirmPaymentFromWebhookCommand` | Busca la transacción por referencia externa, descarta duplicados, verifica la firma con `WebhookSignatureVerifier` y confirma el pago. | `PaymentConfirmed` o `WebhookSignatureRejected` | TS03 |
+| `IssueReceiptCommand` | Solicita el comprobante a `ElectronicInvoicingService` y lo asocia a la transacción. | `ReceiptIssued` | US08 |
+| `IssueExitClearanceCommand` | Crea el token con `ExitClearanceTokenFactory`. | `ExitClearanceIssued` | US08 |
+| `SyncSaleWithPosCommand` | Registra la venta en el Sistema POS mediante `PosSalesPort`; si falla, se reintenta sin bloquear la salida. | `SaleSyncedWithPos` | — |
+
+##### Query Handlers
+
+**PaymentQueryService**: `handle(GetPaymentByIdQuery)`, `handle(GetPaymentBySessionIdQuery)`, `handle(GetCurrentQrQuery)`, `handle(GetReceiptQuery)` y `handle(ValidateExitClearanceQuery)`.
+
+##### Event Handlers
+
+* **ShoppingSessionReadyForCheckoutEventHandler:** reacciona al evento de Smart Shopping y ejecuta `CreatePaymentOrderCommand` y `GenerateDynamicQrCommand`.
+* **PaymentConfirmedEventHandler:** tras la confirmación ejecuta, en orden, `IssueReceiptCommand`, `IssueExitClearanceCommand` y `SyncSaleWithPosCommand`.
+* **QrExpirationScheduler:** tarea programada que busca los QR vencidos (`findExpiredQrBefore`) y ejecuta `ExpireQrCommand`.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Crear la orden de pago de una sesión | `ShoppingSessionReadyForCheckoutEventHandler`, `PaymentCommandService` |
+| Generar y renovar el QR dinámico | `PaymentCommandService`, `QrExpirationScheduler` |
+| Confirmar el pago de forma segura | `PaymentCommandService` + `WebhookSignatureVerifier` |
+| Emitir comprobante y autorización de salida | `PaymentConfirmedEventHandler` |
+| Sincronizar la venta con el POS | `PaymentCommandService` |
+| Consultar el pago, el QR y el comprobante | `PaymentQueryService` |
+
+#### 4.2.2.4. Infrastructure Layer
+
+La **Infrastructure Layer** implementa los contratos del dominio: persistencia, integración con las pasarelas y servicios externos, publicación de eventos y notificación en tiempo real.
+
+* **JpaPaymentTransactionRepository** implementa `PaymentTransactionRepository` con Spring Data JPA sobre PostgreSQL. `PaymentTransaction` se mapea a `payment_transactions`, `QrDetails` a `payment_qr_codes`, `GatewayCallback` a `gateway_callbacks`, `Receipt` a `receipts` y `ExitClearanceToken` a `exit_clearance_tokens`.
+* **HmacWebhookSignatureVerifier** implementa `WebhookSignatureVerifier` con HMAC-SHA256 y la clave secreta de cada proveedor.
+* **DigitalWalletGatewayClient** implementa `DigitalWalletGateway`: cliente HTTP que solicita el QR dinámico a Yape o Plin y traduce su respuesta a `QrDetails`.
+* **ElectronicInvoicingClient** implementa `ElectronicInvoicingService` con el proveedor de facturación electrónica.
+* **PosSyncClient** implementa `PosSalesPort` y registra la venta en el Sistema POS del supermercado.
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `PaymentConfirmed` llega a Smart Shopping y `ExitClearanceIssued` a Operations & Security.
+* **PaymentRealtimeNotifier** envía por WebSocket (STOMP), al tópico `/topic/sessions/{sessionId}`, el QR generado, su expiración y la confirmación del pago, para que el carrito y la app se actualicen sin recargar.
+
+#### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Payment & Checkout. Muestra cómo los controladores reciben las consultas del carrito y de la app, los webhooks de Yape / Plin y las validaciones de Operations & Security; cómo los servicios y *event handlers* orquestan el agregado `PaymentTransaction`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, las billeteras, el proveedor de facturación y el Sistema POS. La fuente está en [`design/chapter-4/payment-checkout-component.puml`](design/chapter-4/payment-checkout-component.puml).
+
+![C4 Component Diagram - Payment & Checkout Bounded Context](assets/chapter-4/software-architecture/payment-checkout-component.png)
+
+#### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Payment & Checkout.
+
+##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, una `PaymentTransaction` **genera** 0..* `QrDetails` y **emite** 0..1 `Receipt`. La fuente está en [`design/chapter-4/payment-checkout-class-diagram.puml`](design/chapter-4/payment-checkout-class-diagram.puml).
+
+![Payment & Checkout Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/payment-checkout-class-diagram.png)
+
+##### 4.2.2.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste el agregado `PaymentTransaction` y sus partes. `session_id` y `cart_id` referencian a otros contextos solo por identificador, sin clave foránea. El diagrama se elaboró en Redgate Data Modeler.
+
+![Payment & Checkout Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/payment-checkout-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `payment_transactions` | Agregado `PaymentTransaction` | Orden de pago con monto, moneda, billetera, estado y fechas de creación, confirmación y sincronización con el POS. |
+| `payment_qr_codes` | Value Object `QrDetails` | QR generados para la transacción; puede haber varios si alguno expiró. |
+| `gateway_callbacks` | Entity `GatewayCallback` | Webhooks recibidos con su contenido (`jsonb`), firma y resultado de la verificación. |
+| `receipts` | Entity `Receipt` | Comprobante electrónico emitido. |
+| `exit_clearance_tokens` | Value Object `ExitClearanceToken` | Autorización de salida con su vigencia y la fecha en que se usó. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `transaction_id`, `qr_id`, `callback_id`, `receipt_id` y `token_id`.
+* **Claves foráneas:** las cuatro tablas dependientes referencian `payment_transactions.transaction_id`. Una transacción tiene 0..* QR y 0..* webhooks, y como máximo un comprobante y un token de salida (`transaction_id` es único en `receipts` y `exit_clearance_tokens`).
+* **Checks:** `amount` mayor a 0; `payment_method` y `provider` solo admiten `YAPE` o `PLIN`; `payment_status` solo admite los cinco estados del enum; `receipt_type` solo admite `BOLETA` o `FACTURA`; `expires_at` de un QR no puede superar 5 minutos desde `generated_at`.
+* **Únicos e índices:** `(provider, external_reference)` es único en `gateway_callbacks` para descartar webhooks duplicados; `series_number` y `token` son únicos; un índice único parcial sobre `payment_transactions(session_id)` impide más de una transacción abierta o confirmada por sesión.
 
 ### 4.3 Database Design Diagram
 

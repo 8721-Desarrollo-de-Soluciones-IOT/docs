@@ -141,7 +141,7 @@
 ### [Capítulo IV: Solution Software Design](#capítulo-iv-solution-software-design)
 - [4.1. Strategic-Level Domain-Driven Design](#41-strategic-level-domain-driven-design)
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
-  - [4.2.1. Bounded Context: \[Nombre\]](#421-bounded-context)
+  - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
   - [4.2.2. Bounded Context: \[Nombre\]](#422-bounded-context)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
@@ -202,6 +202,7 @@ Innova Carty es una empresa emergente orientada a la innovación tecnológica en
 | **Paico Calderon, July Zelmira** <br><br> **Código:** U20211D760 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo    | Estudiante de Ingeniería de Software con interés en arquitecturas web y gestión de proyectos de software. Posee conocimientos en C# (ASP.NET Core, Entity Framework Core), Java (Spring Boot), Angular y bases de datos relacionales como MySQL, así como el manejo de sprints en Jira y gestión en MS Project.  | <img src="assets/common/team/July.png" width="120">    |
 | **Trillo Hernández, Anghel Melanie** <br><br> **Código:** u201912401 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo                          | Estudiante de la carrera de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), lo que me gusta de la carrera es desarrollar soluciones innovadoras que contribuyen a la sociedad. Me considero una persona responsable y orientada a resultados. Asimismo, me comprometo a colaborar en el equipo de forma continua. | <img src="assets/common/team/Anghel_Trillo.jpg" width="120"> |
 | **Crisanto Calle Deybi Anderson** <br><br> **Código:** U202120569 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo                          | Estudiante de la carrera de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC). Soy muy colaborativo al momento de trabajar en equipo, me gusta aprender de los demás y compartir mis conocimientos respecto a un tema. Fuera del ámbito académico, soy músico y me gusta tocar el piano, así como los videojuegos en primera persona. | <img src="assets/common/team/Deybbi.jpeg" width="120"> |
+| **Huanca Navarro, Gustavo Esau** <br><br> **Código:** U202215285 <br><br> **Carrera:** Ingeniería de Software <br><br> **Rol:** Miembro de equipo | Estudiante de Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC), orientado al desarrollo backend y al diseño de arquitecturas robustas. Posee conocimientos en Java (Spring Boot), C# (.NET), bases de datos relacionales y Domain-Driven Design. En el proyecto se encarga del diseño táctico del Smart Shopping Bounded Context (Interface, Application e Infrastructure Layers y diagrama de componentes C4) y de los User Flows y prototipos de las aplicaciones. | <img src="assets/common/team/Gustavo.jpg" width="120"> |
 
 ---
 
@@ -1080,23 +1081,174 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Smart Shopping Bounded Context
-*(Duplicar este bloque completo — 4.2.2, 4.2.3, etc. — por cada Bounded Context que definan)*
 
 #### 4.2.1.1. Domain Layer
 
 ![BC 1 Usuario y Carrito - Domain Layer.png](assets/chapter-4/software-architecture/BC%201%20Usuario%20y%20Carrito%20-%20Domain%20Layer.png)
 
 #### 4.2.1.2. Interface Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Interface Layer** del Smart Shopping Bounded Context contiene los puntos de entrada por los que el On-Cart Display, la app móvil y el Edge API interactúan con el contexto. Su responsabilidad es recibir solicitudes o eventos, validar su formato, transformarlos en *Commands* o *Queries* mediante *assemblers* y delegar la ejecución a la Application Layer. No contiene reglas de negocio ni accede a la base de datos. Se implementa con controladores REST de Spring Boot bajo el prefijo `/api/v1`.
+
+##### Controllers
+
+**1. ShoppingSessionsController**
+
+Expone las operaciones de la sesión de compra que consumen el On-Cart Display y la app móvil.
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/shopping-sessions` | Inicia una sesión para un carrito disponible (vinculación por código del carrito). | `201 ShoppingSessionResource` · `409` si el carrito ya tiene sesión activa | US04, TS02 |
+| `GET` | `/api/v1/shopping-sessions/{sessionId}` | Devuelve productos, subtotal, presupuesto, porcentaje usado y estado de validación de peso. | `200 ShoppingSessionResource` · `404` | US05, TS02 |
+| `GET` | `/api/v1/carts/{cartId}/shopping-sessions/active` | Obtiene la sesión activa de un carrito (usado al escanear el QR del carrito desde la app). | `200` · `404` | TS02 |
+| `PUT` | `/api/v1/shopping-sessions/{sessionId}/budget` | Registra o actualiza el presupuesto límite. | `200` · `400` si el monto no es mayor a 0 | US04 |
+| `POST` | `/api/v1/shopping-sessions/{sessionId}/checkout` | Valida la sesión y solicita la orden de pago al contexto Payment & Checkout. | `202 CheckoutResource` · `409` si hay una discrepancia abierta | US08 |
+| `POST` | `/api/v1/shopping-sessions/{sessionId}/cancel` | Cancela una sesión no pagada (pulsación larga del botón físico). | `204` | — |
+
+**2. CartEventsController**
+
+Recibe del Edge API los eventos de los sensores del carrito ya consolidados en el gateway de tienda, de modo que el contexto no depende de los detalles del ESP32, del lector RFID ni de la celda de carga.
+
+| Método | Endpoint | Evento de entrada | Acción |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/carts/{cartId}/events/product-detected` | `ProductDetected` (etiqueta RFID leída) | `AddItemToSessionCommand` |
+| `POST` | `/api/v1/carts/{cartId}/events/product-removed` | `ProductRemoved` (etiqueta que deja de leerse) | `RemoveItemFromSessionCommand` |
+| `POST` | `/api/v1/carts/{cartId}/events/weight-measured` | `WeightMeasured` (lectura de peso estable) | Publica `WeightMeasured` para `WeightMeasuredEventHandler` |
+
+Los eventos llevan un `eventId` generado en el edge; el controlador responde `202 Accepted` y descarta duplicados por `eventId` (idempotencia), ya que el Edge API reintenta el envío cuando pierde conectividad (TS01).
+
+##### Resources (DTOs)
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `StartShoppingSessionResource` | `cartId`, `customerId` *(opcional)*, `budgetLimit` *(opcional)* | Entrada de `POST /shopping-sessions` |
+| `SetBudgetLimitResource` | `amount` | Entrada de `PUT /budget` |
+| `ShoppingSessionResource` | `sessionId`, `cartId`, `status`, `items[]`, `subtotal`, `budgetLimit`, `remainingBudget`, `budgetUsedPercent`, `weightValidationStatus`, `startedAt` | Salida para el On-Cart Display y la app |
+| `CartItemResource` | `rfidTag`, `productName`, `unitPrice`, `quantity`, `totalPrice`, `weightVerified` | Línea de producto dentro de la sesión |
+| `CartEventResource` | `eventId`, `rfidTag`, `occurredAt` | Entrada de `product-detected` y `product-removed` |
+| `WeightMeasurementResource` | `eventId`, `measuredWeightGrams`, `occurredAt` | Entrada de `weight-measured` |
+| `CheckoutResource` | `sessionId`, `checkoutId`, `amount`, `status` | Salida de `POST /checkout` |
+
+##### Assemblers
+
+* `StartShoppingSessionCommandFromResourceAssembler`: `StartShoppingSessionResource` → `StartShoppingSessionCommand`.
+* `SetBudgetLimitCommandFromResourceAssembler`: `SetBudgetLimitResource` → `SetBudgetLimitCommand`.
+* `CartEventCommandFromResourceAssembler`: `CartEventResource` → `AddItemToSessionCommand` o `RemoveItemFromSessionCommand` según el endpoint.
+* `ShoppingSessionResourceFromEntityAssembler`: agregado `ShoppingSession` → `ShoppingSessionResource`, para no exponer objetos del dominio.
+
+##### Manejo de errores
+
+Un `@RestControllerAdvice` traduce las excepciones de dominio a respuestas HTTP homogéneas (`ProblemDetail`, RFC 9457): `SessionNotFoundException` → `404`, `ActiveSessionAlreadyExistsException` → `409`, `InvalidBudgetException` → `400`, `CheckoutBlockedByDiscrepancyException` → `409`.
 
 #### 4.2.1.3. Application Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Application Layer** orquesta los casos de uso del contexto: recibe *Commands* y *Queries*, carga el agregado desde el repositorio, delega las reglas al Domain Layer, persiste los cambios y publica los eventos de dominio resultantes. Cada servicio es transaccional (`@Transactional`) y no conoce detalles de HTTP ni de la base de datos.
+
+##### Command Handlers
+
+**ShoppingSessionCommandService** (implementa `ShoppingSessionCommandService` del dominio)
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `StartShoppingSessionCommand` | Verifica que el carrito no tenga sesión activa (`existsActiveSessionByCartId`) y crea el agregado en estado `ACTIVE`. | `ShoppingSessionStarted` | US04, TS02 |
+| `SetBudgetLimitCommand` | Valida que el monto sea mayor a 0 y actualiza `Budget`. | — | US04 |
+| `AddItemToSessionCommand` | Obtiene por RFID el producto, precio y peso nominal mediante `CatalogPricingAcl`; si la etiqueta no existe, registra el aviso de etiqueta no reconocida. Agrega el `CartItem` y recalcula el total. Si `Budget.isNearLimit()` pasa a verdadero (≥ 90 %), publica la alerta. | `ProductAddedToSession`, `BudgetThresholdReached`, `UnknownTagDetected` | US05, US06 |
+| `RemoveItemFromSessionCommand` | Retira el producto y descuenta su importe del total. | `ProductRemovedFromSession` | US07 |
+| `CancelShoppingSessionCommand` | Cambia el estado a `CANCELLED` y libera el carrito. | `ShoppingSessionCancelled` | — |
+
+**CheckoutPreparationService**
+
+* `prepareCheckout(sessionId)`: comprueba que la sesión esté `ACTIVE`, que el `WeightSnapshot` sea consistente y que el total sea mayor a 0; si no, lanza `CheckoutBlockedByDiscrepancyException` (US08, escenario 1).
+* `requestCheckout(sessionId)`: marca la sesión como `PENDING_CHECKOUT` y solicita a Payment & Checkout, mediante `PaymentCheckoutAcl`, la orden de pago con el monto final. Publica `ShoppingSessionReadyForCheckout`.
+
+##### Query Handlers
+
+**ShoppingSessionQueryService**
+
+* `handle(GetShoppingSessionByIdQuery)` → sesión con sus productos y totales.
+* `handle(GetActiveSessionByCartIdQuery)` → sesión activa del carrito.
+* `handle(GetShoppingSessionSummaryQuery)` → subtotal, presupuesto, porcentaje usado y estado de validación (vista ligera para refrescos frecuentes).
+
+##### Event Handlers
+
+**WeightMeasuredEventHandler** (US09, US10)
+
+1. Recupera la sesión activa del carrito.
+2. Calcula el peso esperado sumando el peso nominal de los productos registrados.
+3. Aplica `WeightConsistencyPolicy` con la tolerancia de cada producto.
+4. Actualiza el `WeightSnapshot` de la sesión y lo persiste en `weight_telemetry_logs`.
+5. Si la diferencia supera la tolerancia por más de 3 segundos, publica `WeightMismatchDetected` (el pago queda en pausa y el contexto Operations & Security crea la alerta para la Web Console).
+6. Cuando la lectura vuelve a ser consistente, publica `WeightConsistencyRestored`.
+
+**PaymentConfirmedEventHandler** (TS03)
+
+Reacciona al evento `PaymentConfirmed` del contexto Payment & Checkout: marca la sesión como `COMPLETED`, registra `closed_at` y publica `ShoppingSessionCompleted`, que habilita la autorización de salida (`Exit Clearance`).
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Iniciar y cerrar una sesión de compra | `ShoppingSessionCommandService`, `PaymentConfirmedEventHandler` |
+| Registrar y retirar productos detectados por RFID | `ShoppingSessionCommandService` |
+| Calcular el total y el presupuesto restante en tiempo real | `ShoppingSession` + `Budget` (dominio), orquestado por `ShoppingSessionCommandService` |
+| Alertar al llegar al 90 % del presupuesto | `ShoppingSessionCommandService` |
+| Validar la correspondencia RFID–peso | `WeightMeasuredEventHandler` + `WeightConsistencyPolicy` |
+| Preparar la sesión para el pago | `CheckoutPreparationService` |
+| Consultar el estado del carrito | `ShoppingSessionQueryService` |
 
 #### 4.2.1.4. Infrastructure Layer
-*(Pendiente — Responsable: Gustavo)*
+
+La **Infrastructure Layer** contiene las implementaciones técnicas de los contratos definidos por el dominio y la aplicación: persistencia, clientes hacia otros bounded contexts (como *Anti-Corruption Layers*), publicación de eventos y notificación en tiempo real.
+
+##### Persistence
+
+**JpaShoppingSessionRepository** implementa `ShoppingSessionRepository` con Spring Data JPA sobre PostgreSQL (ver 4.3).
+
+| Operación | Implementación |
+| :--- | :--- |
+| `save(ShoppingSession)` | Persiste el agregado y sus `CartItem` en una sola transacción. |
+| `findById(SessionId)` | Carga la sesión con sus ítems. |
+| `findActiveByCartId(CartId)` | Consulta por `cart_id` y `session_status = 'ACTIVE'`. |
+| `existsActiveSessionByCartId(CartId)` | Verificación previa al inicio de sesión. |
+
+| Entidad de dominio | Tabla |
+| :--- | :--- |
+| `ShoppingSession` (con `Budget` y `WeightSnapshot` como *embeddables*) | `shopping_sessions` |
+| `CartItem` | `session_items` |
+| Historial de lecturas de peso | `weight_telemetry_logs` |
+
+##### Anti-Corruption Layers
+
+* **CatalogPricingAcl** (implementa `CatalogPricingPort`): consulta al contexto Catalog & Pricing `getProductByRfid(rfidTag)` y traduce la respuesta a un objeto propio `ProductSnapshot` (`productId`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`). Guarda en caché los productos consultados durante la sesión para no repetir la llamada en cada lectura.
+* **PaymentCheckoutAcl** (implementa `PaymentCheckoutPort`): solicita `createCheckout(sessionId, amount)` al contexto Payment & Checkout y traduce su respuesta a `CheckoutReference`.
+
+##### Messaging y tiempo real
+
+* **DomainEventPublisher**: implementado con `ApplicationEventPublisher` de Spring para los eventos internos del MVP (`ShoppingSessionStarted`, `ProductAddedToSession`, `ProductRemovedFromSession`, `BudgetThresholdReached`, `WeightMismatchDetected`, `ShoppingSessionReadyForCheckout`, `ShoppingSessionCompleted`). Su interfaz permite cambiarlo por un *message broker* cuando el despliegue lo requiera, sin tocar el dominio.
+* **SessionRealtimeNotifier**: escucha los eventos anteriores y los envía por WebSocket (STOMP) al tópico `/topic/sessions/{sessionId}`, al que se suscriben el On-Cart Display y la app móvil para actualizar el total y las alertas sin recargar.
+
+##### Relaciones entre componentes
+
+* `JpaShoppingSessionRepository` implementa la interfaz `ShoppingSessionRepository` del dominio.
+* `CatalogPricingAcl` y `PaymentCheckoutAcl` aíslan el modelo de los otros contextos; el dominio solo conoce sus puertos.
+* Ningún controller accede directamente a estas implementaciones: la interacción pasa siempre por la Application Layer.
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
-*(Pendiente — Responsable: Gustavo)*
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes del Smart Shopping Bounded Context. Muestra cómo los controladores de la Interface Layer reciben solicitudes del On-Cart Display, de la app móvil y del Edge API; cómo los servicios y *event handlers* de la Application Layer orquestan el agregado `ShoppingSession` y la `WeightConsistencyPolicy`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, con los contextos Catalog & Pricing y Payment & Checkout, y con los clientes en tiempo real. El diagrama se elaboró con C4-PlantUML; la fuente está en [`design/chapter-4/smart-shopping-component.puml`](design/chapter-4/smart-shopping-component.puml).
+
+![C4 Component Diagram - Smart Shopping Bounded Context](assets/chapter-4/software-architecture/smart-shopping-component.png)
+
+**Interacciones principales**
+
+1. El On-Cart Display y la app móvil llaman a `ShoppingSessionsController` por JSON/HTTPS para iniciar la sesión, fijar el presupuesto, consultar el carrito y pedir el checkout.
+2. El Edge API envía a `CartEventsController` los eventos de RFID y de peso consolidados en el gateway de tienda.
+3. Los *assemblers* convierten las solicitudes en *Commands* y *Queries*.
+4. `ShoppingSessionCommandService` modifica el agregado y consulta los datos del producto a través de `CatalogPricingAcl`.
+5. `WeightMeasuredEventHandler` aplica `WeightConsistencyPolicy` y, ante una discrepancia, publica `WeightMismatchDetected`, que llega al contexto Operations & Security y a la Web Console.
+6. `CheckoutPreparationService` solicita la orden de pago mediante `PaymentCheckoutAcl`; al confirmarse, `PaymentConfirmedEventHandler` cierra la sesión.
+7. `SessionRealtimeNotifier` envía cada cambio al carrito y a la app por WebSocket.
+8. `JpaShoppingSessionRepository` persiste el agregado en PostgreSQL.
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -1607,32 +1759,326 @@ Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expues
 
 ## 5.3. Landing Page UI Design
 
+El Landing Page es el primer punto de contacto con Innova Carty y atiende a dos audiencias con intenciones distintas: el **Comprador Moderno**, que quiere entender cómo el carrito le ahorra tiempo y descargar la app, y el **Administrador de Tienda**, que evalúa si llevar la solución a su cadena. Por eso la página se organiza como un recorrido vertical de lectura rápida, con un *call-to-action* por segmento desde el primer pantallazo: **"Get the app"** redirige a las tiendas de aplicaciones de la app móvil y **"I run a supermarket"** lleva al formulario de solicitud de demo (US02).
+
+Las decisiones de diseño traducen lo definido en los capítulos anteriores:
+
+* **Style Guidelines (5.1):** Azul Carty Institucional `#004F8C` para navegación y CTAs primarios, Verde Smart Retail `#009E60` para las acciones de conversión ("Request a demo"), *Inter* en títulos y cifras, *Roboto* en cuerpo, cuadrícula de 8 px y botones de 48 px de alto como mínimo.
+* **Information Architecture (5.2):** organización jerárquica (hero → métricas → cómo funciona → beneficios → producto → contacto), organización secuencial en "How it works" (cuatro pasos numerados) y categorización por audiencia en "Benefits" (compradores / operadores). La barra de navegación usa etiquetas de una o dos palabras ("How it works", "Benefits", "For supermarkets", "Product", "FAQ").
+* **Diseño inclusivo:** contraste mínimo AA en todo el texto, iconos siempre acompañados de texto, orden de lectura lineal compatible con lectores de pantalla y selector de idioma EN/ES visible en el encabezado (el idioma por defecto de la interfaz es inglés, según el enunciado).
+* **SEO (5.2.3):** la estructura de encabezados (un único H1 en el hero, H2 por sección) coincide con las palabras clave definidas en los Meta Tags del sitio.
+
+**Herramientas utilizadas.** Siguiendo el enunciado, los wireframes, mock-ups y prototipos se elaboraron en **Figma**, y los wireflows y user flows en **FigJam**. Todas las pantallas aplican el Design System de 5.1 (Material Design 3, *tokens* de color, tipografía *Inter*/*Roboto*, iconos *Material Symbols Rounded*, cuadrícula de 8 px) y se organizan por producto: Landing Page, Web Console, Mobile App y On-Cart Display.
+
+| Artefacto | Herramienta | Enlace |
+| :--- | :--- | :--- |
+| Wireframes (5.3.1, 5.4.1) | Figma, página *Wireframes* | [Innova Carty · Cap. 5 UI/UX Design](https://www.figma.com/design/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-) |
+| Mock-ups (5.3.2, 5.4.3) | Figma, página *Mock-ups & Prototypes* | [Innova Carty · Cap. 5 UI/UX Design](https://www.figma.com/design/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-) |
+| Prototipos (5.5) | Figma, modo *Prototype* con 5 flujos de inicio | [Ver prototipo](https://www.figma.com/proto/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-?node-id=3-4861&starting-point-node-id=3%3A4861) |
+| Wireflows y User Flows (5.4.2, 5.4.4) | FigJam | [Innova Carty · Cap. 5 Wireflows & User Flows](https://www.figma.com/board/tqjtVpruUDlH0AL9PVZgYA/Innova-Carty-%C2%B7-Cap.-5-Wireflows---User-Flows--Copy-) |
+
+Como apoyo, la carpeta [`design/chapter-5`](design/chapter-5/README.md) conserva la versión HTML/CSS de las mismas pantallas, que se usó para grabar los videos del prototipo (5.5).
+
 ### 5.3.1. Landing Page Wireframe
-*(Pendiente — Responsable: Todos)*
+
+Los wireframes muestran la estructura y la jerarquía del contenido sin color ni imágenes finales. En la versión **Desktop Web Browser** (1440 px) el contenido se distribuye en un contenedor de 1200 px con márgenes laterales de 120 px: el hero divide mensaje y visual en dos columnas, los pasos de "How it works" se leen en una fila de cuatro tarjetas y el formulario de demo se acompaña de las preguntas frecuentes para resolver objeciones antes del envío. En **Mobile Web Browser** (390 px) todo pasa a una sola columna, la navegación se colapsa en un menú hamburguesa, los CTAs ocupan el ancho completo para el uso con el pulgar y los beneficios se separan en pestañas por audiencia para no duplicar el largo de la página.
+
+<table>
+  <tr><th>Desktop Web Browser</th><th>Mobile Web Browser</th></tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/lp-desktop.png" alt="Wireframe del Landing Page en desktop" width="520"></td>
+    <td align="center" valign="top"><img src="assets/chapter-5/wireframes/lp-mobile.png" alt="Wireframe del Landing Page en mobile" width="200"></td>
+  </tr>
+</table>
 
 ### 5.3.2. Landing Page Mock-up
-*(Pendiente — Responsable: Todos)*
+
+El mock-up aplica el Design System completo. El hero usa un degradado del azul institucional al verde de marca para reforzar el binomio "confianza + agilidad" del imagotipo; las cifras de impacto (−30 % de espera, < 60 s del QR a la salida, −50 % de salidas no verificadas) provienen de los objetivos del Lean UX Canvas. Cada sección termina en una acción concreta: descargar la app, ver la consola o solicitar la demo. El formulario de contacto valida RUC, correo corporativo y número de carritos antes de enviar, tal como describen los criterios de aceptación de US02, y el pie de página contiene los enlaces a Términos y Condiciones y a la Política de Privacidad (US03).
+
+<table>
+  <tr><th>Desktop Web Browser</th><th>Mobile Web Browser</th></tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/lp-desktop.png" alt="Mock-up del Landing Page en desktop" width="520"></td>
+    <td align="center" valign="top"><img src="assets/chapter-5/mockups/lp-mobile.png" alt="Mock-up del Landing Page en mobile" width="200"></td>
+  </tr>
+</table>
 
 ---
 
 ## 5.4. Applications UX/UI Design
 
+El alcance de diseño de esta entrega cubre los tres productos digitales con los que interactúan los segmentos objetivo:
+
+| Producto | Segmento / User Persona | Plataforma y tamaño de diseño | Historias que soporta |
+| :--- | :--- | :--- | :--- |
+| **On-Cart Display** | Comprador Moderno (Juan López) | Pantalla táctil de 10" embebida en el Smart Cart, 1024 × 600 px horizontal | US04, US05, US06, US07, US08, US09, US10 |
+| **Innova Carty** (app móvil) | Comprador Moderno (Juan López) | Android / iOS, 390 × 844 px | US04, US05, US08 |
+| **Innova Carty Console** (aplicación web) | Administrador de Tienda (Lucía) | Desktop Web Browser, 1440 × 900 px, responsive desde 768 px; Angular Material | US11, US12, US13 |
+
+El User Persona del Segmento 1 es **Juan López** (2.3.1). Para el Segmento 2 se usa como persona de trabajo a **Lucía Medina**, supervisora de piso, construida a partir de las entrevistas a Erick Shapiama y Camila (2.2.2) mientras se completa su ficha en 2.3.1.
+
+La app operativa **Innova Carty Ops** definida en los ASO elements (5.2.3) se deja para una entrega posterior: en este sprint el supervisor de piso usa la Consola, que es responsive y funciona en tablet. Los datos de ejemplo (productos, montos, carrito `CART-0427`, tienda "Surco Store #01") son los mismos en todas las pantallas para que los flujos se puedan seguir de punta a punta.
+
 ### 5.4.1. Applications Wireframes
-*(Pendiente — Responsable: Todos)*
+
+Los wireframes fijan la ubicación de la información y de las acciones antes de aplicar color. Las decisiones comunes a los tres productos son:
+
+* **Jerarquía visual:** lo que el usuario necesita para decidir va primero y más grande. En el carrito y en la app es el **Real-Time Total** y la barra de presupuesto; en la Consola son los KPIs y las alertas abiertas.
+* **Organización secuencial** para tareas de varios pasos (vincular carrito → presupuesto → comprar → pagar) y **matricial** para la supervisión de la flota (tabla de carritos con estado, zona, último evento y batería).
+* **Una acción principal por pantalla**, ubicada siempre en el mismo lugar: columna derecha en el On-Cart Display, parte inferior en la app móvil y esquina superior derecha o diálogo en la Consola.
+* **Estados explícitos:** cada situación del dominio (discrepancia, etiqueta no reconocida, umbral de presupuesto, carrito bloqueado, pago confirmado) tiene su propia pantalla o estado, lo que permite usarlas como pasos en los wireflows.
+* **Diseño inclusivo:** objetivos táctiles de 48 px como mínimo (72 px en el botón de inicio del carrito, donde el usuario suele tener las manos ocupadas), iconos siempre acompañados de texto y estados que no dependen solo del color.
+
+#### On-Cart Display
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-welcome.png" width="300"><br><sub>Welcome</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-budget.png" width="300"><br><sub>Set budget</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-session.png" width="300"><br><sub>Shopping session</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-removed.png" width="300"><br><sub>Item removed</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-unknown.png" width="300"><br><sub>Tag not recognized</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-threshold.png" width="300"><br><sub>Budget threshold alert</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-discrepancy.png" width="300"><br><sub>Weight discrepancy (locked)</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-checkout.png" width="300"><br><sub>Pay with QR</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/cd-paid.png" width="300"><br><sub>Payment confirmed</sub></td>
+  </tr>
+</table>
+
+La pantalla del carrito se divide en dos zonas fijas: a la izquierda la lista de productos (el último agregado arriba y resaltado) y a la derecha el total, el presupuesto y las acciones. Los avisos (etiqueta no leída, 90 % del presupuesto) aparecen como banner sobre la lista para no tapar el total; solo la discrepancia de peso usa un diálogo modal, porque bloquea el pago.
+
+#### Mobile App
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-login.png" width="170"><br><sub>Sign in</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-home.png" width="170"><br><sub>Home</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-pair.png" width="170"><br><sub>Link a cart</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-budget.png" width="170"><br><sub>Set budget</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-cart.png" width="170"><br><sub>Active cart</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-pay.png" width="170"><br><sub>Payment</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-receipt.png" width="170"><br><sub>Receipt and exit pass</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/ma-history.png" width="170"><br><sub>Receipts history</sub></td>
+  </tr>
+</table>
+
+La app usa una barra de navegación inferior con cuatro destinos (Home, Cart, Receipts, Profile). La pantalla de inicio prioriza "Link a cart", que es la tarea con la que empieza cada visita; el historial de comprobantes incluye búsqueda y filtros por fecha, tienda y orden.
+
+#### Web Console
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-login.png" width="300"><br><sub>Sign in</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-dashboard.png" width="300"><br><sub>Dashboard</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-carts.png" width="300"><br><sub>Carts</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-cart-detail.png" width="300"><br><sub>Cart detail (discrepancy)</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-unlock.png" width="300"><br><sub>Verify and unlock</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-alerts.png" width="300"><br><sub>Alerts</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-catalog.png" width="300"><br><sub>Catalog</sub></td>
+    <td align="center"><img src="assets/chapter-5/wireframes/wa-catalog-edit.png" width="300"><br><sub>Edit tolerance</sub></td>
+    <td></td>
+  </tr>
+</table>
+
+La Consola sigue el patrón *dashboard layout* de 5.1.2: menú lateral con seis módulos, barra superior con búsqueda global (carritos, órdenes o SKUs) y el contenido del módulo al centro. Las acciones críticas (desbloquear un carrito, cambiar una tolerancia) se confirman en un diálogo que pide los datos necesarios para la auditoría.
 
 ### 5.4.2. Applications Wireflow Diagrams
-*(Pendiente — Responsable: Todos)*
+
+Se elaboró un wireflow por cada *user goal* de los User Personas. Cada paso es un wireframe y cada flecha indica la interacción que provoca el cambio de pantalla; cuando una interacción solo cambia el estado de la misma vista (por ejemplo, un producto que se agrega a la lista), se agrega un nuevo paso con el wireframe del estado resultante.
+
+| # | User goal | User Persona | Producto(s) |
+| :---: | :--- | :--- | :--- |
+| 1 | Iniciar una sesión de compra con presupuesto | Juan (Segmento 1) | On-Cart Display, Mobile App |
+| 2 | Agregar productos y controlar el total | Juan (Segmento 1) | On-Cart Display |
+| 3 | Pagar con QR y salir de la tienda | Juan (Segmento 1) | On-Cart Display, Mobile App |
+| 4 | Resolver una discrepancia de peso | Lucía (Segmento 2) | Web Console |
+| 5 | Actualizar precio, peso y tolerancia de un producto | Lucía (Segmento 2) | Web Console |
+
+#### User goal 1: Start a shopping session with a budget
+
+*Como comprador, quiero tomar un carrito, vincularlo y fijar un límite de gasto para empezar a comprar sabiendo cuánto puedo gastar.* El flujo principal ocurre en la pantalla del carrito (tocar "Tap to start", ingresar el monto, "Start shopping"). La segunda fila muestra la ruta equivalente desde la app: Juan escanea el código QR que muestra el carrito, define el presupuesto en su teléfono y ve la misma sesión sincronizada.
+
+![Wireflow User goal 1](assets/chapter-5/wireflows/g1-start-session.png)
+
+#### User goal 2: Add products and keep the total under control
+
+*Como comprador, quiero que cada producto que pongo o saco del carrito actualice mi total para no pasarme de mi presupuesto.* La primera fila es el camino esperado: al llegar al 90 % aparece la alerta ámbar y Juan decide retirar un producto. Las dos filas siguientes muestran los dos estados de excepción que se generan desde la misma pantalla: peso sin lectura RFID (pago en pausa) y etiqueta que no está en el catálogo.
+
+![Wireflow User goal 2](assets/chapter-5/wireflows/g2-track-total.png)
+
+#### User goal 3: Pay with QR and leave the store
+
+*Como comprador, quiero pagar desde el carrito con Yape o Plin y salir sin pasar por caja.* Desde el carrito se genera el QR dinámico y, al confirmarse el pago, se activa la autorización de salida; al terminar, el carrito vuelve a la pantalla de bienvenida para el siguiente cliente. La segunda fila muestra el pago iniciado desde la app, que termina en el comprobante y el pase de salida.
+
+![Wireflow User goal 3](assets/chapter-5/wireflows/g3-pay-and-exit.png)
+
+#### User goal 4: Resolve a weight discrepancy from the Console
+
+*Como supervisora de piso, quiero ver qué carrito tiene una discrepancia de peso y desbloquearlo después de revisarlo, para que el cliente siga comprando sin que salga mercancía sin pagar.* Lucía entra a la alerta desde el dashboard o desde el módulo de alertas, compara el peso esperado con el medido y desbloquea el carrito registrando la resolución y su PIN.
+
+![Wireflow User goal 4](assets/chapter-5/wireflows/g4-resolve-discrepancy.png)
+
+#### User goal 5: Update a product's price, weight and tolerance
+
+*Como administradora de tienda, quiero ajustar el peso nominal y la tolerancia de un producto para que los carritos dejen de generar falsas discrepancias.* Desde el catálogo busca el SKU, edita sus valores en un diálogo que muestra el rango permitido resultante y guarda; la regla se sincroniza con el gateway edge y con los carritos.
+
+![Wireflow User goal 5](assets/chapter-5/wireflows/g5-update-tolerance.png)
 
 ### 5.4.3. Applications Mock-ups
-*(Pendiente — Responsable: Todos)*
+
+Los mock-ups aplican el Design System de Innova Carty sobre los wireframes. Los criterios principales son:
+
+* **Color con significado de dominio:** verde para lo validado y las acciones de avance (producto verificado, "Proceed to payment", autorización de salida), ámbar para advertencias recuperables (90 % del presupuesto, etiqueta no leída, discrepancia en la Consola) y rojo solo para bloqueos (pago en pausa, geofence, carrito bloqueado). Los mismos colores se usan en la tira LED del carrito (5.1.2), de modo que el estado se entiende igual en el dispositivo, en la app y en la Consola.
+* **Cifras en *Inter* Bold:** el total y los montos son el elemento más grande de cada vista (44 px en el carrito, 36 px en la app), con separación clara entre precio unitario y subtotal.
+* **Material Design 3 / Angular Material:** botones con forma de píldora, tarjetas con elevación de 1 a 4 dp, *chips* de estado, tablas con paginación y diálogos para confirmar acciones críticas.
+* **Retroalimentación inmediata:** cada lectura RFID muestra un *toast* con el producto y el monto sumado o restado, y el último producto se resalta en la lista.
+* **Consistencia entre productos:** el carrito `CART-0427` de Juan es el mismo que Lucía ve en la Consola con la discrepancia de +412 g, y el pedido `ORD-20261003-0815` es el que aparece en el comprobante de la app.
+
+#### On-Cart Display
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-welcome.png" width="300"><br><sub>Welcome</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-budget.png" width="300"><br><sub>Set budget</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-session.png" width="300"><br><sub>Shopping session</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-removed.png" width="300"><br><sub>Item removed</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-unknown.png" width="300"><br><sub>Tag not recognized</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-threshold.png" width="300"><br><sub>Budget threshold alert</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-discrepancy.png" width="300"><br><sub>Weight discrepancy (locked)</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-checkout.png" width="300"><br><sub>Pay with QR</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/cd-paid.png" width="300"><br><sub>Payment confirmed</sub></td>
+  </tr>
+</table>
+
+#### Mobile App
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-login.png" width="170"><br><sub>Sign in</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-home.png" width="170"><br><sub>Home</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-pair.png" width="170"><br><sub>Link a cart</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-budget.png" width="170"><br><sub>Set budget</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-cart.png" width="170"><br><sub>Active cart</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-pay.png" width="170"><br><sub>Payment</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-receipt.png" width="170"><br><sub>Receipt and exit pass</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/ma-history.png" width="170"><br><sub>Receipts history</sub></td>
+  </tr>
+</table>
+
+#### Web Console
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-login.png" width="300"><br><sub>Sign in</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-dashboard.png" width="300"><br><sub>Dashboard</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-carts.png" width="300"><br><sub>Carts</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-cart-detail.png" width="300"><br><sub>Cart detail (discrepancy)</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-unlock.png" width="300"><br><sub>Verify and unlock</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-alerts.png" width="300"><br><sub>Alerts</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-catalog.png" width="300"><br><sub>Catalog</sub></td>
+    <td align="center"><img src="assets/chapter-5/mockups/wa-catalog-edit.png" width="300"><br><sub>Edit tolerance</sub></td>
+    <td></td>
+  </tr>
+</table>
 
 ### 5.4.4. Applications User Flow Diagrams
-*(Pendiente — Responsable: Gustavo)*
+
+Cada User Flow parte del wireflow del mismo *user goal* (5.4.2) y lo completa con los mock-ups de las pantallas, las decisiones del sistema o del usuario (rombos ámbar), el inicio y el fin del flujo (óvalos verdes) y las respuestas del sistema que no tienen una pantalla propia (recuadros rojos). Se elaboraron en [FigJam](https://www.figma.com/board/tqjtVpruUDlH0AL9PVZgYA/Innova-Carty-%C2%B7-Cap.-5-Wireflows---User-Flows--Copy-) con la siguiente convención de líneas:
+
+* **Línea azul continua:** ruta esperada (*happy path*) y rutas alternativas válidas que también cumplen el objetivo (por ejemplo, hacer lo mismo desde la app móvil).
+* **Línea roja punteada:** rutas no esperadas (*unhappy paths*) y cómo el usuario vuelve al flujo.
+
+#### User goal 1: Start a shopping session with a budget
+
+**User goal:** Juan toma un carrito, lo vincula y fija un límite de gasto.
+
+* **Happy path:** toca "Tap to start" en el carrito, ingresa S/ 150.00 y toca "Start shopping"; la sesión queda activa con la barra de presupuesto en 0 %.
+* **Ruta alternativa:** si usa la app, escanea el QR de la pantalla de bienvenida, la app detecta `CART-0427` y el presupuesto definido en el teléfono se sincroniza con el carrito.
+* **Unhappy paths:** si el monto es cero, negativo o no numérico, el campo se marca en rojo con el mensaje "Enter an amount greater than S/ 0" y no se avanza (US04, escenario 2). Si la cámara no detecta el código, Juan ingresa manualmente los 4 dígitos del carrito.
+
+![User Flow User goal 1](assets/chapter-5/user-flows/g1-start-session.png)
+
+#### User goal 2: Add products and keep the total under control
+
+**User goal:** cada producto que Juan pone o saca actualiza el total para no superar su presupuesto.
+
+* **Happy path:** el lector RFID reconoce la etiqueta, la celda de carga confirma el peso dentro de la tolerancia y el producto se suma al total. Mientras el total esté por debajo del 90 %, Juan sigue comprando hasta estar lista para pagar.
+* **Ruta alternativa:** al llegar al 90 % aparece la alerta ámbar (US05, escenario 2); Juan retira un producto y el total se descuenta automáticamente (US07), o edita su presupuesto.
+* **Unhappy paths:** si la etiqueta no existe en el catálogo, el carrito avisa con sonido y banner y pide colocar el producto otra vez (US06, escenario 2). Si se detecta peso sin lectura RFID por más de 3 segundos, el pago se pausa (US09, escenario 2) y se notifica a un supervisor; si Juan no logra corregirlo, la resolución pasa a la Consola (User goal 4).
+
+![User Flow User goal 2](assets/chapter-5/user-flows/g2-track-total.png)
+
+#### User goal 3: Pay with QR and leave the store
+
+**User goal:** Juan paga desde el carrito con su billetera digital y sale sin pasar por caja.
+
+* **Happy path:** sin discrepancias abiertas, toca "Proceed to payment", escanea el QR dinámico con Yape, el webhook de la pasarela confirma el pago (TS03), el carrito muestra el comprobante con la autorización de salida activa por 15 minutos y Juan cruza la salida.
+* **Ruta alternativa:** paga desde la app eligiendo Yape o Plin; el comprobante y el pase de salida quedan guardados en "Receipts".
+* **Unhappy paths:** si hay una discrepancia activa no se puede generar el QR (US08, escenario 1) y se vuelve al User goal 2. Si el QR vence antes de la confirmación, se genera uno nuevo. Si el carrito cruza el perímetro sin autorización de salida, se bloquean las ruedas, suena la alarma y se envía la alerta a la Consola (US12, escenario 1).
+
+![User Flow User goal 3](assets/chapter-5/user-flows/g3-pay-and-exit.png)
+
+#### User goal 4: Resolve a weight discrepancy from the Console
+
+**User goal:** Lucía identifica el carrito con discrepancia y lo desbloquea después de revisarlo.
+
+* **Happy path:** inicia sesión, abre la alerta desde el dashboard, revisa en el detalle la diferencia entre peso esperado (9,314 g) y medido (9,726 g), verifica el carrito en persona y lo desbloquea indicando la resolución y su PIN (US11, escenario 2). El carrito vuelve a "In session".
+* **Ruta alternativa:** llega al mismo detalle desde el módulo "Alerts", que agrupa también los eventos de geofence y de dispositivos.
+* **Unhappy paths:** credenciales incorrectas (cuenta bloqueada tras 5 intentos), PIN incorrecto (se limpia el campo y se reintenta) o producto no verificable en persona, en cuyo caso se marca la compra con un *audit flag* y el carrito sigue bloqueado.
+
+![User Flow User goal 4](assets/chapter-5/user-flows/g4-resolve-discrepancy.png)
+
+#### User goal 5: Update a product's price, weight and tolerance
+
+**User goal:** Lucía ajusta la tolerancia de un SKU que genera falsas discrepancias.
+
+* **Happy path:** desde el dashboard entra a "Catalog", busca el SKU, edita peso nominal y tolerancia (el diálogo muestra el rango permitido resultante) y guarda; la regla se propaga a la base de datos central y a los servicios edge (US13).
+* **Unhappy paths:** la búsqueda no encuentra el producto (se ofrece limpiar filtros o agregarlo), los valores no son válidos (tolerancia fuera de 0–15 % o peso no positivo) o la sincronización con algunos carritos falla; en ese caso el cambio queda guardado en la nube, se muestra cuántos carritos están pendientes y la sincronización se reintenta automáticamente.
+
+![User Flow User goal 5](assets/chapter-5/user-flows/g5-update-tolerance.png)
 
 ---
 
 ## 5.5. Applications Prototyping
-*(Pendiente — Responsable: Gustavo)*
+
+El prototipo de Innova Carty es navegable y simula la interacción de los cuatro productos sobre Desktop y Mobile Web Browser: Landing Page (desktop y mobile), Web Console, Mobile App y On-Cart Display. Se construyó en **Figma** sobre los mismos mock-ups de 5.3.2 y 5.4.3, con 124 interacciones (*On click → Navigate to*, *Scroll to* en el Landing Page y *After delay* para los eventos de la pasarela de pago) y cinco puntos de inicio, uno por producto: **[ver prototipo en Figma](https://www.figma.com/proto/tzhuT8VO8nCO23a1yov8Bo/Innova-Carty-%C2%B7-Cap.-5-UI-UX-Design--Copy-?node-id=3-4861&starting-point-node-id=3%3A4861)**.
+
+Los criterios de interacción fueron:
+
+* **Rutas de los User Flows:** cada enlace del prototipo corresponde a una flecha de los diagramas de 5.4.4, incluidas las rutas alternativas y las principales rutas no esperadas.
+* **Sistema de navegación (5.2.5):** barra superior con anclas en el Landing Page, menú lateral persistente en la Consola, barra inferior de cuatro destinos en la app móvil y navegación lineal sin menú en el carrito, donde cada pantalla tiene una sola acción principal.
+* **Eventos físicos simulados:** el carrito reacciona a sensores (RFID, celda de carga, geofence) y a la confirmación de la pasarela de pago. Como esos eventos no los provoca un clic del usuario, en Figma la confirmación del pago avanza sola con una interacción *After delay*, y la versión HTML del prototipo ([`design/chapter-5/app/index.html`](design/chapter-5/app/index.html)), usada para grabar los videos, incluye un panel **"Simulate an event"** que dispara cada evento (leer un producto, retirarlo, etiqueta dañada, peso sin etiqueta, 90 % del presupuesto, webhook de pago).
+* **Tipos de interacción:** *tap* para acciones principales, diálogos modales solo para acciones que bloquean o necesitan auditoría, *toasts* para confirmar cambios sin interrumpir y banners para avisos que el usuario puede resolver a su ritmo.
+* **Fidelidad:** un botón alterna entre la vista de mock-up y la de wireframe sobre la misma pantalla.
+
+Para cada aplicación se grabó un video que recorre sus flujos principales con una narración en pantalla que explica cada paso:
+
+| Aplicación | Flujos que recorre | Captura del video | Video |
+| :--- | :--- | :---: | :--- |
+| **Landing Page** | Propuesta de valor, cómo funciona, beneficios por segmento, solicitud de demo en desktop y en mobile | <img src="assets/chapter-5/prototyping/landing-page.png" width="260"> | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQA7U_OJ5SBPQ5swi1vDQS_rAZ5GIOYru7w3N4Qta_5sfk4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=EOAKlC |
+| **Web Console** | User goals 4 y 5: alerta, detalle de discrepancia, desbloqueo, alertas y edición de tolerancia | <img src="assets/chapter-5/prototyping/web-console.png" width="260"> | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQC1PPls7hf9RaIzjBAUK6h5Abo-enDu9N9q9RNkc2-brIQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=MM9h0y |
+| **Mobile App** | User goals 1 y 3 desde el teléfono: vincular carrito, presupuesto, carrito en vivo, pago y comprobantes | <img src="assets/chapter-5/prototyping/mobile-app.png" width="260"> | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQDS7gSNSSz7Qb5s11kpWA78ASUqg6hyA6b6imrhRnS1dOo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=IFIRAb |
+| **On-Cart Display** | User goals 1, 2 y 3 en el carrito: inicio, presupuesto, productos, excepciones, QR y salida | <img src="assets/chapter-5/prototyping/on-cart-display.png" width="260"> | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215285_upc_edu_pe/IQD647e27AZ_RrTN3SF9jpwfATyx50FqHGl7CUAYbktz4Vo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=aHdy95 |
 
 ---
 
@@ -1830,16 +2276,61 @@ Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.
 *(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
 
 #### 6.2.1.1. Sprint Planning 1
-*(Pendiente — Responsable: Gustavo)*
+
+El Sprint 1 es el primer sprint de implementación de Innova Carty. Su objetivo es poner en línea los dos productos que el cliente ve primero: el Landing Page, que presenta la propuesta de valor y capta supermercados interesados en un piloto, y la primera versión de la consola web de operaciones, donde el administrador de tienda supervisa la flota de carritos y calibra el catálogo. Como los servicios en Spring Boot se implementan en el Sprint 2, la consola consume en este sprint una API fake (json-server) que expone los mismos recursos y el mismo prefijo `/api/v1` definidos en el capítulo IV, de modo que el cambio al backend real no requiera modificar las vistas.
+
+| Sprint # | Sprint 1 |
+| :--- | :--- |
+| **Sprint Planning Background** | |
+| Date | 2026-09-28 |
+| Time | 08:00 PM |
+| Location | Reunión virtual (Discord) |
+| Prepared By | Huanca Navarro, Gustavo Esau |
+| Attendees (to planning meeting) | Huanca Navarro, Gustavo Esau / Díaz Fiestas, Jorge Luis / Berrocal Ramirez, Omar Christian / Pardo Chumpitazi, Kevin Patrick / Paico Calderon, July Zelmira / Trillo Hernández, Anghel Melanie / Crisanto Calle, Deybbi Anderson |
+| Sprint 0 Review Summary | No aplica: es el primer sprint de implementación. En las entregas previas el equipo validó el problema y los segmentos (capítulos I y II), definió los requisitos y el Product Backlog (capítulo III), diseñó la arquitectura y el dominio (capítulo IV) y elaboró la guía de estilo, wireframes, mock-ups y prototipos (capítulo V), que sirven de base para este sprint. |
+| Sprint 0 Retrospective Summary | No aplica: es el primer sprint. Como acuerdo de inicio, el equipo adopta GitFlow con ramas `feature/*` por integrante, Conventional Commits y revisión de los cambios antes de integrarlos a `develop`. |
+| **Sprint Goal & User Stories** | |
+| Sprint 1 Goal | *Our focus is on* publicar el Landing Page de Innova Carty y la primera versión de la consola web de operaciones. *We believe it delivers* una presentación clara de la propuesta de valor para compradores y supermercados, un canal para solicitar pilotos y una vista en tiempo real del estado de los carritos con gestión de pesos y tolerancias del catálogo *to* compradores modernos y administradores de operaciones de supermercados. *This will be confirmed when* el Landing Page y la consola están desplegados y accesibles por URL pública, un visitante puede enviar una solicitud de demo, y un administrador puede iniciar sesión, revisar y desbloquear un carrito con discrepancia de peso y editar la tolerancia de un producto. |
+| Sprint 1 Velocity | 20 Story Points |
+| Sum of Story Points | 20 Story Points (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5) |
+
+Las historias se tomaron en el orden del Product Backlog (3.3). Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazan a la API fake. La velocidad se fijó en 20 Story Points porque es el primer sprint del equipo y una parte del tiempo se destina a configurar los repositorios, el flujo de GitFlow y los despliegues en Vercel.
 
 #### 6.2.1.2. Aspect Leaders and Collaborators
-*(Pendiente — Responsable: Gustavo)*
+
+Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene un líder (L), responsable de coordinar las tareas, integrar los cambios en `develop` y validar el resultado con el equipo, y colaboradores (C), que implementan tareas del aspecto en sus propias ramas `feature/*`. La matriz de liderazgo y colaboración (LACX) queda así:
+
+| Team Member (Last Name, First Name) | GitHub Username | Landing Page | Frontend Web App | API fake y documentación de servicios | Testing | Despliegue | Gestión del Sprint |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Huanca Navarro, Gustavo Esau | petitavo | L | L | C | C | C | C |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | C | C | L | C | C | C |
+| Berrocal Ramirez, Omar Christian | OmBRz | C | C | C | C | C | C |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | C | C | C | C | L | C |
+| Paico Calderon, July Zelmira | u20211d760 | C | C | C | C | C | L |
+| Trillo Hernández, Anghel Melanie | AM27TH | C | C | C | C | C | C |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | C | C | C | L | C | C |
+
+* **Landing Page:** secciones, formulario de demo, páginas legales, SEO e idioma ES/EN (US01, US02, US03).
+* **Frontend Web App:** consola de operaciones en Angular y Angular Material: dashboard, carritos, alertas, desbloqueo y catálogo (US11, US13).
+* **API fake y documentación de servicios:** recursos de json-server bajo `/api/v1` y su documentación para 6.2.1.7.
+* **Testing:** pruebas unitarias de la Web App y pruebas de aceptación de las historias del sprint (6.2.1.5).
+* **Despliegue:** configuración de Vercel para los dos productos y evidencia de 6.2.1.8.
+* **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
 *(Pendiente — Responsable: July)*
 
 #### 6.2.1.4. Development Evidence for Sprint Review
-*(Pendiente — Responsable: Gustavo)*
+
+En el Sprint 1 el equipo implementó los dos productos del objetivo del sprint, cada uno en su propio repositorio:
+
+* **Landing Page** (US01, US02, US03): sitio estático en HTML5, CSS3 y JavaScript con Material Design. Tiene las secciones de propuesta de valor, cómo funciona, beneficios por segmento, hardware del carrito, app para compradores, formulario de solicitud de demo con validación, preguntas frecuentes y equipo. Incluye además las páginas de Términos y Condiciones y de Política de Privacidad, los meta tags SEO, Open Graph y Twitter Cards definidos en 5.2.3, y el cambio de idioma ES/EN.
+* **Frontend Web Application** (US11, US13): consola de operaciones en Angular 22, TypeScript y Angular Material, organizada por bounded context (`iam`, `monitoring`, `catalog` y `shared`). Tiene inicio de sesión del personal, un dashboard que se refresca cada 5 segundos, la lista de carritos con filtros, el detalle del carrito con la discrepancia de peso y el desbloqueo con PIN de supervisor, las alertas por tipo y el catálogo con edición de pesos nominales y tolerancias. Como los servicios en Spring Boot se implementan en el Sprint 2, la consola consume una API fake (json-server) que expone los recursos bajo `/api/v1`, el mismo prefijo de los endpoints del capítulo IV.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [petitavo/innova-carty-landing-page](https://github.com/petitavo/innova-carty-landing-page) | main | f1d2019 | feat: initial version of landing page | Secciones de la propuesta de valor, formulario de demo, páginas legales, SEO, idioma ES/EN y equipo (US01, US02, US03). | 03/10/2026 |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | main | 4e5c8d1 | feat: initial version of web app console | Consola Angular con inicio de sesión, dashboard, carritos, detalle y desbloqueo, alertas y catálogo, más la API fake con json-server (US11, US13). | 03/10/2026 |
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 *(Pendiente — Responsable: Deybbi)*

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Innova Carty · screen render</title>
+
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>html,body{background:transparent}</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="kit.js"></script>
+<script src="landing.js"></script>
+<script src="mobile.js"></script>
+<script src="cart-display.js"></script>
+<script src="console.js"></script>
+<script>
+  // render.html?screen=<id>&mode=wf|mock renders one screen at its native size.
+  const p = new URLSearchParams(location.search);
+  const def = IC.SCREENS[p.get('screen')];
+  if (p.get('mode') === 'wf') document.body.classList.add('wf');
+  document.getElementById('root').innerHTML = def ? def.render() : 'Unknown screen';
+  Promise.all([document.fonts.load('24px "Material Symbols Rounded"', 'home'), document.fonts.load('600 16px Inter'), document.fonts.load('16px Roboto'), document.fonts.load('16px "Roboto Mono"')])
+    .then(() => document.fonts.ready).then(() => (document.body.dataset.ready = '1'));
+</script>
+</body>
+</html>

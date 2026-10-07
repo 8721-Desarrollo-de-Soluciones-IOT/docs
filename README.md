@@ -1808,7 +1808,52 @@ carritos por ID/nombre de tienda, facilitando la búsqueda rápida cuando se man
 múltiples elementos.
 
 ### 5.2.2. Labeling Systems
-*(Pendiente — Responsable: July)*
+
+Los sistemas de etiquetado definen los nombres con que se presentan categorías, acciones, estados y alertas en la Landing Page, la Consola de Operaciones y la app móvil. Cada concepto del Ubiquitous Language (2.5) tiene una única etiqueta en la interfaz, y el término en inglés se mantiene solo en el código y en la API.
+
+**a) Criterios de etiquetado**
+
+- La interfaz operativa usa español; la Landing está disponible en ES/EN.
+- Los botones usan verbos cortos en infinitivo (por ejemplo, "Solicitar demostración").
+- Las etiquetas de navegación no superan tres palabras.
+- Los recursos de la API se nombran en inglés y en plural (`/api/v1/orders`), según el capítulo IV.
+
+**b) Navegación de la Consola**
+
+| Etiqueta (UI) | Ruta | Concepto del dominio | Sprint |
+| :--- | :--- | :--- | :---: |
+| Inicio | `/` | Resumen operativo (*Dashboard*) | 1 |
+| Carritos | `/carts` | *Smart Cart* y *Shopping Session* | 1 |
+| Alertas | `/alerts` | *Discrepancy*, *Budget Threshold Alert*, *Audit Flag* | 1 |
+| Catálogo | `/catalog` | *Item Catalog* | 1 |
+| Reportes, Configuración, Ayuda | `/reports`, `/settings`, `/help` | Merma, parámetros, soporte | 2 o posterior |
+
+**c) Estados del carrito**
+
+| Estado (dominio / API) | Etiqueta UI | Indicador |
+| :--- | :--- | :--- |
+| `Shopping` | En compra | Verde |
+| `Discrepancy` | Con discrepancia | Ámbar |
+| `Locked` | Bloqueado | Rojo |
+| `Paid` | Pagado | Azul |
+| `Offline` | Fuera de línea | Gris |
+
+**d) Alertas, acciones y campos**
+
+- Las alertas indican la causa y la acción esperada, por ejemplo: "Discrepancia de peso: revisa la canasta".
+- Las acciones críticas, como "Desbloquear carrito" o "Guardar cambios", se confirman en un diálogo.
+- Los campos del catálogo se nombran "Precio (S/)", "Peso nominal (g)" y "Tolerancia (± g)".
+
+**e) Equivalencias en la Landing**
+
+| Español | Inglés |
+| :--- | :--- |
+| Conocer solución | Learn the solution |
+| Solicitar demostración | Request a demo |
+| Descargar la app | Get the app |
+| Soy administrador de supermercado | I run a supermarket |
+
+---
 
 ### 5.2.3. SEO Tags and Meta Tags
 

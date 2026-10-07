@@ -963,7 +963,9 @@ En esta sección se formalizan los requisitos funcionales de la solución Innova
 
 ## 3.2. Impact Mapping
 
-![Impact Mapping](assets/chapter-3/Impact-map.png)
+![Impact Mapping](assets/chapter-3/Impact-map-consumidor.png)
+
+![Impact Mapping](assets/chapter-3/Impact-map-administrador.jpg)
 ---
 
 ## 3.3. Product Backlog

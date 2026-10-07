@@ -1063,6 +1063,8 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 ### 4.1.1. Design-Level EventStorming
 
+El EventStorming, los Domain Message Flows y los Bounded Context Canvases de esta sección se elaboraron en un tablero colaborativo de Miro, disponible en el siguiente enlace: [Tablero de Miro de Innova Carty](https://miro.com/app/board/uXjVEd-agkM=/).
+
 #### 4.1.1.1. Candidate Context Discovery
 
 El equipo hizo el EventStorming de Innova Carty en Miro en diez pasos. Cada paso parte del tablero del paso anterior y le agrega una capa más, hasta llegar a los agregados y a los bounded contexts que se usan en el resto del capítulo. La notación de colores es la misma en todos los pasos: eventos en naranja, comandos en azul, actores en amarillo, políticas en rosado, *read models* en verde, sistemas externos en morado, *pain points* en rombos rojos e integraciones entre agregados en negro.
@@ -3438,5 +3440,7 @@ Yuziv Duda, I. (2024). *Desarrollo de un carrito de compras inteligente con tecn
 ---
 
 # Anexos
+
+* **Tablero de Miro (Design-Level EventStorming, Domain Message Flows y Bounded Context Canvases):** https://miro.com/app/board/uXjVEd-agkM=/
 
 *(Pendiente — evidencias adicionales: consentimientos de entrevista, capturas, etc.)*

@@ -1,0 +1,261 @@
+@startuml operations-security-class-diagram
+!pragma layout smetana
+skinparam dpi 110
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #0B5394
+  ArrowColor #0B5394
+  StereotypeFontColor #0B5394
+}
+skinparam package {
+  BorderColor #0B5394
+  FontColor #0B5394
+}
+hide empty members
+title Innova Carty · Class Diagram · Operations & Security Bounded Context (Domain Layer)
+
+package "Aggregates" {
+  class SecurityIncident <<Aggregate Root>> {
+    - id: IncidentId
+    - cartId: CartId
+    - sessionId: SessionId
+    - type: IncidentType
+    - status: IncidentStatus
+    - auditFlag: boolean
+    - alerts: List<CartAlert>
+    - auditLogs: List<SupervisorAuditLog>
+    - openedAt: LocalDateTime
+    - resolvedAt: LocalDateTime
+    - domainEvents: List<SecurityEvent>
+    + {static} forWeightMismatch(cartId: CartId, sessionId: SessionId, difference: BigDecimal): SecurityIncident
+    + {static} forUnauthorizedExit(cartId: CartId, sessionId: SessionId): SecurityIncident
+    + raiseAlert(type: String, severity: Severity, description: String, alarm: boolean): CartAlert
+    + acknowledgeAlert(alertId: Long): void
+    + resolveBySupervisor(supervisor: Supervisor, credentialVerified: boolean, notes: String): void
+    + flagForAudit(supervisor: Supervisor, notes: String): void
+    + isOpen(): boolean
+    + pullDomainEvents(): List<SecurityEvent>
+    - ensureOpen(): void
+  }
+  class SmartCart <<Aggregate Root>> {
+    - id: CartId
+    - storeId: StoreId
+    - cartCode: String
+    - deviceMac: String
+    - serialNumber: String
+    - batteryLevel: BatteryLevel
+    - wheelLockState: WheelLockState
+    - operationalStatus: CartOperationalStatus
+    - lastPingAt: LocalDateTime
+    + lock(): void
+    + unlock(): void
+    + registerHeartbeat(battery: BatteryLevel, at: LocalDateTime): void
+    + markInUse(): void
+    + markAvailable(): void
+    + isLocked(): boolean
+  }
+}
+
+package "Entities" {
+  class CartAlert <<Entity>> {
+    - id: Long
+    - alertType: String
+    - severity: Severity
+    - description: String
+    - alarmTriggered: boolean
+    - createdAt: LocalDateTime
+    - acknowledgedAt: LocalDateTime
+    + acknowledge(at: LocalDateTime): void
+  }
+  class SupervisorAuditLog <<Entity>> {
+    - id: Long
+    - supervisorId: SupervisorId
+    - action: AuditAction
+    - credentialVerified: boolean
+    - notes: String
+    - performedAt: LocalDateTime
+  }
+  class Supervisor <<Entity>> {
+    - id: SupervisorId
+    - storeId: StoreId
+    - employeeCode: String
+    - fullName: String
+    - credentialHash: String
+    - active: boolean
+    + canOverride(): boolean
+  }
+  class Store <<Entity>> {
+    - id: StoreId
+    - name: String
+    - branchCode: String
+    - address: String
+    - perimeter: GeofencePerimeter
+  }
+  class PerimeterCrossing <<Entity>> {
+    - id: Long
+    - cartId: CartId
+    - sessionId: SessionId
+    - exitClearanceToken: String
+    - result: ExitResult
+    - incidentId: IncidentId
+    - crossedAt: LocalDateTime
+  }
+}
+
+package "Value Objects" {
+  class GeofencePerimeter <<Value Object>> {
+    - coordinates: List<GeoPoint>
+    + contains(point: GeoPoint): boolean
+  }
+  class GeoPoint <<Value Object>> {
+    - latitude: double
+    - longitude: double
+  }
+  class BatteryLevel <<Value Object>> {
+    - percent: int
+    + isLow(): boolean
+  }
+  class IncidentId <<Value Object>> {
+    - value: Long
+  }
+  class CartId <<Value Object>> {
+    - value: Long
+  }
+  class SessionId <<Value Object>> {
+    - value: Long
+  }
+  class StoreId <<Value Object>> {
+    - value: Long
+  }
+  class SupervisorId <<Value Object>> {
+    - value: Long
+  }
+  enum WheelLockState <<Enumeration>> {
+    LOCKED
+    UNLOCKED
+  }
+  enum CartOperationalStatus <<Enumeration>> {
+    AVAILABLE
+    IN_USE
+    CHARGING
+    MAINTENANCE
+  }
+  enum IncidentType <<Enumeration>> {
+    WEIGHT_MISMATCH
+    UNAUTHORIZED_EXIT
+  }
+  enum IncidentStatus <<Enumeration>> {
+    OPEN
+    RESOLVED
+  }
+  enum Severity <<Enumeration>> {
+    LOW
+    MEDIUM
+    HIGH
+  }
+  enum AuditAction <<Enumeration>> {
+    RESOLVE_DISCREPANCY
+    UNLOCK_CART
+    FLAG_FOR_AUDIT
+  }
+  enum ExitResult <<Enumeration>> {
+    AUTHORIZED
+    BLOCKED
+  }
+}
+
+package "Domain Services" {
+  class ExitAuthorizationPolicy <<Domain Service>> {
+    + decide(cart: SmartCart, clearanceValid: boolean): ExitResult
+  }
+  interface SupervisorCredentialVerifier <<Domain Service>> {
+    + verify(supervisor: Supervisor, rawCredential: String): boolean
+  }
+  interface ExitClearancePort <<Port>> {
+    + isValid(token: String, cartId: CartId): boolean
+  }
+  interface CartActuatorPort <<Port>> {
+    + lockWheels(cartId: CartId, alarm: boolean): void
+    + releaseWheels(cartId: CartId): void
+  }
+}
+
+package "Repositories" {
+  interface SecurityIncidentRepository <<Repository>> {
+    + save(incident: SecurityIncident): SecurityIncident
+    + findById(id: IncidentId): Optional<SecurityIncident>
+    + findOpenByCartId(cartId: CartId, type: IncidentType): Optional<SecurityIncident>
+    + findAllOpenByStore(storeId: StoreId): List<SecurityIncident>
+  }
+  interface SmartCartRepository <<Repository>> {
+    + save(cart: SmartCart): SmartCart
+    + findById(id: CartId): Optional<SmartCart>
+    + findAllByStore(storeId: StoreId): List<SmartCart>
+  }
+  interface SupervisorRepository <<Repository>> {
+    + findById(id: SupervisorId): Optional<Supervisor>
+    + findByEmployeeCode(code: String): Optional<Supervisor>
+  }
+  interface PerimeterCrossingRepository <<Repository>> {
+    + save(crossing: PerimeterCrossing): PerimeterCrossing
+  }
+}
+
+package "Domain Events" {
+  abstract class SecurityEvent <<Domain Event>> {
+    # cartId: CartId
+    # occurredAt: LocalDateTime
+  }
+  class SecurityAlertTriggered <<Domain Event>>
+  class CartLocked <<Domain Event>>
+  class CartUnlocked <<Domain Event>>
+  class DiscrepancyResolvedBySupervisor <<Domain Event>>
+  class IncidentFlaggedForAudit <<Domain Event>>
+  class ExitRegistered <<Domain Event>>
+}
+
+SecurityIncident "1" *-- "1..*" CartAlert : genera >
+SecurityIncident "1" *-- "0..*" SupervisorAuditLog : audita con >
+SecurityIncident "1" --> "1" IncidentType : tipo >
+SecurityIncident "1" --> "1" IncidentStatus : estado >
+SecurityIncident "0..*" --> "1" CartId : sobre el carrito >
+SecurityIncident "1" ..> "0..*" SecurityEvent : registra >
+CartAlert "1" --> "1" Severity : severidad >
+SupervisorAuditLog "1" --> "1" AuditAction : acción >
+SupervisorAuditLog "0..*" --> "1" SupervisorId : realizada por >
+SmartCart "1" *-- "1" WheelLockState : freno >
+SmartCart "1" --> "1" CartOperationalStatus : estado >
+SmartCart "1" *-- "1" BatteryLevel : batería >
+SmartCart "0..*" --> "1" StoreId : pertenece a >
+Store "1" *-- "1" GeofencePerimeter : perímetro >
+GeofencePerimeter "1" *-- "3..*" GeoPoint : vértices >
+Supervisor "0..*" --> "1" StoreId : trabaja en >
+PerimeterCrossing "1" --> "1" ExitResult : resultado >
+PerimeterCrossing "0..*" --> "0..1" IncidentId : origina >
+
+ExitAuthorizationPolicy ..> SmartCart : evalúa >
+ExitAuthorizationPolicy ..> ExitResult : decide >
+SupervisorCredentialVerifier ..> Supervisor : verifica >
+CartActuatorPort ..> CartId : acciona >
+SecurityIncidentRepository ..> SecurityIncident : persiste >
+SmartCartRepository ..> SmartCart : persiste >
+SupervisorRepository ..> Supervisor : persiste >
+PerimeterCrossingRepository ..> PerimeterCrossing : persiste >
+
+SecurityEvent <|-- SecurityAlertTriggered
+SecurityEvent <|-- CartLocked
+SecurityEvent <|-- CartUnlocked
+SecurityEvent <|-- DiscrepancyResolvedBySupervisor
+SecurityEvent <|-- IncidentFlaggedForAudit
+SecurityEvent <|-- ExitRegistered
+SecurityAlertTriggered -[hidden]down- CartLocked
+CartLocked -[hidden]down- CartUnlocked
+DiscrepancyResolvedBySupervisor -[hidden]down- IncidentFlaggedForAudit
+IncidentFlaggedForAudit -[hidden]down- ExitRegistered
+IncidentId -[hidden]down- SessionId
+SessionId -[hidden]down- SupervisorId
+@enduml

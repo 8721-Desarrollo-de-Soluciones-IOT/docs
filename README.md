@@ -22,7 +22,7 @@
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Informe de Avance (AV1)</strong>
+  <strong>Trabajo Parcial (TB1)</strong>
 </p>
 
 <br>

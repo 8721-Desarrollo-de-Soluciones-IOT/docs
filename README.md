@@ -1509,7 +1509,26 @@ El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 ![Bounded Context Domain Layer Class Diagrams.png](assets/chapter-4/software-architecture/Bounded%20Context%20Domain%20Layer%20Class%20Diagrams.png)
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
-*(Pendiente — Responsable: Melanie)*
+
+El siguiente diagrama muestra el modelo relacional en PostgreSQL que persiste los objetos del Smart Shopping Bounded Context. El contexto es dueño de sus tablas: los datos de otros contextos (el carrito físico de Operations & Security y el producto de Catalog & Pricing) se guardan solo como identificadores (`cart_id`, `product_id`), sin clave foránea, para que cada bounded context pueda evolucionar y desplegarse por separado. El diagrama se elaboró en Redgate Data Modeler.
+
+![Smart Shopping Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/smart-shopping-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `shopping_sessions` | Agregado `ShoppingSession` con los *embeddables* `Budget` y `WeightSnapshot` | Una fila por sesión de compra: carrito vinculado, comprador opcional, presupuesto límite, total acumulado, último peso medido y esperado, estado de validación de peso, estado de la sesión y fechas de inicio y cierre. |
+| `session_items` | Entidad `CartItem` | Productos detectados por RFID en la sesión. Guarda una copia del nombre, precio, peso nominal y tolerancia que devolvió Catalog & Pricing (`ProductSnapshot`), para que un cambio posterior en el catálogo no altere una compra en curso. |
+| `weight_telemetry_logs` | Historial de lecturas de peso | Cada lectura estable de la celda de carga, con el peso esperado, la diferencia y si fue una discrepancia. Permite auditar las alertas de peso. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `session_id`, `session_item_id` y `log_id` (este último `bigserial`, porque es la tabla con más registros).
+* **Claves foráneas:** `session_items.session_id` y `weight_telemetry_logs.session_id` referencian a `shopping_sessions` con `ON DELETE CASCADE`: una sesión tiene cero o muchos productos y cero o muchas lecturas de peso (relación 1 a N).
+* **Checks:** `budget_limit` debe ser mayor a 0 cuando existe (US04); `session_status` solo admite `ACTIVE`, `PENDING_CHECKOUT`, `COMPLETED` y `CANCELLED`; `weight_validation_status` solo admite `CONSISTENT` y `MISMATCH`; `quantity` debe ser mayor a 0.
+* **Únicos e índices:**
+  * Un índice único parcial sobre `shopping_sessions(cart_id)` para las sesiones `ACTIVE` o `PENDING_CHECKOUT` garantiza que un carrito tenga una sola sesión activa (`existsActiveSessionByCartId`, TS02).
+  * `edge_event_id` es único en `weight_telemetry_logs`, de modo que los reintentos del Edge API no registran la misma lectura dos veces (TS01).
+  * Los índices sobre `session_id` aceleran la carga de la sesión con sus productos y el historial de peso.
 
 ### 4.2.2. Bounded Context: [Nombre]
 *(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*

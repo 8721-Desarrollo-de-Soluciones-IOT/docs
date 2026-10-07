@@ -148,6 +148,7 @@
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
   - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
   - [4.2.3. Bounded Context: Catalog & Pricing Bounded Context](#423-bounded-context-catalog--pricing-bounded-context)
+  - [4.2.4. Bounded Context: Operations & Security Bounded Context](#424-bounded-context-operations--security-bounded-context)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
@@ -1887,6 +1888,177 @@ El modelo relacional en PostgreSQL persiste el catálogo maestro, sus etiquetas 
 * **Claves foráneas:** `product_rfid_tags`, `product_price_history` y `product_weight_history` referencian `product_catalog_items.product_id` (relación 1 a N). `catalog_sync_logs` no depende de otra tabla.
 * **Checks:** `unit_price` no puede ser negativo; `nominal_weight_grams` debe ser mayor a 0 y `weight_tolerance_grams` no puede ser negativo; `direction` solo admite `FROM_POS` o `TO_EDGE` y `sync_status` solo `PENDING`, `COMPLETED` o `FAILED`.
 * **Únicos e índices:** `sku` es único; los índices por `product_id` y fecha aceleran la consulta del historial y la búsqueda de etiquetas por producto.
+
+### 4.2.4. Bounded Context: Operations & Security Bounded Context
+
+El Operations & Security Bounded Context supervisa la operación en el piso de venta: convierte las discrepancias de peso en alertas para la Web Console, registra la intervención del supervisor y controla el perímetro de salida con *geofencing* y el freno electromecánico del carrito. Es un contexto de control que reacciona a eventos de los demás. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `SecurityIncident` | Aggregate Root | Incidente de seguridad sobre un carrito, por discrepancia de peso o salida no autorizada. Garantiza que solo un supervisor con credenciales válidas lo resuelva y que todo quede auditado. | `id`, `cartId`, `sessionId`, `type`, `status`, `auditFlag`, `alerts`, `auditLogs`, `openedAt`, `resolvedAt` | `forWeightMismatch()`, `forUnauthorizedExit()`, `raiseAlert()`, `acknowledgeAlert()`, `resolveBySupervisor()`, `flagForAudit()`, `isOpen()` | Compone 1..* `CartAlert` y 0..* `SupervisorAuditLog`; registra `SecurityEvent`. |
+| `SmartCart` | Aggregate Root | Carrito físico (ESP32) supervisado desde la consola, con su estado de freno, batería y operación. | `id`, `storeId`, `cartCode`, `deviceMac`, `serialNumber`, `batteryLevel`, `wheelLockState`, `operationalStatus`, `lastPingAt` | `lock()`, `unlock()`, `registerHeartbeat()`, `markInUse()`, `markAvailable()`, `isLocked()` | Pertenece a una tienda (`StoreId`). |
+| `CartAlert` | Entity | Alerta mostrada en el panel de la Web Console. | `alertType`, `severity`, `description`, `alarmTriggered`, `createdAt`, `acknowledgedAt` | `acknowledge()` | Pertenece a un `SecurityIncident`. |
+| `SupervisorAuditLog` | Entity | Registro de cada intervención de un supervisor. | `supervisorId`, `action`, `credentialVerified`, `notes`, `performedAt` | — | Pertenece a un `SecurityIncident`. |
+| `Supervisor` | Entity | Personal autorizado para desbloquear carritos y resolver discrepancias. | `employeeCode`, `fullName`, `credentialHash`, `active` | `canOverride()` | Trabaja en una tienda. |
+| `Store` | Entity | Tienda con su perímetro de salida. | `name`, `branchCode`, `address`, `perimeter` | — | Compone un `GeofencePerimeter`. |
+| `PerimeterCrossing` | Entity | Cada paso de un carrito por el arco de salida y su resultado. | `cartId`, `sessionId`, `exitClearanceToken`, `result`, `incidentId`, `crossedAt` | — | Puede originar un `SecurityIncident`. |
+| `GeofencePerimeter`, `GeoPoint` | Value Objects | Polígono del perímetro de seguridad y sus vértices. | `coordinates` / `latitude`, `longitude` | `contains()` | Parte de `Store`. |
+| `BatteryLevel` | Value Object | Nivel de batería del carrito. | `percent` | `isLow()` | Parte de `SmartCart`. |
+| `IncidentId`, `CartId`, `SessionId`, `StoreId`, `SupervisorId` | Value Objects | Identificadores tipados. `SessionId` referencia a Smart Shopping solo por id. | `value` | — | — |
+| `WheelLockState`, `CartOperationalStatus`, `IncidentType`, `IncidentStatus`, `Severity`, `AuditAction`, `ExitResult` | Enumerations | Estados del freno, del carrito y del incidente; tipo de incidente; severidad; acción auditada; resultado de la salida. | — | — | Atributos de los agregados y entidades. |
+| `ExitAuthorizationPolicy` | Domain Service | Decide si un cruce del perímetro es una salida autorizada o debe bloquearse. | — | `decide()` | Evalúa `SmartCart`; devuelve `ExitResult`. |
+| `SupervisorCredentialVerifier` | Domain Service (interfaz) | Verifica la credencial del supervisor antes de un desbloqueo. | — | `verify()` | Verifica `Supervisor`. |
+| `ExitClearancePort`, `CartActuatorPort` | Ports (interfaces) | Contratos hacia Payment & Checkout (validar el token de salida) y hacia el carrito (freno y alarma). | — | `isValid()`, `lockWheels()`, `releaseWheels()` | Implementados en la Infrastructure Layer. |
+| `SecurityIncidentRepository`, `SmartCartRepository`, `SupervisorRepository`, `PerimeterCrossingRepository` | Repositories (interfaces) | Contratos de persistencia. | — | `save()`, `findById()`, `findOpenByCartId()`, `findAllOpenByStore()`, `findAllByStore()`, `findByEmployeeCode()` | Persisten los agregados y entidades. |
+| `SecurityEvent` y subclases | Domain Events | `SecurityAlertTriggered`, `CartLocked`, `CartUnlocked`, `DiscrepancyResolvedBySupervisor`, `IncidentFlaggedForAudit`, `ExitRegistered`. | `cartId`, `occurredAt` | — | Registrados por los agregados. |
+
+#### 4.2.4.1. Domain Layer
+
+La **Domain Layer** de Operations & Security modela la prevención de pérdidas y la seguridad física del carrito.
+
+* **Aggregates:** `SecurityIncident` agrupa las alertas y las intervenciones de un mismo problema; un carrito tiene como máximo un incidente abierto de cada tipo. `resolveBySupervisor()` rechaza la operación si la credencial no fue verificada y siempre deja un `SupervisorAuditLog`. `SmartCart` es otro agregado porque su estado (freno, batería, disponibilidad) cambia con más frecuencia que los incidentes y no depende de ellos.
+* **Entities:** `CartAlert`, `SupervisorAuditLog`, `Supervisor`, `Store` y `PerimeterCrossing` tienen identidad propia y se conservan para la auditoría.
+* **Value Objects:** `GeofencePerimeter` determina si una posición está dentro del perímetro, `BatteryLevel` indica si la batería está baja y los identificadores tipados evitan mezclar ids de distintos contextos.
+* **Domain Services:** `ExitAuthorizationPolicy` aplica la regla "un carrito sin autorización de salida que cruza el perímetro se bloquea"; `SupervisorCredentialVerifier` aplica la regla "solo un supervisor con credenciales puede desbloquear un carrito".
+* **Factories:** los métodos estáticos `forWeightMismatch()` y `forUnauthorizedExit()` crean el incidente con su tipo, su primera alerta y el evento `SecurityAlertTriggered`.
+* **Repositories y Ports:** los repositorios, `ExitClearancePort` y `CartActuatorPort` son interfaces del dominio implementadas en la Infrastructure Layer.
+* **Domain Events:** `CartLocked` y `SecurityAlertTriggered` llegan a la Web Console en tiempo real; `DiscrepancyResolvedBySupervisor` permite que Smart Shopping reanude la sesión.
+
+#### 4.2.4.2. Interface Layer
+
+La **Interface Layer** expone el contexto a la Web Console y al Edge API mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`, y recibe los eventos de Smart Shopping.
+
+##### Controllers / Consumers
+
+**1. SecurityIncidentsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/stores/{storeId}/incidents?status=OPEN` | Panel de alertas de la Web Console. | `200 SecurityIncidentResource[]` | US11 |
+| `GET` | `/api/v1/incidents/{incidentId}` | Detalle del incidente con sus alertas e intervenciones. | `200` · `404` | US11 |
+| `POST` | `/api/v1/incidents/{incidentId}/resolve` | El supervisor resuelve la discrepancia con sus credenciales. | `200` · `401` si la credencial no es válida · `409` si ya está resuelto | US11 |
+| `POST` | `/api/v1/incidents/{incidentId}/audit-flag` | Marca la compra para auditoría. | `200` | US11 |
+| `POST` | `/api/v1/alerts/{alertId}/acknowledge` | Marca la alerta como atendida. | `204` | US11 |
+
+**2. SmartCartsController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/stores/{storeId}/carts` | Mapa de carritos activos con estado, batería y freno. | `200 SmartCartResource[]` |
+| `GET` | `/api/v1/carts/{cartId}` | Detalle del carrito. | `200` · `404` |
+| `POST` | `/api/v1/carts/{cartId}/unlock` | Libera el freno con credenciales del supervisor. | `200` · `401` |
+
+**3. PerimeterEventsController**
+
+| Método | Endpoint | Evento de entrada | Acción |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/perimeter/crossings` | Cruce de perímetro detectado por el sensor del arco de salida | `RegisterPerimeterCrossingCommand` |
+| `POST` | `/api/v1/carts/{cartId}/heartbeat` | Estado periódico del carrito (batería, conectividad) | `RegisterHeartbeatCommand` |
+
+**4. WeightMismatchDetectedConsumer**: recibe el evento `WeightMismatchDetected` de Smart Shopping y lo convierte en `OpenWeightMismatchIncidentCommand`.
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `SecurityIncidentResource` | `incidentId`, `cartId`, `sessionId`, `type`, `status`, `auditFlag`, `alerts[]`, `openedAt`, `resolvedAt` | Panel de alertas y detalle |
+| `ResolveIncidentResource` | `supervisorCode`, `credential`, `notes` | Entrada de `resolve` y `unlock` |
+| `SmartCartResource` | `cartId`, `cartCode`, `operationalStatus`, `wheelLockState`, `batteryLevel`, `lastPingAt` | Mapa de carritos |
+| `PerimeterCrossingResource` | `eventId`, `cartId`, `exitGate`, `exitClearanceToken`, `detectedAt` | Entrada del Edge API |
+
+Los *assemblers* convierten estas entradas en *Commands* y los agregados en *Resources*. Un `@RestControllerAdvice` traduce `IncidentNotFoundException` → `404`, `InvalidSupervisorCredentialException` → `401` e `IncidentAlreadyResolvedException` → `409`.
+
+#### 4.2.4.3. Application Layer
+
+##### Command Handlers
+
+**SecurityIncidentCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `OpenWeightMismatchIncidentCommand` | Si el carrito no tiene un incidente de peso abierto, lo crea con `forWeightMismatch()` y su alerta. | `SecurityAlertTriggered` | US11 |
+| `ResolveIncidentCommand` | Busca al supervisor, verifica su credencial con `SupervisorCredentialVerifier` y resuelve el incidente. | `DiscrepancyResolvedBySupervisor` | US11 |
+| `FlagIncidentForAuditCommand` | Marca la compra para auditoría y registra la intervención. | `IncidentFlaggedForAudit` | US11 |
+| `AcknowledgeAlertCommand` | Marca la alerta como atendida. | — | US11 |
+
+**CartControlCommandService**
+
+| Command | Flujo | Evento publicado |
+| :--- | :--- | :--- |
+| `LockCartCommand` | Cambia `WheelLockState` a `LOCKED` y ordena al carrito activar el freno y la alarma mediante `CartActuatorPort`. | `CartLocked` |
+| `UnlockCartCommand` | Verifica la credencial del supervisor, libera el freno y registra la intervención en el incidente. | `CartUnlocked` |
+| `RegisterHeartbeatCommand` | Actualiza batería y `last_ping_at`. | — |
+
+**PerimeterCrossingService**
+
+* `handle(RegisterPerimeterCrossingCommand)` (US12): consulta a Payment & Checkout, mediante `ExitClearancePort`, si el token de salida del carrito es válido; aplica `ExitAuthorizationPolicy`; si la salida está autorizada, guarda el cruce como `AUTHORIZED` y publica `ExitRegistered`; si no, ejecuta `LockCartCommand`, abre un incidente `UNAUTHORIZED_EXIT` y guarda el cruce como `BLOCKED`.
+
+##### Query Handlers
+
+**OperationsQueryService**: `handle(GetOpenIncidentsByStoreQuery)`, `handle(GetIncidentByIdQuery)`, `handle(GetCartsByStoreQuery)` y `handle(GetCartByIdQuery)`.
+
+##### Event Handlers
+
+* **WeightMismatchDetectedEventHandler:** reacciona al evento de Smart Shopping y ejecuta `OpenWeightMismatchIncidentCommand`.
+* **WeightConsistencyRestoredEventHandler:** si el comprador corrige la canasta antes de que intervenga el supervisor, marca la alerta como atendida automáticamente.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Alertar discrepancias de peso en la Web Console | `WeightMismatchDetectedEventHandler`, `SecurityIncidentCommandService` |
+| Resolver discrepancias y desbloquear carritos con credenciales | `SecurityIncidentCommandService`, `CartControlCommandService` + `SupervisorCredentialVerifier` |
+| Controlar el perímetro de salida (US12) | `PerimeterCrossingService` + `ExitAuthorizationPolicy` |
+| Bloquear el carrito y activar la alarma | `CartControlCommandService` |
+| Monitorear el estado de los carritos | `CartControlCommandService`, `OperationsQueryService` |
+
+#### 4.2.4.4. Infrastructure Layer
+
+* **JpaSecurityIncidentRepository**, **JpaSmartCartRepository**, **JpaSupervisorRepository** y **JpaPerimeterCrossingRepository** implementan los repositorios con Spring Data JPA sobre PostgreSQL. `SecurityIncident` se mapea a `security_incidents`, `CartAlert` a `cart_alerts`, `SupervisorAuditLog` a `supervisor_audit_logs`, `SmartCart` a `smart_carts`, `Supervisor` a `supervisors`, `Store` a `stores` y `PerimeterCrossing` a `perimeter_crossings`.
+* **ExitClearanceAcl** implementa `ExitClearancePort`: consulta `GET /api/v1/exit-clearances/{token}` en Payment & Checkout y traduce la respuesta a un valor booleano.
+* **EdgeCartActuatorClient** implementa `CartActuatorPort`: envía al Edge API la orden de activar o liberar el freno y la alarma del ESP32.
+* **BCryptSupervisorCredentialVerifier** implementa `SupervisorCredentialVerifier` comparando la credencial con su hash (Spring Security).
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `DiscrepancyResolvedBySupervisor` se envía también a Smart Shopping.
+* **IncidentRealtimeNotifier** envía por WebSocket (STOMP), al tópico `/topic/stores/{storeId}/incidents`, las alertas y los cambios de estado de los carritos, para que la Web Console los muestre sin recargar.
+
+#### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Operations & Security. Muestra cómo la Web Console, el Edge API y los eventos de Smart Shopping llegan a los controladores y *event handlers*; cómo los servicios aplican las políticas sobre los agregados `SecurityIncident` y `SmartCart`; y cómo la Infrastructure Layer se conecta con PostgreSQL, Payment & Checkout y el carrito. La fuente está en [`design/chapter-4/operations-security-component.puml`](design/chapter-4/operations-security-component.puml).
+
+![C4 Component Diagram - Operations & Security Bounded Context](assets/chapter-4/software-architecture/operations-security-component.png)
+
+#### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Operations & Security.
+
+##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `SecurityIncident` **genera** 1..* `CartAlert` y **audita con** 0..* `SupervisorAuditLog`. La fuente está en [`design/chapter-4/operations-security-class-diagram.puml`](design/chapter-4/operations-security-class-diagram.puml).
+
+![Operations & Security Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/operations-security-class-diagram.png)
+
+##### 4.2.4.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste tiendas, carritos, supervisores, incidentes y cruces del perímetro. `session_id` y `exit_clearance_token` referencian a otros contextos sin clave foránea. El diagrama se elaboró en Redgate Data Modeler.
+
+![Operations & Security Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/operations-security-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `stores` | Entity `Store` | Tienda con su código de sede y las coordenadas del perímetro. |
+| `smart_carts` | Agregado `SmartCart` | Carrito con código QR, MAC, número de serie, batería, estado del freno y estado operativo. |
+| `supervisors` | Entity `Supervisor` | Supervisores por tienda con el hash de su credencial. |
+| `security_incidents` | Agregado `SecurityIncident` | Incidentes por carrito con tipo, estado, marca de auditoría y fechas. |
+| `cart_alerts` | Entity `CartAlert` | Alertas de cada incidente con severidad y si se activó la alarma. |
+| `supervisor_audit_logs` | Entity `SupervisorAuditLog` | Intervenciones de los supervisores. |
+| `perimeter_crossings` | Entity `PerimeterCrossing` | Cruces del arco de salida y su resultado. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `store_id`, `cart_id`, `supervisor_id`, `incident_id`, `alert_id`, `audit_log_id` y `crossing_id`.
+* **Claves foráneas:** una tienda tiene 0..* carritos y 0..* supervisores; un carrito tiene 0..* incidentes y 0..* cruces; un incidente tiene 0..* alertas e intervenciones; cada intervención referencia al supervisor que la hizo; un cruce puede referenciar el incidente que originó (`incident_id` opcional).
+* **Checks:** `wheel_lock_state` solo admite `LOCKED` o `UNLOCKED`; `operational_status`, `incident_type`, `incident_status`, `severity_level`, `action` y `exit_result` solo admiten los valores de sus enumeraciones; `battery_level_percent` debe estar entre 0 y 100.
+* **Únicos e índices:** `branch_code`, `cart_code`, `device_mac` y `employee_code` son únicos; un índice único parcial sobre `security_incidents(cart_id, incident_type)` para los incidentes `OPEN` impide duplicar alertas del mismo problema; los índices por carrito y fecha aceleran el mapa de carritos y el historial de cruces.
 
 ### 4.3 Database Design Diagram
 

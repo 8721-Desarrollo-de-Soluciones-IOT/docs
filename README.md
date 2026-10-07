@@ -2514,7 +2514,38 @@ Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene 
 * **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
-*(Pendiente — Responsable: July)*
+
+El Sprint Backlog 1 detalla las historias seleccionadas en la Sprint Planning (6.2.1.1), sus tareas y su responsable según la matriz de liderazgo (6.2.1.2). Al cierre del sprint se completaron las 20 Story Points comprometidas.
+
+| Historia | SP | Tarea | Responsable | Estado |
+| :--- | :---: | :--- | :--- | :---: |
+| **US01** Propuesta de valor en Landing | 3 | Secciones de propuesta de valor y "Cómo funciona" | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Beneficios por segmento y sección de hardware del carrito | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Sección de app para compradores con enlaces a tiendas | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Botones de llamada a la acción por segmento | Trillo Hernández, Anghel Melanie | Terminado |
+| **US02** Solicitud de demo | 3 | Formulario con RUC, razón social, correo y unidades | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Validación de campos y mensajes de error | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Mensaje de confirmación de envío | Díaz Fiestas, Jorge Luis | Terminado |
+| **US03** Términos y privacidad | 1 | Páginas de Términos y Condiciones y de Política de Privacidad, con enlace en el pie de página | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| **US11** Monitoreo en la consola | 8 | Inicio de sesión del personal | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Dashboard con refresco cada 5 segundos | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Lista de carritos con filtros | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Detalle del carrito con discrepancia de peso | Trillo Hernández, Anghel Melanie | Terminado |
+| | | Desbloqueo con PIN de supervisor y confirmación | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Alertas por tipo | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Pruebas de aceptación de US11 | Crisanto Calle, Deybbi Anderson | Terminado |
+| **US13** Catálogo y tolerancias | 5 | Listado de productos con precio, peso nominal y tolerancia | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Modal de edición de peso nominal y tolerancia | Trillo Hernández, Anghel Melanie | Terminado |
+| **Soporte del sprint** | 0 | API fake con json-server bajo `/api/v1` y su documentación | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Configuración de repositorios y flujo GitFlow | Paico Calderon, July Zelmira | Terminado |
+| | | Despliegue en Vercel de la Landing y la Consola | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Pruebas unitarias de la Web App | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Sprint Backlog en Jira y seguimiento de tareas | Paico Calderon, July Zelmira | Terminado |
+
+**Total comprometido:** 20 SP (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5).
+**Total completado:** 20 SP.
+
+Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazarán a la API fake.
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 

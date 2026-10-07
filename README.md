@@ -732,7 +732,7 @@ El mapa de empatía para el Segmento 1 representa a jóvenes y adultos que reali
 ## 2.4. Big Picture EventStorming
 El Big Picture Event Storming nos permite tener una visión clara y completa de cómo funcionan los procesos dentro de nuestra solución. A través de esta técnica visual identificamos los eventos más importantes, los posibles problemas y también las oportunidades de mejora. De esta manera, podemos centrarnos en procesos clave para analizarlos de forma más detallada. Algunos de estos procesos claves son los siguientes:
 
-![Event Sorming.png](assets/needfinding/Event%20Sorming.png)
+![Event Storming - Innova Carty - Flujo completo.jpg](assets/needfinding/Event%20Storming%20-%20Innova%20Carty%20-%20Flujo%20completo.jpg)
 
 ---
 

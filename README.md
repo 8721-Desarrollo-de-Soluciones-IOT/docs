@@ -147,6 +147,7 @@
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
   - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
+  - [4.2.3. Bounded Context: Catalog & Pricing Bounded Context](#423-bounded-context-catalog--pricing-bounded-context)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
@@ -1722,6 +1723,170 @@ El modelo relacional en PostgreSQL persiste el agregado `PaymentTransaction` y s
 * **Claves foráneas:** las cuatro tablas dependientes referencian `payment_transactions.transaction_id`. Una transacción tiene 0..* QR y 0..* webhooks, y como máximo un comprobante y un token de salida (`transaction_id` es único en `receipts` y `exit_clearance_tokens`).
 * **Checks:** `amount` mayor a 0; `payment_method` y `provider` solo admiten `YAPE` o `PLIN`; `payment_status` solo admite los cinco estados del enum; `receipt_type` solo admite `BOLETA` o `FACTURA`; `expires_at` de un QR no puede superar 5 minutos desde `generated_at`.
 * **Únicos e índices:** `(provider, external_reference)` es único en `gateway_callbacks` para descartar webhooks duplicados; `series_number` y `token` son únicos; un índice único parcial sobre `payment_transactions(session_id)` impide más de una transacción abierta o confirmada por sesión.
+
+### 4.2.3. Bounded Context: Catalog & Pricing Bounded Context
+
+El Catalog & Pricing Bounded Context mantiene el catálogo maestro del supermercado: asocia cada etiqueta RFID a un SKU y define precios vigentes, pesos nominales y márgenes de tolerancia. Es un contexto de especificación: los demás contextos, en especial Smart Shopping, usan sus datos para reconocer y validar cada artículo. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ProductCatalogItem` | Aggregate Root | Producto del catálogo maestro. Garantiza que el precio sea positivo, que la tolerancia sea válida para el peso nominal y que cada cambio quede registrado en su historial. | `id`, `sku`, `name`, `category`, `price`, `weightProfile`, `rfidTags`, `priceHistory`, `weightHistory`, `active`, `createdAt`, `updatedAt` | `mapRfidTag()`, `unmapRfidTag()`, `changePrice()`, `updateWeightProfile()`, `activate()`, `deactivate()`, `isWithinTolerance()` | Compone 0..* `RfidTagMapping`, `PriceChange` y `WeightProfileChange`, un `Price` y un `WeightProfile`; registra `CatalogEvent`. |
+| `CatalogSyncLog` | Aggregate Root | Registro de cada sincronización del catálogo, ya sea la importación desde el POS o la publicación al edge de una tienda. | `direction`, `storeId`, `itemsCount`, `status`, `startedAt`, `finishedAt` | `complete()`, `fail()` | Usa `SyncDirection` y `SyncStatus`. |
+| `RfidTagMapping` | Entity | Asociación de una etiqueta RFID con el producto. | `rfidTag`, `active`, `mappedAt` | `deactivate()` | Pertenece a un `ProductCatalogItem`. |
+| `PriceChange` / `WeightProfileChange` | Entities | Historial de cambios de precio y de peso/tolerancia, con el administrador que los hizo. | `previousPrice`, `newPrice` / `previous`, `current`, `changedBy`, `changedAt` | — | Pertenecen a un `ProductCatalogItem`. |
+| `WeightProfile` | Value Object | Peso nominal y tolerancia de un producto; define el rango aceptado. | `nominalWeight`, `tolerance` | `minWeight()`, `maxWeight()`, `accepts()` | Usa `Weight` y `WeightTolerance`. |
+| `WeightTolerance` | Value Object | Variación de peso permitida por empaque o humedad. | `grams` | `isValidFor()` | Parte de `WeightProfile`. |
+| `Price`, `Sku`, `RfidCode`, `Weight` | Value Objects | Precio en soles, código comercial, etiqueta RFID y peso en gramos. | `amount`, `currency` / `value` / `grams` | `isPositive()` | Atributos del agregado y sus entidades. |
+| `ProductId`, `AdminId`, `StoreId` | Value Objects | Identificadores tipados. `AdminId` y `StoreId` referencian otros contextos solo por id. | `value` | — | — |
+| `SyncDirection`, `SyncStatus` | Enumerations | Dirección (`FROM_POS`, `TO_EDGE`) y estado (`PENDING`, `COMPLETED`, `FAILED`) de una sincronización. | — | — | Atributos de `CatalogSyncLog`. |
+| `RfidTagUniquenessService` | Domain Service | Aplica la regla de que una etiqueta RFID solo puede estar asociada a un SKU. | `repository` | `ensureAvailable()` | Consulta `ProductCatalogItemRepository`. |
+| `EdgeCatalogPublisher`, `PosCatalogSource` | Ports (interfaces) | Contratos hacia el gateway de tienda (edge) y el Sistema POS. | — | `publish()`, `fetchProducts()` | `PosCatalogSource` devuelve `PosProductRecord`. |
+| `ProductCatalogItemRepository`, `CatalogSyncLogRepository` | Repositories (interfaces) | Contratos de persistencia de los dos agregados. | — | `save()`, `findById()`, `findBySku()`, `findByRfidTag()`, `existsByRfidTag()`, `findAllActive()`, `findUpdatedSince()`, `findLastCompleted()` | Persisten `ProductCatalogItem` y `CatalogSyncLog`. |
+| `CatalogEvent` y subclases | Domain Events | `ProductRegistered`, `RfidTagMapped`, `PriceChanged`, `ProductWeightProfileUpdated`, `CatalogItemUpdated`, `CatalogSyncedWithEdge`. | `productId`, `occurredAt` | — | Registrados por `ProductCatalogItem`. |
+
+#### 4.2.3.1. Domain Layer
+
+La **Domain Layer** de Catalog & Pricing concentra las reglas que mantienen calibrado el catálogo.
+
+* **Aggregates:** `ProductCatalogItem` es la única forma de cambiar un producto. `changePrice()` rechaza precios negativos y `updateWeightProfile()` rechaza tolerancias inválidas (Weight Accuracy Verification Policy); ambos guardan el cambio en su historial y registran el evento correspondiente. `CatalogSyncLog` es un agregado separado porque una sincronización afecta a muchos productos a la vez y tiene su propio ciclo de vida.
+* **Entities:** `RfidTagMapping`, `PriceChange` y `WeightProfileChange` tienen identidad dentro del producto y permiten auditar quién cambió qué y cuándo.
+* **Value Objects:** `WeightProfile` agrupa el peso nominal y la tolerancia y calcula el rango aceptado; `Price`, `Sku`, `RfidCode`, `Weight` y los identificadores tipados son inmutables.
+* **Domain Service:** `RfidTagUniquenessService` aplica la regla de mapeo único de etiquetas RFID, que no puede verificar un solo agregado porque involucra a todo el catálogo.
+* **Factory:** el constructor de `ProductCatalogItem` crea el producto activo, con su perfil de peso validado y el evento `ProductRegistered`.
+* **Repositories y Ports:** `ProductCatalogItemRepository`, `CatalogSyncLogRepository`, `EdgeCatalogPublisher` y `PosCatalogSource` son interfaces del dominio implementadas en la Infrastructure Layer.
+* **Domain Events:** `PriceChanged` y `ProductWeightProfileUpdated` disparan la propagación al edge, y Smart Shopping los usa para invalidar su caché de productos.
+
+#### 4.2.3.2. Interface Layer
+
+La **Interface Layer** expone el catálogo a la Web Console, al contexto Smart Shopping y a las tareas de sincronización mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`.
+
+##### Controllers
+
+**1. ProductsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/products?category=&active=` | Lista el catálogo con filtros. | `200 ProductResource[]` | US13 |
+| `GET` | `/api/v1/products/{productId}` | Detalle del producto, sus etiquetas RFID y su historial. | `200 ProductResource` · `404` | US13 |
+| `POST` | `/api/v1/products` | Registra un producto. | `201` · `409` si el SKU ya existe | US13 |
+| `PUT` | `/api/v1/products/{productId}/price` | Actualiza el precio. | `200` · `400` si el precio no es válido | US13 |
+| `PUT` | `/api/v1/products/{productId}/weight-profile` | Actualiza peso nominal y tolerancia. | `200` · `400` si la tolerancia no es válida | US13 |
+| `POST` | `/api/v1/products/{productId}/rfid-tags` | Asocia una etiqueta RFID al producto. | `201` · `409` si la etiqueta ya está asociada a otro SKU | US13 |
+| `DELETE` | `/api/v1/products/{productId}/rfid-tags/{rfidTag}` | Desactiva una etiqueta. | `204` | US13 |
+
+**2. ProductLookupController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/products/by-rfid/{rfidTag}` | Consulta que usa `CatalogPricingAcl` de Smart Shopping: devuelve id, nombre, precio, peso nominal y tolerancia. | `200 ProductLookupResource` · `404` si la etiqueta no está registrada |
+
+**3. CatalogSyncController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/catalog/sync/pos` | Lanza la importación del catálogo desde el Sistema POS. | `202` |
+| `POST` | `/api/v1/catalog/sync/edge?storeId=` | Publica el catálogo vigente al edge de una tienda. | `202` |
+| `GET` | `/api/v1/catalog/sync-logs` | Lista las últimas sincronizaciones y su resultado. | `200 CatalogSyncLogResource[]` |
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `CreateProductResource` | `sku`, `name`, `category`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams` | Entrada de `POST /products` |
+| `UpdatePriceResource` | `unitPrice` | Entrada de `PUT /price` |
+| `UpdateWeightProfileResource` | `nominalWeightGrams`, `weightToleranceGrams` | Entrada de `PUT /weight-profile` |
+| `MapRfidTagResource` | `rfidTag` | Entrada de `POST /rfid-tags` |
+| `ProductResource` | `productId`, `sku`, `name`, `category`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`, `allowedRange`, `rfidTags[]`, `active`, `updatedAt` | Salida para la Web Console |
+| `ProductLookupResource` | `productId`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams` | Salida para Smart Shopping |
+| `CatalogSyncLogResource` | `syncId`, `direction`, `storeId`, `itemsCount`, `status`, `startedAt`, `finishedAt` | Salida del historial de sincronizaciones |
+
+Los *assemblers* `…CommandFromResourceAssembler` convierten cada entrada en su *Command*, y `ProductResourceFromEntityAssembler` y `ProductLookupResourceFromEntityAssembler` convierten el agregado en respuestas. Un `@RestControllerAdvice` traduce `ProductNotFoundException` → `404`, `DuplicateSkuException` y `RfidTagAlreadyMappedException` → `409`, e `InvalidPriceException` e `InvalidWeightToleranceException` → `400`.
+
+#### 4.2.3.3. Application Layer
+
+La **Application Layer** orquesta el mantenimiento del catálogo y su propagación.
+
+##### Command Handlers
+
+**ProductCatalogCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `RegisterProductCommand` | Verifica que el SKU no exista y crea el agregado. | `ProductRegistered` | US13 |
+| `MapRfidTagCommand` | Valida la etiqueta con `RfidTagUniquenessService` y la asocia al producto. | `RfidTagMapped` | US13 |
+| `ChangePriceCommand` | Actualiza el precio y guarda el historial. | `PriceChanged` | US13 |
+| `UpdateWeightProfileCommand` | Valida y actualiza peso nominal y tolerancia, y guarda el historial. | `ProductWeightProfileUpdated` | US13 |
+| `DeactivateProductCommand` | Retira el producto del catálogo vigente. | `CatalogItemUpdated` | US13 |
+
+**CatalogSyncService**
+
+| Command | Flujo | Evento publicado |
+| :--- | :--- | :--- |
+| `ImportCatalogFromPosCommand` | Lee los productos con `PosCatalogSource`; registra los nuevos y actualiza el precio de los existentes. Guarda un `CatalogSyncLog` con dirección `FROM_POS`. | `PriceChanged`, `ProductRegistered` |
+| `SyncCatalogToEdgeCommand` | Obtiene los productos cambiados desde la última sincronización (`findUpdatedSince`) y los envía al edge de cada tienda. Guarda un `CatalogSyncLog` con dirección `TO_EDGE`. | `CatalogSyncedWithEdge` |
+
+##### Query Handlers
+
+**ProductCatalogQueryService**: `handle(GetAllProductsQuery)`, `handle(GetProductByIdQuery)`, `handle(GetProductByRfidTagQuery)` y `handle(GetCatalogSyncLogsQuery)`.
+
+##### Event Handlers
+
+* **CatalogItemChangedEventHandler:** escucha `PriceChanged`, `ProductWeightProfileUpdated` y `CatalogItemUpdated`, y ejecuta `SyncCatalogToEdgeCommand` para que los carritos validen con los valores nuevos (US13).
+* **PosCatalogImportScheduler:** tarea programada que ejecuta `ImportCatalogFromPosCommand` fuera del horario de mayor afluencia.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Registrar productos y mapear etiquetas RFID | `ProductCatalogCommandService` + `RfidTagUniquenessService` |
+| Actualizar precio, peso nominal y tolerancia | `ProductCatalogCommandService` |
+| Consultar un producto por RFID | `ProductCatalogQueryService` |
+| Importar el catálogo desde el POS | `CatalogSyncService`, `PosCatalogImportScheduler` |
+| Propagar los cambios a los servicios edge | `CatalogItemChangedEventHandler`, `CatalogSyncService` |
+
+#### 4.2.3.4. Infrastructure Layer
+
+* **JpaProductCatalogItemRepository** y **JpaCatalogSyncLogRepository** implementan los repositorios con Spring Data JPA sobre PostgreSQL. `ProductCatalogItem` se mapea a `product_catalog_items` (con `Price` y `WeightProfile` como *embeddables*), `RfidTagMapping` a `product_rfid_tags`, `PriceChange` a `product_price_history`, `WeightProfileChange` a `product_weight_history` y `CatalogSyncLog` a `catalog_sync_logs`.
+* **EdgeCatalogHttpPublisher** implementa `EdgeCatalogPublisher`: envía al Edge API de cada tienda los productos cambiados, que el gateway guarda en su caché local para validar sin depender de la nube.
+* **PosCatalogClient** implementa `PosCatalogSource` y traduce el formato del Sistema POS a `PosProductRecord` (*Anti-Corruption Layer*).
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `ProductWeightProfileUpdated` y `PriceChanged` también se notifican a Smart Shopping para invalidar su caché.
+
+#### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Catalog & Pricing. Muestra cómo la Web Console y Smart Shopping interactúan con los controladores, cómo los servicios mantienen los agregados `ProductCatalogItem` y `CatalogSyncLog`, y cómo la Infrastructure Layer se conecta con PostgreSQL, el Edge API y el Sistema POS. La fuente está en [`design/chapter-4/catalog-pricing-component.puml`](design/chapter-4/catalog-pricing-component.puml).
+
+![C4 Component Diagram - Catalog & Pricing Bounded Context](assets/chapter-4/software-architecture/catalog-pricing-component.png)
+
+#### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Catalog & Pricing.
+
+##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `ProductCatalogItem` **se identifica con** 0..* `RfidTagMapping` y **se valida con** exactamente un `WeightProfile`. La fuente está en [`design/chapter-4/catalog-pricing-class-diagram.puml`](design/chapter-4/catalog-pricing-class-diagram.puml).
+
+![Catalog & Pricing Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/catalog-pricing-class-diagram.png)
+
+##### 4.2.3.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste el catálogo maestro, sus etiquetas RFID, el historial de cambios y las sincronizaciones. Ningún otro contexto escribe en estas tablas. El diagrama se elaboró en Redgate Data Modeler.
+
+![Catalog & Pricing Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/catalog-pricing-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `product_catalog_items` | Agregado `ProductCatalogItem` | SKU, nombre, categoría, precio, moneda, peso nominal, tolerancia, estado y fechas. |
+| `product_rfid_tags` | Entity `RfidTagMapping` | Etiquetas RFID asociadas a cada producto. |
+| `product_price_history` | Entity `PriceChange` | Precio anterior y nuevo, con el administrador y la fecha del cambio. |
+| `product_weight_history` | Entity `WeightProfileChange` | Peso nominal y tolerancia anteriores y nuevos. |
+| `catalog_sync_logs` | Agregado `CatalogSyncLog` | Sincronizaciones desde el POS y hacia el edge, con su resultado. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `product_id`, `price_change_id`, `weight_change_id` y `sync_id`. En `product_rfid_tags` la clave primaria es la propia `rfid_tag`, lo que garantiza en la base de datos que una etiqueta pertenezca a un solo SKU.
+* **Claves foráneas:** `product_rfid_tags`, `product_price_history` y `product_weight_history` referencian `product_catalog_items.product_id` (relación 1 a N). `catalog_sync_logs` no depende de otra tabla.
+* **Checks:** `unit_price` no puede ser negativo; `nominal_weight_grams` debe ser mayor a 0 y `weight_tolerance_grams` no puede ser negativo; `direction` solo admite `FROM_POS` o `TO_EDGE` y `sync_status` solo `PENDING`, `COMPLETED` o `FAILED`.
+* **Únicos e índices:** `sku` es único; los índices por `product_id` y fecha aceleran la consulta del historial y la búsqueda de etiquetas por producto.
 
 ### 4.3 Database Design Diagram
 

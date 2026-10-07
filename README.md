@@ -1067,10 +1067,108 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 #### 4.1.1.1. Candidate Context Discovery
 
-![Candidate Context Discovery](assets/chapter-4/Candidate%20Context%20Discovery.png)
+El equipo hizo el EventStorming de Innova Carty en Miro en diez pasos. Cada paso parte del tablero del paso anterior y le agrega una capa más, hasta llegar a los agregados y a los bounded contexts que se usan en el resto del capítulo. La notación de colores es la misma en todos los pasos: eventos en naranja, comandos en azul, actores en amarillo, políticas en rosado, *read models* en verde, sistemas externos en morado, *pain points* en rombos rojos e integraciones entre agregados en negro.
+
+**Paso 1. Unstructured Exploration (lluvia de eventos)**
+
+El equipo escribió en pasado todo lo que ocurre durante una compra con el Smart Cart, sin ordenar ni filtrar: desde el registro de un producto en el catálogo hasta la salida de la tienda. El resultado son más de cuarenta eventos de dominio, como *Producto detectado por RFID*, *Peso medido*, *QR dinámico generado* o *Freno del carrito activado*.
+
+![Paso 1 - Unstructured Exploration](assets/chapter-4/eventstorming/paso1.jpg)
+
+**Paso 2. Timelines**
+
+Los eventos se ordenaron en el tiempo y se agruparon en cinco líneas de flujo: **ShoppingSession** (vinculación del carrito, presupuesto y registro de productos), **WeightValidation** (consistencia entre RFID y peso), **Payment** (QR dinámico, comprobante y autorización de salida), **Catalog** (catálogo maestro) y **PerimeterSecurity** (perímetro de salida). Debajo de la línea principal quedan los caminos alternativos, como *Etiqueta RFID no reconocida*, *QR expirado* o *Firma de webhook rechazada*.
+
+![Paso 2 - Timelines](assets/chapter-4/eventstorming/paso2.jpg)
+
+**Paso 3. Pain Points**
+
+Sobre cada línea de tiempo se marcaron las dudas y los riesgos del negocio que todavía no tenían respuesta. Por ejemplo, qué hace el comprador si la etiqueta RFID está dañada, cómo validar productos frescos cuyo peso varía, qué pasa si el webhook de Yape/Plin llega tarde o cómo evitar bloquear a un cliente que sí pagó. Estos puntos guiaron las reglas de negocio de los pasos siguientes (tolerancias de peso, espera de 3 s antes de marcar una discrepancia, expiración del QR).
+
+![Paso 3 - Pain Points](assets/chapter-4/eventstorming/paso3.jpg)
+
+**Paso 4. Pivotal Points**
+
+Se armó el flujo de punta a punta y se identificaron los eventos pivote, es decir, los que cierran una fase del negocio y cambian el estado del proceso. El flujo quedó dividido en cinco fases: **Catálogo listo** (*Catálogo sincronizado con edge*), **Inicio de compra** (*Sesión de compra iniciada*), **Compra y validación** (*Sesión lista para checkout*), **Pago** (*Pago confirmado por billetera*) y **Salida** (*Salida registrada conforme*).
+
+![Paso 4 - Pivotal Points](assets/chapter-4/eventstorming/paso4.jpg)
+
+**Paso 5. Commands**
+
+Para cada evento se agregó el comando que lo provoca (por ejemplo, *Vincular carrito*, *Configurar presupuesto límite*, *Proceder al pago*, *Actualizar peso y tolerancia*) y el actor que lo ejecuta: el **Comprador**, el **Supervisor de piso** o el **Administrador de tienda**. En este paso la línea *PerimeterSecurity* se amplió a **OperationsSecurity**, porque también incluye las alertas y la intervención del supervisor, y *Catalog* pasó a llamarse **CatalogPricing**.
+
+![Paso 5 - Commands](assets/chapter-4/eventstorming/paso5.jpg)
+
+**Paso 6. Policies**
+
+Se agregaron las políticas que disparan comandos de forma automática a partir de un evento, con la forma "cuando… entonces…". Por ejemplo: *cuando se detecta una etiqueta RFID válida* se agrega el producto a la sesión, *cuando la diferencia de peso supera la tolerancia por más de 3 s* se pausa el pago y *cuando el carrito cruza sin autorización de salida* se bloquea el carrito. Las líneas moradas muestran los primeros enlaces entre flujos: la sesión lista para checkout crea la orden de pago, y la discrepancia de peso llega a OperationsSecurity.
+
+![Paso 6 - Policies](assets/chapter-4/eventstorming/paso6.jpg)
+
+**Paso 7. Read Models**
+
+Se identificó la información que cada actor necesita ver para tomar una decisión antes de ejecutar un comando. Así aparecen las vistas del On-Cart Display y de la app (*Código QR del carrito*, *Lista de productos en canasta*, *Total y presupuesto en pantalla*, *QR de pago en pantalla*, *Historial de compras*) y las de la Web Console (*Panel de alertas*, *Mapa de carritos activos*, *Edición de producto*).
+
+![Paso 7 - Read Models](assets/chapter-4/eventstorming/paso7.jpg)
+
+**Paso 8. External Systems**
+
+Se añadieron los sistemas externos y los dispositivos que originan eventos sin intervención de una persona: el **Lector RFID** y la **Celda de carga**, que llegan a través del Edge API; las billeteras **Yape / Plin**, que confirman el pago por webhook; el **Sistema POS** del supermercado, con el que se sincroniza la venta; y el **Sensor perimetral** del arco de salida.
+
+![Paso 8 - External Systems](assets/chapter-4/eventstorming/paso8.jpg)
+
+**Paso 9. Aggregates**
+
+Los flujos se agruparon en agregados, que son los objetos que protegen las reglas de negocio y garantizan la consistencia de cada transacción: **ShoppingSession** (que reúne el flujo de la sesión y la validación de peso), **PaymentTransaction**, **ProductCatalogItem** y **SecurityIncident**. Las tarjetas negras representan los comandos que integran un agregado con otro: *Crear orden de pago*, *Cerrar sesión de compra*, *Crear alerta de discrepancia*, *Registrar salida* y *Aplicar nueva tolerancia de peso*.
+
+![Paso 9 - Aggregates](assets/chapter-4/eventstorming/paso9.jpg)
+
+**Paso 10. Bounded Contexts**
+
+Por último, los agregados se agruparon en los cuatro bounded contexts de la solución: **Smart Shopping** (ShoppingSession), **Payment & Checkout** (PaymentTransaction), **Catalog & Pricing** (ProductCatalogItem) y **Operations & Security** (SecurityIncident). Las conexiones moradas entre contextos muestran la integración que se detalla en los Domain Message Flows y en los Bounded Context Canvases de las secciones siguientes; por ejemplo, Smart Shopping consulta el producto por RFID a Catalog & Pricing y solicita la orden de pago a Payment & Checkout.
+
+![Paso 10 - Bounded Contexts](assets/chapter-4/eventstorming/paso10.jpg)
 
 #### 4.1.1.2. Domain Message Flows Modeling
-*(Pendiente — Responsable: Melanie)*
+
+En esta sección el equipo muestra cómo colaboran los bounded contexts para resolver los casos principales del negocio. Se aplicó la técnica de **Domain Storytelling**: cada escenario se cuenta como una historia numerada en la que un actor o un sistema externo envía un mensaje, un bounded context lo procesa y, como resultado, publica un evento o envía un comando a otro contexto. Los escenarios se eligieron a partir de los eventos pivote y de las integraciones entre agregados identificadas en el EventStorming (sección 4.1.1).
+
+Todos los diagramas usan la misma notación:
+
+* **Actor** (óvalo negro): persona que inicia la historia, como el Comprador, el Supervisor de piso o el Administrador de tienda.
+* **Bounded Context** (nube lila): Smart Shopping, Payment & Checkout, Catalog & Pricing u Operations & Security.
+* **System** (rectángulo blanco): sistema externo o dispositivo, como el Edge API, Yape / Plin, el Smart Cart o la Web Console.
+* **Mensajes** (notas numeradas con sus campos): eventos en naranja, comandos en celeste y políticas en rosado. El número indica el orden de la historia.
+
+##### Escenario 1: Inicio de sesión de compra y registro de producto por RFID
+
+El Comprador inicia la sesión desde el carrito con el comando *Iniciar sesión de compra* (`cartId`, `budgetLimit`). Smart Shopping crea la sesión y publica *Sesión de compra iniciada*, que se muestra en el On-Cart Display y en la app. Cuando el comprador coloca un artículo, el Edge API envía *Producto detectado* con la etiqueta RFID leída. Smart Shopping consulta a Catalog & Pricing el producto por RFID para obtener su precio y peso nominal, y publica *Producto agregado a la sesión* con el subtotal actualizado (US04, US05).
+
+![Domain Message Flow - Inicio de sesión y registro de producto por RFID](assets/chapter-4/message-flow/domain-message-flow1.jpg)
+
+##### Escenario 2: Discrepancia de peso y desbloqueo por supervisor
+
+La celda de carga reporta *Peso medido* a través del Edge API. Smart Shopping compara el peso con el esperado y, si la diferencia supera la tolerancia por más de 3 segundos, aplica la política correspondiente y publica *Discrepancia de peso detectada*. Operations & Security recibe el evento, crea la alerta y la muestra en la Web Console. El Supervisor de piso revisa el carrito y ejecuta *Desbloquear carrito* con sus credenciales; Operations & Security publica *Discrepancia resuelta por supervisor* y Smart Shopping retoma la sesión (US09, US10).
+
+![Domain Message Flow - Discrepancia de peso y desbloqueo por supervisor](assets/chapter-4/message-flow/domain-message-flow2.jpg)
+
+##### Escenario 3: Pago con QR dinámico y autorización de salida
+
+El Comprador elige *Proceder al pago*. Smart Shopping valida la sesión y envía a Payment & Checkout el comando *Crear orden de pago* con el monto final. Payment & Checkout genera el QR dinámico y espera la confirmación de Yape / Plin, que llega por webhook con firma (*Pago confirmado*). Tras validar la firma, Payment & Checkout publica *Pago confirmado*, con el que Smart Shopping cierra la sesión, y *Autorización de salida emitida*, que Operations & Security usa para permitir la salida del carrito (US08, TS03).
+
+![Domain Message Flow - Pago con QR dinámico y autorización de salida](assets/chapter-4/message-flow/domain-message-flow3.jpg)
+
+##### Escenario 4: Intento de salida sin autorización de pago
+
+El sensor perimetral del arco de salida reporta *Cruce de perímetro detectado*. Operations & Security comprueba que el carrito no tiene una autorización de salida vigente y aplica la política de bloqueo: envía el comando *Bloquear carrito* al Smart Cart (ESP32), que activa el freno y la alarma. Luego publica *Freno del carrito activado*, que aparece como incidente en la Web Console para que el personal intervenga.
+
+![Domain Message Flow - Intento de salida sin autorización de pago](assets/chapter-4/message-flow/domain-message-flow4.jpg)
+
+##### Escenario 5: Actualización de precio, peso y tolerancia de un producto
+
+El Administrador de tienda ejecuta *Actualizar peso y tolerancia* desde la Web Console (`sku`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`). Catalog & Pricing guarda el cambio y publica *Peso nominal y tolerancia actualizados*. Por la política de propagación, el cambio se envía al gateway de tienda (edge); al terminar se publica *Catálogo sincronizado con edge*, de modo que Smart Shopping valide las siguientes lecturas con los valores nuevos (US13).
+
+![Domain Message Flow - Actualización de precio, peso y tolerancia de un producto](assets/chapter-4/message-flow/domain-message-flow5.jpg)
 
 #### 4.1.1.3. Bounded Context Canvases
 
@@ -1078,24 +1176,24 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 Modela el monitoreo de discrepancias físicas, gestión de alertas a la consola de supervisores, auditoría con credenciales de personal y control perimetral por *geofencing* (bloqueo electromecánico de ruedas).
 
-![context operations](assets/chapter-4/bounded/operations.png)
+![context operations](assets/chapter-4/bounded/operations.jpg)
 
 #####  Catalog and Pricing Context
 
 Especifica la sincronización del catálogo maestro de productos, mapeo de etiquetas RFID, precios vigentes y márgenes de tolerancia de peso nominal.
 
-![context catalog](assets/chapter-4/bounded/catalog.png)
+![context catalog](assets/chapter-4/bounded/catalog.jpg)
 
 #####  Payment and Checkout Context
 
 Detalla la generación de QR dinámicos, consumo de webhooks de billeteras digitales (Yape/Plin), emisión de comprobante electrónico y generación del token de liberación para la salida.
 
-![context payment](assets/chapter-4/bounded/payment.png)
+![context payment](assets/chapter-4/bounded/payment.jpg)
 
 ##### Smart Shopping Context
 Define las responsabilidades principales de la sesión de compra, gestión de canasta, cálculo de total en tiempo real, reglas de consistencia peso/RFID y alertas de límite de presupuesto.
 
-![context shopping](assets/chapter-4/bounded/shopping.png)
+![context shopping](assets/chapter-4/bounded/shopping.jpg)
 
 ### 4.1.2. Context Mapping
 

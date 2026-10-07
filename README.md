@@ -898,6 +898,8 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 #### Administrador de Tienda / Operaciones
 
+![user-persona-segmento-2](assets/chapter-2/user-persona-segmento-2.png)
+
 ### 2.3.2. User Task Matrix
 
 |Tarea |Frecuencia|Importancia|

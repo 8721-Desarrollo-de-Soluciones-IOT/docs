@@ -1126,7 +1126,7 @@ Luego de analizar las alternativas operativas y los requerimientos de resilienci
 #### 4.1.3.1. Software Architecture System Landscape Diagram
 *(Pendiente — Responsable: Omar)*
 
-#### 4.1.3.2. Software Architecture Context Level Diagrams
+
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
 El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una sola caja,

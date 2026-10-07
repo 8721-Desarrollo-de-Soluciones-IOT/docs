@@ -1848,11 +1848,10 @@ Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expues
 ### 5.2.4. Searching Systems
 
 
-* **Barra de Búsqueda:** Aunque la *landing page* informativa no la requiere, una vez que el usuario accede a la aplicación SaaS de InnovaCarty, esta funcionalidad será crítica. Estará ubicada en el panel de control para buscar rápidamente por **ID de Lote**, sensores específicos o reportes de auditoría.
-* **Filtros y Facetas:** Dentro de la aplicación, los usuarios podrán filtrar datos por tipo de equipo (autoclaves, pH metros), rangos de fecha de producción o severidad de alertas de cumplimiento detectadas.
-* **Historial de Búsqueda:** Se implementará un registro para que los auditores y administradores puedan acceder rápidamente a los lotes consultados con mayor frecuencia durante las inspecciones.
-* **Resultados Relevantes:** Los resultados se priorizarán según la criticidad de la alerta o la fase actual del lote de producción.
-
+* **Barra de Búsqueda:** Ubicada en la Consola Web de Operaciones, esta funcionalidad es crítica para que los administradores de tienda y personal de seguridad busquen rápidamente por ID de Carrito / Unidad IoT, SKU / Código de Producto, o ID de Transacción / Sesión de Compra. En la pantalla táctil del carrito inteligente (B2C), se incluye un buscador directo para que el cliente consulte precios, ubicaciones de productos en pasillos y disponibilidad en catálogo.
+* **Filtros y Facetas:** Dentro de la consola administrativa, los usuarios operativos podrán filtrar la flota de carritos por estado en tiempo real (En Uso, Inactivo, Alerta por Discrepancia de Peso, Batería Baja), pasillo/zona de la tienda o nivel de riesgo de mermas. En la interfaz del comprador, se permitirá filtrar productos por categoría, promociones vigentes, marcas o restricciones dietéticas.
+* **Historial de Búsqueda:** Se mantendrá una bitácora accesible para que el Administrador de Operaciones consulte rápidamente incidencias recientes o carritos auditados con mayor frecuencia. Asimismo, en el perfil del cliente, guardará las búsquedas e historial de compras recurrentes para acelerar la navegación.
+* **Resultados Relevantes:** Los resultados en la consola de supervisión se priorizarán según el nivel de severidad de la alerta (p. ej., inconsistencia detectada por celdas de carga o intento de rebasar el perímetro de geofencing). En la interfaz del usuario en carrito, los productos se ordenarán por relevancia de búsqueda, ofertas activas y disponibilidad física en góndola.
 
 ### 5.2.5. Navigation Systems
 

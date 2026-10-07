@@ -703,12 +703,13 @@ En esta sección se muestran los User Journey Maps, que describen de principio a
 
 **Segmento 1: Comprador Moderno / Consumidor Final**
 
-![Joruning map Segmento 1.png](assets/needfinding/Joruning%20map%20Segmento%201.png)
+![Customer journey map segemnto 1.png](assets/needfinding/Customer%20journey%20map%20segemnto%201.png)
 
 
 **Segmento 2: Administrador de Tienda / Operaciones**
 
-![Journing map Segmento 2.png](assets/needfinding/Journing%20map%20Segmento%202.png)
+![Customer journey map Segmento 2.png](assets/needfinding/Customer%20journey%20map%20Segmento%202.png)
+
 ### 2.3.4. Empathy Mapping
 
 En esta sección se sintetizan los hallazgos cualitativos y conductuales obtenidos durante la fase de entrevistas de investigación. Para comprender a profundidad las necesidades, frustraciones y motivaciones de nuestros usuarios, el equipo estructuró los mapas de empatía utilizando la plataforma UXPressia. El proceso se centró en posicionar al arquetipo de cada segmento en el centro para responder metódicamente a los cuadrantes clave: qué piensa y siente, qué ve, qué oye, qué dice y hace, identificando a partir de ello sus principales dolores (*Pains*) y beneficios esperados (*Gains*).

@@ -889,6 +889,8 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 ### 4.1.1. Design-Level EventStorming
 
+#### 4.1.1.1. Candidate Context Discovery
+
 El equipo hizo el EventStorming de Innova Carty en Miro en diez pasos. Cada paso parte del tablero del paso anterior y le agrega una capa más, hasta llegar a los agregados y a los bounded contexts que se usan en el resto del capítulo. La notación de colores es la misma en todos los pasos: eventos en naranja, comandos en azul, actores en amarillo, políticas en rosado, *read models* en verde, sistemas externos en morado, *pain points* en rombos rojos e integraciones entre agregados en negro.
 
 **Paso 1. Unstructured Exploration (lluvia de eventos)**
@@ -950,10 +952,6 @@ Los flujos se agruparon en agregados, que son los objetos que protegen las regla
 Por último, los agregados se agruparon en los cuatro bounded contexts de la solución: **Smart Shopping** (ShoppingSession), **Payment & Checkout** (PaymentTransaction), **Catalog & Pricing** (ProductCatalogItem) y **Operations & Security** (SecurityIncident). Las conexiones moradas entre contextos muestran la integración que se detalla en los Domain Message Flows y en los Bounded Context Canvases de las secciones siguientes; por ejemplo, Smart Shopping consulta el producto por RFID a Catalog & Pricing y solicita la orden de pago a Payment & Checkout.
 
 ![Paso 10 - Bounded Contexts](assets/chapter-4/eventstorming/paso10.jpg)
-
-#### 4.1.1.1. Candidate Context Discovery
-
-![Candidate Context Discovery](assets/chapter-4/Candidate%20Context%20Discovery.png)
 
 #### 4.1.1.2. Domain Message Flows Modeling
 

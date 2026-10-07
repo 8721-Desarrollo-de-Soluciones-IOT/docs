@@ -3277,14 +3277,119 @@ Se ingresa a la consola desde el botón **See the operations console** o el enla
 ![Web App - Add product](assets/chapter6/execution-evidence/app8.png)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
-*(Pendiente — Responsable: Jorge)*
+
+En el Sprint 1 los servicios en Spring Boot todavía no se implementan (quedan para el Sprint 2 con TS01, TS02 y TS03). Por eso, en este sprint se documentan los recursos de la **API fake** construida con **json-server**, que usa la Web Console para las historias US11 y US13. La API expone los recursos bajo el prefijo `/api/v1`, con los mismos nombres y la misma forma de respuesta definidos en el capítulo IV, de modo que en el Sprint 2 solo cambie la URL base y no las vistas de Angular.
+
+La documentación de esta API se mantiene en el `README.md` del repositorio de la Web App (sección *Fake API*), junto con el archivo `server/db.json` que contiene los datos de prueba y el archivo `server/routes.json` que agrega el prefijo `/api/v1`. A partir del Sprint 2, los endpoints reales se documentarán con **OpenAPI** mediante `springdoc-openapi` y se publicarán en **Swagger UI**.
+
+**Cómo levantar la API fake en local**
+
+```bash
+npm install
+npm run fake-api     # json-server --watch server/db.json --routes server/routes.json --port 3000
+```
+
+**Endpoints documentados en el Sprint 1**
+
+| Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| Staff users | Iniciar sesión del personal | `GET` | `/api/v1/staff-users?username={u}&password={p}` | `username`, `password` (query) | `GET /api/v1/staff-users?username=lmedina&password=****` | `200` con el usuario (`id`, `fullName`, `role`, `storeId`); lista vacía si las credenciales no coinciden | US11 |
+| Carts | Listar carritos de la tienda | `GET` | `/api/v1/carts?storeId={id}` | `storeId`, `status` (opcional) | `GET /api/v1/carts?storeId=1&status=Discrepancy` | `200` con la lista de carritos (`id`, `code`, `status`, `zone`, `currentTotal`, `battery`, `lastEvent`) | US11 |
+| Carts | Ver detalle de un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/27` | `200` con el carrito `CART-0427`, sus productos, `expectedWeightGrams: 9314` y `measuredWeightGrams: 9726` | US11 |
+| Carts | Desbloquear carrito con discrepancia | `PATCH` | `/api/v1/carts/{id}` | `id` (path), body con `status` y `unlockedBy` | `PATCH /api/v1/carts/27` · `{"status":"Shopping","unlockedBy":3}` | `200` con el carrito actualizado en estado `Shopping` | US11 |
+| Alerts | Listar alertas abiertas | `GET` | `/api/v1/alerts?status={s}` | `status`, `type` (opcional) | `GET /api/v1/alerts?status=open&type=WeightDiscrepancy` | `200` con la lista de alertas (`id`, `cartId`, `type`, `severity`, `createdAt`) | US11 |
+| Alerts | Resolver una alerta | `PATCH` | `/api/v1/alerts/{id}` | `id` (path), body con `status` y `resolution` | `PATCH /api/v1/alerts/12` · `{"status":"resolved","resolution":"Producto verificado en persona"}` | `200` con la alerta resuelta | US11 |
+| Products | Listar el catálogo | `GET` | `/api/v1/products?q={texto}` | `q`, `_page`, `_limit` (opcional) | `GET /api/v1/products?q=arroz&_page=1&_limit=10` | `200` con los productos (`sku`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`) | US13 |
+| Products | Actualizar precio, peso y tolerancia | `PATCH` | `/api/v1/products/{id}` | `id` (path), body con los campos a cambiar | `PATCH /api/v1/products/8` · `{"nominalWeightGrams":1000,"weightToleranceGrams":30}` | `200` con el producto actualizado; `404` si el `id` no existe | US13 |
+
+**Captura de la API fake en ejecución**
+
+![Fake API json-server](assets/chapter-6/sprint-1/fake-api-endpoints.png)
+*[Reemplazar por la captura de la terminal con json-server corriendo y de una respuesta en el navegador o en Postman.]*
+
+**Commits relacionados con la documentación de servicios**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | feat(fake-api): add carts, alerts and products resources | Recursos de json-server bajo `/api/v1` con datos de prueba de la tienda Surco Store #01. | [completar] |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | docs(readme): document fake api endpoints | Tabla de endpoints, parámetros y ejemplos de request y response. | [completar] |
+
+---
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
-*(Pendiente — Responsable: Jorge)*
+
+En el Sprint 1 se desplegaron los dos productos del objetivo del sprint en **Vercel**, conectando cada repositorio de GitHub para que cada *push* a `main` genere un nuevo despliegue de producción y cada *pull request* genere una vista previa. La API fake se desplegó como servicio web en **Render**, para que la Web Console publicada pueda consumir datos sin depender de una máquina local.
+
+| Producto | Plataforma | Repositorio | URL pública |
+| :--- | :--- | :--- | :--- |
+| Landing Page | Vercel | [innova-carty-landing-page](https://github.com/petitavo/innova-carty-landing-page) | [completar URL] |
+| Web Console (Angular) | Vercel | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | [completar URL] |
+| API fake (json-server) | Render | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) (carpeta `server`) | [completar URL] |
+
+**Despliegue del Landing Page**
+
+1. En Vercel se eligió **Add New → Project** y se importó el repositorio `innova-carty-landing-page`.
+2. Como es un sitio estático, se usó el *Framework Preset* **Other**, sin comando de *build*, con la raíz del repositorio como *Output Directory*.
+3. Se asignó la rama `main` como rama de producción y se ejecutó el primer despliegue.
+4. Se verificó en la URL pública que cargan todas las secciones, el cambio de idioma ES/EN, la validación del formulario de demo y las páginas de Términos y Condiciones y Política de Privacidad.
+
+![Despliegue Landing Page en Vercel](assets/chapter-6/sprint-1/deploy-landing-vercel.png)
+
+**Despliegue de la API fake**
+
+1. En Render se creó un **Web Service** conectado al repositorio de la Web App, con *Root Directory* `server`.
+2. Se configuró el *Build Command* `npm install` y el *Start Command* `json-server db.json --routes routes.json --host 0.0.0.0 --port $PORT`.
+3. Se verificó que la URL pública responde, por ejemplo en `GET /api/v1/carts`.
+
+![Despliegue API fake en Render](assets/chapter-6/sprint-1/deploy-fake-api-render.png)
+
+**Despliegue de la Web Console**
+
+1. Se registró la URL de la API fake en `src/environments/environment.production.ts` (`apiBaseUrl`).
+2. Se agregó un archivo `vercel.json` con una regla de *rewrite* hacia `index.html`, para que las rutas de Angular (`/carts`, `/alerts`, `/catalog`) funcionen al recargar la página.
+3. En Vercel se importó el repositorio `innova-carty-frontend-web-app` con el *Framework Preset* **Angular**, *Build Command* `ng build` y *Output Directory* `dist/innova-carty-frontend-web-app/browser`.
+4. Se verificó en la URL pública el inicio de sesión, el dashboard, el detalle del carrito `CART-0427` con su discrepancia, el desbloqueo con PIN y la edición de tolerancias del catálogo.
+
+![Despliegue Web Console en Vercel](assets/chapter-6/sprint-1/deploy-webapp-vercel.png)
+
+**Resultado.** Los dos productos quedaron accesibles por URL pública, lo que cumple la condición de confirmación del objetivo del Sprint 1. En el Sprint 2 se reemplazará la API fake por el backend en Spring Boot y se actualizará solo la variable `apiBaseUrl` del entorno de producción.
+
+---
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
-*(Pendiente — Responsable: Jorge)*
 
+En el Sprint 1 el equipo trabajó con GitFlow: cada integrante desarrolló sus tareas en una rama `feature/*` creada desde `develop`, y los líderes de aspecto revisaron los cambios antes de integrarlos. Al cierre del sprint, `develop` se integró en `main` para generar la versión desplegada. Las tareas se asignaron según la matriz de liderazgo y colaboración (6.2.1.2) y se registraron en Jira (6.2.1.3).
+
+La colaboración se evidencia con los gráficos de **GitHub Insights** de cada repositorio: *Contributors*, que muestra los commits de cada integrante en el periodo del sprint, y *Network*, que muestra las ramas `feature/*` y sus integraciones en `develop` y `main`.
+
+**Landing Page**
+
+![Insights Contributors Landing Page](assets/chapter-6/sprint-1/insights-landing-contributors.png)
+![Insights Network Landing Page](assets/chapter-6/sprint-1/insights-landing-network.png)
+
+**Frontend Web Application**
+
+![Insights Contributors Web App](assets/chapter-6/sprint-1/insights-webapp-contributors.png)
+![Insights Network Web App](assets/chapter-6/sprint-1/insights-webapp-network.png)
+
+**Top committers del sprint**
+
+![Top committers](assets/chapter-6/sprint-1/insights-top-committers.png)
+
+| Integrante | GitHub Username | Aspecto que lideró | Aportes en el Sprint 1 | Commits | % del total |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| Trillo Hernández, Anghel Melanie | AM27TH | — | Botones de llamada a la acción; detalle del carrito con discrepancia; modal de edición de peso y tolerancia. | 15 | 38 % |
+| Paico Calderon, July Zelmira | u20211d760 | Gestión del Sprint | Configuración de repositorios y GitFlow; Sprint Backlog en Jira y seguimiento de tareas. | 9 | 23 % |
+| Berrocal Ramirez, Omar Christian | OmBRz | — | Beneficios por segmento y sección de hardware; validación del formulario; lista de carritos con filtros; listado del catálogo. | 5 | 13 % |
+| Huanca Navarro, Gustavo Esau | petitavo | Landing Page, Frontend Web App | Secciones de propuesta de valor y "Cómo funciona"; inicio de sesión del personal; integración de ramas en `develop`. | 4 | 10 % |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | API fake y documentación de servicios | Formulario de demo y mensaje de confirmación; dashboard con refresco cada 5 segundos; API fake con json-server y su documentación. | 3 | 8 % |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | Testing | Alertas por tipo; pruebas unitarias de la Web App; pruebas de aceptación de US11. | 2 | 5 % |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | Despliegue | Sección de app para compradores; páginas legales; desbloqueo con PIN; despliegue en Vercel. | 1 | 3 % |
+| **Total** | | | | **39** | **100 %** |
+
+**Análisis.** En el sprint se registraron 39 commits y los siete integrantes aportaron al menos uno, lo que muestra que todo el equipo participó en el repositorio. La distribución, sin embargo, no fue pareja: Anghel Melanie Trillo (15) y July Paico (9) concentran el 61 % de los commits. En el caso de July, esto responde a su rol de líder de Gestión del Sprint, que incluyó configurar los repositorios y el flujo de GitFlow. El número de commits no mide por sí solo el aporte de cada integrante, porque algunos líderes de aspecto dedicaron buena parte de su tiempo a revisar e integrar ramas `feature/*` en `develop`, y otros entregaron cambios grandes en pocos commits. Aun así, el equipo identificó que varios integrantes agruparon mucho trabajo en commits poco frecuentes.
+
+Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y frecuentes, cada uno con una sola tarea, siguiendo Conventional Commits; vincular cada commit con el código de la historia o tarea de Jira para mejorar la trazabilidad; e integrar los cambios en `develop` a lo largo del sprint, en lugar de concentrarlos en los últimos días, para repartir mejor la carga de integración.
 ---
 
 ## 6.3. Validation Interviews

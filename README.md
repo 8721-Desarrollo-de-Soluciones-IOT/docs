@@ -1846,11 +1846,18 @@ Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expues
 | **Descripción Corta** | Monitoriza carritos activos, atiende discrepancias de peso y autoriza salidas desde tu celular. | Preview de Google Play (< 80 caracteres). |
 | **Descripción Larga** | Herramienta móvil para supervisores de tienda y jefes de prevención de mermas de cadenas aliadas a Innova Carty. Permite supervisar en tiempo real el desplazamiento y estado de la flota de carritos inteligentes en el piso de venta, recibir notificaciones inmediatas ante discrepancias físicas entre el peso de canasta y las lecturas de productos, y realizar desbloqueos auditados de unidades con código maestro.<br><br>Integra control perimetral por geofencing para verificar transacciones pagadas y optimizar la rotación de mercancía en sala sin generar cuellos de botella para los clientes. | Destinado a la distribución corporativa e instalación en terminales de trabajo móvil de la tienda. |
 ### 5.2.4. Searching Systems
-*(Pendiente — Responsable: Omar)*
+
+
+* **Barra de Búsqueda:** Aunque la *landing page* informativa no la requiere, una vez que el usuario accede a la aplicación SaaS de InnovaCarty, esta funcionalidad será crítica. Estará ubicada en el panel de control para buscar rápidamente por **ID de Lote**, sensores específicos o reportes de auditoría.
+* **Filtros y Facetas:** Dentro de la aplicación, los usuarios podrán filtrar datos por tipo de equipo (autoclaves, pH metros), rangos de fecha de producción o severidad de alertas de cumplimiento detectadas.
+* **Historial de Búsqueda:** Se implementará un registro para que los auditores y administradores puedan acceder rápidamente a los lotes consultados con mayor frecuencia durante las inspecciones.
+* **Resultados Relevantes:** Los resultados se priorizarán según la criticidad de la alerta o la fase actual del lote de producción.
+
 
 ### 5.2.5. Navigation Systems
-*(Pendiente — Responsable: Omar)*
 
+* **Navegación Global:** La barra de navegación en el encabezado proporciona acceso principal a las secciones de la página de inicio (*Home, Features, Benefits, About Us, Plans*).
+* **Navegación Contextual:** Enlaces internos y botones estratégicos (CTAs) guían al usuario hacia la siguiente etapa de su recorrido, como la solicitud de una demostración técnica.
 ---
 
 ## 5.3. Landing Page UI Design

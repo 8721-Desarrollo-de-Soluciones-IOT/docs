@@ -592,9 +592,63 @@ Profesionales y directivos encargados de la administración operativa, supervisi
 </table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
-*(Pendiente — Responsable: July)*
 
----
+Las estrategias preliminares de Innova Carty se construyen a partir del análisis competitivo anterior. Buscan contrarrestar las fortalezas de cada competidor, aprovechar sus debilidades y ubicar a la startup en el espacio que hoy ninguno ocupa: un carrito físico de costo medio, con pago por QR peruano (Yape/Plin) y control estricto del presupuesto del cliente.
+
+#### Estrategia general
+
+Innova Carty se posicionará como la opción **intermedia y localizada**. Es más económica que las soluciones con cámaras de IA (Caper Cart) y con POS físico (Smart-Cart). Es menos incómoda que las apps móviles (Scan & Go), porque el usuario no depende de su batería ni de su celular para escanear. Y está adaptada a los hábitos de pago del consumidor peruano.
+
+#### Estrategias y tácticas por competidor
+
+**Frente a Scan & Go (Apps)**
+
+- **Fortaleza a contrarrestar:** no exige que el supermercado invierta en hardware, por lo que escala rápido.
+- **Debilidad a aprovechar:** genera alta fricción, porque el usuario gasta batería y maniobra con el celular y los productos.
+- **Estrategia:** diferenciación por experiencia de compra. El carrito tiene lector y pantalla propios, así que el cliente no necesita el celular para comprar.
+- **Tácticas:**
+  - Mostrar en las demostraciones piloto la comodidad de comprar con las manos libres, frente a comprar con el celular.
+  - Ofrecer un modelo de alquiler o renting del hardware, para que el supermercado no asuma toda la inversión inicial y se reduzca su ventaja de "cero hardware".
+  - Mantener la app móvil solo como complemento (consulta del presupuesto, historial de compras), sin hacerla obligatoria.
+
+**Frente a Smart-Cart**
+
+- **Fortaleza a contrarrestar:** cuenta con el respaldo de una red de pagos (Credibanco) y acepta tarjetas físicas.
+- **Debilidad a aprovechar:** el POS físico es pesado, tosco y propenso a dañarse. Además, su costo B2B es alto.
+- **Estrategia:** liderazgo en costos y adaptación al mercado local. Se reemplaza el terminal físico por un pago digital ligero mediante QR.
+- **Tácticas:**
+  - Integrar Yape y Plin, billeteras de uso masivo en Perú que no requieren terminal físico ni comisiones de datáfono tradicionales.
+  - Destacar en la propuesta comercial el menor costo de mantenimiento por carrito, al no tener partes de pago pesadas ni frágiles.
+  - Comunicar el pago por QR como una opción de inclusión financiera para clientes que no usan tarjeta de crédito.
+
+**Frente a Caper Cart**
+
+- **Fortaleza a contrarrestar:** ofrece tecnología de punta, una marca global y una experiencia sin fricción ("Throw & Go").
+- **Debilidad a aprovechar:** sus costos son prohibitivos para Latinoamérica y su infraestructura es muy compleja de mantener.
+- **Estrategia:** no competir en tecnología sino en accesibilidad. Se ofrece una solución "suficientemente inteligente" a una fracción del costo.
+- **Tácticas:**
+  - Dirigirse a supermercados medianos y de barrio, que no pueden pagar miles de dólares por carrito.
+  - Usar sensores de peso y lector de productos, más simples que las cámaras de IA, para mantener bajos el costo y la complejidad del mantenimiento.
+  - Comunicar que el carrito puede desplegarse por etapas, empezando con pocas unidades en un piloto, sin transformar toda la tienda.
+
+#### Aprovechamiento de oportunidades y respuesta a amenazas
+
+| Contexto                                                                                                 | Táctica de Innova Carty                                                                                                          |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **Oportunidad:** adopción masiva de billeteras digitales en Perú                                         | Convertir el pago por QR en el eje del mensaje comercial y del producto.                                                         |
+| **Oportunidad:** demanda por evitar colas                                                                | Medir y demostrar en los pilotos el tiempo ahorrado en caja.                                                                     |
+| **Oportunidad:** programas de fidelidad (CMR, Tarjeta Oh!) que los competidores integran de forma nativa | Plantear integraciones de fidelización como una fase posterior de la hoja de ruta.                                               |
+| **Amenaza:** vandalismo a la pantalla o a los sensores                                                   | Diseñar carcasas resistentes y sumar el sensor de peso y la alarma antirrobo, con notificación al panel del supermercado.        |
+| **Amenaza:** rechazo de cadenas conservadoras                                                            | Ofrecer pilotos de bajo riesgo y compartir con el supermercado los datos de uso y de ahorro de tiempo.                           |
+| **Amenaza:** tiendas sin cajeros (tecnología tipo Caper Cart)                                            | Enfocarse en el segmento de costo medio, donde esa tecnología aún no es viable, y mantener actualizable el software del carrito. |
+| **Debilidad propia:** inversión inicial en hardware                                                      | Aplicar el modelo de renting o de pago por uso, y priorizar pocas unidades por local al inicio.                                  |
+
+#### Ventajas que se buscan reforzar
+
+1. **Pago local y universal:** QR con Yape/Plin, sin terminales físicos.
+2. **Control estricto del presupuesto:** alerta al cliente cuando se acerca a su límite de gasto, algo que ninguno de los tres competidores destaca.
+3. **Costo intermedio:** más accesible que Smart-Cart y Caper Cart, sin depender del celular del usuario como Scan & Go.
+
 
 ## 2.2. Entrevistas
 

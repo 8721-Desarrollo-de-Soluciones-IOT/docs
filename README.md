@@ -1516,7 +1516,7 @@ La **Infrastructure Layer** contiene las implementaciones técnicas de los contr
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes del Smart Shopping Bounded Context. Muestra cómo los controladores de la Interface Layer reciben solicitudes del On-Cart Display, de la app móvil y del Edge API; cómo los servicios y *event handlers* de la Application Layer orquestan el agregado `ShoppingSession` y la `WeightConsistencyPolicy`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, con los contextos Catalog & Pricing y Payment & Checkout, y con los clientes en tiempo real. El diagrama se elaboró con C4-PlantUML; la fuente está en [`design/chapter-4/smart-shopping-component.puml`](design/chapter-4/smart-shopping-component.puml).
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes del Smart Shopping Bounded Context. Muestra cómo los controladores de la Interface Layer reciben solicitudes del On-Cart Display, de la app móvil y del Edge API; cómo los servicios y *event handlers* de la Application Layer orquestan el agregado `ShoppingSession` y la `WeightConsistencyPolicy`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, con los contextos Catalog & Pricing y Payment & Checkout, y con los clientes en tiempo real.
 
 ![C4 Component Diagram - Smart Shopping Bounded Context](assets/chapter-4/software-architecture/smart-shopping-component.png)
 
@@ -1537,7 +1537,7 @@ En esta sección se presentan los diagramas con mayor nivel de detalle sobre la 
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-El siguiente diagrama de clases UML muestra las clases, interfaces y enumeraciones de la Domain Layer, agrupadas en Aggregates, Entities, Value Objects, Domain Services, Repositories y Domain Events. Cada miembro indica su visibilidad (`-` privado, `#` protegido, `+` público), y las relaciones indican su nombre, dirección y multiplicidad: por ejemplo, una `ShoppingSession` **contiene** 0..* `CartItem` y **controla** exactamente un `Budget`. El diagrama se elaboró con PlantUML; la fuente está en [`design/chapter-4/smart-shopping-class-diagram.puml`](design/chapter-4/smart-shopping-class-diagram.puml).
+El siguiente diagrama de clases UML muestra las clases, interfaces y enumeraciones de la Domain Layer, agrupadas en Aggregates, Entities, Value Objects, Domain Services, Repositories y Domain Events. Cada miembro indica su visibilidad (`-` privado, `#` protegido, `+` público), y las relaciones indican su nombre, dirección y multiplicidad: por ejemplo, una `ShoppingSession` **contiene** 0..* `CartItem` y **controla** exactamente un `Budget`.
 
 ![Smart Shopping Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/smart-shopping-class-diagram.png)
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
@@ -1686,7 +1686,7 @@ La **Infrastructure Layer** implementa los contratos del dominio: persistencia, 
 
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Payment & Checkout. Muestra cómo los controladores reciben las consultas del carrito y de la app, los webhooks de Yape / Plin y las validaciones de Operations & Security; cómo los servicios y *event handlers* orquestan el agregado `PaymentTransaction`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, las billeteras, el proveedor de facturación y el Sistema POS. La fuente está en [`design/chapter-4/payment-checkout-component.puml`](design/chapter-4/payment-checkout-component.puml).
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Payment & Checkout. Muestra cómo los controladores reciben las consultas del carrito y de la app, los webhooks de Yape / Plin y las validaciones de Operations & Security; cómo los servicios y *event handlers* orquestan el agregado `PaymentTransaction`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, las billeteras, el proveedor de facturación y el Sistema POS.
 
 ![C4 Component Diagram - Payment & Checkout Bounded Context](assets/chapter-4/software-architecture/payment-checkout-component.png)
 
@@ -1696,7 +1696,7 @@ En esta sección se presentan el diagrama de clases de la Domain Layer y el diag
 
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, una `PaymentTransaction` **genera** 0..* `QrDetails` y **emite** 0..1 `Receipt`. La fuente está en [`design/chapter-4/payment-checkout-class-diagram.puml`](design/chapter-4/payment-checkout-class-diagram.puml).
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, una `PaymentTransaction` **genera** 0..* `QrDetails` y **emite** 0..1 `Receipt`.
 
 ![Payment & Checkout Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/payment-checkout-class-diagram.png)
 
@@ -1850,7 +1850,7 @@ La **Application Layer** orquesta el mantenimiento del catálogo y su propagaci�
 
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Catalog & Pricing. Muestra cómo la Web Console y Smart Shopping interactúan con los controladores, cómo los servicios mantienen los agregados `ProductCatalogItem` y `CatalogSyncLog`, y cómo la Infrastructure Layer se conecta con PostgreSQL, el Edge API y el Sistema POS. La fuente está en [`design/chapter-4/catalog-pricing-component.puml`](design/chapter-4/catalog-pricing-component.puml).
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Catalog & Pricing. Muestra cómo la Web Console y Smart Shopping interactúan con los controladores, cómo los servicios mantienen los agregados `ProductCatalogItem` y `CatalogSyncLog`, y cómo la Infrastructure Layer se conecta con PostgreSQL, el Edge API y el Sistema POS.
 
 ![C4 Component Diagram - Catalog & Pricing Bounded Context](assets/chapter-4/software-architecture/catalog-pricing-component.png)
 
@@ -1860,7 +1860,7 @@ En esta sección se presentan el diagrama de clases de la Domain Layer y el diag
 
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
 
-El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `ProductCatalogItem` **se identifica con** 0..* `RfidTagMapping` y **se valida con** exactamente un `WeightProfile`. La fuente está en [`design/chapter-4/catalog-pricing-class-diagram.puml`](design/chapter-4/catalog-pricing-class-diagram.puml).
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `ProductCatalogItem` **se identifica con** 0..* `RfidTagMapping` y **se valida con** exactamente un `WeightProfile`.
 
 ![Catalog & Pricing Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/catalog-pricing-class-diagram.png)
 
@@ -2019,7 +2019,7 @@ Los *assemblers* convierten estas entradas en *Commands* y los agregados en *Res
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Operations & Security. Muestra cómo la Web Console, el Edge API y los eventos de Smart Shopping llegan a los controladores y *event handlers*; cómo los servicios aplican las políticas sobre los agregados `SecurityIncident` y `SmartCart`; y cómo la Infrastructure Layer se conecta con PostgreSQL, Payment & Checkout y el carrito. La fuente está en [`design/chapter-4/operations-security-component.puml`](design/chapter-4/operations-security-component.puml).
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Operations & Security. Muestra cómo la Web Console, el Edge API y los eventos de Smart Shopping llegan a los controladores y *event handlers*; cómo los servicios aplican las políticas sobre los agregados `SecurityIncident` y `SmartCart`; y cómo la Infrastructure Layer se conecta con PostgreSQL, Payment & Checkout y el carrito.
 
 ![C4 Component Diagram - Operations & Security Bounded Context](assets/chapter-4/software-architecture/operations-security-component.png)
 
@@ -2029,7 +2029,7 @@ En esta sección se presentan el diagrama de clases de la Domain Layer y el diag
 
 ##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
 
-El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `SecurityIncident` **genera** 1..* `CartAlert` y **audita con** 0..* `SupervisorAuditLog`. La fuente está en [`design/chapter-4/operations-security-class-diagram.puml`](design/chapter-4/operations-security-class-diagram.puml).
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `SecurityIncident` **genera** 1..* `CartAlert` y **audita con** 0..* `SupervisorAuditLog`.
 
 ![Operations & Security Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/operations-security-class-diagram.png)
 

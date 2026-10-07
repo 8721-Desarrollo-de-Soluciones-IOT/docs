@@ -3108,7 +3108,6 @@ Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.
 ## 6.2. Landing Page, Services & Applications Implementation
 
 ### 6.2.1. Sprint 1
-*(Duplicar este bloque — 6.2.2, 6.2.3, etc. — por cada sprint del proyecto)*
 
 #### 6.2.1.1. Sprint Planning 1
 
@@ -3202,7 +3201,80 @@ En el Sprint 1 el equipo implementó los dos productos del objetivo del sprint, 
 *(Pendiente — Responsable: Deybbi)*
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
-*(Pendiente — Responsable: Melanie)*
+
+En el Sprint 1 el equipo puso en funcionamiento los dos productos del Sprint Goal. El **Landing Page** presenta la propuesta de valor a compradores y supermercados, permite solicitar una demostración y enlaza a la consola de operaciones (US01, US02, US03). La **Frontend Web Application** es la primera versión de la consola de operaciones: el personal inicia sesión, ve el estado de la flota en tiempo real, revisa los carritos y sus alertas, resuelve una discrepancia de peso o una salida bloqueada y mantiene el catálogo con sus pesos nominales y tolerancias (US11, US13). A continuación se muestran las vistas principales en el orden en que se navegan.
+
+##### Landing Page
+
+El Landing Page es una sola página con una barra de navegación fija. Los enlaces *How it works*, *Benefits*, *Product*, *For supermarkets* y *FAQ* llevan a cada sección y se resaltan según la sección visible; el selector **ES | EN** cambia el idioma y el botón **Request a demo** lleva al formulario.
+
+**1. Hero.** Es la primera vista al ingresar. Presenta el mensaje principal ("Shop smart. Pay instantly. Skip the line."), una descripción breve del carrito inteligente y dos llamadas a la acción por segmento: **Get the app** para el comprador e **I run a supermarket** para el supermercado. El enlace *Discover the solution* baja a la siguiente sección.
+
+![Landing Page - Hero](assets/chapter6/execution-evidence/landing1.png)
+
+**2. Cifras de impacto y "How it works".** Muestra los indicadores que respaldan la propuesta (−30 % de tiempo de espera, menos de 60 s del QR a la salida, −50 % de salidas no verificadas y telemetría 24/7) y explica el uso en cuatro pasos: vincular el carrito, fijar un presupuesto, colocar los productos y pagar con Yape o Plin.
+
+![Landing Page - How it works](assets/chapter6/execution-evidence/landing2.png)
+
+**3. Beneficios por segmento.** Separa los beneficios para compradores (sin colas, control del presupuesto, comprobantes digitales) y para operadores de tienda (consola en vivo, validación de peso y RFID, bloqueo por geofencing). Cada tarjeta termina en una acción: **Get the app** o **See the operations console**, que abre la Web Application.
+
+![Landing Page - Benefits](assets/chapter6/execution-evidence/landing3.png)
+
+**4. Producto.** Presenta el hardware del Smart Cart: lector RFID UHF, celdas de carga, pantalla de 10" y freno inteligente de ruedas, junto al espacio del video About-the-Product.
+
+![Landing Page - Product](assets/chapter6/execution-evidence/landing4.png)
+
+**5. App para compradores y sección para supermercados.** Anuncia la app móvil con los botones de Google Play y App Store, y abre la sección *For supermarkets* con el formulario de solicitud de demo.
+
+![Landing Page - App for shoppers](assets/chapter6/execution-evidence/landing5.png)
+
+**6. Solicitud de demo y preguntas frecuentes.** El formulario pide razón social, RUC, correo corporativo, número estimado de carritos y un mensaje, y exige aceptar la Política de Privacidad antes de enviar con **Request a demonstration** (US02). A la izquierda, las preguntas frecuentes se despliegan como acordeón.
+
+![Landing Page - Request a demo](assets/chapter6/execution-evidence/landing6.png)
+
+**7. Equipo y pie de página.** Presenta a los siete integrantes del equipo. El pie de página repite los enlaces del producto, da acceso a la consola de operaciones (*Operations console*) y a las páginas de Términos y Condiciones y Política de Privacidad (US03), además del correo de contacto.
+
+![Landing Page - Team and footer](assets/chapter6/execution-evidence/landing7.png)
+
+##### Frontend Web Application (consola de operaciones)
+
+Se ingresa a la consola desde el botón **See the operations console** o el enlace *Operations console* del Landing Page. Después del inicio de sesión, el menú lateral (**Dashboard**, **Carts**, **Alerts** y **Catalog**) permite moverse entre las vistas; la barra superior incluye la búsqueda de carritos, las notificaciones y el perfil del supervisor, y el panel inferior indica la tienda y el estado del gateway edge.
+
+**1. Inicio de sesión.** El personal de tienda ingresa con su correo de trabajo y contraseña. El acceso está restringido al personal autorizado y la actividad queda registrada para auditoría; para la revisión del sprint se muestra una cuenta de demostración.
+
+![Web App - Sign in](assets/chapter6/execution-evidence/app1.png)
+
+**2. Dashboard.** Es la vista de inicio. Resume los carritos activos, las alertas abiertas, el tiempo promedio de pago y las pérdidas evitadas; muestra las sesiones activas por hora, las alertas en vivo y el estado de la flota. Se refresca cada 5 segundos (US11). Desde *Live alerts* se abre directamente el carrito afectado.
+
+![Web App - Dashboard](assets/chapter6/execution-evidence/app2.png)
+
+**3. Carritos.** Lista todos los carritos con su estado, número de productos, total, presupuesto, zona, último evento, alertas y batería. Los filtros por estado (*In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Available*, *Offline*) y la búsqueda por carrito, orden o zona permiten encontrar un carrito; los que requieren atención se resaltan. Al hacer clic en una fila se abre su detalle.
+
+![Web App - Carts](assets/chapter6/execution-evidence/app3.png)
+
+**4. Alertas.** Agrupa las alertas abiertas por tipo (geofence, peso, RFID y dispositivos) y conserva las resueltas. Cada alerta explica qué ocurrió y ofrece una acción para ir al carrito (*Open cart*, *Go to exit*, *Locate*) o marcarla como atendida (*Acknowledge*).
+
+![Web App - Alerts](assets/chapter6/execution-evidence/app4.png)
+
+**5. Detalle del carrito con discrepancia de peso.** Al abrir el carrito con alerta de peso se compara el peso esperado según las lecturas RFID con el peso medido, la diferencia y la tolerancia; el pago queda en pausa. El supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también el comprador, el total frente al presupuesto, la línea de tiempo de la sesión y los productos del carrito. *Back to carts* regresa a la lista.
+
+![Web App - Cart detail with weight discrepancy](assets/chapter6/execution-evidence/app6.png)
+
+**6. Detalle del carrito bloqueado en la salida.** Cuando un carrito cruza la salida sin autorización de pago, la consola muestra la salida bloqueada con las ruedas trabadas, el monto pendiente y la línea de tiempo del cruce. El supervisor verifica la situación y desbloquea el carrito o lo marca para auditoría.
+
+![Web App - Locked cart detail](assets/chapter6/execution-evidence/app9.png)
+
+**7. Catálogo y tolerancias de peso.** Lista los productos con su SKU, categoría, prefijo de etiqueta RFID, precio, peso nominal y tolerancia, y resalta las tolerancias mayores a 5 %. Permite buscar por nombre, SKU o etiqueta, filtrar por categoría y ver la hora de la última sincronización con los carritos (US13).
+
+![Web App - Catalog](assets/chapter6/execution-evidence/app5.png)
+
+**8. Edición de peso nominal y tolerancia.** El ícono de lápiz abre el modal de edición del producto. Al cambiar el peso nominal o la tolerancia, el modal calcula el rango permitido y advierte que al guardar (**Save and sync**) la nueva regla se envía al gateway edge y a los carritos.
+
+![Web App - Edit product](assets/chapter6/execution-evidence/app7.png)
+
+**9. Registro de producto.** El botón **Add product** abre el mismo formulario vacío. Los campos se validan antes de guardar; por ejemplo, el SKU debe tener el formato `SKU-00000`.
+
+![Web App - Add product](assets/chapter6/execution-evidence/app8.png)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 *(Pendiente — Responsable: Jorge)*

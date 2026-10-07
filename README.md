@@ -1126,7 +1126,10 @@ Luego de analizar las alternativas operativas y los requerimientos de resilienci
 ### 4.1.3. Software Architecture
 
 #### 4.1.3.1. Software Architecture System Landscape Diagram
-*(Pendiente — Responsable: Omar)*
+
+En este diagrama se presenta una visión global del ecosistema corporativo del supermercado. Su objetivo es mostrar cómo interactúan múltiples sistemas internos, actores operacionales y servicios externos de terceros dentro de la frontera del negocio, permitiendo a los stakeholders (CTO, Gerentes de Operaciones, Arquitectos) entender el encuadre estratégico del proyecto dentro de la empresa sin perderse en detalles técnicos de un solo software.
+
+![System Landscape Diagram](assets/chapter-4/software-architecture/SystemLandscape.png)
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 #### 4.1.3.2. Software Architecture Context Level Diagrams

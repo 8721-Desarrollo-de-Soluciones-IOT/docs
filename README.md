@@ -93,7 +93,7 @@
 </div>
 
 <br>
-<p align="center">Setiembre 2026</p>
+<p align="center">Octubre 2026</p>
 
 <div style="page-break-after: always;"></div>
 

@@ -130,6 +130,10 @@
 - [2.1. Competidores](#21-competidores)
 - [2.2. Entrevistas](#22-entrevistas)
 - [2.3. Needfinding](#23-needfinding)
+  - [2.3.1. User-Personas](#231-User-Personas)
+  - [2.3.2. User Task Matrix](#232-User-Task-Matrix)
+  - [2.3.3. User Journey Mapping](#233-User-Journey-Mapping)
+  - [2.3.4. Empathy Mapping](#234-Empathy-Mapping)
 - [2.4. Big Picture EventStorming](#24-big-picture-eventstorming)
 - [2.5. Ubiquitous Language](#25-ubiquitous-language)
 
@@ -147,6 +151,11 @@
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
 - [5.2. Information Architecture](#52-information-architecture)
+  - [5.2.1. Organization Systems](#521-Organization-Systems)
+  - [5.2.2. Labeling Systems](#522-Labeling-Systems)
+  - [5.2.3. SEO Tags and Meta Tags](#523-SEO-Tags-and-Meta-Tags)
+  - [5.2.4. Searching Systems](#524-Searching-Systems)
+  - [5.2.5. Navigation Systems](#525-Navigation-Systems)
 - [5.3. Landing Page UI Design](#53-landing-page-ui-design)
 - [5.4. Applications UX/UI Design](#54-applications-uxui-design)
 - [5.5. Applications Prototyping](#55-applications-prototyping)
@@ -897,6 +906,8 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 
 #### Administrador de Tienda / Operaciones
+
+![user-persona-segmento-2](assets/chapter-2/user-persona-segmento-2.png)
 
 ### 2.3.2. User Task Matrix
 
@@ -1802,7 +1813,52 @@ carritos por ID/nombre de tienda, facilitando la búsqueda rápida cuando se man
 múltiples elementos.
 
 ### 5.2.2. Labeling Systems
-*(Pendiente — Responsable: July)*
+
+Los sistemas de etiquetado definen los nombres con que se presentan categorías, acciones, estados y alertas en la Landing Page, la Consola de Operaciones y la app móvil. Cada concepto del Ubiquitous Language (2.5) tiene una única etiqueta en la interfaz, y el término en inglés se mantiene solo en el código y en la API.
+
+**a) Criterios de etiquetado**
+
+- La interfaz operativa usa español; la Landing está disponible en ES/EN.
+- Los botones usan verbos cortos en infinitivo (por ejemplo, "Solicitar demostración").
+- Las etiquetas de navegación no superan tres palabras.
+- Los recursos de la API se nombran en inglés y en plural (`/api/v1/orders`), según el capítulo IV.
+
+**b) Navegación de la Consola**
+
+| Etiqueta (UI) | Ruta | Concepto del dominio | Sprint |
+| :--- | :--- | :--- | :---: |
+| Inicio | `/` | Resumen operativo (*Dashboard*) | 1 |
+| Carritos | `/carts` | *Smart Cart* y *Shopping Session* | 1 |
+| Alertas | `/alerts` | *Discrepancy*, *Budget Threshold Alert*, *Audit Flag* | 1 |
+| Catálogo | `/catalog` | *Item Catalog* | 1 |
+| Reportes, Configuración, Ayuda | `/reports`, `/settings`, `/help` | Merma, parámetros, soporte | 2 o posterior |
+
+**c) Estados del carrito**
+
+| Estado (dominio / API) | Etiqueta UI | Indicador |
+| :--- | :--- | :--- |
+| `Shopping` | En compra | Verde |
+| `Discrepancy` | Con discrepancia | Ámbar |
+| `Locked` | Bloqueado | Rojo |
+| `Paid` | Pagado | Azul |
+| `Offline` | Fuera de línea | Gris |
+
+**d) Alertas, acciones y campos**
+
+- Las alertas indican la causa y la acción esperada, por ejemplo: "Discrepancia de peso: revisa la canasta".
+- Las acciones críticas, como "Desbloquear carrito" o "Guardar cambios", se confirman en un diálogo.
+- Los campos del catálogo se nombran "Precio (S/)", "Peso nominal (g)" y "Tolerancia (± g)".
+
+**e) Equivalencias en la Landing**
+
+| Español | Inglés |
+| :--- | :--- |
+| Conocer solución | Learn the solution |
+| Solicitar demostración | Request a demo |
+| Descargar la app | Get the app |
+| Soy administrador de supermercado | I run a supermarket |
+
+---
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -2463,7 +2519,38 @@ Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene 
 * **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
-*(Pendiente — Responsable: July)*
+
+El Sprint Backlog 1 detalla las historias seleccionadas en la Sprint Planning (6.2.1.1), sus tareas y su responsable según la matriz de liderazgo (6.2.1.2). Al cierre del sprint se completaron las 20 Story Points comprometidas.
+
+| Historia | SP | Tarea | Responsable | Estado |
+| :--- | :---: | :--- | :--- | :---: |
+| **US01** Propuesta de valor en Landing | 3 | Secciones de propuesta de valor y "Cómo funciona" | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Beneficios por segmento y sección de hardware del carrito | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Sección de app para compradores con enlaces a tiendas | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Botones de llamada a la acción por segmento | Trillo Hernández, Anghel Melanie | Terminado |
+| **US02** Solicitud de demo | 3 | Formulario con RUC, razón social, correo y unidades | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Validación de campos y mensajes de error | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Mensaje de confirmación de envío | Díaz Fiestas, Jorge Luis | Terminado |
+| **US03** Términos y privacidad | 1 | Páginas de Términos y Condiciones y de Política de Privacidad, con enlace en el pie de página | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| **US11** Monitoreo en la consola | 8 | Inicio de sesión del personal | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Dashboard con refresco cada 5 segundos | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Lista de carritos con filtros | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Detalle del carrito con discrepancia de peso | Trillo Hernández, Anghel Melanie | Terminado |
+| | | Desbloqueo con PIN de supervisor y confirmación | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Alertas por tipo | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Pruebas de aceptación de US11 | Crisanto Calle, Deybbi Anderson | Terminado |
+| **US13** Catálogo y tolerancias | 5 | Listado de productos con precio, peso nominal y tolerancia | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Modal de edición de peso nominal y tolerancia | Trillo Hernández, Anghel Melanie | Terminado |
+| **Soporte del sprint** | 0 | API fake con json-server bajo `/api/v1` y su documentación | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Configuración de repositorios y flujo GitFlow | Paico Calderon, July Zelmira | Terminado |
+| | | Despliegue en Vercel de la Landing y la Consola | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Pruebas unitarias de la Web App | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Sprint Backlog en Jira y seguimiento de tareas | Paico Calderon, July Zelmira | Terminado |
+
+**Total comprometido:** 20 SP (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5).
+**Total completado:** 20 SP.
+
+Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazarán a la API fake.
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 

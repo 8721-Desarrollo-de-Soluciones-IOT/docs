@@ -886,7 +886,12 @@ El mapa de empatía para el Segmento 1 representa a jóvenes y adultos que reali
 
 #### Segmento 2: Administrador de Tienda / Operaciones
 
-*(Pendiente — En proceso de elaboración tras consolidación de entrevistas del segmento)*
+El mapa de empatía para el Segmento 2 sintetiza los hallazgos conductuales y operativos de los responsables del piso de venta y prevención de pérdidas en establecimientos de retail. Este arquetipo evidencia la tensión constante que enfrentan durante los horarios pico entre agilizar el tránsito en la línea de cajas y mantener la trazabilidad rigurosa de los inventarios para evitar la merma comercial no detectada.
+
+<p align="center">
+  <img src="assets/needfinding/Empathy%20map%202.png" alt="Empathy Map - Segmento 2: Administrador de Tienda / Operaciones" width="850">
+</p>
+<p align="center"><em>Figura: Mapa de Empatía para el Segmento 2 elaborado en UXPressia.</em></p>
 
 ## 2.4. Big Picture EventStorming
 El Big Picture Event Storming nos permite tener una visión clara y completa de cómo funcionan los procesos dentro de nuestra solución. A través de esta técnica visual identificamos los eventos más importantes, los posibles problemas y también las oportunidades de mejora. De esta manera, podemos centrarnos en procesos clave para analizarlos de forma más detallada. Algunos de estos procesos claves son los siguientes:
@@ -1027,7 +1032,93 @@ Define las responsabilidades principales de la sesión de compra, gestión de ca
 ![context shopping](assets/chapter-4/bounded/shopping.png)
 
 ### 4.1.2. Context Mapping
-*(Pendiente — Responsable: Kevin)*
+
+El Context Mapping (Mapa de Contextos) establece la estructura formal de integración, las dependencias organizacionales y los patrones de diseño estratégico de Domain-Driven Design (DDD) entre los cuatro Bounded Contexts identificados para la plataforma Innova Carty: **Smart Shopping Context**, **Catalog and Pricing Context**, **Payment and Checkout Context** y **Operations and Security Context**. El propósito es definir límites claros de contexto, garantizar la autonomía del ciclo de vida de cada servicio y gobernar los flujos de mensajería sincrónica y asincrónica entre el borde físico (*Edge API* en el carrito) y los microservicios en la nube.
+
+#### Identificación de las Relaciones Iniciales y Patrones
+
+##### 1. Catalog and Pricing Context $\rightarrow$ Smart Shopping Context
+
+* **Patrón:** Open Host Service (OHS) / Published Language (PL)
+* **Relación:** `Catalog and Pricing (U)` $\rightarrow$ `Smart Shopping (D)`
+* **Justificación:** El contexto de Catálogo y Precios centraliza los datos maestros de los productos (identificadores SKU, códigos de etiquetas RFID pasivas, nombres comerciales, precios unitarios oficiales, peso nominal y márgenes de tolerancia de masa). El carrito inteligente (*Smart Shopping*) requiere esta información como fuente de verdad para validar las lecturas de los artículos introducidos en la canasta y calcular subtotales. *Catalog and Pricing* se expone como un servicio abierto y estandarizado (*Open Host Service*) que publica esquemas de datos JSON inmutables (*Published Language*) mediante un RESTful API. De este modo, los carritos consultan y sincronizan catálogos locales en caché sin acoplarse a los esquemas de bases de datos internas del ERP o sistemas de inventario del supermercado.
+
+##### 2. Smart Shopping Context $\rightarrow$ Payment and Checkout Context
+
+* **Patrón:** Customer / Supplier + Anticorruption Layer (ACL)
+* **Relación:** `Smart Shopping (U)` $\rightarrow$ `Payment and Checkout (D)`
+* **Justificación:** Cuando el consumidor concluye la recolección de artículos y solicita pagar en la pantalla táctil del carrito, *Smart Shopping* provee la orden de compra con el saldo consolidado y los identificadores de productos. *Payment and Checkout* actúa como proveedor del servicio de cobranza (*Supplier*), supeditado a las especificaciones y prioridades del carrito (*Customer*). Se implementa un *Anticorruption Layer (ACL)* en el contexto de pago para aislar el dominio de compra de la variabilidad de las pasarelas externas y billeteras digitales peruanas (Yape y Plin). El ACL traduce los eventos de orden completada en solicitudes de generación de códigos QR dinámicos e ingesta de webhooks asíncronos, retornando un comprobante electrónico y un token criptográfico de liberación de salida sin contaminar las reglas de la canasta.
+
+##### 3. Smart Shopping Context $\rightarrow$ Operations and Security Context
+
+* **Patrón:** Publisher / Subscriber + Anticorruption Layer (ACL)
+* **Relación:** `Smart Shopping (U)` $\rightarrow$ `Operations and Security (D)`
+* **Justificación:** Durante el recorrido en tienda, la unidad móvil genera eventos de telemetría y seguridad en tiempo real (inconsistencia física entre la lectura RFID y el sensor de peso, nivel crítico de batería, o intento de cruzar la línea de caja sin comprobante). *Smart Shopping* actúa como publicador (*Publisher*) despachando estos eventos de dominio a un bus de mensajería. *Operations and Security* actúa como suscriptor (*Subscriber*) y emplea un *Anticorruption Layer (ACL)* para transformar esos eventos en alertas visuales de piso en la consola web de supervisores o en comandos inmediatos de bloqueo electromecánico de ruedas (*geofencing*). Esto asegura que la lógica de supervisión de mermas y auditoría de personal no imponga restricciones ni sobrecargue el procesamiento de la compra en el dispositivo embebido.
+
+##### 4. Operations and Security Context $\rightarrow$ Catalog and Pricing Context
+
+* **Patrón:** Customer / Supplier
+* **Relación:** `Operations and Security (U)` $\rightarrow$ `Catalog and Pricing (D)`
+* **Justificación:** Cuando el personal supervisor o el administrador de tienda detecta falsos positivos reiterados en una balanza de carrito (por ejemplo, discrepancias continuas causadas por variaciones en el empaque secundario de un lote de productos), se requiere recalibrar el peso nominal o el margen de tolerancia. En este flujo, *Operations and Security* solicita la actualización de los metadatos de calibración como cliente (*Customer*), y *Catalog and Pricing* actúa como proveedor (*Supplier*), actualizando los umbrales de masa en la base central para que se propaguen en las siguientes sincronizaciones de la flota.
+
+---
+
+#### Análisis de Alternativas y Preguntas Clave
+
+##### 1. ¿Qué pasaría si Smart Shopping y Operations and Security compartieran la misma base de datos (Shared Kernel)?
+
+* **Alternativa A: Publisher/Subscriber + ACL (Modelo Actual)**
+  * **Ventajas:** Autonomía operativa y alta disponibilidad. Las fallas de red en la consola de supervisión o las consultas pesadas de auditoría no bloquean ni retrasan el pesaje y cálculo en la pantalla del carrito en sala.
+  * **Desventajas:** Requiere la configuración y mantenimiento de un canal de eventos asíncronos y estructuras de mensajería.
+* **Alternativa B: Shared Kernel (Base de datos compartida)**
+  * **Ventajas:** Consistencia transaccional inmediata; ante cualquier discrepancia detectada por el sensor de peso, el carrito quedaría registrado instantáneamente en la base de auditoría del supervisor sin mediación de eventos.
+  * **Desventajas:** Fuerte acoplamiento. Cualquier cambio en las tablas de auditoría, turnos de supervisores o historial de mermas obligaría a alterar el modelo de datos de la canasta del carrito, elevando la contención de bloqueos (*table locks*) en horas pico con docenas de carritos operando en simultáneo.
+* **Decisión sustentada:** Mantener **Publisher/Subscriber + ACL**.
+  * **Razón crítica:** La experiencia de compra directa del cliente en sala debe priorizar la baja latencia y funcionar incluso si la consola de administración está temporalmente inaccesible.
+  * **Mitigación:** Implementar colas de mensajes con reintentos automáticos para asegurar que ninguna alerta de seguridad o merma se pierda en la red inalámbrica de la tienda.
+
+##### 2. ¿Qué pasaría si Catalog and Pricing y Smart Shopping fueran un solo Bounded Context?
+
+* **Alternativa A: Contextos separados con OHS/PL (Modelo Actual)**
+  * **Ventajas:** Independencia funcional y límites claros. La gestión corporativa de precios, promociones e inventario retail evoluciona independientemente del ciclo de vida del software embebido de los carritos.
+  * **Desventajas:** Sobrecarga de red al requerir endpoints de sincronización de catálogo periódico hacia el almacenamiento local del carrito.
+* **Alternativa B: Unificar en un solo Bounded Context ("Shopping & Catalog")**
+  * **Ventajas:** Consulta directa de datos de productos sin contratos de interfaz intermedios.
+  * **Desventajas:** Creación de un modelo monolítico (*Big Ball of Mud*) donde las políticas de reposición de mercadería y reglas contables de retail colisionan con el algoritmo de verificación física de la canasta, dificultando las pruebas y el escalamiento del sistema.
+* **Decisión sustentada:** Mantener **contextos separados con OHS/PL**.
+  * **Razón crítica:** El catálogo maestro del supermercado obedece a normativas logísticas y administrativas centralizadas, mientras que el carrito inteligente es una unidad periférica orientada al autoservicio rápido y pesaje en tiempo real.
+  * **Mitigación:** Configurar mecanismos de almacenamiento en caché local (*local edge cache*) en el carrito para que opere de forma ágil y autónoma durante la sesión de compra.
+
+##### 3. ¿Qué pasaría si Payment and Checkout llamara directamente a los servicios de Smart Shopping sin usar una capa de traducción (Conformist)?
+
+* **Alternativa A: Customer/Supplier + ACL (Modelo Actual)**
+  * **Ventajas:** Protección frente a cambios de proveedores de pago. Si la integración de billeteras QR (Yape/Plin) cambia de formato, proveedor de pasarela o estándar de firma criptográfica, solo se actualiza el adaptador ACL sin afectar la estructura interna de la orden.
+  * **Desventajas:** Creación de capas intermedias de mapeo y conversión de objetos de transferencia de datos (DTOs).
+* **Alternativa B: Conformist (Adopción directa del modelo externo)**
+  * **Ventajas:** Menor volumen de código en la capa de pagos al acoplar directamente las respuestas de las APIs bancarias a la sesión de compra.
+  * **Desventajas:** Fragilidad extrema. Modificaciones imprevistas en los payloads de los webhooks de billeteras digitales quebrarían la lógica de facturación y el desbloqueo perimetral del carrito.
+* **Decisión sustentada:** Mantener **Customer/Supplier + ACL**.
+  * **Razón crítica:** La seguridad de la transacción y la confirmación de pago no pueden depender de la rigidez de terceros en un entorno desatendido de supermercado.
+  * **Mitigación:** Diseñar contratos estrictos de salida que emitan un token de autorización claro y estandarizado para la apertura del arco de salida de la tienda.
+
+---
+
+#### Decisión Final
+
+Luego de analizar las alternativas operativas y los requerimientos de resiliencia para el entorno de retail inteligente, el equipo adoptó una arquitectura modular desacoplada basada en los principios estratégicos de Domain-Driven Design (DDD):
+* **Catalog and Pricing Context (Catálogo y Precios):** Opera como *Open Host Service (OHS)* bajo un *Published Language (PL)*, abasteciendo de forma estándar y segura las listas de productos, precios y tolerancias nominales de pesaje a los carritos.
+* **Smart Shopping Context (Compra Inteligente):** Representa el *Core Domain* de la solución, gobernando la experiencia de compra en el carrito, la lectura sensorial RFID y de balanza, y el control de presupuesto acumulado.
+* **Payment and Checkout Context (Pago y Facturación):** Implementa una relación *Customer/Supplier* mediada por un *Anticorruption Layer (ACL)* para garantizar la integración confiable con billeteras digitales nacionales (Yape/Plin) y la emisión del comprobante digital con token de salida.
+* **Operations and Security Context (Operaciones y Seguridad):** Se integra mediante el patrón *Publisher/Subscriber* desacoplado con *ACL*, asegurando el monitoreo continuo de discrepancias en el piso de venta y el control perimetral por geocercas sin comprometer la fluidez de compra del consumidor.
+
+---
+
+#### Diagrama de Context Mapping
+
+<p align="center">
+  <img src="assets/needfinding/Context.png" alt="Context Mapping - Innova Carty" width="700">
+</p>
+<p align="center"><em>Figura: Diagrama de Context Mapping para Innova Carty con relaciones Upstream/Downstream y patrones DDD.</em></p>
 
 ### 4.1.3. Software Architecture
 

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Innova Carty Prototype</title>
+
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  html, body { height: 100%; background: #E9EEF3; }
+  .shell { display: flex; flex-direction: column; height: 100vh; }
+  .top { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #fff; border-bottom: 1px solid #D9E2EC; flex-wrap: wrap; }
+  .tab { height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid #D9E2EC; background: #fff; font: 500 14px Roboto, sans-serif; color: #486581; cursor: pointer; }
+  .tab.on { background: #004F8C; color: #fff; border-color: #004F8C; }
+  .stage { flex: 1; display: flex; gap: 20px; padding: 18px; min-height: 0; justify-content: center; }
+  .device { background: #fff; border-radius: 18px; box-shadow: 0 10px 30px rgba(16,42,67,.18); overflow: hidden; flex: none; position: relative; }
+  .device.phone { border-radius: 36px; border: 10px solid #102A43; }
+  .device.cart { border: 14px solid #1F2933; border-radius: 20px; }
+  .viewport { overflow-y: auto; overflow-x: hidden; height: 100%; }
+  .viewport > div { transform-origin: 0 0; }
+  .sim { width: 250px; flex: none; display: flex; flex-direction: column; gap: 8px; }
+  .sim h4 { margin: 4px 0; }
+  .sim button { text-align: left; height: auto; padding: 10px 14px; border-radius: 10px; white-space: normal; justify-content: flex-start; }
+  .label { font: 500 12px Roboto, sans-serif; color: #486581; }
+  #ptoast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 9; display: none; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <span class="logo" id="brand"></span>
+    <span style="width:16px"></span>
+    <button class="tab" data-start="lp-desktop">Landing · Desktop</button>
+    <button class="tab" data-start="lp-mobile">Landing · Mobile</button>
+    <button class="tab" data-start="wa-login">Web Console</button>
+    <button class="tab" data-start="ma-login">Mobile App</button>
+    <button class="tab" data-start="cd-welcome">On-Cart Display</button>
+    <span style="flex:1"></span>
+    <span class="label" id="where"></span>
+    <button class="tab" id="mode">Show wireframe</button>
+  </div>
+  <div class="stage">
+    <div class="device" id="device"><div class="viewport" id="vp"><div id="screen"></div></div></div>
+    <div class="sim" id="sim"></div>
+  </div>
+</div>
+<div class="toast" id="ptoast"></div>
+<script src="kit.js"></script>
+<script src="landing.js"></script>
+<script src="mobile.js"></script>
+<script src="cart-display.js"></script>
+<script src="console.js"></script>
+<script src="prototype.js"></script>
+</body>
+</html>

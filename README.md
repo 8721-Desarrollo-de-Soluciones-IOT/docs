@@ -1182,8 +1182,68 @@ Fichas técnicas diseñadas para las aplicaciones móviles del ecosistema expues
 *(Pendiente — Responsable: Gustavo)*
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
-*(Pendiente — Responsable: Deybbi)*
+Para el Sprint 1 se diseñaron Unit Tests sobre los componentes y servicios Angular de la consola de operaciones, y Acceptance Tests bajo el enfoque BDD (Gherkin) para las historias de usuario US01, US02, US03 (Landing Page) y US11, US13 (Frontend Web App). Los archivos `.feature` cubren los escenarios de aceptación definidos en 3.1, y los Steps se implementaron en TypeScript con Jest/Jasmine y Cucumber.
 
+**Unit Tests**
+
+| Clase / Componente | Comportamiento probado | Repositorio |
+| :--- | :--- | :--- |
+| `DemoRequestFormComponent` | Valida formato de correo y campos obligatorios antes de habilitar el envío (US02, Escenario 2) | innova-carty-landing-page |
+| `LanguageSwitcherComponent` | Alterna el contenido entre ES/EN al hacer clic en el selector de idioma (US01) | innova-carty-landing-page |
+| `DashboardService` | Refresca el listado de carritos activos cada 5 segundos y expone su estado (US11) | innova-carty-frontend-web-app |
+| `CartUnlockComponent` | Habilita el desbloqueo solo si el PIN de supervisor ingresado es válido (US11, Escenario 2) | innova-carty-frontend-web-app |
+| `CatalogToleranceService` | Actualiza el peso nominal y el margen de tolerancia de un SKU y propaga el cambio (US13) | innova-carty-frontend-web-app |
+
+**Acceptance Tests (BDD - Gherkin)**
+
+```gherkin
+# us02_registro_contacto_corporativo.feature
+Feature: Registro de contacto corporativo para supermercados
+  Como visitante del segmento administrador de retail
+  Quiero enviar una solicitud de información comercial
+  Para evaluar la implementación de los Smart Carts en mi cadena de tiendas
+
+  Scenario: Envío de solicitud comercial válido
+    Given el representante de supermercado completa los campos obligatorios de RUC, razón social, correo corporativo y cantidad estimada de unidades
+    When pulsa en "Solicitar Demostración"
+    Then el sistema registra los datos comerciales y presenta un mensaje de confirmación de envío
+
+  Scenario: Detección de correo o campos inválidos
+    Given el visitante ingresa un formato de correo electrónico no válido o deja campos vacíos requeridos
+    When intenta enviar el formulario
+    Then el sistema bloquea el envío y resalta visualmente los campos con inconsistencias
+```
+
+```gherkin
+# us11_monitoreo_tiempo_real.feature
+Feature: Monitoreo en tiempo real desde consola web operativa
+  Como administrador de operaciones
+  Quiero visualizar en un tablero web el estado de todos los carritos activos
+  Para intervenir oportunamente ante cualquier incidencia
+
+  Scenario: Visualización del mapa y estado de carritos
+    Given el administrador inicia sesión en la aplicación web de operaciones
+    When carga el módulo de monitoreo
+    Then el sistema expone el listado completo de unidades activas, indicando su ID, estado de sesión, saldo actual y alertas vigentes
+
+  Scenario: Asistencia y desbloqueo manual por supervisor
+    Given un carrito se encuentra bloqueado por discrepancia de peso
+    When el supervisor acude, verifica el contenido e ingresa sus credenciales de auditoría
+    Then el sistema restablece la sesión y permite al cliente continuar su compra
+```
+
+Repositorio de control de versiones para Testing: mismos repositorios de producto (`innova-carty-landing-page` e `innova-carty-frontend-web-app`), bajo ramas `feature/testing-*`. La siguiente tabla resume los commits relacionados con Testing en este Sprint:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [Dacc03/innova-carty-frontend-web-app](https://github.com/Dacc03/innova-carty-frontend-web-app) | feature/testing-dashboard | a1f2c3d | test: add unit tests for DashboardService | Pruebas unitarias del refresco periódico de carritos activos y mapeo de estados (US11). | 05/10/2026 |
+| [Dacc03/innova-carty-frontend-web-app](https://github.com/Dacc03/innova-carty-frontend-web-app) | feature/testing-acceptance | b4d5e6f | test: add acceptance feature for US11 monitoring | Archivo .feature y steps en TypeScript para el monitoreo en tiempo real de carritos (US11). | 05/10/2026 |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | feature/testing-dashboard-review | c7e8f9a | test: review dashboard unit tests with testing lead | Ajustes sugeridos por Deybbi sobre mocks del servicio de dashboard (US11). | 05/10/2026 |
+| [LuisDiazpe/innova-carty-frontend-web-app](https://github.com/LuisDiazpe/innova-carty-frontend-web-app) | feature/testing-catalog | d2a3b4c | test: add unit tests for CatalogToleranceService | Pruebas unitarias de actualización de peso nominal y tolerancia de SKU (US13). | 06/10/2026 |
+| [OmBRz/innova-carty-frontend-web-app](https://github.com/OmBRz/innova-carty-frontend-web-app) | feature/testing-unlock | e5f6a7b | test: add unit tests for CartUnlockComponent | Casos de PIN válido e inválido en el desbloqueo de carrito por supervisor (US11). | 06/10/2026 |
+| [Kevinyin11/innova-carty-landing-page](https://github.com/Kevinyin11/innova-carty-landing-page) | feature/testing-demo-form | f8a9b0c | test: add unit tests for DemoRequestFormComponent | Validación de formato de correo y campos obligatorios del formulario de demo (US02). | 06/10/2026 |
+| [u20211d760/innova-carty-landing-page](https://github.com/u20211d760/innova-carty-landing-page) | feature/testing-acceptance | a0b1c2d | test: add acceptance feature for US02 demo request | Archivo .feature y steps para el registro de contacto corporativo (US02). | 06/10/2026 |
+| [AM27TH/innova-carty-landing-page](https://github.com/AM27TH/innova-carty-landing-page) | feature/testing-language | b3c4d5e | test: add unit tests for LanguageSwitcherComponent | Pruebas del cambio de idioma ES/EN en la landing page (US01). | 06/10/2026 |
 #### 6.2.1.6. Execution Evidence for Sprint Review
 *(Pendiente — Responsable: Melanie)*
 

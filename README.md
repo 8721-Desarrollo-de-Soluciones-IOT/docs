@@ -22,7 +22,7 @@
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Informe de Avance (AV1)</strong>
+  <strong>Trabajo Parcial (TB1)</strong>
 </p>
 
 <br>
@@ -93,7 +93,7 @@
 </div>
 
 <br>
-<p align="center">Setiembre 2026</p>
+<p align="center">Octubre 2026</p>
 
 <div style="page-break-after: always;"></div>
 
@@ -104,6 +104,7 @@
 | Versión | Fecha      | Autor(es)                                                                                                                                                                                                                                        | Descripción de modificación                                                                                                                                                 |
 |---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
+| 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
 
 <div style="page-break-after: always;"></div>
 
@@ -142,7 +143,9 @@
 - [4.1. Strategic-Level Domain-Driven Design](#41-strategic-level-domain-driven-design)
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
-  - [4.2.2. Bounded Context: \[Nombre\]](#422-bounded-context)
+  - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
+  - [4.2.3. Bounded Context: Catalog & Pricing Bounded Context](#423-bounded-context-catalog--pricing-bounded-context)
+  - [4.2.4. Bounded Context: Operations & Security Bounded Context](#424-bounded-context-operations--security-bounded-context)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
@@ -170,15 +173,10 @@
 
 ## ABET – EAC - Student Outcome 5
 
-**Criterio:**
-La capacidad de funcionar efectivamente en un equipo cuyos miembros juntos proporcionan liderazgo, crean un entorno de colaboración e inclusivo, establecen objetivos, planifican tareas y cumplen objetivos.
-
-En el siguiente cuadro se describen las acciones realizadas y conclusiones del grupo que sustentan el logro del criterio. *(Completar por cada integrante y por cada entrega — AV1, TB1, AV2, TB2, etc.)*
-
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **[Apellidos, Nombres] (AV1)** <br> [Describir en qué participó: qué diseñó, qué bounded context o módulo lideró, con quién coordinó] <br><br> **[Apellidos, Nombres] (AV1)** <br> [...] | **Conclusión general:** <br> [Resumen de cómo se distribuyó el liderazgo entre el equipo] |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **[Apellidos, Nombres] (AV1)** <br> [Describir cómo fomentó la colaboración: tableros usados, seguimiento de tareas, coordinación de plazos] <br><br> **[Apellidos, Nombres] (AV1)** <br> [...] | **Conclusión general:** <br> [Resumen de las herramientas/prácticas que usó el equipo para cumplir metas] |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page (US01), el detalle del carrito con discrepancia de peso (US11) y el modal de edición de peso nominal y tolerancia (US13). <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI del capítulo V también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances a mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los capítulos I a IV del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los 20 Story Points comprometidos, además de los capítulos IV y V del informe. |
 
 <div style="page-break-after: always;"></div>
 
@@ -1056,10 +1054,108 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 #### 4.1.1.1. Candidate Context Discovery
 
-![Candidate Context Discovery](assets/chapter-4/Candidate%20Context%20Discovery.png)
+El equipo hizo el EventStorming de Innova Carty en Miro en diez pasos. Cada paso parte del tablero del paso anterior y le agrega una capa más, hasta llegar a los agregados y a los bounded contexts que se usan en el resto del capítulo. La notación de colores es la misma en todos los pasos: eventos en naranja, comandos en azul, actores en amarillo, políticas en rosado, *read models* en verde, sistemas externos en morado, *pain points* en rombos rojos e integraciones entre agregados en negro.
+
+**Paso 1. Unstructured Exploration (lluvia de eventos)**
+
+El equipo escribió en pasado todo lo que ocurre durante una compra con el Smart Cart, sin ordenar ni filtrar: desde el registro de un producto en el catálogo hasta la salida de la tienda. El resultado son más de cuarenta eventos de dominio, como *Producto detectado por RFID*, *Peso medido*, *QR dinámico generado* o *Freno del carrito activado*.
+
+![Paso 1 - Unstructured Exploration](assets/chapter-4/eventstorming/paso1.jpg)
+
+**Paso 2. Timelines**
+
+Los eventos se ordenaron en el tiempo y se agruparon en cinco líneas de flujo: **ShoppingSession** (vinculación del carrito, presupuesto y registro de productos), **WeightValidation** (consistencia entre RFID y peso), **Payment** (QR dinámico, comprobante y autorización de salida), **Catalog** (catálogo maestro) y **PerimeterSecurity** (perímetro de salida). Debajo de la línea principal quedan los caminos alternativos, como *Etiqueta RFID no reconocida*, *QR expirado* o *Firma de webhook rechazada*.
+
+![Paso 2 - Timelines](assets/chapter-4/eventstorming/paso2.jpg)
+
+**Paso 3. Pain Points**
+
+Sobre cada línea de tiempo se marcaron las dudas y los riesgos del negocio que todavía no tenían respuesta. Por ejemplo, qué hace el comprador si la etiqueta RFID está dañada, cómo validar productos frescos cuyo peso varía, qué pasa si el webhook de Yape/Plin llega tarde o cómo evitar bloquear a un cliente que sí pagó. Estos puntos guiaron las reglas de negocio de los pasos siguientes (tolerancias de peso, espera de 3 s antes de marcar una discrepancia, expiración del QR).
+
+![Paso 3 - Pain Points](assets/chapter-4/eventstorming/paso3.jpg)
+
+**Paso 4. Pivotal Points**
+
+Se armó el flujo de punta a punta y se identificaron los eventos pivote, es decir, los que cierran una fase del negocio y cambian el estado del proceso. El flujo quedó dividido en cinco fases: **Catálogo listo** (*Catálogo sincronizado con edge*), **Inicio de compra** (*Sesión de compra iniciada*), **Compra y validación** (*Sesión lista para checkout*), **Pago** (*Pago confirmado por billetera*) y **Salida** (*Salida registrada conforme*).
+
+![Paso 4 - Pivotal Points](assets/chapter-4/eventstorming/paso4.jpg)
+
+**Paso 5. Commands**
+
+Para cada evento se agregó el comando que lo provoca (por ejemplo, *Vincular carrito*, *Configurar presupuesto límite*, *Proceder al pago*, *Actualizar peso y tolerancia*) y el actor que lo ejecuta: el **Comprador**, el **Supervisor de piso** o el **Administrador de tienda**. En este paso la línea *PerimeterSecurity* se amplió a **OperationsSecurity**, porque también incluye las alertas y la intervención del supervisor, y *Catalog* pasó a llamarse **CatalogPricing**.
+
+![Paso 5 - Commands](assets/chapter-4/eventstorming/paso5.jpg)
+
+**Paso 6. Policies**
+
+Se agregaron las políticas que disparan comandos de forma automática a partir de un evento, con la forma "cuando… entonces…". Por ejemplo: *cuando se detecta una etiqueta RFID válida* se agrega el producto a la sesión, *cuando la diferencia de peso supera la tolerancia por más de 3 s* se pausa el pago y *cuando el carrito cruza sin autorización de salida* se bloquea el carrito. Las líneas moradas muestran los primeros enlaces entre flujos: la sesión lista para checkout crea la orden de pago, y la discrepancia de peso llega a OperationsSecurity.
+
+![Paso 6 - Policies](assets/chapter-4/eventstorming/paso6.jpg)
+
+**Paso 7. Read Models**
+
+Se identificó la información que cada actor necesita ver para tomar una decisión antes de ejecutar un comando. Así aparecen las vistas del On-Cart Display y de la app (*Código QR del carrito*, *Lista de productos en canasta*, *Total y presupuesto en pantalla*, *QR de pago en pantalla*, *Historial de compras*) y las de la Web Console (*Panel de alertas*, *Mapa de carritos activos*, *Edición de producto*).
+
+![Paso 7 - Read Models](assets/chapter-4/eventstorming/paso7.jpg)
+
+**Paso 8. External Systems**
+
+Se añadieron los sistemas externos y los dispositivos que originan eventos sin intervención de una persona: el **Lector RFID** y la **Celda de carga**, que llegan a través del Edge API; las billeteras **Yape / Plin**, que confirman el pago por webhook; el **Sistema POS** del supermercado, con el que se sincroniza la venta; y el **Sensor perimetral** del arco de salida.
+
+![Paso 8 - External Systems](assets/chapter-4/eventstorming/paso8.jpg)
+
+**Paso 9. Aggregates**
+
+Los flujos se agruparon en agregados, que son los objetos que protegen las reglas de negocio y garantizan la consistencia de cada transacción: **ShoppingSession** (que reúne el flujo de la sesión y la validación de peso), **PaymentTransaction**, **ProductCatalogItem** y **SecurityIncident**. Las tarjetas negras representan los comandos que integran un agregado con otro: *Crear orden de pago*, *Cerrar sesión de compra*, *Crear alerta de discrepancia*, *Registrar salida* y *Aplicar nueva tolerancia de peso*.
+
+![Paso 9 - Aggregates](assets/chapter-4/eventstorming/paso9.jpg)
+
+**Paso 10. Bounded Contexts**
+
+Por último, los agregados se agruparon en los cuatro bounded contexts de la solución: **Smart Shopping** (ShoppingSession), **Payment & Checkout** (PaymentTransaction), **Catalog & Pricing** (ProductCatalogItem) y **Operations & Security** (SecurityIncident). Las conexiones moradas entre contextos muestran la integración que se detalla en los Domain Message Flows y en los Bounded Context Canvases de las secciones siguientes; por ejemplo, Smart Shopping consulta el producto por RFID a Catalog & Pricing y solicita la orden de pago a Payment & Checkout.
+
+![Paso 10 - Bounded Contexts](assets/chapter-4/eventstorming/paso10.jpg)
 
 #### 4.1.1.2. Domain Message Flows Modeling
-*(Pendiente — Responsable: Melanie)*
+
+En esta sección el equipo muestra cómo colaboran los bounded contexts para resolver los casos principales del negocio. Se aplicó la técnica de **Domain Storytelling**: cada escenario se cuenta como una historia numerada en la que un actor o un sistema externo envía un mensaje, un bounded context lo procesa y, como resultado, publica un evento o envía un comando a otro contexto. Los escenarios se eligieron a partir de los eventos pivote y de las integraciones entre agregados identificadas en el EventStorming (sección 4.1.1).
+
+Todos los diagramas usan la misma notación:
+
+* **Actor** (óvalo negro): persona que inicia la historia, como el Comprador, el Supervisor de piso o el Administrador de tienda.
+* **Bounded Context** (nube lila): Smart Shopping, Payment & Checkout, Catalog & Pricing u Operations & Security.
+* **System** (rectángulo blanco): sistema externo o dispositivo, como el Edge API, Yape / Plin, el Smart Cart o la Web Console.
+* **Mensajes** (notas numeradas con sus campos): eventos en naranja, comandos en celeste y políticas en rosado. El número indica el orden de la historia.
+
+##### Escenario 1: Inicio de sesión de compra y registro de producto por RFID
+
+El Comprador inicia la sesión desde el carrito con el comando *Iniciar sesión de compra* (`cartId`, `budgetLimit`). Smart Shopping crea la sesión y publica *Sesión de compra iniciada*, que se muestra en el On-Cart Display y en la app. Cuando el comprador coloca un artículo, el Edge API envía *Producto detectado* con la etiqueta RFID leída. Smart Shopping consulta a Catalog & Pricing el producto por RFID para obtener su precio y peso nominal, y publica *Producto agregado a la sesión* con el subtotal actualizado (US04, US05, US06).
+
+![Domain Message Flow - Inicio de sesión y registro de producto por RFID](assets/chapter-4/message-flow/domain-message-flow1.jpg)
+
+##### Escenario 2: Discrepancia de peso y desbloqueo por supervisor
+
+La celda de carga reporta *Peso medido* a través del Edge API. Smart Shopping compara el peso con el esperado y, si la diferencia supera la tolerancia por más de 3 segundos, aplica la política correspondiente y publica *Discrepancia de peso detectada*. Operations & Security recibe el evento, crea la alerta y la muestra en la Web Console. El Supervisor de piso revisa el carrito y ejecuta *Desbloquear carrito* con sus credenciales; Operations & Security publica *Discrepancia resuelta por supervisor* y Smart Shopping retoma la sesión (US09, US10).
+
+![Domain Message Flow - Discrepancia de peso y desbloqueo por supervisor](assets/chapter-4/message-flow/domain-message-flow2.jpg)
+
+##### Escenario 3: Pago con QR dinámico y autorización de salida
+
+El Comprador elige *Proceder al pago*. Smart Shopping valida la sesión y envía a Payment & Checkout el comando *Crear orden de pago* con el monto final. Payment & Checkout genera el QR dinámico y espera la confirmación de Yape / Plin, que llega por webhook con firma (*Pago confirmado*). Tras validar la firma, Payment & Checkout publica *Pago confirmado*, con el que Smart Shopping cierra la sesión, y *Autorización de salida emitida*, que Operations & Security usa para permitir la salida del carrito (US08, TS03).
+
+![Domain Message Flow - Pago con QR dinámico y autorización de salida](assets/chapter-4/message-flow/domain-message-flow3.jpg)
+
+##### Escenario 4: Intento de salida sin autorización de pago
+
+El sensor perimetral del arco de salida reporta *Cruce de perímetro detectado*. Operations & Security comprueba que el carrito no tiene una autorización de salida vigente y aplica la política de bloqueo: envía el comando *Bloquear carrito* al Smart Cart (ESP32), que activa el freno y la alarma. Luego publica *Freno del carrito activado*, que aparece como incidente en la Web Console para que el personal intervenga (US12).
+
+![Domain Message Flow - Intento de salida sin autorización de pago](assets/chapter-4/message-flow/domain-message-flow4.jpg)
+
+##### Escenario 5: Actualización de precio, peso y tolerancia de un producto
+
+El Administrador de tienda ejecuta *Actualizar peso y tolerancia* desde la Web Console (`sku`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`). Catalog & Pricing guarda el cambio y publica *Peso nominal y tolerancia actualizados*. Por la política de propagación, el cambio se envía al gateway de tienda (edge); al terminar se publica *Catálogo sincronizado con edge*, de modo que Smart Shopping valide las siguientes lecturas con los valores nuevos (US13).
+
+![Domain Message Flow - Actualización de precio, peso y tolerancia de un producto](assets/chapter-4/message-flow/domain-message-flow5.jpg)
 
 #### 4.1.1.3. Bounded Context Canvases
 
@@ -1067,24 +1163,24 @@ El Product Backlog de Innova Carty se ordena según el valor que cada historia a
 
 Modela el monitoreo de discrepancias físicas, gestión de alertas a la consola de supervisores, auditoría con credenciales de personal y control perimetral por *geofencing* (bloqueo electromecánico de ruedas).
 
-![context operations](assets/chapter-4/bounded/operations.png)
+![context operations](assets/chapter-4/bounded/operations.jpg)
 
 #####  Catalog and Pricing Context
 
 Especifica la sincronización del catálogo maestro de productos, mapeo de etiquetas RFID, precios vigentes y márgenes de tolerancia de peso nominal.
 
-![context catalog](assets/chapter-4/bounded/catalog.png)
+![context catalog](assets/chapter-4/bounded/catalog.jpg)
 
 #####  Payment and Checkout Context
 
 Detalla la generación de QR dinámicos, consumo de webhooks de billeteras digitales (Yape/Plin), emisión de comprobante electrónico y generación del token de liberación para la salida.
 
-![context payment](assets/chapter-4/bounded/payment.png)
+![context payment](assets/chapter-4/bounded/payment.jpg)
 
 ##### Smart Shopping Context
 Define las responsabilidades principales de la sesión de compra, gestión de canasta, cálculo de total en tiempo real, reglas de consistencia peso/RFID y alertas de límite de presupuesto.
 
-![context shopping](assets/chapter-4/bounded/shopping.png)
+![context shopping](assets/chapter-4/bounded/shopping.jpg)
 
 ### 4.1.2. Context Mapping
 
@@ -1227,9 +1323,38 @@ En esta sección se muestra como se distribuye nuestro diagrama de despliegue de
 
 ### 4.2.1. Bounded Context: Smart Shopping Bounded Context
 
+El Smart Shopping Bounded Context es el dominio core de Innova Carty: gestiona la sesión de compra desde que el comprador vincula el carrito hasta que la canasta queda pagada, registra los productos detectados por RFID, calcula el total y el presupuesto en tiempo real y valida que el peso medido coincida con los productos registrados. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ShoppingSession` | Aggregate Root | Representa una sesión de compra y protege sus reglas: una sola sesión activa por carrito, no pasar a checkout con una discrepancia abierta y alertar al 90 % del presupuesto. | `id`, `cartId`, `customerId`, `status`, `budget`, `items`, `weightSnapshot`, `paymentPaused`, `startedAt`, `closedAt` | `setBudgetLimit()`, `addItem()`, `removeItem()`, `getSubtotal()`, `updateWeightSnapshot()`, `canCheckout()`, `markPendingCheckout()`, `complete()`, `cancel()` | Compone 0..* `CartItem`, un `Budget` y un `WeightSnapshot`; registra `ShoppingSessionEvent`. |
+| `CartItem` | Entity | Producto registrado en la sesión tras la lectura RFID, con una copia del precio, peso nominal y tolerancia vigentes al momento de la detección. | `productId`, `rfidTag`, `productName`, `unitPrice`, `quantity`, `nominalWeight`, `weightTolerance`, `weightVerified`, `removed` | `getTotalPrice()`, `increaseQuantity()`, `markRemoved()`, `markWeightVerified()` | Pertenece a una `ShoppingSession`; se crea a partir de un `ProductSnapshot`. |
+| `Budget` | Value Object | Presupuesto límite del comprador y monto ya gastado. | `limit`, `spent`, `thresholdReached` | `withSpent()`, `remaining()`, `usedPercent()`, `isNearLimit()`, `isExceeded()` | Usa `Money`. |
+| `WeightSnapshot` | Value Object | Última comparación entre el peso medido y el esperado. | `measured`, `expected`, `status`, `mismatchSince` | `difference()`, `isConsistent()` | Usa `Weight` y `WeightValidationStatus`; lo produce `WeightConsistencyPolicy`. |
+| `ProductSnapshot` | Value Object | Datos del producto que devuelve Catalog & Pricing, traducidos al lenguaje de este contexto. | `productId`, `name`, `unitPrice`, `nominalWeight`, `weightTolerance` | — | Lo devuelve `CatalogPricingPort`. |
+| `Money` / `Weight` | Value Objects | Montos en soles y pesos en gramos, con sus operaciones aritméticas. | `amount`, `currency` / `grams` | `add()`, `subtract()`, `isGreaterThan()` / `difference()`, `isWithin()` | Usados por `Budget`, `CartItem` y `WeightSnapshot`. |
+| `SessionId`, `CartId`, `CustomerId`, `ProductId`, `RfidTag` | Value Objects | Identificadores tipados; evitan mezclar ids de distintos conceptos. | `value` | — | `CartId` y `ProductId` referencian objetos de otros contextos solo por id. |
+| `CheckoutReference` | Value Object | Respuesta de Payment & Checkout al solicitar la orden de pago. | `checkoutId`, `amount`, `status` | — | La devuelve `PaymentCheckoutPort`. |
+| `SessionStatus` | Enumeration | Estados de la sesión. | `ACTIVE`, `PENDING_CHECKOUT`, `COMPLETED`, `CANCELLED` | — | Atributo de `ShoppingSession`. |
+| `WeightValidationStatus` | Enumeration | Resultado de la validación de peso. | `CONSISTENT`, `MISMATCH` | — | Atributo de `WeightSnapshot`. |
+| `WeightConsistencyPolicy` / `DefaultWeightConsistencyPolicy` | Domain Service (interfaz e implementación) | Compara el peso medido con la suma de pesos nominales y tolerancias, y marca una discrepancia solo si persiste más de 3 s. | `gracePeriod` | `evaluate()` | Evalúa `CartItem` y produce `WeightSnapshot`. |
+| `ShoppingSessionRepository` | Repository (interfaz) | Contrato de persistencia del agregado. | — | `save()`, `findById()`, `findActiveByCartId()`, `existsActiveSessionByCartId()` | Persiste `ShoppingSession`; lo implementa la Infrastructure Layer. |
+| `CatalogPricingPort` / `PaymentCheckoutPort` | Ports (interfaces) | Contratos hacia otros bounded contexts, implementados por las ACL. | — | `getProductByRfid()` / `createCheckout()` | Devuelven `ProductSnapshot` y `CheckoutReference`. |
+| `ShoppingSessionEvent` y subclases | Domain Events | Hechos que publica el agregado: `ShoppingSessionStarted`, `ProductAddedToSession`, `ProductRemovedFromSession`, `BudgetThresholdReached`, `UnknownTagDetected`, `WeightMismatchDetected`, `WeightConsistencyRestored`, `ShoppingSessionReadyForCheckout`, `ShoppingSessionCompleted`, `ShoppingSessionCancelled`. | `sessionId`, `occurredAt` | — | Registrados por `ShoppingSession` y publicados por la Application Layer. |
+
 #### 4.2.1.1. Domain Layer
 
-![BC 1 Usuario y Carrito - Domain Layer.png](assets/chapter-4/software-architecture/BC%201%20Usuario%20y%20Carrito%20-%20Domain%20Layer.png)
+La **Domain Layer** contiene el núcleo del contexto: las clases que representan la sesión de compra y las reglas de negocio que no dependen de HTTP, de la base de datos ni de los otros contextos.
+
+* **Aggregate:** `ShoppingSession` es la única puerta de entrada para modificar la sesión. Toda operación (agregar o retirar un producto, fijar el presupuesto, actualizar el peso, pasar a checkout, cerrar o cancelar) se hace a través de sus métodos, que verifican primero que la sesión esté activa. Al cambiar de estado, el agregado registra el evento de dominio correspondiente para que la Application Layer lo publique.
+* **Entity:** `CartItem` tiene identidad propia dentro de la sesión, porque un mismo producto puede agregarse, retirarse o verificarse por peso de forma independiente.
+* **Value Objects:** `Budget`, `WeightSnapshot`, `ProductSnapshot`, `Money`, `Weight`, `CheckoutReference` y los identificadores tipados son inmutables y se comparan por valor. `Budget` encapsula la regla del 90 % (`isNearLimit()`) y `WeightSnapshot` el resultado de la validación de peso.
+* **Domain Service:** `WeightConsistencyPolicy` resuelve una regla que no pertenece a una sola entidad: suma los pesos nominales de los productos activos, aplica la tolerancia de cada uno y solo marca `MISMATCH` cuando la diferencia se mantiene más de 3 segundos, para no generar falsas alarmas por el movimiento del carrito.
+* **Factory:** el constructor de `ShoppingSession` cumple el rol de fábrica: crea la sesión en estado `ACTIVE`, con el presupuesto opcional y el evento `ShoppingSessionStarted`. `CartItem` se construye siempre a partir de un `ProductSnapshot`, de modo que el dominio no depende del modelo de Catalog & Pricing.
+* **Repositories y Ports:** `ShoppingSessionRepository`, `CatalogPricingPort` y `PaymentCheckoutPort` son interfaces del dominio; sus implementaciones (JPA y las *Anti-Corruption Layers*) están en la Infrastructure Layer.
+* **Enumerations y Domain Events:** `SessionStatus` y `WeightValidationStatus` limitan los estados válidos, y la jerarquía `ShoppingSessionEvent` define los hechos que este contexto comunica a Payment & Checkout, Operations & Security y a los clientes en tiempo real.
+
+El diagrama de clases completo se presenta en la sección 4.2.1.6.1.
 
 #### 4.2.1.2. Interface Layer
 
@@ -1347,7 +1472,7 @@ La **Infrastructure Layer** contiene las implementaciones técnicas de los contr
 
 ##### Persistence
 
-**JpaShoppingSessionRepository** implementa `ShoppingSessionRepository` con Spring Data JPA sobre PostgreSQL (ver 4.3).
+**JpaShoppingSessionRepository** implementa `ShoppingSessionRepository` con Spring Data JPA sobre PostgreSQL (ver 4.2.1.6.2).
 
 | Operación | Implementación |
 | :--- | :--- |
@@ -1397,19 +1522,528 @@ El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
+En esta sección se presentan los diagramas con mayor nivel de detalle sobre la implementación del Smart Shopping Bounded Context: el diagrama de clases UML de la Domain Layer y el diagrama de base de datos que persiste esos objetos.
+
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
-![Bounded Context Domain Layer Class Diagrams.png](assets/chapter-4/software-architecture/Bounded%20Context%20Domain%20Layer%20Class%20Diagrams.png)
+
+El siguiente diagrama de clases UML muestra las clases, interfaces y enumeraciones de la Domain Layer, agrupadas en Aggregates, Entities, Value Objects, Domain Services, Repositories y Domain Events. Cada miembro indica su visibilidad (`-` privado, `#` protegido, `+` público), y las relaciones indican su nombre, dirección y multiplicidad: por ejemplo, una `ShoppingSession` **contiene** 0..* `CartItem` y **controla** exactamente un `Budget`. El diagrama se elaboró con PlantUML; la fuente está en [`design/chapter-4/smart-shopping-class-diagram.puml`](design/chapter-4/smart-shopping-class-diagram.puml).
+
+![Smart Shopping Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/smart-shopping-class-diagram.png)
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
-*(Pendiente — Responsable: Melanie)*
 
-### 4.2.2. Bounded Context: [Nombre]
-*(Repetir la misma estructura de 4.2.1 para este segundo Bounded Context)*
+El siguiente diagrama muestra el modelo relacional en PostgreSQL que persiste los objetos del Smart Shopping Bounded Context. El contexto es dueño de sus tablas: los datos de otros contextos (el carrito físico de Operations & Security y el producto de Catalog & Pricing) se guardan solo como identificadores (`cart_id`, `product_id`), sin clave foránea, para que cada bounded context pueda evolucionar y desplegarse por separado. El diagrama se elaboró en Redgate Data Modeler.
 
-### 4.3 Database Design Diagram
+![Smart Shopping Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/smart-shopping-bounded-context.png)
 
-El diseño del modelo relacional de base de datos para la solución Innova Carty da soporte a la interacción entre los dispositivos físicos de compra (Smart Carts con tecnología IoT/Edge Computing) y los servicios centrales en la nube. Su estructura se alinea directamente con los lineamientos tácticos del Smart Shopping Bounded Context y las reglas de negocio descritas en el proyecto, garantizando consistencia transaccional, trazabilidad de eventos y baja latencia en la sincronización de datos.
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `shopping_sessions` | Agregado `ShoppingSession` con los *embeddables* `Budget` y `WeightSnapshot` | Una fila por sesión de compra: carrito vinculado, comprador opcional, presupuesto límite, total acumulado, último peso medido y esperado, estado de validación de peso, estado de la sesión y fechas de inicio y cierre. |
+| `session_items` | Entidad `CartItem` | Productos detectados por RFID en la sesión. Guarda una copia del nombre, precio, peso nominal y tolerancia que devolvió Catalog & Pricing (`ProductSnapshot`), para que un cambio posterior en el catálogo no altere una compra en curso. |
+| `weight_telemetry_logs` | Historial de lecturas de peso | Cada lectura estable de la celda de carga, con el peso esperado, la diferencia y si fue una discrepancia. Permite auditar las alertas de peso. |
 
-![database model](assets/chapter-4/software-architecture/database.png)
+**Constraints y relaciones**
+
+* **Claves primarias:** `session_id`, `session_item_id` y `log_id` (este último `bigserial`, porque es la tabla con más registros).
+* **Claves foráneas:** `session_items.session_id` y `weight_telemetry_logs.session_id` referencian a `shopping_sessions` con `ON DELETE CASCADE`: una sesión tiene cero o muchos productos y cero o muchas lecturas de peso (relación 1 a N).
+* **Checks:** `budget_limit` debe ser mayor a 0 cuando existe (US04); `session_status` solo admite `ACTIVE`, `PENDING_CHECKOUT`, `COMPLETED` y `CANCELLED`; `weight_validation_status` solo admite `CONSISTENT` y `MISMATCH`; `quantity` debe ser mayor a 0.
+* **Únicos e índices:**
+  * Un índice único parcial sobre `shopping_sessions(cart_id)` para las sesiones `ACTIVE` o `PENDING_CHECKOUT` garantiza que un carrito tenga una sola sesión activa (`existsActiveSessionByCartId`, TS02).
+  * `edge_event_id` es único en `weight_telemetry_logs`, de modo que los reintentos del Edge API no registran la misma lectura dos veces (TS01).
+  * Los índices sobre `session_id` aceleran la carga de la sesión con sus productos y el historial de peso.
+
+### 4.2.2. Bounded Context: Payment & Checkout Bounded Context
+
+El Payment & Checkout Bounded Context convierte una sesión lista para pago en una transacción: genera el QR dinámico, procesa la confirmación de Yape o Plin por webhook, emite el comprobante electrónico y la autorización de salida que el carrito necesita para dejar la tienda. Es un dominio de soporte que se integra con pasarelas externas. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PaymentTransaction` | Aggregate Root | Orden de pago de una sesión. Controla el ciclo `PENDING` → `QR_GENERATED` → `CONFIRMED` y garantiza que solo una transacción confirmada emita comprobante y autorización de salida. | `id`, `sessionId`, `cartId`, `amount`, `method`, `status`, `qrCodes`, `callbacks`, `receipt`, `exitClearance`, `createdAt`, `confirmedAt`, `posSyncedAt` | `attachQr()`, `currentQr()`, `expireQr()`, `registerCallback()`, `confirm()`, `reject()`, `issueReceipt()`, `issueExitClearance()`, `markSyncedWithPos()` | Compone 0..* `QrDetails`, 0..* `GatewayCallback`, 0..1 `Receipt` y 0..1 `ExitClearanceToken`; registra `PaymentEvent`. |
+| `GatewayCallback` | Entity | Webhook recibido de la billetera digital, guardado para auditoría y para evitar procesar dos veces la misma notificación. | `provider`, `externalReference`, `payload`, `signature`, `signatureValid`, `receivedAt` | `markSignature()` | Pertenece a una `PaymentTransaction`; lo valida `WebhookSignatureVerifier`. |
+| `Receipt` | Entity | Comprobante electrónico (boleta o factura) de la compra. | `type`, `seriesNumber`, `totalAmount`, `receiptUrl`, `issuedAt` | — | Lo devuelve `ElectronicInvoicingService`. |
+| `QrDetails` | Value Object | QR dinámico único por orden y monto, válido por 5 minutos. | `payload`, `amount`, `generatedAt`, `expiresAt`, `VALIDITY` | `isExpired()` | Lo devuelve `DigitalWalletGateway`. |
+| `ExitClearanceToken` | Value Object | Autorización de salida que certifica que la canasta fue pagada. | `token`, `issuedAt`, `expiresAt`, `usedAt` | `isValid()`, `markUsed()` | Lo crea `ExitClearanceTokenFactory`; lo consulta Operations & Security. |
+| `Money`, `TransactionId`, `SessionId`, `CartId` | Value Objects | Monto en soles e identificadores tipados. `SessionId` y `CartId` referencian objetos de otros contextos solo por id. | `amount`, `currency` / `value` | — | Atributos de `PaymentTransaction`. |
+| `PaymentStatus`, `PaymentMethod`, `ReceiptType` | Enumerations | Estados del pago (`PENDING`, `QR_GENERATED`, `CONFIRMED`, `EXPIRED`, `REJECTED`), billetera (`YAPE`, `PLIN`) y tipo de comprobante (`BOLETA`, `FACTURA`). | — | — | Atributos de `PaymentTransaction`, `GatewayCallback` y `Receipt`. |
+| `WebhookSignatureVerifier` | Domain Service (interfaz) | Aplica la política de verificación HMAC: ningún webhook se procesa sin firma válida. | — | `verify()` | Valida `GatewayCallback`. |
+| `ExitClearanceTokenFactory` | Factory | Crea el token de salida con su vigencia a partir de una transacción confirmada. | `validity` | `create()` | Crea `ExitClearanceToken`. |
+| `DigitalWalletGateway`, `ElectronicInvoicingService`, `PosSalesPort` | Ports (interfaces) | Contratos hacia Yape / Plin, el proveedor de facturación electrónica y el Sistema POS. | — | `createDynamicQr()`, `issue()`, `registerSale()` | Implementados en la Infrastructure Layer. |
+| `PaymentTransactionRepository` | Repository (interfaz) | Contrato de persistencia del agregado. | — | `save()`, `findById()`, `findBySessionId()`, `findByExternalReference()`, `findExpiredQrBefore()`, `existsOpenBySessionId()` | Persiste `PaymentTransaction`. |
+| `PaymentEvent` y subclases | Domain Events | `PaymentOrderCreated`, `DynamicQrGenerated`, `QrExpired`, `WebhookSignatureRejected`, `PaymentConfirmed`, `ReceiptIssued`, `ExitClearanceIssued`, `SaleSyncedWithPos`. | `transactionId`, `sessionId`, `occurredAt` | — | Registrados por `PaymentTransaction`. |
+
+#### 4.2.2.1. Domain Layer
+
+La **Domain Layer** de Payment & Checkout modela el cobro sin cajero y sus reglas de seguridad, sin depender de los detalles técnicos de cada pasarela.
+
+* **Aggregate:** `PaymentTransaction` es la raíz que protege el ciclo de vida del pago. Solo acepta un QR nuevo si la transacción no está confirmada, solo pasa a `CONFIRMED` desde `QR_GENERATED` y solo emite comprobante y autorización de salida si el pago está confirmado. Una sesión tiene como máximo una transacción abierta.
+* **Entities:** `GatewayCallback` y `Receipt` tienen identidad propia: cada webhook se guarda con su referencia externa para descartar duplicados, y cada comprobante tiene una serie y un número únicos.
+* **Value Objects:** `QrDetails` encapsula la regla de expiración de 5 minutos (`isExpired()`), y `ExitClearanceToken` la vigencia de la autorización de salida (`isValid()`). `Money` y los identificadores tipados completan el modelo.
+* **Domain Service:** `WebhookSignatureVerifier` aplica la política HMAC sobre el contenido del webhook; si la firma no es válida, la transacción no cambia y se registra `WebhookSignatureRejected`.
+* **Factory:** `ExitClearanceTokenFactory` genera el token aleatorio y su fecha de expiración, de modo que la regla de vigencia no quede repartida en los servicios.
+* **Repositories y Ports:** `PaymentTransactionRepository`, `DigitalWalletGateway`, `ElectronicInvoicingService` y `PosSalesPort` son interfaces del dominio; sus implementaciones están en la Infrastructure Layer.
+* **Domain Events:** la jerarquía `PaymentEvent` comunica el avance del pago; `PaymentConfirmed` cierra la sesión en Smart Shopping y `ExitClearanceIssued` habilita la salida en Operations & Security.
+
+#### 4.2.2.2. Interface Layer
+
+La **Interface Layer** expone el contexto al On-Cart Display, a la app móvil, a las billeteras digitales y a Operations & Security mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`. Valida el formato de las solicitudes, las convierte en *Commands* o *Queries* y delega en la Application Layer.
+
+##### Controllers
+
+**1. PaymentsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/payments/{transactionId}` | Devuelve el estado de la transacción y su monto. | `200 PaymentTransactionResource` · `404` | US08 |
+| `GET` | `/api/v1/shopping-sessions/{sessionId}/payment` | Obtiene la transacción de una sesión (usado por el carrito y la app tras el checkout). | `200` · `404` | US08 |
+| `GET` | `/api/v1/payments/{transactionId}/qr` | Devuelve el QR vigente y su fecha de expiración. | `200 QrResource` · `410` si expiró | US08 |
+| `POST` | `/api/v1/payments/{transactionId}/qr` | Regenera el QR cuando el anterior expiró. | `201 QrResource` · `409` si ya está pagada | US08 |
+| `GET` | `/api/v1/payments/{transactionId}/receipt` | Devuelve el comprobante electrónico. | `200 ReceiptResource` · `404` | US08 |
+
+**2. WalletWebhooksController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/webhooks/{provider}` | Recibe la notificación de pago de Yape o Plin con la firma en la cabecera. Convierte la solicitud en `ConfirmPaymentFromWebhookCommand`. | `200` si se procesó o era un duplicado · `401` si la firma no es válida |
+
+**3. ExitClearancesController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/exit-clearances/{token}?cartId={cartId}` | Operations & Security verifica si un token de salida es válido para el carrito que cruza el perímetro. | `200 ExitClearanceResource` · `404` si no existe o expiró |
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `PaymentTransactionResource` | `transactionId`, `sessionId`, `amount`, `currency`, `status`, `method`, `confirmedAt` | Salida de las consultas de pago |
+| `QrResource` | `transactionId`, `qrPayload`, `amount`, `expiresAt` | Salida del QR para el On-Cart Display y la app |
+| `WalletWebhookResource` | `externalReference`, `transactionId`, `status`, `amount`, `paidAt` + cabecera de firma | Entrada del webhook |
+| `ReceiptResource` | `type`, `seriesNumber`, `totalAmount`, `receiptUrl`, `issuedAt` | Comprobante digital en la app |
+| `ExitClearanceResource` | `token`, `cartId`, `valid`, `expiresAt` | Respuesta a Operations & Security |
+
+`WalletWebhookCommandFromResourceAssembler` transforma el webhook en `ConfirmPaymentFromWebhookCommand`; `PaymentTransactionResourceFromEntityAssembler`, `QrResourceFromEntityAssembler` y `ReceiptResourceFromEntityAssembler` convierten el agregado en las respuestas. Un `@RestControllerAdvice` traduce `TransactionNotFoundException` → `404`, `QrExpiredException` → `410`, `InvalidWebhookSignatureException` → `401` y `PaymentAlreadyConfirmedException` → `409`.
+
+#### 4.2.2.3. Application Layer
+
+La **Application Layer** orquesta los casos de uso del cobro. Cada servicio es transaccional, carga el agregado desde el repositorio, delega las reglas al dominio, llama a los puertos externos y publica los eventos resultantes.
+
+##### Command Handlers
+
+**PaymentCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `CreatePaymentOrderCommand` | Verifica que la sesión no tenga una transacción abierta (`existsOpenBySessionId`) y crea `PaymentTransaction` en estado `PENDING` con el monto final. | `PaymentOrderCreated` | US08 |
+| `GenerateDynamicQrCommand` | Solicita el QR a `DigitalWalletGateway`, lo adjunta al agregado y lo pasa a `QR_GENERATED`. | `DynamicQrGenerated` | US08 |
+| `ExpireQrCommand` | Marca como `EXPIRED` el QR que superó los 5 minutos sin pago. | `QrExpired` | US08 |
+| `ConfirmPaymentFromWebhookCommand` | Busca la transacción por referencia externa, descarta duplicados, verifica la firma con `WebhookSignatureVerifier` y confirma el pago. | `PaymentConfirmed` o `WebhookSignatureRejected` | TS03 |
+| `IssueReceiptCommand` | Solicita el comprobante a `ElectronicInvoicingService` y lo asocia a la transacción. | `ReceiptIssued` | US08 |
+| `IssueExitClearanceCommand` | Crea el token con `ExitClearanceTokenFactory`. | `ExitClearanceIssued` | US08 |
+| `SyncSaleWithPosCommand` | Registra la venta en el Sistema POS mediante `PosSalesPort`; si falla, se reintenta sin bloquear la salida. | `SaleSyncedWithPos` | — |
+
+##### Query Handlers
+
+**PaymentQueryService**: `handle(GetPaymentByIdQuery)`, `handle(GetPaymentBySessionIdQuery)`, `handle(GetCurrentQrQuery)`, `handle(GetReceiptQuery)` y `handle(ValidateExitClearanceQuery)`.
+
+##### Event Handlers
+
+* **ShoppingSessionReadyForCheckoutEventHandler:** reacciona al evento de Smart Shopping y ejecuta `CreatePaymentOrderCommand` y `GenerateDynamicQrCommand`.
+* **PaymentConfirmedEventHandler:** tras la confirmación ejecuta, en orden, `IssueReceiptCommand`, `IssueExitClearanceCommand` y `SyncSaleWithPosCommand`.
+* **QrExpirationScheduler:** tarea programada que busca los QR vencidos (`findExpiredQrBefore`) y ejecuta `ExpireQrCommand`.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Crear la orden de pago de una sesión | `ShoppingSessionReadyForCheckoutEventHandler`, `PaymentCommandService` |
+| Generar y renovar el QR dinámico | `PaymentCommandService`, `QrExpirationScheduler` |
+| Confirmar el pago de forma segura | `PaymentCommandService` + `WebhookSignatureVerifier` |
+| Emitir comprobante y autorización de salida | `PaymentConfirmedEventHandler` |
+| Sincronizar la venta con el POS | `PaymentCommandService` |
+| Consultar el pago, el QR y el comprobante | `PaymentQueryService` |
+
+#### 4.2.2.4. Infrastructure Layer
+
+La **Infrastructure Layer** implementa los contratos del dominio: persistencia, integración con las pasarelas y servicios externos, publicación de eventos y notificación en tiempo real.
+
+* **JpaPaymentTransactionRepository** implementa `PaymentTransactionRepository` con Spring Data JPA sobre PostgreSQL. `PaymentTransaction` se mapea a `payment_transactions`, `QrDetails` a `payment_qr_codes`, `GatewayCallback` a `gateway_callbacks`, `Receipt` a `receipts` y `ExitClearanceToken` a `exit_clearance_tokens`.
+* **HmacWebhookSignatureVerifier** implementa `WebhookSignatureVerifier` con HMAC-SHA256 y la clave secreta de cada proveedor.
+* **DigitalWalletGatewayClient** implementa `DigitalWalletGateway`: cliente HTTP que solicita el QR dinámico a Yape o Plin y traduce su respuesta a `QrDetails`.
+* **ElectronicInvoicingClient** implementa `ElectronicInvoicingService` con el proveedor de facturación electrónica.
+* **PosSyncClient** implementa `PosSalesPort` y registra la venta en el Sistema POS del supermercado.
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `PaymentConfirmed` llega a Smart Shopping y `ExitClearanceIssued` a Operations & Security.
+* **PaymentRealtimeNotifier** envía por WebSocket (STOMP), al tópico `/topic/sessions/{sessionId}`, el QR generado, su expiración y la confirmación del pago, para que el carrito y la app se actualicen sin recargar.
+
+#### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Payment & Checkout. Muestra cómo los controladores reciben las consultas del carrito y de la app, los webhooks de Yape / Plin y las validaciones de Operations & Security; cómo los servicios y *event handlers* orquestan el agregado `PaymentTransaction`; y cómo la Infrastructure Layer conecta el contexto con PostgreSQL, las billeteras, el proveedor de facturación y el Sistema POS. La fuente está en [`design/chapter-4/payment-checkout-component.puml`](design/chapter-4/payment-checkout-component.puml).
+
+![C4 Component Diagram - Payment & Checkout Bounded Context](assets/chapter-4/software-architecture/payment-checkout-component.png)
+
+#### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Payment & Checkout.
+
+##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, una `PaymentTransaction` **genera** 0..* `QrDetails` y **emite** 0..1 `Receipt`. La fuente está en [`design/chapter-4/payment-checkout-class-diagram.puml`](design/chapter-4/payment-checkout-class-diagram.puml).
+
+![Payment & Checkout Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/payment-checkout-class-diagram.png)
+
+##### 4.2.2.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste el agregado `PaymentTransaction` y sus partes. `session_id` y `cart_id` referencian a otros contextos solo por identificador, sin clave foránea. El diagrama se elaboró en Redgate Data Modeler.
+
+![Payment & Checkout Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/payment-checkout-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `payment_transactions` | Agregado `PaymentTransaction` | Orden de pago con monto, moneda, billetera, estado y fechas de creación, confirmación y sincronización con el POS. |
+| `payment_qr_codes` | Value Object `QrDetails` | QR generados para la transacción; puede haber varios si alguno expiró. |
+| `gateway_callbacks` | Entity `GatewayCallback` | Webhooks recibidos con su contenido (`jsonb`), firma y resultado de la verificación. |
+| `receipts` | Entity `Receipt` | Comprobante electrónico emitido. |
+| `exit_clearance_tokens` | Value Object `ExitClearanceToken` | Autorización de salida con su vigencia y la fecha en que se usó. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `transaction_id`, `qr_id`, `callback_id`, `receipt_id` y `token_id`.
+* **Claves foráneas:** las cuatro tablas dependientes referencian `payment_transactions.transaction_id`. Una transacción tiene 0..* QR y 0..* webhooks, y como máximo un comprobante y un token de salida (`transaction_id` es único en `receipts` y `exit_clearance_tokens`).
+* **Checks:** `amount` mayor a 0; `payment_method` y `provider` solo admiten `YAPE` o `PLIN`; `payment_status` solo admite los cinco estados del enum; `receipt_type` solo admite `BOLETA` o `FACTURA`; `expires_at` de un QR no puede superar 5 minutos desde `generated_at`.
+* **Únicos e índices:** `(provider, external_reference)` es único en `gateway_callbacks` para descartar webhooks duplicados; `series_number` y `token` son únicos; un índice único parcial sobre `payment_transactions(session_id)` impide más de una transacción abierta o confirmada por sesión.
+
+### 4.2.3. Bounded Context: Catalog & Pricing Bounded Context
+
+El Catalog & Pricing Bounded Context mantiene el catálogo maestro del supermercado: asocia cada etiqueta RFID a un SKU y define precios vigentes, pesos nominales y márgenes de tolerancia. Es un contexto de especificación: los demás contextos, en especial Smart Shopping, usan sus datos para reconocer y validar cada artículo. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ProductCatalogItem` | Aggregate Root | Producto del catálogo maestro. Garantiza que el precio sea positivo, que la tolerancia sea válida para el peso nominal y que cada cambio quede registrado en su historial. | `id`, `sku`, `name`, `category`, `price`, `weightProfile`, `rfidTags`, `priceHistory`, `weightHistory`, `active`, `createdAt`, `updatedAt` | `mapRfidTag()`, `unmapRfidTag()`, `changePrice()`, `updateWeightProfile()`, `activate()`, `deactivate()`, `isWithinTolerance()` | Compone 0..* `RfidTagMapping`, `PriceChange` y `WeightProfileChange`, un `Price` y un `WeightProfile`; registra `CatalogEvent`. |
+| `CatalogSyncLog` | Aggregate Root | Registro de cada sincronización del catálogo, ya sea la importación desde el POS o la publicación al edge de una tienda. | `direction`, `storeId`, `itemsCount`, `status`, `startedAt`, `finishedAt` | `complete()`, `fail()` | Usa `SyncDirection` y `SyncStatus`. |
+| `RfidTagMapping` | Entity | Asociación de una etiqueta RFID con el producto. | `rfidTag`, `active`, `mappedAt` | `deactivate()` | Pertenece a un `ProductCatalogItem`. |
+| `PriceChange` / `WeightProfileChange` | Entities | Historial de cambios de precio y de peso/tolerancia, con el administrador que los hizo. | `previousPrice`, `newPrice` / `previous`, `current`, `changedBy`, `changedAt` | — | Pertenecen a un `ProductCatalogItem`. |
+| `WeightProfile` | Value Object | Peso nominal y tolerancia de un producto; define el rango aceptado. | `nominalWeight`, `tolerance` | `minWeight()`, `maxWeight()`, `accepts()` | Usa `Weight` y `WeightTolerance`. |
+| `WeightTolerance` | Value Object | Variación de peso permitida por empaque o humedad. | `grams` | `isValidFor()` | Parte de `WeightProfile`. |
+| `Price`, `Sku`, `RfidCode`, `Weight` | Value Objects | Precio en soles, código comercial, etiqueta RFID y peso en gramos. | `amount`, `currency` / `value` / `grams` | `isPositive()` | Atributos del agregado y sus entidades. |
+| `ProductId`, `AdminId`, `StoreId` | Value Objects | Identificadores tipados. `AdminId` y `StoreId` referencian otros contextos solo por id. | `value` | — | — |
+| `SyncDirection`, `SyncStatus` | Enumerations | Dirección (`FROM_POS`, `TO_EDGE`) y estado (`PENDING`, `COMPLETED`, `FAILED`) de una sincronización. | — | — | Atributos de `CatalogSyncLog`. |
+| `RfidTagUniquenessService` | Domain Service | Aplica la regla de que una etiqueta RFID solo puede estar asociada a un SKU. | `repository` | `ensureAvailable()` | Consulta `ProductCatalogItemRepository`. |
+| `EdgeCatalogPublisher`, `PosCatalogSource` | Ports (interfaces) | Contratos hacia el gateway de tienda (edge) y el Sistema POS. | — | `publish()`, `fetchProducts()` | `PosCatalogSource` devuelve `PosProductRecord`. |
+| `ProductCatalogItemRepository`, `CatalogSyncLogRepository` | Repositories (interfaces) | Contratos de persistencia de los dos agregados. | — | `save()`, `findById()`, `findBySku()`, `findByRfidTag()`, `existsByRfidTag()`, `findAllActive()`, `findUpdatedSince()`, `findLastCompleted()` | Persisten `ProductCatalogItem` y `CatalogSyncLog`. |
+| `CatalogEvent` y subclases | Domain Events | `ProductRegistered`, `RfidTagMapped`, `PriceChanged`, `ProductWeightProfileUpdated`, `CatalogItemUpdated`, `CatalogSyncedWithEdge`. | `productId`, `occurredAt` | — | Registrados por `ProductCatalogItem`. |
+
+#### 4.2.3.1. Domain Layer
+
+La **Domain Layer** de Catalog & Pricing concentra las reglas que mantienen calibrado el catálogo.
+
+* **Aggregates:** `ProductCatalogItem` es la única forma de cambiar un producto. `changePrice()` rechaza precios negativos y `updateWeightProfile()` rechaza tolerancias inválidas (Weight Accuracy Verification Policy); ambos guardan el cambio en su historial y registran el evento correspondiente. `CatalogSyncLog` es un agregado separado porque una sincronización afecta a muchos productos a la vez y tiene su propio ciclo de vida.
+* **Entities:** `RfidTagMapping`, `PriceChange` y `WeightProfileChange` tienen identidad dentro del producto y permiten auditar quién cambió qué y cuándo.
+* **Value Objects:** `WeightProfile` agrupa el peso nominal y la tolerancia y calcula el rango aceptado; `Price`, `Sku`, `RfidCode`, `Weight` y los identificadores tipados son inmutables.
+* **Domain Service:** `RfidTagUniquenessService` aplica la regla de mapeo único de etiquetas RFID, que no puede verificar un solo agregado porque involucra a todo el catálogo.
+* **Factory:** el constructor de `ProductCatalogItem` crea el producto activo, con su perfil de peso validado y el evento `ProductRegistered`.
+* **Repositories y Ports:** `ProductCatalogItemRepository`, `CatalogSyncLogRepository`, `EdgeCatalogPublisher` y `PosCatalogSource` son interfaces del dominio implementadas en la Infrastructure Layer.
+* **Domain Events:** `PriceChanged` y `ProductWeightProfileUpdated` disparan la propagación al edge, y Smart Shopping los usa para invalidar su caché de productos.
+
+#### 4.2.3.2. Interface Layer
+
+La **Interface Layer** expone el catálogo a la Web Console, al contexto Smart Shopping y a las tareas de sincronización mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`.
+
+##### Controllers
+
+**1. ProductsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/products?category=&active=` | Lista el catálogo con filtros. | `200 ProductResource[]` | US13 |
+| `GET` | `/api/v1/products/{productId}` | Detalle del producto, sus etiquetas RFID y su historial. | `200 ProductResource` · `404` | US13 |
+| `POST` | `/api/v1/products` | Registra un producto. | `201` · `409` si el SKU ya existe | US13 |
+| `PUT` | `/api/v1/products/{productId}/price` | Actualiza el precio. | `200` · `400` si el precio no es válido | US13 |
+| `PUT` | `/api/v1/products/{productId}/weight-profile` | Actualiza peso nominal y tolerancia. | `200` · `400` si la tolerancia no es válida | US13 |
+| `POST` | `/api/v1/products/{productId}/rfid-tags` | Asocia una etiqueta RFID al producto. | `201` · `409` si la etiqueta ya está asociada a otro SKU | US13 |
+| `DELETE` | `/api/v1/products/{productId}/rfid-tags/{rfidTag}` | Desactiva una etiqueta. | `204` | US13 |
+
+**2. ProductLookupController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/products/by-rfid/{rfidTag}` | Consulta que usa `CatalogPricingAcl` de Smart Shopping: devuelve id, nombre, precio, peso nominal y tolerancia. | `200 ProductLookupResource` · `404` si la etiqueta no está registrada |
+
+**3. CatalogSyncController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/catalog/sync/pos` | Lanza la importación del catálogo desde el Sistema POS. | `202` |
+| `POST` | `/api/v1/catalog/sync/edge?storeId=` | Publica el catálogo vigente al edge de una tienda. | `202` |
+| `GET` | `/api/v1/catalog/sync-logs` | Lista las últimas sincronizaciones y su resultado. | `200 CatalogSyncLogResource[]` |
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `CreateProductResource` | `sku`, `name`, `category`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams` | Entrada de `POST /products` |
+| `UpdatePriceResource` | `unitPrice` | Entrada de `PUT /price` |
+| `UpdateWeightProfileResource` | `nominalWeightGrams`, `weightToleranceGrams` | Entrada de `PUT /weight-profile` |
+| `MapRfidTagResource` | `rfidTag` | Entrada de `POST /rfid-tags` |
+| `ProductResource` | `productId`, `sku`, `name`, `category`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`, `allowedRange`, `rfidTags[]`, `active`, `updatedAt` | Salida para la Web Console |
+| `ProductLookupResource` | `productId`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams` | Salida para Smart Shopping |
+| `CatalogSyncLogResource` | `syncId`, `direction`, `storeId`, `itemsCount`, `status`, `startedAt`, `finishedAt` | Salida del historial de sincronizaciones |
+
+Los *assemblers* `…CommandFromResourceAssembler` convierten cada entrada en su *Command*, y `ProductResourceFromEntityAssembler` y `ProductLookupResourceFromEntityAssembler` convierten el agregado en respuestas. Un `@RestControllerAdvice` traduce `ProductNotFoundException` → `404`, `DuplicateSkuException` y `RfidTagAlreadyMappedException` → `409`, e `InvalidPriceException` e `InvalidWeightToleranceException` → `400`.
+
+#### 4.2.3.3. Application Layer
+
+La **Application Layer** orquesta el mantenimiento del catálogo y su propagación.
+
+##### Command Handlers
+
+**ProductCatalogCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `RegisterProductCommand` | Verifica que el SKU no exista y crea el agregado. | `ProductRegistered` | US13 |
+| `MapRfidTagCommand` | Valida la etiqueta con `RfidTagUniquenessService` y la asocia al producto. | `RfidTagMapped` | US13 |
+| `ChangePriceCommand` | Actualiza el precio y guarda el historial. | `PriceChanged` | US13 |
+| `UpdateWeightProfileCommand` | Valida y actualiza peso nominal y tolerancia, y guarda el historial. | `ProductWeightProfileUpdated` | US13 |
+| `DeactivateProductCommand` | Retira el producto del catálogo vigente. | `CatalogItemUpdated` | US13 |
+
+**CatalogSyncService**
+
+| Command | Flujo | Evento publicado |
+| :--- | :--- | :--- |
+| `ImportCatalogFromPosCommand` | Lee los productos con `PosCatalogSource`; registra los nuevos y actualiza el precio de los existentes. Guarda un `CatalogSyncLog` con dirección `FROM_POS`. | `PriceChanged`, `ProductRegistered` |
+| `SyncCatalogToEdgeCommand` | Obtiene los productos cambiados desde la última sincronización (`findUpdatedSince`) y los envía al edge de cada tienda. Guarda un `CatalogSyncLog` con dirección `TO_EDGE`. | `CatalogSyncedWithEdge` |
+
+##### Query Handlers
+
+**ProductCatalogQueryService**: `handle(GetAllProductsQuery)`, `handle(GetProductByIdQuery)`, `handle(GetProductByRfidTagQuery)` y `handle(GetCatalogSyncLogsQuery)`.
+
+##### Event Handlers
+
+* **CatalogItemChangedEventHandler:** escucha `PriceChanged`, `ProductWeightProfileUpdated` y `CatalogItemUpdated`, y ejecuta `SyncCatalogToEdgeCommand` para que los carritos validen con los valores nuevos (US13).
+* **PosCatalogImportScheduler:** tarea programada que ejecuta `ImportCatalogFromPosCommand` fuera del horario de mayor afluencia.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Registrar productos y mapear etiquetas RFID | `ProductCatalogCommandService` + `RfidTagUniquenessService` |
+| Actualizar precio, peso nominal y tolerancia | `ProductCatalogCommandService` |
+| Consultar un producto por RFID | `ProductCatalogQueryService` |
+| Importar el catálogo desde el POS | `CatalogSyncService`, `PosCatalogImportScheduler` |
+| Propagar los cambios a los servicios edge | `CatalogItemChangedEventHandler`, `CatalogSyncService` |
+
+#### 4.2.3.4. Infrastructure Layer
+
+* **JpaProductCatalogItemRepository** y **JpaCatalogSyncLogRepository** implementan los repositorios con Spring Data JPA sobre PostgreSQL. `ProductCatalogItem` se mapea a `product_catalog_items` (con `Price` y `WeightProfile` como *embeddables*), `RfidTagMapping` a `product_rfid_tags`, `PriceChange` a `product_price_history`, `WeightProfileChange` a `product_weight_history` y `CatalogSyncLog` a `catalog_sync_logs`.
+* **EdgeCatalogHttpPublisher** implementa `EdgeCatalogPublisher`: envía al Edge API de cada tienda los productos cambiados, que el gateway guarda en su caché local para validar sin depender de la nube.
+* **PosCatalogClient** implementa `PosCatalogSource` y traduce el formato del Sistema POS a `PosProductRecord` (*Anti-Corruption Layer*).
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `ProductWeightProfileUpdated` y `PriceChanged` también se notifican a Smart Shopping para invalidar su caché.
+
+#### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Catalog & Pricing. Muestra cómo la Web Console y Smart Shopping interactúan con los controladores, cómo los servicios mantienen los agregados `ProductCatalogItem` y `CatalogSyncLog`, y cómo la Infrastructure Layer se conecta con PostgreSQL, el Edge API y el Sistema POS. La fuente está en [`design/chapter-4/catalog-pricing-component.puml`](design/chapter-4/catalog-pricing-component.puml).
+
+![C4 Component Diagram - Catalog & Pricing Bounded Context](assets/chapter-4/software-architecture/catalog-pricing-component.png)
+
+#### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Catalog & Pricing.
+
+##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `ProductCatalogItem` **se identifica con** 0..* `RfidTagMapping` y **se valida con** exactamente un `WeightProfile`. La fuente está en [`design/chapter-4/catalog-pricing-class-diagram.puml`](design/chapter-4/catalog-pricing-class-diagram.puml).
+
+![Catalog & Pricing Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/catalog-pricing-class-diagram.png)
+
+##### 4.2.3.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste el catálogo maestro, sus etiquetas RFID, el historial de cambios y las sincronizaciones. Ningún otro contexto escribe en estas tablas. El diagrama se elaboró en Redgate Data Modeler.
+
+![Catalog & Pricing Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/catalog-pricing-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `product_catalog_items` | Agregado `ProductCatalogItem` | SKU, nombre, categoría, precio, moneda, peso nominal, tolerancia, estado y fechas. |
+| `product_rfid_tags` | Entity `RfidTagMapping` | Etiquetas RFID asociadas a cada producto. |
+| `product_price_history` | Entity `PriceChange` | Precio anterior y nuevo, con el administrador y la fecha del cambio. |
+| `product_weight_history` | Entity `WeightProfileChange` | Peso nominal y tolerancia anteriores y nuevos. |
+| `catalog_sync_logs` | Agregado `CatalogSyncLog` | Sincronizaciones desde el POS y hacia el edge, con su resultado. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `product_id`, `price_change_id`, `weight_change_id` y `sync_id`. En `product_rfid_tags` la clave primaria es la propia `rfid_tag`, lo que garantiza en la base de datos que una etiqueta pertenezca a un solo SKU.
+* **Claves foráneas:** `product_rfid_tags`, `product_price_history` y `product_weight_history` referencian `product_catalog_items.product_id` (relación 1 a N). `catalog_sync_logs` no depende de otra tabla.
+* **Checks:** `unit_price` no puede ser negativo; `nominal_weight_grams` debe ser mayor a 0 y `weight_tolerance_grams` no puede ser negativo; `direction` solo admite `FROM_POS` o `TO_EDGE` y `sync_status` solo `PENDING`, `COMPLETED` o `FAILED`.
+* **Únicos e índices:** `sku` es único; los índices por `product_id` y fecha aceleran la consulta del historial y la búsqueda de etiquetas por producto.
+
+### 4.2.4. Bounded Context: Operations & Security Bounded Context
+
+El Operations & Security Bounded Context supervisa la operación en el piso de venta: convierte las discrepancias de peso en alertas para la Web Console, registra la intervención del supervisor y controla el perímetro de salida con *geofencing* y el freno electromecánico del carrito. Es un contexto de control que reacciona a eventos de los demás. A continuación se presentan sus clases a manera de diccionario.
+
+| Clase | Tipo | Propósito | Atributos principales | Métodos principales | Relaciones |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `SecurityIncident` | Aggregate Root | Incidente de seguridad sobre un carrito, por discrepancia de peso o salida no autorizada. Garantiza que solo un supervisor con credenciales válidas lo resuelva y que todo quede auditado. | `id`, `cartId`, `sessionId`, `type`, `status`, `auditFlag`, `alerts`, `auditLogs`, `openedAt`, `resolvedAt` | `forWeightMismatch()`, `forUnauthorizedExit()`, `raiseAlert()`, `acknowledgeAlert()`, `resolveBySupervisor()`, `flagForAudit()`, `isOpen()` | Compone 1..* `CartAlert` y 0..* `SupervisorAuditLog`; registra `SecurityEvent`. |
+| `SmartCart` | Aggregate Root | Carrito físico (ESP32) supervisado desde la consola, con su estado de freno, batería y operación. | `id`, `storeId`, `cartCode`, `deviceMac`, `serialNumber`, `batteryLevel`, `wheelLockState`, `operationalStatus`, `lastPingAt` | `lock()`, `unlock()`, `registerHeartbeat()`, `markInUse()`, `markAvailable()`, `isLocked()` | Pertenece a una tienda (`StoreId`). |
+| `CartAlert` | Entity | Alerta mostrada en el panel de la Web Console. | `alertType`, `severity`, `description`, `alarmTriggered`, `createdAt`, `acknowledgedAt` | `acknowledge()` | Pertenece a un `SecurityIncident`. |
+| `SupervisorAuditLog` | Entity | Registro de cada intervención de un supervisor. | `supervisorId`, `action`, `credentialVerified`, `notes`, `performedAt` | — | Pertenece a un `SecurityIncident`. |
+| `Supervisor` | Entity | Personal autorizado para desbloquear carritos y resolver discrepancias. | `employeeCode`, `fullName`, `credentialHash`, `active` | `canOverride()` | Trabaja en una tienda. |
+| `Store` | Entity | Tienda con su perímetro de salida. | `name`, `branchCode`, `address`, `perimeter` | — | Compone un `GeofencePerimeter`. |
+| `PerimeterCrossing` | Entity | Cada paso de un carrito por el arco de salida y su resultado. | `cartId`, `sessionId`, `exitClearanceToken`, `result`, `incidentId`, `crossedAt` | — | Puede originar un `SecurityIncident`. |
+| `GeofencePerimeter`, `GeoPoint` | Value Objects | Polígono del perímetro de seguridad y sus vértices. | `coordinates` / `latitude`, `longitude` | `contains()` | Parte de `Store`. |
+| `BatteryLevel` | Value Object | Nivel de batería del carrito. | `percent` | `isLow()` | Parte de `SmartCart`. |
+| `IncidentId`, `CartId`, `SessionId`, `StoreId`, `SupervisorId` | Value Objects | Identificadores tipados. `SessionId` referencia a Smart Shopping solo por id. | `value` | — | — |
+| `WheelLockState`, `CartOperationalStatus`, `IncidentType`, `IncidentStatus`, `Severity`, `AuditAction`, `ExitResult` | Enumerations | Estados del freno, del carrito y del incidente; tipo de incidente; severidad; acción auditada; resultado de la salida. | — | — | Atributos de los agregados y entidades. |
+| `ExitAuthorizationPolicy` | Domain Service | Decide si un cruce del perímetro es una salida autorizada o debe bloquearse. | — | `decide()` | Evalúa `SmartCart`; devuelve `ExitResult`. |
+| `SupervisorCredentialVerifier` | Domain Service (interfaz) | Verifica la credencial del supervisor antes de un desbloqueo. | — | `verify()` | Verifica `Supervisor`. |
+| `ExitClearancePort`, `CartActuatorPort` | Ports (interfaces) | Contratos hacia Payment & Checkout (validar el token de salida) y hacia el carrito (freno y alarma). | — | `isValid()`, `lockWheels()`, `releaseWheels()` | Implementados en la Infrastructure Layer. |
+| `SecurityIncidentRepository`, `SmartCartRepository`, `SupervisorRepository`, `PerimeterCrossingRepository` | Repositories (interfaces) | Contratos de persistencia. | — | `save()`, `findById()`, `findOpenByCartId()`, `findAllOpenByStore()`, `findAllByStore()`, `findByEmployeeCode()` | Persisten los agregados y entidades. |
+| `SecurityEvent` y subclases | Domain Events | `SecurityAlertTriggered`, `CartLocked`, `CartUnlocked`, `DiscrepancyResolvedBySupervisor`, `IncidentFlaggedForAudit`, `ExitRegistered`. | `cartId`, `occurredAt` | — | Registrados por los agregados. |
+
+#### 4.2.4.1. Domain Layer
+
+La **Domain Layer** de Operations & Security modela la prevención de pérdidas y la seguridad física del carrito.
+
+* **Aggregates:** `SecurityIncident` agrupa las alertas y las intervenciones de un mismo problema; un carrito tiene como máximo un incidente abierto de cada tipo. `resolveBySupervisor()` rechaza la operación si la credencial no fue verificada y siempre deja un `SupervisorAuditLog`. `SmartCart` es otro agregado porque su estado (freno, batería, disponibilidad) cambia con más frecuencia que los incidentes y no depende de ellos.
+* **Entities:** `CartAlert`, `SupervisorAuditLog`, `Supervisor`, `Store` y `PerimeterCrossing` tienen identidad propia y se conservan para la auditoría.
+* **Value Objects:** `GeofencePerimeter` determina si una posición está dentro del perímetro, `BatteryLevel` indica si la batería está baja y los identificadores tipados evitan mezclar ids de distintos contextos.
+* **Domain Services:** `ExitAuthorizationPolicy` aplica la regla "un carrito sin autorización de salida que cruza el perímetro se bloquea"; `SupervisorCredentialVerifier` aplica la regla "solo un supervisor con credenciales puede desbloquear un carrito".
+* **Factories:** los métodos estáticos `forWeightMismatch()` y `forUnauthorizedExit()` crean el incidente con su tipo, su primera alerta y el evento `SecurityAlertTriggered`.
+* **Repositories y Ports:** los repositorios, `ExitClearancePort` y `CartActuatorPort` son interfaces del dominio implementadas en la Infrastructure Layer.
+* **Domain Events:** `CartLocked` y `SecurityAlertTriggered` llegan a la Web Console en tiempo real; `DiscrepancyResolvedBySupervisor` permite que Smart Shopping reanude la sesión.
+
+#### 4.2.4.2. Interface Layer
+
+La **Interface Layer** expone el contexto a la Web Console y al Edge API mediante controladores REST de Spring Boot bajo el prefijo `/api/v1`, y recibe los eventos de Smart Shopping.
+
+##### Controllers / Consumers
+
+**1. SecurityIncidentsController**
+
+| Método | Endpoint | Descripción | Respuesta | User Story |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/stores/{storeId}/incidents?status=OPEN` | Panel de alertas de la Web Console. | `200 SecurityIncidentResource[]` | US11 |
+| `GET` | `/api/v1/incidents/{incidentId}` | Detalle del incidente con sus alertas e intervenciones. | `200` · `404` | US11 |
+| `POST` | `/api/v1/incidents/{incidentId}/resolve` | El supervisor resuelve la discrepancia con sus credenciales. | `200` · `401` si la credencial no es válida · `409` si ya está resuelto | US11 |
+| `POST` | `/api/v1/incidents/{incidentId}/audit-flag` | Marca la compra para auditoría. | `200` | US11 |
+| `POST` | `/api/v1/alerts/{alertId}/acknowledge` | Marca la alerta como atendida. | `204` | US11 |
+
+**2. SmartCartsController**
+
+| Método | Endpoint | Descripción | Respuesta |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/stores/{storeId}/carts` | Mapa de carritos activos con estado, batería y freno. | `200 SmartCartResource[]` |
+| `GET` | `/api/v1/carts/{cartId}` | Detalle del carrito. | `200` · `404` |
+| `POST` | `/api/v1/carts/{cartId}/unlock` | Libera el freno con credenciales del supervisor. | `200` · `401` |
+
+**3. PerimeterEventsController**
+
+| Método | Endpoint | Evento de entrada | Acción |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/perimeter/crossings` | Cruce de perímetro detectado por el sensor del arco de salida | `RegisterPerimeterCrossingCommand` |
+| `POST` | `/api/v1/carts/{cartId}/heartbeat` | Estado periódico del carrito (batería, conectividad) | `RegisterHeartbeatCommand` |
+
+**4. WeightMismatchDetectedConsumer**: recibe el evento `WeightMismatchDetected` de Smart Shopping y lo convierte en `OpenWeightMismatchIncidentCommand`.
+
+##### Resources (DTOs) y Assemblers
+
+| Resource | Atributos | Uso |
+| :--- | :--- | :--- |
+| `SecurityIncidentResource` | `incidentId`, `cartId`, `sessionId`, `type`, `status`, `auditFlag`, `alerts[]`, `openedAt`, `resolvedAt` | Panel de alertas y detalle |
+| `ResolveIncidentResource` | `supervisorCode`, `credential`, `notes` | Entrada de `resolve` y `unlock` |
+| `SmartCartResource` | `cartId`, `cartCode`, `operationalStatus`, `wheelLockState`, `batteryLevel`, `lastPingAt` | Mapa de carritos |
+| `PerimeterCrossingResource` | `eventId`, `cartId`, `exitGate`, `exitClearanceToken`, `detectedAt` | Entrada del Edge API |
+
+Los *assemblers* convierten estas entradas en *Commands* y los agregados en *Resources*. Un `@RestControllerAdvice` traduce `IncidentNotFoundException` → `404`, `InvalidSupervisorCredentialException` → `401` e `IncidentAlreadyResolvedException` → `409`.
+
+#### 4.2.4.3. Application Layer
+
+##### Command Handlers
+
+**SecurityIncidentCommandService**
+
+| Command | Flujo | Evento publicado | User Story |
+| :--- | :--- | :--- | :--- |
+| `OpenWeightMismatchIncidentCommand` | Si el carrito no tiene un incidente de peso abierto, lo crea con `forWeightMismatch()` y su alerta. | `SecurityAlertTriggered` | US11 |
+| `ResolveIncidentCommand` | Busca al supervisor, verifica su credencial con `SupervisorCredentialVerifier` y resuelve el incidente. | `DiscrepancyResolvedBySupervisor` | US11 |
+| `FlagIncidentForAuditCommand` | Marca la compra para auditoría y registra la intervención. | `IncidentFlaggedForAudit` | US11 |
+| `AcknowledgeAlertCommand` | Marca la alerta como atendida. | — | US11 |
+
+**CartControlCommandService**
+
+| Command | Flujo | Evento publicado |
+| :--- | :--- | :--- |
+| `LockCartCommand` | Cambia `WheelLockState` a `LOCKED` y ordena al carrito activar el freno y la alarma mediante `CartActuatorPort`. | `CartLocked` |
+| `UnlockCartCommand` | Verifica la credencial del supervisor, libera el freno y registra la intervención en el incidente. | `CartUnlocked` |
+| `RegisterHeartbeatCommand` | Actualiza batería y `last_ping_at`. | — |
+
+**PerimeterCrossingService**
+
+* `handle(RegisterPerimeterCrossingCommand)` (US12): consulta a Payment & Checkout, mediante `ExitClearancePort`, si el token de salida del carrito es válido; aplica `ExitAuthorizationPolicy`; si la salida está autorizada, guarda el cruce como `AUTHORIZED` y publica `ExitRegistered`; si no, ejecuta `LockCartCommand`, abre un incidente `UNAUTHORIZED_EXIT` y guarda el cruce como `BLOCKED`.
+
+##### Query Handlers
+
+**OperationsQueryService**: `handle(GetOpenIncidentsByStoreQuery)`, `handle(GetIncidentByIdQuery)`, `handle(GetCartsByStoreQuery)` y `handle(GetCartByIdQuery)`.
+
+##### Event Handlers
+
+* **WeightMismatchDetectedEventHandler:** reacciona al evento de Smart Shopping y ejecuta `OpenWeightMismatchIncidentCommand`.
+* **WeightConsistencyRestoredEventHandler:** si el comprador corrige la canasta antes de que intervenga el supervisor, marca la alerta como atendida automáticamente.
+
+##### Capabilities del bounded context
+
+| Capability | Componente responsable |
+| :--- | :--- |
+| Alertar discrepancias de peso en la Web Console | `WeightMismatchDetectedEventHandler`, `SecurityIncidentCommandService` |
+| Resolver discrepancias y desbloquear carritos con credenciales | `SecurityIncidentCommandService`, `CartControlCommandService` + `SupervisorCredentialVerifier` |
+| Controlar el perímetro de salida (US12) | `PerimeterCrossingService` + `ExitAuthorizationPolicy` |
+| Bloquear el carrito y activar la alarma | `CartControlCommandService` |
+| Monitorear el estado de los carritos | `CartControlCommandService`, `OperationsQueryService` |
+
+#### 4.2.4.4. Infrastructure Layer
+
+* **JpaSecurityIncidentRepository**, **JpaSmartCartRepository**, **JpaSupervisorRepository** y **JpaPerimeterCrossingRepository** implementan los repositorios con Spring Data JPA sobre PostgreSQL. `SecurityIncident` se mapea a `security_incidents`, `CartAlert` a `cart_alerts`, `SupervisorAuditLog` a `supervisor_audit_logs`, `SmartCart` a `smart_carts`, `Supervisor` a `supervisors`, `Store` a `stores` y `PerimeterCrossing` a `perimeter_crossings`.
+* **ExitClearanceAcl** implementa `ExitClearancePort`: consulta `GET /api/v1/exit-clearances/{token}` en Payment & Checkout y traduce la respuesta a un valor booleano.
+* **EdgeCartActuatorClient** implementa `CartActuatorPort`: envía al Edge API la orden de activar o liberar el freno y la alarma del ESP32.
+* **BCryptSupervisorCredentialVerifier** implementa `SupervisorCredentialVerifier` comparando la credencial con su hash (Spring Security).
+* **DomainEventPublisher** publica los eventos con `ApplicationEventPublisher`; `DiscrepancyResolvedBySupervisor` se envía también a Smart Shopping.
+* **IncidentRealtimeNotifier** envía por WebSocket (STOMP), al tópico `/topic/stores/{storeId}/incidents`, las alertas y los cambios de estado de los carritos, para que la Web Console los muestre sin recargar.
+
+#### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente **Component Diagram (C4 Model, nivel 3)** descompone el container *Cloud RESTful API* en los componentes de Operations & Security. Muestra cómo la Web Console, el Edge API y los eventos de Smart Shopping llegan a los controladores y *event handlers*; cómo los servicios aplican las políticas sobre los agregados `SecurityIncident` y `SmartCart`; y cómo la Infrastructure Layer se conecta con PostgreSQL, Payment & Checkout y el carrito. La fuente está en [`design/chapter-4/operations-security-component.puml`](design/chapter-4/operations-security-component.puml).
+
+![C4 Component Diagram - Operations & Security Bounded Context](assets/chapter-4/software-architecture/operations-security-component.png)
+
+#### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+En esta sección se presentan el diagrama de clases de la Domain Layer y el diagrama de base de datos de Operations & Security.
+
+##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama muestra las clases, interfaces y enumeraciones del dominio con la visibilidad de sus miembros y relaciones con nombre y multiplicidad: por ejemplo, un `SecurityIncident` **genera** 1..* `CartAlert` y **audita con** 0..* `SupervisorAuditLog`. La fuente está en [`design/chapter-4/operations-security-class-diagram.puml`](design/chapter-4/operations-security-class-diagram.puml).
+
+![Operations & Security Bounded Context - Domain Layer Class Diagram](assets/chapter-4/software-architecture/operations-security-class-diagram.png)
+
+##### 4.2.4.6.2. Bounded Context Database Design Diagram
+
+El modelo relacional en PostgreSQL persiste tiendas, carritos, supervisores, incidentes y cruces del perímetro. `session_id` y `exit_clearance_token` referencian a otros contextos sin clave foránea. El diagrama se elaboró en Redgate Data Modeler.
+
+![Operations & Security Bounded Context - Database Design Diagram](assets/chapter-4/bounded-database/operations-security-bounded-context.png)
+
+| Tabla | Objeto de dominio | Descripción |
+| :--- | :--- | :--- |
+| `stores` | Entity `Store` | Tienda con su código de sede y las coordenadas del perímetro. |
+| `smart_carts` | Agregado `SmartCart` | Carrito con código QR, MAC, número de serie, batería, estado del freno y estado operativo. |
+| `supervisors` | Entity `Supervisor` | Supervisores por tienda con el hash de su credencial. |
+| `security_incidents` | Agregado `SecurityIncident` | Incidentes por carrito con tipo, estado, marca de auditoría y fechas. |
+| `cart_alerts` | Entity `CartAlert` | Alertas de cada incidente con severidad y si se activó la alarma. |
+| `supervisor_audit_logs` | Entity `SupervisorAuditLog` | Intervenciones de los supervisores. |
+| `perimeter_crossings` | Entity `PerimeterCrossing` | Cruces del arco de salida y su resultado. |
+
+**Constraints y relaciones**
+
+* **Claves primarias:** `store_id`, `cart_id`, `supervisor_id`, `incident_id`, `alert_id`, `audit_log_id` y `crossing_id`.
+* **Claves foráneas:** una tienda tiene 0..* carritos y 0..* supervisores; un carrito tiene 0..* incidentes y 0..* cruces; un incidente tiene 0..* alertas e intervenciones; cada intervención referencia al supervisor que la hizo; un cruce puede referenciar el incidente que originó (`incident_id` opcional).
+* **Checks:** `wheel_lock_state` solo admite `LOCKED` o `UNLOCKED`; `operational_status`, `incident_type`, `incident_status`, `severity_level`, `action` y `exit_result` solo admiten los valores de sus enumeraciones; `battery_level_percent` debe estar entre 0 y 100.
+* **Únicos e índices:** `branch_code`, `cart_code`, `device_mac` y `employee_code` son únicos; un índice único parcial sobre `security_incidents(cart_id, incident_type)` para los incidentes `OPEN` impide duplicar alertas del mismo problema; los índices por carrito y fecha aceleran el mapa de carritos y el historial de cruces.
 
 <div style="page-break-after: always;"></div>
 

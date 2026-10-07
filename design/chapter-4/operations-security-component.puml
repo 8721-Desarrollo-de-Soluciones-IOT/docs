@@ -1,0 +1,76 @@
+@startuml operations-security-component
+!include <C4/C4_Component>
+!pragma layout smetana
+LAYOUT_TOP_DOWN()
+skinparam dpi 120
+title Innova Carty · Component Diagram · Operations & Security Bounded Context (Cloud RESTful API)
+
+Container(webConsole, "Web Console", "SPA web", "Panel de alertas, mapa de carritos y desbloqueo por supervisor")
+Container(edgeApi, "Edge API", "Edge service en el gateway de tienda", "Reporta cruces del perímetro y estado de los carritos")
+System_Ext(shopping, "Smart Shopping Context", "Publica WeightMismatchDetected")
+System_Ext(payment, "Payment & Checkout Context", "Emite y valida la autorización de salida")
+
+Container_Boundary(api, "Cloud RESTful API · Operations & Security (Spring Boot)") {
+  Component(incidentsCtrl, "SecurityIncidentsController", "Spring REST Controller", "Lista incidentes, atiende alertas, resuelve discrepancias y marca auditorías")
+  Component(cartsCtrl, "SmartCartsController", "Spring REST Controller", "Mapa de carritos activos, detalle y desbloqueo")
+  Component(perimeterCtrl, "PerimeterEventsController", "Spring REST Controller", "Recibe cruces del perímetro y heartbeats del Edge API")
+  Component(assemblers, "Resource / Command Assemblers", "Mappers", "Convierten Resources en Commands y agregados en Resources")
+
+  Component(incidentSvc, "SecurityIncidentCommandService", "Application Service", "Abre incidentes, crea alertas, resuelve y marca auditoría")
+  Component(cartSvc, "CartControlCommandService", "Application Service", "Bloquea y desbloquea carritos, registra heartbeats")
+  Component(perimeterSvc, "PerimeterCrossingService", "Application Service", "Decide si un cruce es salida autorizada o bloqueo")
+  Component(qrySvc, "OperationsQueryService", "Application Service", "Query handlers de incidentes y carritos")
+  Component(mismatchHandler, "WeightMismatchDetectedEventHandler", "Event Handler", "Crea la alerta de discrepancia")
+
+  Component(incident, "SecurityIncident", "Aggregate Root", "CartAlert, SupervisorAuditLog")
+  Component(cart, "SmartCart", "Aggregate Root", "WheelLockState, estado operativo y batería")
+  Component(policy, "ExitAuthorizationPolicy", "Domain Service", "Autoriza o bloquea la salida según el token")
+  Component(credentials, "SupervisorCredentialVerifier", "Domain Service", "Verifica las credenciales del supervisor")
+  Component(repoIf, "Repository interfaces", "Repositories", "SecurityIncident, SmartCart, Supervisor, PerimeterCrossing, Store")
+
+  Component(repoImpl, "Jpa…Repository", "Spring Data JPA", "Implementan los repositorios sobre PostgreSQL")
+  Component(clearanceAcl, "ExitClearanceAcl", "ACL / HTTP client", "Consulta a Payment & Checkout si el token de salida es válido")
+  Component(actuator, "EdgeCartActuatorClient", "HTTP client", "Ordena al carrito activar o liberar el freno y la alarma")
+  Component(bcrypt, "BCryptSupervisorCredentialVerifier", "Spring Security", "Compara la credencial con su hash")
+  Component(publisher, "DomainEventPublisher", "Spring ApplicationEventPublisher", "Publica eventos de seguridad")
+  Component(realtime, "IncidentRealtimeNotifier", "WebSocket (STOMP)", "Envía alertas y estado de carritos a la Web Console")
+}
+
+ContainerDb(db, "Operations Database", "PostgreSQL", "stores, smart_carts, supervisors, security_incidents, cart_alerts, supervisor_audit_logs, perimeter_crossings")
+
+Rel(webConsole, incidentsCtrl, "Gestiona incidentes", "JSON/HTTPS")
+Rel(webConsole, cartsCtrl, "Supervisa carritos", "JSON/HTTPS")
+Rel(edgeApi, perimeterCtrl, "Cruce de perímetro / heartbeat", "JSON/HTTPS")
+Rel(shopping, mismatchHandler, "WeightMismatchDetected", "evento")
+Rel(incidentsCtrl, assemblers, "Usa")
+Rel(cartsCtrl, assemblers, "Usa")
+Rel(incidentsCtrl, incidentSvc, "Commands")
+Rel(incidentsCtrl, qrySvc, "Queries")
+Rel(cartsCtrl, cartSvc, "UnlockCartCommand")
+Rel(cartsCtrl, qrySvc, "Queries")
+Rel(perimeterCtrl, perimeterSvc, "RegisterPerimeterCrossingCommand")
+Rel(perimeterCtrl, cartSvc, "RegisterHeartbeatCommand")
+Rel(mismatchHandler, incidentSvc, "OpenWeightMismatchIncidentCommand")
+Rel(perimeterSvc, policy, "Aplica")
+Rel(perimeterSvc, clearanceAcl, "Valida token")
+Rel(perimeterSvc, cartSvc, "LockCartCommand")
+Rel(perimeterSvc, incidentSvc, "Abre incidente de salida")
+Rel(incidentSvc, incident, "Carga y modifica")
+Rel(incidentSvc, credentials, "Verifica credenciales")
+Rel(cartSvc, cart, "Carga y modifica")
+Rel(cartSvc, actuator, "Freno y alarma")
+Rel(incidentSvc, repoIf, "Usa")
+Rel(cartSvc, repoIf, "Usa")
+Rel(qrySvc, repoIf, "Usa")
+Rel_U(repoImpl, repoIf, "Implementa")
+Rel_U(bcrypt, credentials, "Implementa")
+Rel(incidentSvc, publisher, "Publica eventos")
+Rel(cartSvc, publisher, "Publica eventos")
+Rel(publisher, realtime, "Notifica")
+Rel(realtime, webConsole, "Alertas en vivo", "WebSocket")
+Rel(repoImpl, db, "Lee y escribe", "JDBC")
+Rel(clearanceAcl, payment, "GET /exit-clearances/{token}", "JSON/HTTPS")
+Rel(actuator, edgeApi, "Comando de bloqueo", "JSON/HTTPS")
+Rel(publisher, shopping, "DiscrepancyResolvedBySupervisor", "evento")
+SHOW_LEGEND()
+@enduml

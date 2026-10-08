@@ -673,7 +673,7 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 **Objetivo de las entrevistas:** Validar (o refutar) las suposiciones clave del Lean UX Canvas —que los compradores frecuentes desconocen cuánto llevan gastado durante su recorrido, y que los administradores de tienda enfrentan pérdidas operativas por mercancía no registrada y cuellos de botella en caja— antes de avanzar con el diseño de la solución.
 
-**Metodología:** Entrevistas semiestructuradas de 5–10 minutos, presenciales o virtuales, considerando al menos 5 personas por segmento objetivo. Se estructuran en preguntas complementarias (datos demográficos, entorno tecnológico y hábitos para la elaboración del arquetipo) y preguntas principales (enfocadas en el flujo de compra, cuellos de botella y problemas reales).
+**Metodología:** Entrevistas semiestructuradas de 5–10 minutos, presenciales o virtuales, considerando al menos 3 personas por segmento objetivo. Se estructuran en preguntas complementarias (datos demográficos, entorno tecnológico y hábitos para la elaboración del arquetipo) y preguntas principales (enfocadas en el flujo de compra, cuellos de botella y problemas reales).
 
 
 #### Segmento 1: Comprador Moderno / Consumidor Final

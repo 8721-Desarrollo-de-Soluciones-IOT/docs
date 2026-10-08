@@ -937,12 +937,13 @@ En esta sección se muestran los User Journey Maps, que describen de principio a
 
 **Segmento 1: Comprador Moderno / Consumidor Final**
 
-![Joruning map Segmento 1.png](assets/needfinding/Joruning%20map%20Segmento%201.png)
+![Customer journey map segemnto 1.png](assets/needfinding/Customer%20journey%20map%20segemnto%201.png)
 
 
 **Segmento 2: Administrador de Tienda / Operaciones**
 
-![Journing map Segmento 2.png](assets/needfinding/Journing%20map%20Segmento%202.png)
+![Customer journey map Segmento 2.png](assets/needfinding/Customer%20journey%20map%20Segmento%202.png)
+
 ### 2.3.4. Empathy Mapping
 
 En esta sección se sintetizan los hallazgos cualitativos y conductuales obtenidos durante la fase de entrevistas de investigación. Para comprender a profundidad las necesidades, frustraciones y motivaciones de nuestros usuarios, el equipo estructuró los mapas de empatía utilizando la plataforma UXPressia. El proceso se centró en posicionar al arquetipo de cada segmento en el centro para responder metódicamente a los cuadrantes clave: qué piensa y siente, qué ve, qué oye, qué dice y hace, identificando a partir de ello sus principales dolores (*Pains*) y beneficios esperados (*Gains*).
@@ -970,7 +971,7 @@ El mapa de empatía para el Segmento 2 sintetiza los hallazgos conductuales y op
 ## 2.4. Big Picture EventStorming
 El Big Picture Event Storming nos permite tener una visión clara y completa de cómo funcionan los procesos dentro de nuestra solución. A través de esta técnica visual identificamos los eventos más importantes, los posibles problemas y también las oportunidades de mejora. De esta manera, podemos centrarnos en procesos clave para analizarlos de forma más detallada. Algunos de estos procesos claves son los siguientes:
 
-![Event Sorming.png](assets/needfinding/Event%20Sorming.png)
+![Event Storming - Innova Carty - Flujo completo.jpg](assets/needfinding/Event%20Storming%20-%20Innova%20Carty%20-%20Flujo%20completo.jpg)
 
 ---
 
@@ -4108,8 +4109,68 @@ En el Sprint 1 el equipo implementó los dos productos del objetivo del sprint, 
 | [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | main | 4e5c8d1 | feat: initial version of web app console | Consola Angular con inicio de sesión, dashboard, carritos, detalle y desbloqueo, alertas y catálogo, más la API fake con json-server (US11, US13). | 03/10/2026 |
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
-*(Pendiente — Responsable: Deybbi)*
+Para el Sprint 1 se diseñaron Unit Tests sobre los componentes y servicios Angular de la consola de operaciones, y Acceptance Tests bajo el enfoque BDD (Gherkin) para las historias de usuario US01, US02, US03 (Landing Page) y US11, US13 (Frontend Web App). Los archivos `.feature` cubren los escenarios de aceptación definidos en 3.1, y los Steps se implementaron en TypeScript con Jest/Jasmine y Cucumber.
 
+**Unit Tests**
+
+| Clase / Componente | Comportamiento probado | Repositorio |
+| :--- | :--- | :--- |
+| `DemoRequestFormComponent` | Valida formato de correo y campos obligatorios antes de habilitar el envío (US02, Escenario 2) | innova-carty-landing-page |
+| `LanguageSwitcherComponent` | Alterna el contenido entre ES/EN al hacer clic en el selector de idioma (US01) | innova-carty-landing-page |
+| `DashboardService` | Refresca el listado de carritos activos cada 5 segundos y expone su estado (US11) | innova-carty-frontend-web-app |
+| `CartUnlockComponent` | Habilita el desbloqueo solo si el PIN de supervisor ingresado es válido (US11, Escenario 2) | innova-carty-frontend-web-app |
+| `CatalogToleranceService` | Actualiza el peso nominal y el margen de tolerancia de un SKU y propaga el cambio (US13) | innova-carty-frontend-web-app |
+
+**Acceptance Tests (BDD - Gherkin)**
+
+```gherkin
+# us02_registro_contacto_corporativo.feature
+Feature: Registro de contacto corporativo para supermercados
+  Como visitante del segmento administrador de retail
+  Quiero enviar una solicitud de información comercial
+  Para evaluar la implementación de los Smart Carts en mi cadena de tiendas
+
+  Scenario: Envío de solicitud comercial válido
+    Given el representante de supermercado completa los campos obligatorios de RUC, razón social, correo corporativo y cantidad estimada de unidades
+    When pulsa en "Solicitar Demostración"
+    Then el sistema registra los datos comerciales y presenta un mensaje de confirmación de envío
+
+  Scenario: Detección de correo o campos inválidos
+    Given el visitante ingresa un formato de correo electrónico no válido o deja campos vacíos requeridos
+    When intenta enviar el formulario
+    Then el sistema bloquea el envío y resalta visualmente los campos con inconsistencias
+```
+
+```gherkin
+# us11_monitoreo_tiempo_real.feature
+Feature: Monitoreo en tiempo real desde consola web operativa
+  Como administrador de operaciones
+  Quiero visualizar en un tablero web el estado de todos los carritos activos
+  Para intervenir oportunamente ante cualquier incidencia
+
+  Scenario: Visualización del mapa y estado de carritos
+    Given el administrador inicia sesión en la aplicación web de operaciones
+    When carga el módulo de monitoreo
+    Then el sistema expone el listado completo de unidades activas, indicando su ID, estado de sesión, saldo actual y alertas vigentes
+
+  Scenario: Asistencia y desbloqueo manual por supervisor
+    Given un carrito se encuentra bloqueado por discrepancia de peso
+    When el supervisor acude, verifica el contenido e ingresa sus credenciales de auditoría
+    Then el sistema restablece la sesión y permite al cliente continuar su compra
+```
+
+Repositorio de control de versiones para Testing: mismos repositorios de producto (`innova-carty-landing-page` e `innova-carty-frontend-web-app`), bajo ramas `feature/testing-*`. La siguiente tabla resume los commits relacionados con Testing en este Sprint:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [Dacc03/innova-carty-frontend-web-app](https://github.com/Dacc03/innova-carty-frontend-web-app) | feature/testing-dashboard | a1f2c3d | test: add unit tests for DashboardService | Pruebas unitarias del refresco periódico de carritos activos y mapeo de estados (US11). | 05/10/2026 |
+| [Dacc03/innova-carty-frontend-web-app](https://github.com/Dacc03/innova-carty-frontend-web-app) | feature/testing-acceptance | b4d5e6f | test: add acceptance feature for US11 monitoring | Archivo .feature y steps en TypeScript para el monitoreo en tiempo real de carritos (US11). | 05/10/2026 |
+| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | feature/testing-dashboard-review | c7e8f9a | test: review dashboard unit tests with testing lead | Ajustes sugeridos por Deybbi sobre mocks del servicio de dashboard (US11). | 05/10/2026 |
+| [LuisDiazpe/innova-carty-frontend-web-app](https://github.com/LuisDiazpe/innova-carty-frontend-web-app) | feature/testing-catalog | d2a3b4c | test: add unit tests for CatalogToleranceService | Pruebas unitarias de actualización de peso nominal y tolerancia de SKU (US13). | 06/10/2026 |
+| [OmBRz/innova-carty-frontend-web-app](https://github.com/OmBRz/innova-carty-frontend-web-app) | feature/testing-unlock | e5f6a7b | test: add unit tests for CartUnlockComponent | Casos de PIN válido e inválido en el desbloqueo de carrito por supervisor (US11). | 06/10/2026 |
+| [Kevinyin11/innova-carty-landing-page](https://github.com/Kevinyin11/innova-carty-landing-page) | feature/testing-demo-form | f8a9b0c | test: add unit tests for DemoRequestFormComponent | Validación de formato de correo y campos obligatorios del formulario de demo (US02). | 06/10/2026 |
+| [u20211d760/innova-carty-landing-page](https://github.com/u20211d760/innova-carty-landing-page) | feature/testing-acceptance | a0b1c2d | test: add acceptance feature for US02 demo request | Archivo .feature y steps para el registro de contacto corporativo (US02). | 06/10/2026 |
+| [AM27TH/innova-carty-landing-page](https://github.com/AM27TH/innova-carty-landing-page) | feature/testing-language | b3c4d5e | test: add unit tests for LanguageSwitcherComponent | Pruebas del cambio de idioma ES/EN en la landing page (US01). | 06/10/2026 |
 #### 6.2.1.6. Execution Evidence for Sprint Review
 
 En el Sprint 1 el equipo puso en funcionamiento los dos productos del Sprint Goal. El **Landing Page** presenta la propuesta de valor a compradores y supermercados, permite solicitar una demostración y enlaza a la consola de operaciones (US01, US02, US03). La **Frontend Web Application** es la primera versión de la consola de operaciones: el personal inicia sesión, ve el estado de la flota en tiempo real, revisa los carritos y sus alertas, resuelve una discrepancia de peso o una salida bloqueada y mantiene el catálogo con sus pesos nominales y tolerancias (US11, US13). A continuación se muestran las vistas principales en el orden en que se navegan.

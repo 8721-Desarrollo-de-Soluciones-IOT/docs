@@ -4406,12 +4406,15 @@ Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y f
 
 # Conclusiones
 
-*(Pendiente — Responsable: Todos)*
-- Conclusiones y recomendaciones
-- Video About-the-Team
-- PPT Canva
+* El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.
 
-<div style="page-break-after: always;"></div>
+* En cuanto a los assumptions realizados sobre el comportamiento de los segmentos, varios se validaron con las entrevistas y otros debieron ajustarse. Se asumía que el comprador moderno del Segmento 1 estaría dispuesto a usar un dispositivo adicional dentro de la tienda si este le ahorraba tiempo, y esto se confirmó de manera consistente en los testimonios recogidos. En cambio, se había asumido que el administrador de tienda priorizaría sobre todo la reducción de mermas, cuando en la práctica surgió con más fuerza su preocupación por la rapidez de implementación y por no alterar el flujo de trabajo del personal. Este hallazgo llevó al equipo a ajustar el enfoque de las hipótesis hacia una propuesta de valor que combine eficiencia con baja fricción de adopción.
+
+* Respecto a los Hypotheses Statements, se planteó que si se ofrecía al comprador una visibilidad en tiempo real de su gasto y un proceso de pago sin filas, entonces aumentaría su intención de usar el carrito inteligente frente al método tradicional. Las validaciones cualitativas con los segmentos entrevistados apoyan esta hipótesis, ya que los usuarios valoraron positivamente la posibilidad de ver el total acumulado y de salir de la tienda sin pasar por una caja convencional. La hipótesis relacionada con el administrador de tienda, que planteaba que un sistema de monitoreo de discrepancias de peso reduciría su percepción de riesgo operativo, se validó parcialmente, pues el interés fue real pero condicionado a que la herramienta sea fácil de configurar y no represente una carga adicional de trabajo.
+
+* Los criterios de éxito definidos para esta etapa del proceso se cumplieron de manera satisfactoria. Se logró identificar y validar los pains y needs principales de ambos segmentos, se construyeron personas y mapas de empatía representativos de los hallazgos de las entrevistas, y se tradujo ese conocimiento en un modelo de dominio y un backlog coherente con las necesidades reales detectadas. El contraste entre lo esperado y lo obtenido evidencia que el proceso de needfinding cumplió su propósito de reducir la incertidumbre antes de avanzar hacia el diseño y la implementación de la solución.
+
+* De cara a los siguientes pasos del Roadmap, se recomienda profundizar la validación con el Segmento 2 mediante pruebas de usabilidad enfocadas en la facilidad de configuración del sistema de monitoreo, dado que ahí se concentra la principal objeción detectada. También se recomienda incorporar pruebas de campo con el prototipo del carrito inteligente para confirmar en un entorno real las hipótesis validadas hasta ahora solo de forma cualitativa, y mantener como prioridad en el roadmap el desarrollo de las funcionalidades de pago digital y notificación de presupuesto, que fueron las más valoradas por el Segmento 1 durante esta fase de investigación.
 
 ---
 

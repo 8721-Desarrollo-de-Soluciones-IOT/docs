@@ -1,0 +1,67 @@
+@startuml smart-shopping-component
+!include <C4/C4_Component>
+LAYOUT_TOP_DOWN()
+skinparam dpi 120
+title Innova Carty · Component Diagram · Smart Shopping Bounded Context (Cloud RESTful API)
+
+Container(cartDisplay, "On-Cart Display", "Embedded web UI", "Muestra lista de productos, total y presupuesto")
+Container(mobileApp, "Mobile App", "Native mobile app (Android / iOS)", "Vincula el carrito, presupuesto y pago desde el teléfono")
+Container(edgeApi, "Edge API", "Edge service en el gateway de tienda", "Consolida lecturas RFID y de peso del ESP32")
+
+Container_Boundary(api, "Cloud RESTful API · Smart Shopping (Spring Boot)") {
+  Component(sessionCtrl, "ShoppingSessionsController", "Spring REST Controller", "Inicia sesión, fija presupuesto, consulta el carrito y solicita checkout")
+  Component(edgeCtrl, "CartEventsController", "Spring REST Controller", "Recibe eventos ProductDetected, ProductRemoved y WeightMeasured del Edge API")
+  Component(assemblers, "Resource / Command Assemblers", "Mappers", "Convierten Resources en Commands y agregados en Resources")
+
+  Component(cmdSvc, "ShoppingSessionCommandService", "Application Service", "Command handlers: start, setBudget, addItem, removeItem, cancel")
+  Component(qrySvc, "ShoppingSessionQueryService", "Application Service", "Query handlers del carrito activo y su resumen")
+  Component(weightHandler, "WeightMeasuredEventHandler", "Event Handler", "Correlaciona RFID con peso y dispara la discrepancia")
+  Component(checkoutSvc, "CheckoutPreparationService", "Application Service", "Valida la sesión y la envía a Payment & Checkout")
+  Component(paymentHandler, "PaymentConfirmedEventHandler", "Event Handler", "Cierra la sesión cuando el pago se confirma")
+
+  Component(aggregate, "ShoppingSession", "Aggregate Root", "CartItem, Budget, WeightSnapshot, SessionStatus")
+  Component(policy, "WeightConsistencyPolicy", "Domain Service", "Compara peso medido vs. esperado con la tolerancia")
+  Component(repoIf, "ShoppingSessionRepository", "Repository interface", "Contrato de persistencia del agregado")
+
+  Component(repoImpl, "JpaShoppingSessionRepository", "Spring Data JPA", "Implementa el repositorio sobre PostgreSQL")
+  Component(catalogAcl, "CatalogPricingAcl", "ACL / HTTP client", "Obtiene producto, precio y peso nominal por etiqueta RFID")
+  Component(paymentAcl, "PaymentCheckoutAcl", "ACL / HTTP client", "Solicita la orden de pago para la sesión")
+  Component(publisher, "DomainEventPublisher", "Spring ApplicationEventPublisher", "Publica eventos de sesión y anomalía")
+  Component(realtime, "SessionRealtimeNotifier", "WebSocket (STOMP)", "Empuja total, alertas y estado al carrito y a la app")
+}
+
+ContainerDb(db, "Operational Database", "PostgreSQL", "shopping_sessions, session_items, weight_telemetry_logs, security_alerts")
+System_Ext(catalog, "Catalog & Pricing Context", "Productos, precios, pesos y tolerancias")
+System_Ext(payment, "Payment & Checkout Context", "QR dinámico y confirmación del pago")
+System_Ext(ops, "Operations & Security Context", "Alertas y bloqueo del carrito en la Web Console")
+
+Rel(cartDisplay, sessionCtrl, "Usa", "JSON/HTTPS")
+Rel(mobileApp, sessionCtrl, "Usa", "JSON/HTTPS")
+Rel(edgeApi, edgeCtrl, "Envía eventos de sensores", "JSON/HTTPS")
+Rel(sessionCtrl, assemblers, "Usa")
+Rel(edgeCtrl, assemblers, "Usa")
+Rel(sessionCtrl, cmdSvc, "Commands")
+Rel(sessionCtrl, qrySvc, "Queries")
+Rel(sessionCtrl, checkoutSvc, "Solicita checkout")
+Rel(edgeCtrl, cmdSvc, "Add/RemoveItem commands")
+Rel(edgeCtrl, weightHandler, "WeightMeasured")
+Rel(cmdSvc, aggregate, "Carga y modifica")
+Rel(cmdSvc, catalogAcl, "Datos de producto")
+Rel(weightHandler, policy, "Aplica")
+Rel(weightHandler, aggregate, "Actualiza WeightSnapshot")
+Rel(checkoutSvc, paymentAcl, "Crea orden de pago")
+Rel(paymentHandler, aggregate, "Marca COMPLETED")
+Rel(cmdSvc, repoIf, "Usa")
+Rel(qrySvc, repoIf, "Usa")
+Rel_U(repoImpl, repoIf, "Implementa")
+Rel(cmdSvc, publisher, "Publica eventos")
+Rel(weightHandler, publisher, "WeightMismatchDetected")
+Rel(publisher, realtime, "Notifica")
+Rel(realtime, cartDisplay, "Actualiza en vivo", "WebSocket")
+Rel(repoImpl, db, "Lee y escribe", "JDBC")
+Rel(catalogAcl, catalog, "Consulta", "JSON/HTTPS")
+Rel(paymentAcl, payment, "Solicita pago", "JSON/HTTPS")
+Rel(payment, paymentHandler, "PaymentConfirmed", "evento")
+Rel(publisher, ops, "WeightMismatchDetected", "evento")
+SHOW_LEGEND()
+@enduml

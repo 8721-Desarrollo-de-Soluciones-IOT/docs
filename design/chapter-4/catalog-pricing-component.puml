@@ -1,0 +1,65 @@
+@startuml catalog-pricing-component
+!include <C4/C4_Component>
+!pragma layout smetana
+LAYOUT_TOP_DOWN()
+skinparam dpi 120
+title Innova Carty · Component Diagram · Catalog & Pricing Bounded Context (Cloud RESTful API)
+
+Container(webConsole, "Web Console", "SPA web", "El administrador de tienda edita precios, pesos y tolerancias")
+System_Ext(pos, "Sistema POS", "Inventario existente del supermercado")
+System_Ext(shopping, "Smart Shopping Context", "Consulta productos por RFID (CatalogPricingAcl)")
+
+Container_Boundary(api, "Cloud RESTful API · Catalog & Pricing (Spring Boot)") {
+  Component(productsCtrl, "ProductsController", "Spring REST Controller", "Registra productos, actualiza precio, peso y tolerancia, mapea etiquetas RFID")
+  Component(lookupCtrl, "ProductLookupController", "Spring REST Controller", "Consulta de producto por etiqueta RFID")
+  Component(syncCtrl, "CatalogSyncController", "Spring REST Controller", "Lanza y consulta sincronizaciones con POS y edge")
+  Component(assemblers, "Resource / Command Assemblers", "Mappers", "Convierten Resources en Commands y agregados en Resources")
+
+  Component(cmdSvc, "ProductCatalogCommandService", "Application Service", "Command handlers: registrar, mapear RFID, cambiar precio, actualizar perfil de peso")
+  Component(qrySvc, "ProductCatalogQueryService", "Application Service", "Query handlers del catálogo y búsqueda por RFID")
+  Component(syncSvc, "CatalogSyncService", "Application Service", "Importa desde POS y publica el catálogo al edge")
+  Component(changedHandler, "CatalogItemChangedEventHandler", "Event Handler", "Propaga cada cambio al edge")
+  Component(posScheduler, "PosCatalogImportScheduler", "Scheduled Task", "Importación periódica desde el POS")
+
+  Component(aggregate, "ProductCatalogItem", "Aggregate Root", "Sku, RfidTagMapping, Price, WeightProfile")
+  Component(syncLog, "CatalogSyncLog", "Aggregate Root", "Registro de cada sincronización")
+  Component(uniqueness, "RfidTagUniquenessService", "Domain Service", "Una etiqueta RFID se asocia a un solo SKU")
+  Component(repoIf, "ProductCatalogItemRepository / CatalogSyncLogRepository", "Repository interfaces", "Contratos de persistencia")
+
+  Component(repoImpl, "JpaProductCatalogItemRepository / JpaCatalogSyncLogRepository", "Spring Data JPA", "Implementan los repositorios sobre PostgreSQL")
+  Component(edgePublisher, "EdgeCatalogHttpPublisher", "HTTP client", "Envía el catálogo actualizado al gateway de cada tienda")
+  Component(posClient, "PosCatalogClient", "HTTP client", "Lee productos y precios del Sistema POS")
+  Component(publisher, "DomainEventPublisher", "Spring ApplicationEventPublisher", "Publica eventos de catálogo")
+}
+
+ContainerDb(db, "Catalog Database", "PostgreSQL", "product_catalog_items, product_rfid_tags, product_price_history, product_weight_history, catalog_sync_logs")
+Container(edge, "Edge API", "Edge service en el gateway de tienda", "Caché local del catálogo para validar en el carrito")
+
+Rel(webConsole, productsCtrl, "Gestiona catálogo", "JSON/HTTPS")
+Rel(webConsole, syncCtrl, "Sincroniza", "JSON/HTTPS")
+Rel(shopping, lookupCtrl, "getProductByRfid", "JSON/HTTPS")
+Rel(productsCtrl, assemblers, "Usa")
+Rel(productsCtrl, cmdSvc, "Commands")
+Rel(productsCtrl, qrySvc, "Queries")
+Rel(lookupCtrl, qrySvc, "Queries")
+Rel(syncCtrl, syncSvc, "Sync commands")
+Rel(posScheduler, syncSvc, "ImportCatalogFromPosCommand")
+Rel(cmdSvc, aggregate, "Carga y modifica")
+Rel(cmdSvc, uniqueness, "Valida RFID")
+Rel(syncSvc, syncLog, "Registra")
+Rel(syncSvc, cmdSvc, "Registra / actualiza productos")
+Rel(cmdSvc, repoIf, "Usa")
+Rel(qrySvc, repoIf, "Usa")
+Rel(syncSvc, repoIf, "Usa")
+Rel_U(repoImpl, repoIf, "Implementa")
+Rel(cmdSvc, publisher, "Publica eventos")
+Rel(publisher, changedHandler, "PriceChanged / ProductWeightProfileUpdated")
+Rel(changedHandler, syncSvc, "SyncCatalogToEdgeCommand")
+Rel(syncSvc, edgePublisher, "Publica catálogo")
+Rel(syncSvc, posClient, "Lee catálogo")
+Rel(repoImpl, db, "Lee y escribe", "JDBC")
+Rel(edgePublisher, edge, "Actualiza catálogo", "JSON/HTTPS")
+Rel(posClient, pos, "Consulta productos", "JSON/HTTPS")
+Rel(publisher, shopping, "ProductWeightProfileUpdated", "evento")
+SHOW_LEGEND()
+@enduml

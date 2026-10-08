@@ -1,0 +1,229 @@
+@startuml smart-shopping-class-diagram
+!pragma layout smetana
+skinparam dpi 110
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #0B5394
+  ArrowColor #0B5394
+  StereotypeFontColor #0B5394
+}
+skinparam package {
+  BorderColor #0B5394
+  FontColor #0B5394
+}
+hide empty members
+title Innova Carty · Class Diagram · Smart Shopping Bounded Context (Domain Layer)
+
+package "Aggregates" {
+  class ShoppingSession <<Aggregate Root>> {
+    - id: SessionId
+    - cartId: CartId
+    - customerId: CustomerId
+    - status: SessionStatus
+    - budget: Budget
+    - items: List<CartItem>
+    - weightSnapshot: WeightSnapshot
+    - paymentPaused: boolean
+    - startedAt: LocalDateTime
+    - closedAt: LocalDateTime
+    - domainEvents: List<ShoppingSessionEvent>
+    + ShoppingSession(cartId: CartId, customerId: CustomerId, budgetLimit: Money)
+    + setBudgetLimit(limit: Money): void
+    + addItem(product: ProductSnapshot): CartItem
+    + removeItem(rfidTag: RfidTag): void
+    + getSubtotal(): Money
+    + updateWeightSnapshot(snapshot: WeightSnapshot): void
+    + canCheckout(): boolean
+    + markPendingCheckout(): void
+    + complete(): void
+    + cancel(): void
+    + isActive(): boolean
+    + pullDomainEvents(): List<ShoppingSessionEvent>
+    - recalculateBudget(): void
+    - ensureActive(): void
+  }
+}
+
+package "Entities" {
+  class CartItem <<Entity>> {
+    - id: Long
+    - productId: ProductId
+    - rfidTag: RfidTag
+    - productName: String
+    - unitPrice: Money
+    - quantity: int
+    - nominalWeight: Weight
+    - weightTolerance: Weight
+    - weightVerified: boolean
+    - removed: boolean
+    - detectedAt: LocalDateTime
+    - removedAt: LocalDateTime
+    + CartItem(product: ProductSnapshot)
+    + getTotalPrice(): Money
+    + increaseQuantity(): void
+    + markRemoved(): void
+    + markWeightVerified(): void
+    + isActive(): boolean
+  }
+}
+
+package "Value Objects" {
+  class Budget <<Value Object>> {
+    - limit: Money
+    - spent: Money
+    - thresholdReached: boolean
+    + {static} NEAR_LIMIT_PERCENT: int = 90
+    + withSpent(amount: Money): Budget
+    + remaining(): Money
+    + usedPercent(): BigDecimal
+    + isNearLimit(): boolean
+    + isExceeded(): boolean
+  }
+  class WeightSnapshot <<Value Object>> {
+    - measured: Weight
+    - expected: Weight
+    - status: WeightValidationStatus
+    - mismatchSince: LocalDateTime
+    + difference(): Weight
+    + isConsistent(): boolean
+  }
+  class ProductSnapshot <<Value Object>> {
+    - productId: ProductId
+    - name: String
+    - unitPrice: Money
+    - nominalWeight: Weight
+    - weightTolerance: Weight
+  }
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: String
+    + add(other: Money): Money
+    + subtract(other: Money): Money
+    + multiply(factor: int): Money
+    + isGreaterThan(other: Money): boolean
+  }
+  class Weight <<Value Object>> {
+    - grams: BigDecimal
+    + add(other: Weight): Weight
+    + difference(other: Weight): Weight
+    + isWithin(tolerance: Weight): boolean
+  }
+  class SessionId <<Value Object>> {
+    - value: Long
+  }
+  class CartId <<Value Object>> {
+    - value: Long
+  }
+  class CustomerId <<Value Object>> {
+    - value: Long
+  }
+  class ProductId <<Value Object>> {
+    - value: Long
+  }
+  class RfidTag <<Value Object>> {
+    - value: String
+  }
+  class CheckoutReference <<Value Object>> {
+    - checkoutId: Long
+    - amount: Money
+    - status: String
+  }
+  enum SessionStatus <<Enumeration>> {
+    ACTIVE
+    PENDING_CHECKOUT
+    COMPLETED
+    CANCELLED
+  }
+  enum WeightValidationStatus <<Enumeration>> {
+    CONSISTENT
+    MISMATCH
+  }
+}
+
+package "Domain Services" {
+  interface WeightConsistencyPolicy <<Domain Service>> {
+    + evaluate(measured: Weight, items: List<CartItem>, previous: WeightSnapshot): WeightSnapshot
+  }
+  class DefaultWeightConsistencyPolicy <<Domain Service>> {
+    - gracePeriod: Duration = 3 s
+    + evaluate(measured: Weight, items: List<CartItem>, previous: WeightSnapshot): WeightSnapshot
+    - expectedWeight(items: List<CartItem>): Weight
+    - totalTolerance(items: List<CartItem>): Weight
+  }
+  interface CatalogPricingPort <<Port>> {
+    + getProductByRfid(rfidTag: RfidTag): Optional<ProductSnapshot>
+  }
+  interface PaymentCheckoutPort <<Port>> {
+    + createCheckout(sessionId: SessionId, amount: Money): CheckoutReference
+  }
+}
+
+package "Repositories" {
+  interface ShoppingSessionRepository <<Repository>> {
+    + save(session: ShoppingSession): ShoppingSession
+    + findById(id: SessionId): Optional<ShoppingSession>
+    + findActiveByCartId(cartId: CartId): Optional<ShoppingSession>
+    + existsActiveSessionByCartId(cartId: CartId): boolean
+  }
+}
+
+package "Domain Events" {
+  abstract class ShoppingSessionEvent <<Domain Event>> {
+    # sessionId: SessionId
+    # occurredAt: LocalDateTime
+  }
+  class ShoppingSessionStarted <<Domain Event>>
+  class ProductAddedToSession <<Domain Event>>
+  class ProductRemovedFromSession <<Domain Event>>
+  class BudgetThresholdReached <<Domain Event>>
+  class UnknownTagDetected <<Domain Event>>
+  class WeightMismatchDetected <<Domain Event>>
+  class WeightConsistencyRestored <<Domain Event>>
+  class ShoppingSessionReadyForCheckout <<Domain Event>>
+  class ShoppingSessionCompleted <<Domain Event>>
+  class ShoppingSessionCancelled <<Domain Event>>
+}
+
+ShoppingSession "1" *-- "0..*" CartItem : contiene >
+ShoppingSession "1" *-- "1" Budget : controla >
+ShoppingSession "1" *-- "1" WeightSnapshot : valida con >
+ShoppingSession "1" --> "1" SessionStatus : estado >
+ShoppingSession "1" ..> "0..*" ShoppingSessionEvent : registra >
+ShoppingSession ..> ProductSnapshot : crea CartItem desde >
+Budget "1" --> "2" Money : limit / spent >
+WeightSnapshot "1" --> "1" WeightValidationStatus : estado >
+WeightSnapshot "1" --> "2" Weight : measured / expected >
+
+DefaultWeightConsistencyPolicy ..|> WeightConsistencyPolicy
+WeightConsistencyPolicy ..> WeightSnapshot : produce >
+WeightConsistencyPolicy ..> CartItem : evalúa >
+CatalogPricingPort ..> ProductSnapshot : devuelve >
+PaymentCheckoutPort ..> CheckoutReference : devuelve >
+ShoppingSessionRepository ..> ShoppingSession : persiste >
+
+ShoppingSessionEvent <|-- ShoppingSessionStarted
+ShoppingSessionEvent <|-- ProductAddedToSession
+ShoppingSessionEvent <|-- ProductRemovedFromSession
+ShoppingSessionEvent <|-- BudgetThresholdReached
+ShoppingSessionEvent <|-- UnknownTagDetected
+ShoppingSessionEvent <|-- WeightMismatchDetected
+ShoppingSessionEvent <|-- WeightConsistencyRestored
+ShoppingSessionEvent <|-- ShoppingSessionReadyForCheckout
+ShoppingSessionEvent <|-- ShoppingSessionCompleted
+ShoppingSessionEvent <|-- ShoppingSessionCancelled
+ShoppingSessionStarted -[hidden]down- ProductAddedToSession
+ProductAddedToSession -[hidden]down- ProductRemovedFromSession
+ProductRemovedFromSession -[hidden]down- BudgetThresholdReached
+BudgetThresholdReached -[hidden]down- UnknownTagDetected
+WeightMismatchDetected -[hidden]down- WeightConsistencyRestored
+WeightConsistencyRestored -[hidden]down- ShoppingSessionReadyForCheckout
+ShoppingSessionReadyForCheckout -[hidden]down- ShoppingSessionCompleted
+ShoppingSessionCompleted -[hidden]down- ShoppingSessionCancelled
+SessionId -[hidden]down- CartId
+CartId -[hidden]down- CustomerId
+ProductId -[hidden]down- RfidTag
+@enduml

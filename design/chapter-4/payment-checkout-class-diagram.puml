@@ -1,0 +1,202 @@
+@startuml payment-checkout-class-diagram
+!pragma layout smetana
+skinparam dpi 110
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #0B5394
+  ArrowColor #0B5394
+  StereotypeFontColor #0B5394
+}
+skinparam package {
+  BorderColor #0B5394
+  FontColor #0B5394
+}
+hide empty members
+title Innova Carty · Class Diagram · Payment & Checkout Bounded Context (Domain Layer)
+
+package "Aggregates" {
+  class PaymentTransaction <<Aggregate Root>> {
+    - id: TransactionId
+    - sessionId: SessionId
+    - cartId: CartId
+    - amount: Money
+    - method: PaymentMethod
+    - status: PaymentStatus
+    - qrCodes: List<QrDetails>
+    - callbacks: List<GatewayCallback>
+    - receipt: Receipt
+    - exitClearance: ExitClearanceToken
+    - createdAt: LocalDateTime
+    - confirmedAt: LocalDateTime
+    - posSyncedAt: LocalDateTime
+    - domainEvents: List<PaymentEvent>
+    + PaymentTransaction(sessionId: SessionId, cartId: CartId, amount: Money)
+    + attachQr(qr: QrDetails): void
+    + currentQr(): Optional<QrDetails>
+    + expireQr(now: LocalDateTime): void
+    + registerCallback(callback: GatewayCallback): void
+    + confirm(method: PaymentMethod, paidAt: LocalDateTime): void
+    + reject(reason: String): void
+    + issueReceipt(receipt: Receipt): void
+    + issueExitClearance(token: ExitClearanceToken): void
+    + markSyncedWithPos(at: LocalDateTime): void
+    + isConfirmed(): boolean
+    + pullDomainEvents(): List<PaymentEvent>
+    - ensureStatus(expected: PaymentStatus): void
+  }
+}
+
+package "Entities" {
+  class GatewayCallback <<Entity>> {
+    - id: Long
+    - provider: PaymentMethod
+    - externalReference: String
+    - payload: String
+    - signature: String
+    - signatureValid: boolean
+    - receivedAt: LocalDateTime
+    + markSignature(valid: boolean): void
+  }
+  class Receipt <<Entity>> {
+    - id: Long
+    - type: ReceiptType
+    - seriesNumber: String
+    - totalAmount: Money
+    - receiptUrl: String
+    - issuedAt: LocalDateTime
+  }
+}
+
+package "Value Objects" {
+  class QrDetails <<Value Object>> {
+    + {static} VALIDITY: Duration = 5 min
+    - payload: String
+    - amount: Money
+    - generatedAt: LocalDateTime
+    - expiresAt: LocalDateTime
+    + isExpired(now: LocalDateTime): boolean
+  }
+  class ExitClearanceToken <<Value Object>> {
+    - token: String
+    - issuedAt: LocalDateTime
+    - expiresAt: LocalDateTime
+    - usedAt: LocalDateTime
+    + isValid(now: LocalDateTime): boolean
+    + markUsed(at: LocalDateTime): ExitClearanceToken
+  }
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: String
+    + equals(other: Money): boolean
+  }
+  class TransactionId <<Value Object>> {
+    - value: Long
+  }
+  class SessionId <<Value Object>> {
+    - value: Long
+  }
+  class CartId <<Value Object>> {
+    - value: Long
+  }
+  enum PaymentStatus <<Enumeration>> {
+    PENDING
+    QR_GENERATED
+    CONFIRMED
+    EXPIRED
+    REJECTED
+  }
+  enum PaymentMethod <<Enumeration>> {
+    YAPE
+    PLIN
+  }
+  enum ReceiptType <<Enumeration>> {
+    BOLETA
+    FACTURA
+  }
+}
+
+package "Domain Services" {
+  interface WebhookSignatureVerifier <<Domain Service>> {
+    + verify(payload: String, signature: String, provider: PaymentMethod): boolean
+  }
+  interface DigitalWalletGateway <<Port>> {
+    + createDynamicQr(id: TransactionId, amount: Money): QrDetails
+  }
+  interface ElectronicInvoicingService <<Port>> {
+    + issue(transaction: PaymentTransaction): Receipt
+  }
+  interface PosSalesPort <<Port>> {
+    + registerSale(transaction: PaymentTransaction): void
+  }
+  class ExitClearanceTokenFactory <<Factory>> {
+    - validity: Duration
+    + create(transaction: PaymentTransaction, now: LocalDateTime): ExitClearanceToken
+  }
+}
+
+package "Repositories" {
+  interface PaymentTransactionRepository <<Repository>> {
+    + save(transaction: PaymentTransaction): PaymentTransaction
+    + findById(id: TransactionId): Optional<PaymentTransaction>
+    + findBySessionId(sessionId: SessionId): Optional<PaymentTransaction>
+    + findByExternalReference(provider: PaymentMethod, reference: String): Optional<PaymentTransaction>
+    + findExpiredQrBefore(now: LocalDateTime): List<PaymentTransaction>
+    + existsOpenBySessionId(sessionId: SessionId): boolean
+  }
+}
+
+package "Domain Events" {
+  abstract class PaymentEvent <<Domain Event>> {
+    # transactionId: TransactionId
+    # sessionId: SessionId
+    # occurredAt: LocalDateTime
+  }
+  class PaymentOrderCreated <<Domain Event>>
+  class DynamicQrGenerated <<Domain Event>>
+  class QrExpired <<Domain Event>>
+  class WebhookSignatureRejected <<Domain Event>>
+  class PaymentConfirmed <<Domain Event>>
+  class ReceiptIssued <<Domain Event>>
+  class ExitClearanceIssued <<Domain Event>>
+  class SaleSyncedWithPos <<Domain Event>>
+}
+
+PaymentTransaction "1" *-- "0..*" QrDetails : genera >
+PaymentTransaction "1" *-- "0..*" GatewayCallback : recibe >
+PaymentTransaction "1" *-- "0..1" Receipt : emite >
+PaymentTransaction "1" *-- "0..1" ExitClearanceToken : autoriza salida con >
+PaymentTransaction "1" --> "1" PaymentStatus : estado >
+PaymentTransaction "1" --> "0..1" PaymentMethod : pagada con >
+PaymentTransaction "1" --> "1" Money : monto >
+PaymentTransaction "1" ..> "0..*" PaymentEvent : registra >
+Receipt "1" --> "1" ReceiptType : tipo >
+GatewayCallback "1" --> "1" PaymentMethod : proveedor >
+
+WebhookSignatureVerifier ..> GatewayCallback : valida >
+DigitalWalletGateway ..> QrDetails : devuelve >
+ElectronicInvoicingService ..> Receipt : devuelve >
+PosSalesPort ..> PaymentTransaction : sincroniza >
+ExitClearanceTokenFactory ..> ExitClearanceToken : crea >
+PaymentTransactionRepository ..> PaymentTransaction : persiste >
+
+PaymentEvent <|-- PaymentOrderCreated
+PaymentEvent <|-- DynamicQrGenerated
+PaymentEvent <|-- QrExpired
+PaymentEvent <|-- WebhookSignatureRejected
+PaymentEvent <|-- PaymentConfirmed
+PaymentEvent <|-- ReceiptIssued
+PaymentEvent <|-- ExitClearanceIssued
+PaymentEvent <|-- SaleSyncedWithPos
+PaymentOrderCreated -[hidden]down- DynamicQrGenerated
+DynamicQrGenerated -[hidden]down- QrExpired
+QrExpired -[hidden]down- WebhookSignatureRejected
+PaymentConfirmed -[hidden]down- ReceiptIssued
+ReceiptIssued -[hidden]down- ExitClearanceIssued
+ExitClearanceIssued -[hidden]down- SaleSyncedWithPos
+TransactionId -[hidden]down- SessionId
+SessionId -[hidden]down- CartId
+@enduml

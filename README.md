@@ -4012,8 +4012,47 @@ void EnvironmentMonitor::sendTelemetry() {
 </code></pre>
 
 ### 6.1.4. Software Deployment Configuration
-*(Pendiente — Responsable: Kevin)*
 
+En esta sección el equipo especifica la configuración técnica y los procedimientos de despliegue continuo (CI/CD) adoptados para disponibilizar públicamente cada uno de los productos digitales que conforman la solución integral de Innova Carty. La estrategia combina integración continua automatizada desde los repositorios de GitHub hacia plataformas de infraestructura moderna en la nube (*Platform as a Service* y *Serverless Hosting*), asegurando alta disponibilidad, certificados SSL/TLS automáticos y trazabilidad de versiones.
+
+#### A. Resumen de Entornos de Despliegue
+
+| Producto Digital | Plataforma de Despliegue | Propósito y Responsabilidad | Enlace / Ruta de Acceso |
+| :--- | :--- | :--- | :--- |
+| **Landing Page** | Vercel | Alojamiento y distribución global del sitio web estático para la captación comercial y difusión de la propuesta de valor hacia consumidores y cadenas de supermercados. | [Ver Landing Page](https://innova-carty-landing-page.vercel.app/#app) |
+| **Web Application (Consola de Operaciones)** | Vercel | Alojamiento de la Single Page Application (SPA) en Angular para la administración de flota, supervisión de piso de venta, resolución de discrepancias y calibración de catálogo. | [Ver Consola Web](https://innova-carty-web-app.vercel.app/sign-in) |
+| **Mock API Services (Sprint 1)** | Render | Servicio web en la nube ejecutando `json-server` sobre Node.js para alimentar la consola web bajo el prefijo unificado `/api/v1`. | [Ver API Mock](https://innova-carty-web-app.vercel.app/api/v1) |
+| **Backend REST API (Spring Boot - Sprint 2)** | Render | Contenedor de ejecución para los microservicios Java / Spring Boot que gobernarán los cuatro Bounded Contexts del núcleo transaccional. | [Acceso a Render](https://render.com/) |
+| **Relational Database** | Railway | Instancia administrada de base de datos relacional (PostgreSQL) para la persistencia transaccional y bitácoras de auditoría. | [Acceso a Railway](https://railway.app/) |
+
+---
+
+#### B. Procedimientos de Configuración y Despliegue por Producto
+
+##### 1. Landing Page (`innova-carty-landing-page`)
+Para el despliegue del Landing Page se seleccionó **Vercel**, aprovechando su red de distribución global (Edge Network) y soporte nativo para despliegue continuo a partir de repositorios estáticos:
+1. **Vinculación con GitHub:** Se enlazó el proyecto en Vercel con el repositorio oficial `innova-carty-landing-page` de la organización.
+2. **Definición de Rama de Producción:** Se configuró la rama `main` como entorno de producción (*Production Branch*) y la rama `develop` para generación de previsualizaciones automáticas (*Preview Deployments*).
+3. **Parámetros de Construcción:** 
+   * **Framework Preset:** `Other`.
+   * **Build Command:** Ninguno (servido directamente como sitio estático optimizado).
+   * **Output Directory:** `./` (raíz del repositorio).
+4. **Validación del Despliegue:** Tras el despliegue automático, se verificó el correcto funcionamiento del diseño responsivo, el selector bilingüe (ES/EN), la validación del formulario de demostración comercial y las metas SEO/Open Graph.
+
+##### 2. Frontend Web Application (`innova-carty-frontend-web-app`)
+La Consola de Operaciones fue desarrollada en **Angular** y su despliegue se automatizó en **Vercel** mediante su motor de compilación para Single Page Applications:
+1. **Vinculación de Repositorio:** Conexión directa con `innova-carty-frontend-web-app` desde la interfaz de Vercel.
+2. **Parámetros de Construcción:**
+   * **Framework Preset:** `Angular`.
+   * **Build Command:** `ng build --configuration production`.
+   * **Output Directory:** `dist/innova-carty-frontend-web-app/browser`.
+3. **Manejo de Enrutamiento del Cliente (`vercel.json`):** Para evitar errores de recurso no encontrado (HTTP 404) al recargar rutas internas del navegador (como `/carts`, `/alerts` o `/catalog`), se incorporó en la raíz del repositorio el archivo de configuración con reglas de reescritura (*rewrites*):
+   ```json
+   {
+     "rewrites": [
+       { "source": "/(.*)", "destination": "/index.html" }
+     ]
+   }
 ---
 
 ## 6.2. Landing Page, Services & Applications Implementation

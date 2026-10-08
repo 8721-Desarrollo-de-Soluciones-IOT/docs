@@ -131,10 +131,6 @@
 - [2.1. Competidores](#21-competidores)
 - [2.2. Entrevistas](#22-entrevistas)
 - [2.3. Needfinding](#23-needfinding)
-  - [2.3.1. User-Personas](#231-User-Personas)
-  - [2.3.2. User Task Matrix](#232-User-Task-Matrix)
-  - [2.3.3. User Journey Mapping](#233-User-Journey-Mapping)
-  - [2.3.4. Empathy Mapping](#234-Empathy-Mapping)
 - [2.4. Big Picture EventStorming](#24-big-picture-eventstorming)
 - [2.5. Ubiquitous Language](#25-ubiquitous-language)
 
@@ -154,11 +150,6 @@
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
 - [5.2. Information Architecture](#52-information-architecture)
-  - [5.2.1. Organization Systems](#521-Organization-Systems)
-  - [5.2.2. Labeling Systems](#522-Labeling-Systems)
-  - [5.2.3. SEO Tags and Meta Tags](#523-SEO-Tags-and-Meta-Tags)
-  - [5.2.4. Searching Systems](#524-Searching-Systems)
-  - [5.2.5. Navigation Systems](#525-Navigation-Systems)
 - [5.3. Landing Page UI Design](#53-landing-page-ui-design)
 - [5.4. Applications UX/UI Design](#54-applications-uxui-design)
 - [5.5. Applications Prototyping](#55-applications-prototyping)
@@ -190,10 +181,12 @@
 
 ## ABET – EAC - Student Outcome 5
 
+## ABET – EAC - Student Outcome 5
+
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page (US01), el detalle del carrito con discrepancia de peso (US11) y el modal de edición de peso nominal y tolerancia (US13). <br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI del capítulo V también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los capítulos I a IV del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los 20 Story Points comprometidos, además de los capítulos IV y V del informe. |
 
 <div style="page-break-after: always;"></div>
 
@@ -912,8 +905,6 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 
 #### Administrador de Tienda / Operaciones
-
-![user-persona-segmento-2](assets/chapter-2/user-persona-segmento-2.png)
 
 ### 2.3.2. User Task Matrix
 
@@ -2463,52 +2454,7 @@ carritos por ID/nombre de tienda, facilitando la búsqueda rápida cuando se man
 múltiples elementos.
 
 ### 5.2.2. Labeling Systems
-
-Los sistemas de etiquetado definen los nombres con que se presentan categorías, acciones, estados y alertas en la Landing Page, la Consola de Operaciones y la app móvil. Cada concepto del Ubiquitous Language (2.5) tiene una única etiqueta en la interfaz, y el término en inglés se mantiene solo en el código y en la API.
-
-**a) Criterios de etiquetado**
-
-- La interfaz operativa usa español; la Landing está disponible en ES/EN.
-- Los botones usan verbos cortos en infinitivo (por ejemplo, "Solicitar demostración").
-- Las etiquetas de navegación no superan tres palabras.
-- Los recursos de la API se nombran en inglés y en plural (`/api/v1/orders`), según el capítulo IV.
-
-**b) Navegación de la Consola**
-
-| Etiqueta (UI) | Ruta | Concepto del dominio | Sprint |
-| :--- | :--- | :--- | :---: |
-| Inicio | `/` | Resumen operativo (*Dashboard*) | 1 |
-| Carritos | `/carts` | *Smart Cart* y *Shopping Session* | 1 |
-| Alertas | `/alerts` | *Discrepancy*, *Budget Threshold Alert*, *Audit Flag* | 1 |
-| Catálogo | `/catalog` | *Item Catalog* | 1 |
-| Reportes, Configuración, Ayuda | `/reports`, `/settings`, `/help` | Merma, parámetros, soporte | 2 o posterior |
-
-**c) Estados del carrito**
-
-| Estado (dominio / API) | Etiqueta UI | Indicador |
-| :--- | :--- | :--- |
-| `Shopping` | En compra | Verde |
-| `Discrepancy` | Con discrepancia | Ámbar |
-| `Locked` | Bloqueado | Rojo |
-| `Paid` | Pagado | Azul |
-| `Offline` | Fuera de línea | Gris |
-
-**d) Alertas, acciones y campos**
-
-- Las alertas indican la causa y la acción esperada, por ejemplo: "Discrepancia de peso: revisa la canasta".
-- Las acciones críticas, como "Desbloquear carrito" o "Guardar cambios", se confirman en un diálogo.
-- Los campos del catálogo se nombran "Precio (S/)", "Peso nominal (g)" y "Tolerancia (± g)".
-
-**e) Equivalencias en la Landing**
-
-| Español | Inglés |
-| :--- | :--- |
-| Conocer solución | Learn the solution |
-| Solicitar demostración | Request a demo |
-| Descargar la app | Get the app |
-| Soy administrador de supermercado | I run a supermarket |
-
----
+*(Pendiente — Responsable: July)*
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -4100,38 +4046,7 @@ Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene 
 * **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
-
-El Sprint Backlog 1 detalla las historias seleccionadas en la Sprint Planning (6.2.1.1), sus tareas y su responsable según la matriz de liderazgo (6.2.1.2). Al cierre del sprint se completaron las 20 Story Points comprometidas.
-
-| Historia | SP | Tarea | Responsable | Estado |
-| :--- | :---: | :--- | :--- | :---: |
-| **US01** Propuesta de valor en Landing | 3 | Secciones de propuesta de valor y "Cómo funciona" | Huanca Navarro, Gustavo Esau | Terminado |
-| | | Beneficios por segmento y sección de hardware del carrito | Berrocal Ramirez, Omar Christian | Terminado |
-| | | Sección de app para compradores con enlaces a tiendas | Pardo Chumpitazi, Kevin Patrick | Terminado |
-| | | Botones de llamada a la acción por segmento | Trillo Hernández, Anghel Melanie | Terminado |
-| **US02** Solicitud de demo | 3 | Formulario con RUC, razón social, correo y unidades | Díaz Fiestas, Jorge Luis | Terminado |
-| | | Validación de campos y mensajes de error | Berrocal Ramirez, Omar Christian | Terminado |
-| | | Mensaje de confirmación de envío | Díaz Fiestas, Jorge Luis | Terminado |
-| **US03** Términos y privacidad | 1 | Páginas de Términos y Condiciones y de Política de Privacidad, con enlace en el pie de página | Pardo Chumpitazi, Kevin Patrick | Terminado |
-| **US11** Monitoreo en la consola | 8 | Inicio de sesión del personal | Huanca Navarro, Gustavo Esau | Terminado |
-| | | Dashboard con refresco cada 5 segundos | Díaz Fiestas, Jorge Luis | Terminado |
-| | | Lista de carritos con filtros | Berrocal Ramirez, Omar Christian | Terminado |
-| | | Detalle del carrito con discrepancia de peso | Trillo Hernández, Anghel Melanie | Terminado |
-| | | Desbloqueo con PIN de supervisor y confirmación | Pardo Chumpitazi, Kevin Patrick | Terminado |
-| | | Alertas por tipo | Crisanto Calle, Deybbi Anderson | Terminado |
-| | | Pruebas de aceptación de US11 | Crisanto Calle, Deybbi Anderson | Terminado |
-| **US13** Catálogo y tolerancias | 5 | Listado de productos con precio, peso nominal y tolerancia | Berrocal Ramirez, Omar Christian | Terminado |
-| | | Modal de edición de peso nominal y tolerancia | Trillo Hernández, Anghel Melanie | Terminado |
-| **Soporte del sprint** | 0 | API fake con json-server bajo `/api/v1` y su documentación | Díaz Fiestas, Jorge Luis | Terminado |
-| | | Configuración de repositorios y flujo GitFlow | Paico Calderon, July Zelmira | Terminado |
-| | | Despliegue en Vercel de la Landing y la Consola | Pardo Chumpitazi, Kevin Patrick | Terminado |
-| | | Pruebas unitarias de la Web App | Crisanto Calle, Deybbi Anderson | Terminado |
-| | | Sprint Backlog en Jira y seguimiento de tareas | Paico Calderon, July Zelmira | Terminado |
-
-**Total comprometido:** 20 SP (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5).
-**Total completado:** 20 SP.
-
-Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazarán a la API fake.
+*(Pendiente — Responsable: July)*
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 

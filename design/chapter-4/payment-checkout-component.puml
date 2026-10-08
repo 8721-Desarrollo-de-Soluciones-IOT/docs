@@ -1,0 +1,75 @@
+@startuml payment-checkout-component
+!include <C4/C4_Component>
+!pragma layout smetana
+LAYOUT_TOP_DOWN()
+skinparam dpi 120
+title Innova Carty · Component Diagram · Payment & Checkout Bounded Context (Cloud RESTful API)
+
+Container(cartDisplay, "On-Cart Display", "Embedded web UI", "Muestra el QR de pago y el resultado")
+Container(mobileApp, "Mobile App", "Native mobile app (Android / iOS)", "Muestra el QR, el comprobante y el historial")
+System_Ext(wallet, "Yape / Plin", "Billeteras digitales que generan el cobro y notifican el pago por webhook")
+
+Container_Boundary(api, "Cloud RESTful API · Payment & Checkout (Spring Boot)") {
+  Component(paymentsCtrl, "PaymentsController", "Spring REST Controller", "Crea la orden de pago, consulta su estado, el QR y el comprobante")
+  Component(webhookCtrl, "WalletWebhooksController", "Spring REST Controller", "Recibe los webhooks firmados de Yape / Plin")
+  Component(clearanceCtrl, "ExitClearancesController", "Spring REST Controller", "Valida un token de autorización de salida")
+  Component(assemblers, "Resource / Command Assemblers", "Mappers", "Convierten Resources en Commands y agregados en Resources")
+
+  Component(cmdSvc, "PaymentCommandService", "Application Service", "Command handlers: crear orden, generar QR, confirmar pago, emitir comprobante y autorización")
+  Component(qrySvc, "PaymentQueryService", "Application Service", "Query handlers de la transacción, el QR y el comprobante")
+  Component(checkoutHandler, "ShoppingSessionReadyForCheckoutEventHandler", "Event Handler", "Crea la orden de pago cuando la sesión está lista")
+  Component(confirmedHandler, "PaymentConfirmedEventHandler", "Event Handler", "Emite comprobante, autorización de salida y sincroniza con POS")
+  Component(qrScheduler, "QrExpirationScheduler", "Scheduled Task", "Marca como expirados los QR con más de 5 minutos")
+
+  Component(aggregate, "PaymentTransaction", "Aggregate Root", "QrDetails, GatewayCallback, Receipt, ExitClearanceToken")
+  Component(signature, "WebhookSignatureVerifier", "Domain Service", "Valida la firma HMAC de cada webhook")
+  Component(repoIf, "PaymentTransactionRepository", "Repository interface", "Contrato de persistencia del agregado")
+
+  Component(repoImpl, "JpaPaymentTransactionRepository", "Spring Data JPA", "Implementa el repositorio sobre PostgreSQL")
+  Component(walletClient, "DigitalWalletGatewayClient", "HTTP client", "Solicita el QR dinámico a Yape / Plin")
+  Component(invoicing, "ElectronicInvoicingClient", "HTTP client", "Emite la boleta o factura electrónica")
+  Component(posClient, "PosSyncClient", "HTTP client", "Registra la venta en el Sistema POS")
+  Component(publisher, "DomainEventPublisher", "Spring ApplicationEventPublisher", "Publica eventos de pago")
+  Component(realtime, "PaymentRealtimeNotifier", "WebSocket (STOMP)", "Envía el estado del pago al carrito y a la app")
+}
+
+ContainerDb(db, "Payment Database", "PostgreSQL", "payment_transactions, payment_qr_codes, gateway_callbacks, receipts, exit_clearance_tokens")
+System_Ext(shopping, "Smart Shopping Context", "Sesión de compra lista para checkout")
+System_Ext(ops, "Operations & Security Context", "Valida la salida en el perímetro")
+System_Ext(einvoice, "Proveedor de facturación electrónica", "Emisión de boletas y facturas")
+System_Ext(pos, "Sistema POS", "Inventario y ventas del supermercado")
+
+Rel(shopping, checkoutHandler, "ShoppingSessionReadyForCheckout", "evento")
+Rel(cartDisplay, paymentsCtrl, "Consulta QR y estado", "JSON/HTTPS")
+Rel(mobileApp, paymentsCtrl, "Consulta QR y comprobante", "JSON/HTTPS")
+Rel(wallet, webhookCtrl, "Pago confirmado", "Webhook HTTPS")
+Rel(ops, clearanceCtrl, "Valida token de salida", "JSON/HTTPS")
+Rel(paymentsCtrl, assemblers, "Usa")
+Rel(webhookCtrl, assemblers, "Usa")
+Rel(paymentsCtrl, qrySvc, "Queries")
+Rel(paymentsCtrl, cmdSvc, "Commands")
+Rel(webhookCtrl, cmdSvc, "ConfirmPaymentFromWebhookCommand")
+Rel(clearanceCtrl, qrySvc, "Queries")
+Rel(checkoutHandler, cmdSvc, "CreatePaymentOrderCommand")
+Rel(confirmedHandler, cmdSvc, "IssueReceipt / IssueExitClearance")
+Rel(qrScheduler, cmdSvc, "ExpireQrCommand")
+Rel(cmdSvc, aggregate, "Carga y modifica")
+Rel(cmdSvc, signature, "Verifica firma")
+Rel(cmdSvc, repoIf, "Usa")
+Rel(qrySvc, repoIf, "Usa")
+Rel_U(repoImpl, repoIf, "Implementa")
+Rel(cmdSvc, walletClient, "Genera QR")
+Rel(cmdSvc, invoicing, "Emite comprobante")
+Rel(cmdSvc, posClient, "Sincroniza venta")
+Rel(cmdSvc, publisher, "Publica eventos")
+Rel(publisher, confirmedHandler, "PaymentConfirmed")
+Rel(publisher, realtime, "Notifica")
+Rel(realtime, cartDisplay, "Actualiza en vivo", "WebSocket")
+Rel(repoImpl, db, "Lee y escribe", "JDBC")
+Rel(walletClient, wallet, "Crea QR dinámico", "JSON/HTTPS")
+Rel(invoicing, einvoice, "Emite comprobante", "JSON/HTTPS")
+Rel(posClient, pos, "Registra venta", "JSON/HTTPS")
+Rel(publisher, shopping, "PaymentConfirmed", "evento")
+Rel(publisher, ops, "ExitClearanceIssued", "evento")
+SHOW_LEGEND()
+@enduml

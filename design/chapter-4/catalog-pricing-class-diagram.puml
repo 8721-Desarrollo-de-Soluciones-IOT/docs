@@ -1,0 +1,210 @@
+@startuml catalog-pricing-class-diagram
+!pragma layout smetana
+skinparam dpi 110
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #0B5394
+  ArrowColor #0B5394
+  StereotypeFontColor #0B5394
+}
+skinparam package {
+  BorderColor #0B5394
+  FontColor #0B5394
+}
+hide empty members
+title Innova Carty · Class Diagram · Catalog & Pricing Bounded Context (Domain Layer)
+
+package "Aggregates" {
+  class ProductCatalogItem <<Aggregate Root>> {
+    - id: ProductId
+    - sku: Sku
+    - name: String
+    - category: String
+    - price: Price
+    - weightProfile: WeightProfile
+    - rfidTags: List<RfidTagMapping>
+    - priceHistory: List<PriceChange>
+    - weightHistory: List<WeightProfileChange>
+    - active: boolean
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    - domainEvents: List<CatalogEvent>
+    + ProductCatalogItem(sku: Sku, name: String, category: String, price: Price, weightProfile: WeightProfile)
+    + mapRfidTag(tag: RfidCode): void
+    + unmapRfidTag(tag: RfidCode): void
+    + changePrice(newPrice: Price, changedBy: AdminId): void
+    + updateWeightProfile(profile: WeightProfile, changedBy: AdminId): void
+    + deactivate(): void
+    + activate(): void
+    + isWithinTolerance(measured: Weight): boolean
+    + pullDomainEvents(): List<CatalogEvent>
+    - touch(): void
+  }
+  class CatalogSyncLog <<Aggregate Root>> {
+    - id: Long
+    - direction: SyncDirection
+    - storeId: StoreId
+    - itemsCount: int
+    - status: SyncStatus
+    - startedAt: LocalDateTime
+    - finishedAt: LocalDateTime
+    + CatalogSyncLog(direction: SyncDirection, storeId: StoreId)
+    + complete(itemsCount: int): void
+    + fail(reason: String): void
+  }
+}
+
+package "Entities" {
+  class RfidTagMapping <<Entity>> {
+    - rfidTag: RfidCode
+    - active: boolean
+    - mappedAt: LocalDateTime
+    + deactivate(): void
+  }
+  class PriceChange <<Entity>> {
+    - id: Long
+    - previousPrice: Price
+    - newPrice: Price
+    - changedBy: AdminId
+    - changedAt: LocalDateTime
+  }
+  class WeightProfileChange <<Entity>> {
+    - id: Long
+    - previous: WeightProfile
+    - current: WeightProfile
+    - changedBy: AdminId
+    - changedAt: LocalDateTime
+  }
+}
+
+package "Value Objects" {
+  class WeightProfile <<Value Object>> {
+    - nominalWeight: Weight
+    - tolerance: WeightTolerance
+    + minWeight(): Weight
+    + maxWeight(): Weight
+    + accepts(measured: Weight): boolean
+  }
+  class WeightTolerance <<Value Object>> {
+    - grams: BigDecimal
+    + isValidFor(nominal: Weight): boolean
+  }
+  class Price <<Value Object>> {
+    - amount: BigDecimal
+    - currency: String
+    + isPositive(): boolean
+  }
+  class Sku <<Value Object>> {
+    - value: String
+  }
+  class RfidCode <<Value Object>> {
+    - value: String
+  }
+  class Weight <<Value Object>> {
+    - grams: BigDecimal
+  }
+  class ProductId <<Value Object>> {
+    - value: Long
+  }
+  class AdminId <<Value Object>> {
+    - value: Long
+  }
+  class StoreId <<Value Object>> {
+    - value: Long
+  }
+  enum SyncDirection <<Enumeration>> {
+    FROM_POS
+    TO_EDGE
+  }
+  enum SyncStatus <<Enumeration>> {
+    PENDING
+    COMPLETED
+    FAILED
+  }
+}
+
+package "Domain Services" {
+  class RfidTagUniquenessService <<Domain Service>> {
+    - repository: ProductCatalogItemRepository
+    + ensureAvailable(tag: RfidCode, product: ProductId): void
+  }
+  interface EdgeCatalogPublisher <<Port>> {
+    + publish(storeId: StoreId, items: List<ProductCatalogItem>): void
+  }
+  interface PosCatalogSource <<Port>> {
+    + fetchProducts(): List<PosProductRecord>
+  }
+  class PosProductRecord <<Value Object>> {
+    - sku: String
+    - name: String
+    - category: String
+    - unitPrice: BigDecimal
+  }
+}
+
+package "Repositories" {
+  interface ProductCatalogItemRepository <<Repository>> {
+    + save(item: ProductCatalogItem): ProductCatalogItem
+    + findById(id: ProductId): Optional<ProductCatalogItem>
+    + findBySku(sku: Sku): Optional<ProductCatalogItem>
+    + findByRfidTag(tag: RfidCode): Optional<ProductCatalogItem>
+    + existsByRfidTag(tag: RfidCode): boolean
+    + findAllActive(): List<ProductCatalogItem>
+    + findUpdatedSince(since: LocalDateTime): List<ProductCatalogItem>
+  }
+  interface CatalogSyncLogRepository <<Repository>> {
+    + save(log: CatalogSyncLog): CatalogSyncLog
+    + findLastCompleted(direction: SyncDirection, storeId: StoreId): Optional<CatalogSyncLog>
+  }
+}
+
+package "Domain Events" {
+  abstract class CatalogEvent <<Domain Event>> {
+    # productId: ProductId
+    # occurredAt: LocalDateTime
+  }
+  class ProductRegistered <<Domain Event>>
+  class RfidTagMapped <<Domain Event>>
+  class PriceChanged <<Domain Event>>
+  class ProductWeightProfileUpdated <<Domain Event>>
+  class CatalogItemUpdated <<Domain Event>>
+  class CatalogSyncedWithEdge <<Domain Event>>
+}
+
+ProductCatalogItem "1" *-- "0..*" RfidTagMapping : se identifica con >
+ProductCatalogItem "1" *-- "0..*" PriceChange : historial de precio >
+ProductCatalogItem "1" *-- "0..*" WeightProfileChange : historial de peso >
+ProductCatalogItem "1" *-- "1" WeightProfile : se valida con >
+ProductCatalogItem "1" *-- "1" Price : se vende a >
+ProductCatalogItem "1" --> "1" Sku : identificado por >
+ProductCatalogItem "1" ..> "0..*" CatalogEvent : registra >
+RfidTagMapping "1" --> "1" RfidCode : etiqueta >
+WeightProfile "1" --> "1" WeightTolerance : tolerancia >
+WeightProfile "1" --> "1" Weight : peso nominal >
+CatalogSyncLog "1" --> "1" SyncDirection : dirección >
+CatalogSyncLog "1" --> "1" SyncStatus : estado >
+
+RfidTagUniquenessService ..> ProductCatalogItemRepository : consulta >
+RfidTagUniquenessService ..> RfidCode : valida >
+EdgeCatalogPublisher ..> ProductCatalogItem : publica >
+PosCatalogSource ..> PosProductRecord : devuelve >
+ProductCatalogItemRepository ..> ProductCatalogItem : persiste >
+CatalogSyncLogRepository ..> CatalogSyncLog : persiste >
+
+CatalogEvent <|-- ProductRegistered
+CatalogEvent <|-- RfidTagMapped
+CatalogEvent <|-- PriceChanged
+CatalogEvent <|-- ProductWeightProfileUpdated
+CatalogEvent <|-- CatalogItemUpdated
+CatalogEvent <|-- CatalogSyncedWithEdge
+ProductRegistered -[hidden]down- RfidTagMapped
+RfidTagMapped -[hidden]down- PriceChanged
+ProductWeightProfileUpdated -[hidden]down- CatalogItemUpdated
+CatalogItemUpdated -[hidden]down- CatalogSyncedWithEdge
+ProductId -[hidden]down- AdminId
+AdminId -[hidden]down- StoreId
+@enduml

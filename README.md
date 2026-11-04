@@ -131,6 +131,10 @@
 - [2.1. Competidores](#21-competidores)
 - [2.2. Entrevistas](#22-entrevistas)
 - [2.3. Needfinding](#23-needfinding)
+  - [2.3.1. User-Personas](#231-User-Personas)
+  - [2.3.2. User Task Matrix](#232-User-Task-Matrix)
+  - [2.3.3. User Journey Mapping](#233-User-Journey-Mapping)
+  - [2.3.4. Empathy Mapping](#234-Empathy-Mapping)
 - [2.4. Big Picture EventStorming](#24-big-picture-eventstorming)
 - [2.5. Ubiquitous Language](#25-ubiquitous-language)
 
@@ -150,6 +154,11 @@
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
 - [5.2. Information Architecture](#52-information-architecture)
+  - [5.2.1. Organization Systems](#521-Organization-Systems)
+  - [5.2.2. Labeling Systems](#522-Labeling-Systems)
+  - [5.2.3. SEO Tags and Meta Tags](#523-SEO-Tags-and-Meta-Tags)
+  - [5.2.4. Searching Systems](#524-Searching-Systems)
+  - [5.2.5. Navigation Systems](#525-Navigation-Systems)
 - [5.3. Landing Page UI Design](#53-landing-page-ui-design)
 - [5.4. Applications UX/UI Design](#54-applications-uxui-design)
 - [5.5. Applications Prototyping](#55-applications-prototyping)
@@ -181,12 +190,10 @@
 
 ## ABET – EAC - Student Outcome 5
 
-## ABET – EAC - Student Outcome 5
-
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page (US01), el detalle del carrito con discrepancia de peso (US11) y el modal de edición de peso nominal y tolerancia (US13). <br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI del capítulo V también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **[Apellidos, Nombres] (AV1 / TB1)** <br> [...] | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los capítulos I a IV del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los 20 Story Points comprometidos, además de los capítulos IV y V del informe. |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. |
 
 <div style="page-break-after: always;"></div>
 
@@ -906,6 +913,8 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 #### Administrador de Tienda / Operaciones
 
+![user-persona-segmento-2](assets/chapter-2/user-persona-segmento-2.png)
+
 ### 2.3.2. User Task Matrix
 
 |Tarea |Frecuencia|Importancia|
@@ -1297,34 +1306,90 @@ En este diagrama se presenta una visión global del ecosistema corporativo del s
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
-El diagrama de contexto (Nivel 1 del modelo C4) muestra a Innova Carty como una sola caja,
-sin exponer su arquitectura interna, junto con las personas que lo usan y los sistemas
-externos con los que se conecta.
+El diagrama de contexto (nivel 1 del C4 Model) muestra a **Innova Carty** como una sola caja, sin detallar su arquitectura interna, junto con las personas que lo usan y los sistemas de software con los que se comunica. Se obtiene del System Landscape (4.1.3.1) quedándose solo con los elementos que tienen una relación directa con Innova Carty; por eso no aparecen relaciones que no pasan por el sistema, como el pago en las cajas tradicionales o el uso del POS por parte del administrador. Su objetivo es que cualquier stakeholder, técnico o no, entienda en un vistazo qué hace el sistema, para quién y de qué sistemas externos depende.
 
-```mermaid
-graph TD
-    Cliente["Cliente / comprador<br/>Compra en el supermercado"]
-    Admin["Administrador de tienda<br/>Supervisa inventario y caja"]
-    Sistema["Innova Carty<br/>Sistema de carrito inteligente"]
-    Yape["Yape / Plin<br/>Sistema externo"]
-    Bancos["Red de tarjetas<br/>Sistema externo"]
-    POS["Sistema POS<br/>Inventario existente"]
+![System Context Diagram - Innova Carty](assets/chapter-4/software-architecture/SystemContext.png)
 
-    Cliente -->|Escanea productos y paga desde el carrito| Sistema
-    Admin -->|Supervisa alertas e inventario en tiempo real| Sistema
-    Sistema -->|Genera cobro vía QR| Yape
-    Sistema -->|Procesa pagos con tarjeta| Bancos
-    Sistema -->|Sincroniza ventas y valida salida| POS
-```
+**Elementos del diagrama**
 
 | Elemento | Tipo | Descripción |
-|---|---|---|
-| Cliente / comprador | Persona | Consumidor final que hace sus compras en el supermercado y usa el carrito inteligente. |
-| Administrador de tienda | Persona | Personal de operaciones que supervisa inventario, seguridad de salida y flujo de caja. |
-| Innova Carty | Sistema (en desarrollo) | Sistema de carrito inteligente: valida productos vía RFID, calcula el total en tiempo real y genera el cobro. |
-| Yape / Plin | Sistema externo | Billeteras digitales usadas para generar y confirmar el cobro por QR. |
-| Red de tarjetas | Sistema externo | Redes de pago con tarjeta (Visa, Mastercard) para clientes que no usan billetera digital. |
-| Sistema POS | Sistema externo | Sistema de punto de venta/inventario que ya usa el supermercado, con el que se sincronizan las ventas. |
+| :--- | :--- | :--- |
+| Cliente / Comprador | Persona | Consumidor final (Segmento 1). Vincula un carrito, registra sus productos, controla su presupuesto y paga con QR desde el On-Cart Display o la app móvil. |
+| Administrador de Tienda | Persona | Personal de operaciones y prevención de pérdidas (Segmento 2). Supervisa la flota de carritos, atiende las alertas y calibra el catálogo desde la Web Console. |
+| Innova Carty | Software System (en desarrollo) | Carrito inteligente IoT: identifica productos por RFID, valida su peso, calcula el total en tiempo real y gestiona el cobro y la autorización de salida. |
+| Sistema POS / ERP Retail | Software System externo | Sistema de punto de venta e inventario que ya usa el supermercado. Es la fuente del catálogo maestro, de los precios y del stock, y recibe las ventas pagadas en el carrito. Está dentro de la frontera de la empresa (*Supermercado Retail*), pero no lo desarrolla el equipo. |
+| Yape / Plin | Software System externo | Billeteras digitales que generan el QR dinámico y confirman el pago por *webhook*. |
+| Red de Tarjetas | Software System externo | Redes de pago con tarjeta de débito y crédito (Visa, Mastercard). Es el medio alternativo a las billeteras y se usa a través de la pasarela de pagos, porque el carrito no tiene datáfono físico (1.2). |
+
+**Relaciones**
+
+| Origen | Destino | Descripción | Tecnología |
+| :--- | :--- | :--- | :--- |
+| Cliente / Comprador | Innova Carty | Vincula el carrito, registra sus productos, controla su presupuesto y paga con QR. | On-Cart Display, App móvil |
+| Administrador de Tienda | Innova Carty | Monitorea la flota, resuelve discrepancias y calibra el catálogo. | Web Console, HTTPS |
+| Innova Carty | Administrador de Tienda | Notifica discrepancias de peso, salidas no autorizadas y batería baja. | Web Console, notificación push |
+| Innova Carty | Sistema POS / ERP Retail | Sincroniza catálogo, precios y stock, y registra las ventas pagadas. | REST/HTTPS |
+| Innova Carty | Yape / Plin | Genera el cobro con QR dinámico y recibe la confirmación del pago. | HTTPS, webhook |
+| Innova Carty | Red de Tarjetas | Procesa pagos con tarjeta de débito o crédito. | HTTPS, pasarela de pagos |
+
+**Decisiones reflejadas en el diagrama**
+
+* **El POS es la fuente del catálogo, no Innova Carty.** El supermercado ya administra sus productos y precios en el POS/ERP; Innova Carty los sincroniza y les agrega lo que el carrito necesita (peso nominal, tolerancia y etiqueta RFID). Así se evita mantener dos catálogos y se responde a la preocupación del Segmento 2 sobre la integración con el ERP (2.2.3).
+* **Los pagos se delegan a terceros.** Innova Carty no procesa tarjetas ni dinero directamente: solicita el cobro a Yape/Plin o a la pasarela de pagos y espera su confirmación. Esto reduce el alcance de seguridad del sistema y corresponde a la relación *Customer/Supplier* con *Anticorruption Layer* del Payment & Checkout Context (4.1.2).
+* **El administrador también recibe información del sistema.** Las alertas se envían a la Web Console sin que el administrador las consulte, porque en el piso de venta se necesita reaccionar en segundos ante una discrepancia o un intento de salida sin pago (US11, US12).
+* **El hardware no aparece en este nivel.** El Smart Cart (ESP32 y sensores), el Edge API y los servicios en la nube son partes internas de Innova Carty y se detallan en el diagrama de contenedores (4.1.3.3) y en el diseño del dispositivo (5.6).
+
+<details>
+<summary><b>Diagram as code (Structurizr DSL)</b></summary>
+
+```text
+workspace "Innova Carty" "Carrito de compras inteligente IoT para supermercados" {
+
+    model {
+        cliente = person "Cliente / Comprador" "Compra en el supermercado con el carrito inteligente y paga sin pasar por caja."
+        admin = person "Administrador de Tienda" "Supervisa el piso de venta, atiende alertas de merma y calibra el catálogo."
+
+        group "Supermercado Retail" {
+            innovaCarty = softwareSystem "Innova Carty" "Carrito inteligente IoT que identifica productos por RFID, valida su peso, calcula el total en tiempo real y gestiona el cobro y la salida autónoma."
+            pos = softwareSystem "Sistema POS / ERP Retail" "Punto de venta, inventario y catálogo maestro del supermercado." "Existing System"
+        }
+        yape = softwareSystem "Yape / Plin" "Billeteras digitales que generan y confirman cobros por QR dinámico." "Existing System"
+        tarjetas = softwareSystem "Red de Tarjetas" "Redes de pago con tarjeta de débito y crédito (Visa, Mastercard)." "Existing System"
+
+        cliente -> innovaCarty "Vincula el carrito, registra sus productos, controla su presupuesto y paga con QR" "On-Cart Display, App móvil"
+        admin -> innovaCarty "Monitorea la flota, resuelve discrepancias y calibra el catálogo" "Web Console, HTTPS"
+        innovaCarty -> admin "Notifica discrepancias, salidas no autorizadas y batería baja" "Web Console, notificación push"
+        innovaCarty -> pos "Sincroniza catálogo, precios y stock; registra las ventas" "REST/HTTPS"
+        innovaCarty -> yape "Genera el cobro con QR dinámico y recibe la confirmación del pago" "HTTPS, webhook"
+        innovaCarty -> tarjetas "Procesa pagos con tarjeta de débito o crédito" "HTTPS, pasarela de pagos"
+    }
+
+    views {
+        systemContext innovaCarty "SystemContext" "Diagrama de Contexto (C4 Model, Nivel 1)" {
+            include *
+            autoLayout lr
+        }
+
+        styles {
+            element "Person" {
+                shape Person
+                background #08427B
+                color #ffffff
+            }
+            element "Software System" {
+                background #1168BD
+                color #ffffff
+            }
+            element "Existing System" {
+                background #999999
+                color #ffffff
+            }
+        }
+    }
+}
+```
+
+</details>
 
 #### 4.1.3.3. Software Architecture Container Level Diagrams
 
@@ -2127,334 +2192,269 @@ Se adopta un sistema de cuadrícula modular basado en múltiplos de 8dp (8-point
 * **Elevaciones y Sombras:** Se definen elevaciones estándar de 1dp a 4dp (sombras sutiles) para separar visualmente las tarjetas de productos de los contenedores de fondo sin saturar la interfaz.
 
 ### 5.1.2. Web, Mobile and IoT Style Guidelines
-En esta sección se definen los lineamientos específicos de diseño e interacción para
-los distintos puntos de contacto del ecosistema Innova Carty, asegurando coherencia
-con los General Style Guidelines (5.1.1) y adaptando la experiencia a las
-particularidades de cada entorno: web, mobile e interfaces físicas IoT.
 
-Estos lineamientos serán materializados y centralizados en un Design System en
-Figma, que funcionará como repositorio vivo de componentes, patrones y prototipos
-interactivos.
+En esta sección se definen los lineamientos de diseño e interacción propios de cada punto de contacto de Innova Carty: la Web Console, la app móvil y la interfaz física del Smart Cart (On-Cart Display, tira LED, buzzer y botón). Todos parten de los General Style Guidelines (5.1.1): la misma paleta, la tipografía *Inter* para cifras y títulos y *Roboto* para textos, la cuadrícula de 8 px y los objetivos táctiles de 48 px como mínimo. Lo que cambia entre ellos es la densidad de información y la forma de interacción, porque cada producto se usa en una situación distinta: la Consola en un escritorio o tablet durante el turno, la app en el teléfono del comprador y el carrito con las manos ocupadas y en movimiento.
 
-#### A. Web Style Guidelines (Consola de Operaciones — Administradores de Tienda)
+Estos lineamientos ya están aplicados en los wireframes, mock-ups y prototipos del capítulo (5.4 y 5.5) y centralizados en el Design System de Figma descrito al final de esta sección.
 
-La Consola de Operaciones está orientada principalmente a administradores de
-tienda, quienes requieren supervisar múltiples carritos, monitorear métricas y
-resolver alertas operativas.
+| Producto | Usuario | Tamaño de diseño | Stack de implementación |
+| :--- | :--- | :--- | :--- |
+| Web Console | Administrador de Tienda (Lucía) | 1440 × 900 px, responsive desde 768 px | Angular + Angular Material |
+| App móvil Innova Carty | Comprador (Juan) | 390 × 844 px | Android / iOS |
+| On-Cart Display | Comprador (Juan) | 10.1" horizontal, 1024 × 600 px | Pantalla HMI Nextion controlada por el ESP32 (5.6) |
 
-**Enfoque de diseño**
+La app operativa **Innova Carty Ops** para supervisores (5.2.3) queda para una entrega posterior; mientras tanto, el supervisor usa la Web Console en tablet (5.4).
 
-El diseño web prioriza:
+#### A. Web Style Guidelines (Web Console)
 
-* Alta densidad de información controlada.
-* Visualización estructurada tipo dashboard.
-* Eficiencia en tareas recurrentes de supervisión.
-* Escalabilidad para múltiples carritos y tiendas.
+La Web Console está orientada al administrador de tienda y al supervisor de piso, que necesitan ver el estado de toda la flota, detectar qué carrito requiere atención y resolver la alerta en pocos pasos.
 
-**Estructura de interfaz**
+**Estructura de la interfaz (dashboard layout)**
 
-Se adopta un patrón de Dashboard Layout:
+* **Menú lateral fijo (izquierda):** Dashboard, Carts, Alerts, Catalog, Reports, Settings y Help, con ícono y texto; *Alerts* muestra un contador de alertas abiertas. Al pie del menú se muestran la tienda seleccionada y el estado del gateway edge (por ejemplo, "Surco Store #01 · 40 carts · edge gateway online").
+* **Barra superior:** búsqueda global de carritos, órdenes o SKUs (atajo `Ctrl K`), selector de idioma EN/ES, notificaciones y perfil del usuario.
+* **Contenido:** la vista del módulo seleccionado. El Dashboard sigue el orden KPIs → gráfico de sesiones por hora → alertas en vivo → estado de la flota.
 
-* **Sidebar lateral (izquierda):** navegación principal (Inicio, Carritos, Alertas, Inventario, Reportes, Configuración, Ayuda), con íconos + texto colapsable.
-* **Topbar superior:** búsqueda global, notificaciones y perfil de usuario.
-* **Main Content:** visualización dinámica según el módulo seleccionado.
+<p align="center"><img src="assets/chapter-5/mockups/wa-dashboard.png" width="800" alt="Dashboard de la Web Console"></p>
 
 **Componentes clave**
 
-1. **Cards de métricas**
-   * KPIs: carritos activos, mermas detectadas, tiempo promedio de checkout.
-   * Colores: Azul → información; Ámbar → alerta leve (`Budget Threshold Alert`); Rojo (derivado) → discrepancia crítica.
-2. **Tablas inteligentes**
-   * Ordenamiento, filtros, búsqueda.
-   * Paginación optimizada.
-   * Acciones rápidas (ver detalle, resolver alerta, desbloquear carrito).
-3. **Gráficos y visualización**
-   * Line charts → ventas en el tiempo.
-   * Bar charts → comparativa de mermas por tienda o zona.
-   * Pie charts → distribución de discrepancias por tipo.
-4. **Estados visuales**
-   * En compra → indicador verde.
-   * Con discrepancia → indicador ámbar.
-   * Bloqueado → indicador rojo.
-   * Fuera de línea → gris.
+1. **Tarjetas de KPI:** carritos activos, alertas abiertas, tiempo promedio de pago y merma evitada. La cifra va en *Inter* Bold y debajo una comparación breve (por ejemplo, "↓ 31 % vs. cashier lanes").
+2. **Tablas:** búsqueda, filtros por estado, ordenamiento y paginación; la fila completa abre el detalle y las filas que requieren atención se resaltan.
+3. **Gráficos:** línea o área para series en el tiempo (sesiones por hora) y barras para comparar categorías (alertas por tipo). Se usa un solo color por serie y no se usan gráficos de torta.
+4. **Chips de estado del carrito**, los mismos en todas las vistas:
+
+| Estado | Color del chip | Significado |
+| :--- | :--- | :--- |
+| In session | Verde | Compra en curso sin incidencias |
+| Discrepancy | Ámbar | Diferencia de peso; el pago está en pausa |
+| Locked | Rojo | Intento de salida sin pago; ruedas bloqueadas |
+| Paid · clearance | Azul | Pagado, con autorización de salida vigente |
+| Available | Gris claro | Libre, esperando un comprador |
+| Offline | Gris | Sin conexión con el gateway |
 
 **Interacciones**
 
-* Hover states claros en botones y filas.
-* Feedback inmediato en acciones CRUD.
-* Confirmaciones para acciones críticas (ej. desbloqueo manual de un carrito).
-* Uso de modales para edición rápida (ej. ajustar tolerancia de peso de un SKU).
+* Estados *hover* y *focus* visibles en botones, filas y enlaces.
+* *Toast* de confirmación para cada acción y mensaje de error en el campo que falló.
+* Diálogo de confirmación para las acciones críticas, que pide los datos necesarios para la auditoría: desbloquear un carrito (resolución + PIN) o cambiar el peso o la tolerancia de un SKU (el diálogo muestra el rango permitido resultante).
+* El Dashboard se actualiza cada 5 s sin recargar la página (US11).
 
-**Responsive Design**
+**Responsive y accesibilidad**
 
-* Breakpoints: Desktop ≥ 1280px; Tablet ≥ 768px.
-* Sidebar colapsable en tablet.
-* Priorización de métricas clave en pantallas pequeñas.
+* Breakpoints: escritorio ≥ 1280 px, tablet ≥ 768 px; en tablet el menú lateral se colapsa a íconos.
+* Contraste mínimo 4.5:1 en textos (WCAG 2.1 AA) y estados que nunca dependen solo del color: cada chip lleva texto.
 
-**Principios aplicados**
+#### B. Mobile Style Guidelines (app Innova Carty)
 
-* **Optimización cognitiva:** organización jerárquica.
-* **Scan rápido:** uso de patrones visuales repetitivos.
-* **Eficiencia operativa:** reducción de clics para resolver una alerta.
+La app está orientada al comprador, que quiere vincular un carrito, saber cuánto lleva gastado y pagar sin hacer cola. Se diseña *mobile-first*, para usarse con una sola mano mientras empuja el carrito.
 
-#### B. Mobile Style Guidelines (Innova Carty e Innova Carty Ops)
+**Navegación**
 
-La app **Innova Carty** está orientada a compradores, cuyo objetivo principal es
-controlar su compra y presupuesto de manera rápida, simple e intuitiva. La app
-**Innova Carty Ops** está orientada a supervisores de tienda que necesitan
-monitoreo remoto desde el piso de venta.
+Barra inferior con cuatro destinos: **Home**, **Cart**, **Receipts** y **Profile**. La acción principal de cada pantalla va siempre en un botón ancho en la parte inferior, al alcance del pulgar.
 
-**Navegación principal**
+**Pantallas clave**
 
-Ambas apps utilizan una barra de navegación inferior (bottom navigation) de máximo
-4-5 destinos, con iconografía consistente con la Consola Web.
+1. **Home:** prioriza "Link a cart", la tarea con la que empieza cada visita.
+2. **Link a cart:** escaneo del QR que muestra el carrito, con ingreso manual del código de 4 dígitos como alternativa.
+3. **Set budget:** monto con sugerencias de S/ 50 a S/ 300, opción de guardarlo como presupuesto por defecto o de comprar sin límite.
+4. **Active cart:** la misma sesión que muestra el carrito, sincronizada: lista de productos, Real-Time Total y barra de presupuesto.
+5. **Payment:** elección entre Yape, Plin o mostrar el QR en la pantalla del carrito; la app no guarda datos de la tarjeta ni de la billetera.
+6. **Receipt and exit pass** y **Receipts history:** comprobante digital con el pase de salida e historial con búsqueda y filtros por fecha, tienda y orden.
 
-**Pantallas clave — Innova Carty (Comprador)**
+<p align="center">
+  <img src="assets/chapter-5/mockups/ma-home.png" width="220" alt="App móvil - Home">
+  <img src="assets/chapter-5/mockups/ma-cart.png" width="220" alt="App móvil - Active cart">
+</p>
 
-1. **Home (resumen simplificado):** estado del carrito activo, accesos rápidos.
-2. **Carrito activo:** lista de productos escaneados, `Real-Time Total`, alerta de presupuesto.
-3. **Pago:** generación y confirmación del QR dinámico.
-4. **Historial:** compras y comprobantes anteriores.
+**Lineamientos**
 
-**Pantallas clave — Innova Carty Ops (Supervisor)**
+* El total es el elemento más grande de la vista (*Inter* Bold, 36 px) y la barra de presupuesto cambia de verde a ámbar al llegar al 90 %.
+* Retroalimentación inmediata: cada producto que el carrito agrega o retira aparece en la app en menos de 1 s, con una animación de 150 a 300 ms.
+* Objetivos táctiles de 48 × 48 px, íconos siempre con texto y soporte para el tamaño de fuente del sistema.
+* Mensajes en lenguaje directo y sereno (5.1.1): "Your cart is linked", "You've used 90 % of your budget".
 
-1. **Monitoreo:** mapa/lista de carritos activos en tienda.
-2. **Alertas:** lista y detalle de discrepancias pendientes.
-3. **Inventario:** consulta rápida de stock y tolerancias.
+#### C. IoT Style Guidelines (interfaz física del Smart Cart)
 
-<img src="assets/chapter-5/style-guidelines/mobile-nav-example.png" width="500" alt="Navegación inferior app Innova Carty">
+En el carrito el comprador tiene las manos ocupadas, se mueve por el pasillo y mira la pantalla solo por momentos. Por eso la interfaz física se basa en pocas acciones, estados muy visibles y la misma información repetida en tres canales: pantalla, luz y sonido.
 
-**Patrones de interacción**
+**On-Cart Display (10.1", 1024 × 600 px, horizontal)**
 
-* **Gestos táctiles:**
-  * Swipe → navegación entre secciones.
-  * Tap → acción principal.
-  * Long press → opciones avanzadas (ej. forzar resincronización).
-* **Feedback inmediato:**
-  * Animaciones suaves (150–300ms).
-  * Cambio de estado visual instantáneo al escanear o pagar.
+* **Dos zonas fijas:** a la izquierda la lista de productos (el último agregado arriba y resaltado) y a la derecha el Real-Time Total (*Inter* Bold, 44 px), la barra de presupuesto y las acciones.
+* **Barra superior** con la tienda, el código del carrito (`CART-0427`), el estado de conexión, el nivel de batería y el idioma.
+* **Una acción principal por pantalla**, siempre en la columna derecha; el botón "Tap to start" mide 72 px de alto.
+* **Avisos:** los avisos recuperables (90 % del presupuesto, etiqueta no leída) son *banners* sobre la lista, para no tapar el total; solo la discrepancia de peso usa un diálogo modal, porque pausa el pago.
+* **Restricción de la pantalla HMI:** las vistas de Figma se exportan a 1024 × 600 px y se cargan en Nextion Editor como fondos; los datos que cambian (lista, total, barra de presupuesto, código QR) son componentes de texto, barra de progreso y QR que el ESP32 actualiza por UART. Por eso se evitan animaciones complejas y se limita cada pantalla a una sola zona dinámica principal.
 
+<p align="center"><img src="assets/chapter-5/mockups/cd-session.png" width="640" alt="On-Cart Display - Shopping session"></p>
 
-<img src="assets/chapter-5/style-guidelines/web-dashboard-layout.png" width="800" alt="Estructura de la Consola de Operaciones">
+**Tira LED, buzzer y botón**
 
-**Componentes clave**
+Los colores de la tira LED son los de la paleta de 5.1.1. El brillo se limita al 25 % para no deslumbrar en el pasillo y para cuidar la batería (5.6).
 
-* Toggles grandes (uso con pulgar) para activar/desactivar alertas.
-* Botones con alto contraste (verde/ámbar según la acción).
-* Cards con sombras suaves (elevación) para cada producto del carrito.
+<p align="center"><img src="assets/chapter-5/style-guidelines/led-status-colors.png" width="640" alt="Estados LED del Smart Cart"></p>
 
-**Accesibilidad**
+| Situación | Tira LED | On-Cart Display | Buzzer |
+| :--- | :--- | :--- | :--- |
+| Disponible (Available) | Azul `#004F8C` tenue, fijo | Welcome, "Tap to start" | — |
+| En sesión, producto agregado o retirado | Verde `#2ECC71` fijo | Lista actualizada y *toast* con el monto | 1 bip corto (agregado) / 2 bips (retirado) |
+| 90 % del presupuesto | Ámbar `#F39C12` fijo | *Banner* ámbar | 2 bips cortos |
+| Etiqueta no reconocida | Ámbar, 3 destellos | *Banner* "Place the item again" | 3 bips cortos |
+| Discrepancia de peso (pago en pausa) | Rojo `#E74C3C`, parpadeo lento | Diálogo "Weight discrepancy" | 1 bip cada 2 s durante 10 s |
+| Salida sin pago (Locked) | Rojo, parpadeo rápido | Pantalla de carrito bloqueado | Alarma intermitente hasta que un supervisor desbloquee |
+| Pagado, autorización de salida | Verde, pulso lento durante 15 min | Payment confirmed y pase de salida | Tono doble ascendente |
+| Sin conexión / reconectando | Azul, parpadeo | *Banner* "Reconnecting…" | — |
+| Batería baja (< 15 %) | Ámbar, un destello cada 10 s | Ícono de batería en rojo | — |
 
-* Tamaño mínimo táctil: 48px (consistente con 5.1.1).
-* Alto contraste.
-* Uso de iconografía clara, sin depender solo del color.
-
-**Principios aplicados**
-
-* Mobile-first.
-* Minimización de esfuerzo.
-* Control en tiempo real.
-
-#### C. IoT Style Guidelines (Interfaz Física del Smart Cart)
-
-Esta sección define los lineamientos para la interacción con el dispositivo físico
-IoT (el carrito inteligente) dentro del ecosistema Innova Carty. A diferencia de web
-y mobile, aquí se consideran interfaces embebidas y comportamiento físico-digital,
-en un contexto donde el usuario tiene las manos ocupadas con productos.
-
-**Enfoque de diseño**
-
-* Interacción mínima.
-* Feedback inmediato físico/visual.
-* Alta claridad de estado.
-* Bajo margen de error.
-
-**Tipos de interfaz IoT**
-
-1. **Interfaces sin pantalla:**
-   * Tira LED de estado.
-   * Botón físico único (ayuda / cancelar sesión).
-   * Indicador sonoro (buzzer).
-2. **Interfaces con pantalla:**
-   * On-Cart Display táctil (pantalla integrada al carrito, ver 4.2.1).
-
-**Estándares de feedback**
-
-Colores LED (alineados con la paleta de 5.1.1):
-
-* Verde (`#2ECC71`) → validado / pago exitoso / `Exit Clearance`.
-* Ámbar (`#F39C12`) → proceso / `Budget Threshold Alert`.
-* Rojo (`#E74C3C`) → `Discrepancy` / `Shopping Cart Lock` activado.
-* Azul (`#004F8C`) → sincronización con la nube.
-
-<img src="assets/chapter-5/style-guidelines/led-status-colors.png" width="700" alt="Estados LED del Smart Cart">
-
-**Interacciones físicas**
-
-* Botón único: pulsación corta → llamar a un supervisor; pulsación larga → cancelar la sesión de compra.
-* Ejemplo de automatización interna: si se detecta `Discrepancy` (peso vs. RFID), el sistema bloquea automáticamente el pago sin intervención del usuario.
-
-**Sincronización con App**
-
-* Cada acción física (escaneo, pago, alerta) debe reflejarse en:
-  * La app móvil correspondiente.
-  * La Consola Web de Operaciones.
-* Latencia máxima aceptable: < 1 segundo (ideal).
-
-**Estados del dispositivo**
-
-* Disponible, En sesión, Con discrepancia, Bloqueado (`Shopping Cart Lock`), Autorizado para salida (`Exit Clearance`), Fuera de línea, Batería baja.
-
-Todos los estados deben ser visibles mediante: LED, On-Cart Display, app móvil y
-Consola Web.
+* **Botón de ayuda:** pulsación corta → llama a un supervisor (la alerta aparece en la Consola); pulsación larga de 3 s → cancela la sesión, previa confirmación en pantalla.
+* **Automatización sin intervención del usuario:** si el peso no coincide con los productos leídos por más de 3 s, el pago se pausa solo; si el carrito cruza la salida sin autorización, la rueda se bloquea (US09, US12).
+* **Sincronización:** cada evento físico se refleja en la pantalla del carrito, en la app y en la Consola en menos de 1 s dentro de la tienda.
 
 **Principios de diseño IoT**
 
-* Visibilidad del estado.
-* Redundancia de feedback (visual + sonoro + digital).
-* Robustez operativa (uso rudo en piso de venta).
-* Consistencia cross-platform.
+* Estado siempre visible y entendible a 2 m de distancia (tira LED en el borde superior).
+* Redundancia de retroalimentación: visual, sonora y digital.
+* Robustez: carcasa IP54 y botones físicos que se pueden usar con guantes.
+* Consistencia: el mismo estado tiene el mismo nombre y color en el carrito, la app y la Consola.
 
-#### D. Implementación en Figma (Design System Innova Carty)
+#### D. Design System en Figma
 
-Para garantizar consistencia y escalabilidad, todos los lineamientos se
-implementarán en un Design System centralizado en Figma, que incluirá:
+Los lineamientos están implementados en el Design System de Innova Carty en Figma, que es la base de los mock-ups y del prototipo navegable (5.5):
 
-**Librerías compartidas**
+* **Estilos y tokens:** colores de 5.1.1, estilos de texto *Inter* y *Roboto*, espaciado de 8 px y elevaciones de 1 a 4 dp.
+* **Componentes:** botones en forma de píldora (primario, secundario y de peligro), chips de estado, tarjetas de KPI y de producto, tablas, *toasts*, *banners*, diálogos, barra de presupuesto, menú lateral y barra de navegación inferior.
+* **Frames por producto:** Web Console (1440 × 900), app móvil (390 × 844) y On-Cart Display (1024 × 600), cada uno con su versión wireframe y mock-up.
+* **Prototipo:** cinco puntos de inicio (Landing Page desktop y mobile, Web Console, app móvil y On-Cart Display) y los flujos de los User Goals de 5.4.2: iniciar una sesión con presupuesto, agregar productos y controlar el total, pagar con QR y salir, resolver una discrepancia y actualizar la tolerancia de un producto.
 
-* Componentes UI (botones, inputs, cards).
-* Iconografía.
-* Tipografía (Inter, Roboto — ver 5.1.1).
-* Colores y tokens de diseño.
-
-**Sistemas definidos**
-
-1. **Web Design System:** dashboards, tablas, gráficos.
-2. **Mobile Design System:** navegación, componentes táctiles, microinteracciones.
-3. **IoT Interaction System:** estados del carrito, flujos de sesión de compra, feedback visual.
-
-**Prototipos — Flujos completos**
-
-* Registro / inicio de sesión.
-* Emparejamiento del carrito (`CartPaired`).
-* Sesión de compra end-to-end (escaneo → presupuesto → pago).
-* Validación de salida (`Exit Clearance`).
-* Panel de supervisión y resolución de alertas.
-
-**Beneficios**
-
-* Consistencia visual total.
-* Reducción de errores en desarrollo.
-* Escalabilidad del producto.
-* Mejor comunicación entre equipos.
+Mantener todo en un solo archivo permite que un cambio, por ejemplo el color de un estado, se aplique a la vez en los tres productos y que el equipo de desarrollo tome las medidas y los colores directamente de Figma.
 
 ---
 
 ## 5.2. Information Architecture
 
 ### 5.2.1. Organization Systems
-En esta sección se define cómo se organiza la información dentro del sistema
-Innova Carty, considerando tanto la estructura visual del contenido como los
-esquemas de categorización aplicados. Estas decisiones responden a la necesidad de
-gestionar información en tiempo real en un entorno IoT aplicado al sector retail,
-garantizando claridad, accesibilidad y eficiencia en la interacción para los dos
-segmentos principales: compradores y administradores de tienda.
+
+En esta sección se define cómo se organiza la información en Innova Carty: la estructura visual del contenido y los esquemas con los que se agrupa. Las decisiones responden a que la información cambia en tiempo real (lecturas RFID, peso, presupuesto, alertas) y a que la usan dos segmentos con necesidades distintas: el comprador, que solo mira su propia compra, y el administrador de tienda, que supervisa decenas de carritos a la vez. Las mismas decisiones se aplicaron en los wireframes y mock-ups de 5.4.
 
 **Organización visual del contenido**
 
-La organización visual en Innova Carty se basa en tres enfoques principales:
-jerárquico, secuencial y matricial. Cada uno se aplica según el tipo de interacción
-y la naturaleza de la información.
+Se combinan tres enfoques según el tipo de tarea: jerárquico, secuencial y matricial.
 
-**a) Organización jerárquica (Visual Hierarchy)**
+**a) Organización jerárquica (visual hierarchy)**
 
-Constituye la base estructural del sistema, especialmente en dashboards y vistas
-generales. La información se presenta en niveles de prioridad, destacando primero
-los elementos críticos —alertas en tiempo real, estado de carritos y métricas
-clave— seguidos de información secundaria como históricos o configuraciones.
+Es la base de las vistas de resumen. La información se presenta por prioridad: primero lo que el usuario necesita para decidir y, después, el detalle y los históricos.
 
-* **Administradores de tienda:** se prioriza una visión global del estado de
-  múltiples carritos, resaltando alertas críticas (`Discrepancy`), indicadores de
-  merma y métricas comparativas de ventas.
-* **Compradores:** se prioriza la información individual de su propia sesión,
-  como el `Real-Time Total`, alertas de presupuesto y estado de su carrito.
+* **Comprador (On-Cart Display y app):** el **Real-Time Total** y la barra de presupuesto son los elementos más grandes de la vista; debajo o al lado está la lista de productos, con el último agregado arriba y resaltado. Los avisos recuperables aparecen como *banner* sobre la lista para no tapar el total.
+* **Administrador (Web Console):** el Dashboard sigue el orden KPIs (carritos activos, alertas abiertas, tiempo promedio de pago, merma evitada) → sesiones por hora → alertas en vivo → estado de la flota. En el detalle de un carrito con discrepancia, la comparación entre peso esperado y medido va antes que la línea de tiempo y los productos.
 
-El uso de los colores definidos en el sistema (ej. ámbar para alertas de
-presupuesto) y la tipografía establecida refuerzan esta jerarquía, permitiendo una
-rápida identificación de la información relevante.
+El color de estado (5.1.1 y 5.1.2) y el tamaño de la tipografía refuerzan esta jerarquía: el ámbar y el rojo se reservan para lo que requiere acción.
 
-**b) Organización secuencial (Step-by-step)**
+**b) Organización secuencial (paso a paso)**
 
-Se aplica en procesos que requieren una interacción guiada mediante pasos
-consecutivos, clave para garantizar una experiencia clara y sin errores. En Innova
-Carty se utiliza en flujos como:
+Se usa en las tareas de varios pasos, donde el usuario avanza de una pantalla a la siguiente con una sola acción principal por pantalla:
 
-* Emparejamiento del carrito (`CartPaired`) al iniciar la compra.
-* Configuración del `Budget Limit`.
-* Proceso de pago mediante `Instant QR Payment`.
-* Reporte y resolución de una `Discrepancy`.
+* Vincular el carrito e iniciar la sesión: *Tap to start* en el carrito o *Link a cart* en la app (User Goal 1).
+* Definir el presupuesto: *Set budget* → *Start shopping* (US04).
+* Pagar y salir: *Proceed to payment* → QR dinámico → *Payment confirmed* con el pase de salida (US08).
+* Resolver una discrepancia: alerta → detalle del carrito → *Verify and unlock* con resolución y PIN (US11).
+* Actualizar un producto: Catalog → buscar SKU → *Edit tolerance* → *Save and sync* (US13).
 
-Cada proceso conduce al usuario desde el inicio de la acción hasta su confirmación,
-reforzando la percepción de control.
+Cada flujo termina en una confirmación explícita, lo que refuerza la sensación de control del usuario.
 
 **c) Organización matricial**
 
-Se emplea en contextos donde es necesario visualizar múltiples variables de forma
-simultánea y comparativa. En Innova Carty se aplica principalmente en:
+Se usa cuando hay que comparar varias unidades con las mismas variables, principalmente en la Web Console:
 
-* Reportes de ventas y mermas.
-* Historial de `Discrepancy` y alertas.
-* Gestión de múltiples carritos por tienda.
+* **Carts:** una fila por carrito con estado, número de productos, total, presupuesto, zona, último evento, alertas y batería.
+* **Alerts:** alertas agrupadas por tipo (geofence, peso, RFID y dispositivo) con carrito, hora y acción disponible.
+* **Catalog:** SKU, categoría, prefijo de etiqueta RFID, precio, peso nominal y tolerancia.
+* **Reports** (módulo planificado): ventas y mermas por día, zona y tipo de incidencia.
 
-La información se presenta en tablas o dashboards que cruzan datos como fecha,
-tipo de incidencia, carrito/ubicación y estado. Este tipo de organización tiene
-mayor relevancia para los administradores, quienes analizan múltiples unidades de
-forma simultánea; en los compradores su uso es más limitado, priorizando una vista
-simplificada centrada en su propia sesión.
+En la app y en el carrito el uso de tablas es mínimo: el comprador solo ve su propia sesión.
 
-**Sistemas de categorización de contenido**
+| Producto | Organización principal | Ejemplo |
+| :--- | :--- | :--- |
+| On-Cart Display | Jerárquica + secuencial | Total y presupuesto a la derecha; flujo inicio → presupuesto → compra → pago |
+| App móvil | Secuencial + jerárquica | *Link a cart* → *Set budget* → *Active cart* → *Payment* → *Receipt* |
+| Web Console | Jerárquica + matricial | Dashboard con KPIs; tablas de Carts, Alerts y Catalog |
 
-Complementando la organización visual, Innova Carty utiliza distintos esquemas de
-categorización para agrupar la información de manera lógica e intuitiva.
+**Sistemas de categorización del contenido**
 
-**a) Categorización por tópicos**
+Complementan la organización visual y definen cómo se agrupa la información.
 
-Esquema principal del sistema. La información se organiza en módulos funcionales
-que responden a las tareas del usuario:
+**a) Por tópicos**
 
-* Sesión de compra.
-* Pagos.
-* Seguridad y alertas (`Merchandise Shrinkage`).
-* Inventario y catálogo (`Item Catalog`).
-* Reportes y análisis.
+Es el esquema principal y coincide con los módulos de la navegación:
 
-**b) Categorización por audiencia**
+* **Sesión de compra:** carrito vinculado, productos, total y presupuesto (On-Cart Display y *Cart* en la app).
+* **Pagos y comprobantes:** pago con Yape, Plin o QR en el carrito, comprobante y pase de salida (*Receipts* en la app).
+* **Flota de carritos:** estado, ubicación por zona y batería de cada carrito (*Carts*).
+* **Alertas y seguridad:** discrepancias de peso, etiquetas no reconocidas, salidas sin pago y dispositivos fuera de línea (*Alerts*).
+* **Catálogo:** productos, precios, pesos nominales y tolerancias (*Catalog*).
+* **Reportes:** ventas, mermas evitadas y tiempos de pago (*Reports*).
 
-Dado que Innova Carty se orienta a dos segmentos principales, se implementa una
-categorización por audiencia que adapta la estructura del contenido según el rol:
+**b) Por audiencia**
 
-* **Administradores de tienda:** acceden a una vista global de sus carritos, con
-  herramientas de monitoreo, análisis comparativo y supervisión.
-* **Compradores:** acceden a información específica de su propia sesión, incluyendo
-  total acumulado, historial de compras y alertas personalizadas.
+Cada segmento ve solo la información que necesita:
 
-Esta diferenciación evita la sobrecarga de información y asegura que cada perfil
-interactúe únicamente con contenido relevante.
+* **Comprador:** su sesión activa, su presupuesto, sus alertas y su historial de comprobantes. Nunca ve información de otros carritos.
+* **Administrador de tienda:** la flota completa de su tienda (selector de tienda al pie del menú), las alertas abiertas y resueltas, el catálogo y los reportes. Las acciones críticas quedan registradas con su usuario para auditoría.
 
-**c) Categorización cronológica**
+**c) Cronológica**
 
-Se utiliza en elementos donde el factor tiempo es determinante, como el historial
-de compras, el registro de `Discrepancy` y los reportes de ventas. La información
-se presenta de los eventos más recientes a los más antiguos.
+Se usa donde el tiempo es lo que importa, siempre del evento más reciente al más antiguo: el historial de comprobantes, las alertas en vivo, la línea de tiempo de la sesión en el detalle de un carrito y los reportes por fecha.
 
-**d) Categorización alfabética**
+**d) Alfabética y por código**
 
-Se aplica en listados específicos, como el catálogo de productos o el listado de
-carritos por ID/nombre de tienda, facilitando la búsqueda rápida cuando se manejan
-múltiples elementos.
+Se usa en listados largos para encontrar un elemento rápidamente: el catálogo se ordena por nombre de producto y los carritos por código (`CART-0427`). La búsqueda global de la Consola acepta código de carrito, número de orden (`ORD-20261003-0815`) o SKU.
 
 ### 5.2.2. Labeling Systems
-*(Pendiente — Responsable: July)*
+
+Los sistemas de etiquetado definen los nombres con que se presentan categorías, acciones, estados y alertas en la Landing Page, la Consola de Operaciones y la app móvil. Cada concepto del Ubiquitous Language (2.5) tiene una única etiqueta en la interfaz, y el término en inglés se mantiene solo en el código y en la API.
+
+**a) Criterios de etiquetado**
+
+- La interfaz operativa usa español; la Landing está disponible en ES/EN.
+- Los botones usan verbos cortos en infinitivo (por ejemplo, "Solicitar demostración").
+- Las etiquetas de navegación no superan tres palabras.
+- Los recursos de la API se nombran en inglés y en plural (`/api/v1/orders`), según el capítulo IV.
+
+**b) Navegación de la Consola**
+
+| Etiqueta (UI) | Ruta | Concepto del dominio | Sprint |
+| :--- | :--- | :--- | :---: |
+| Inicio | `/` | Resumen operativo (*Dashboard*) | 1 |
+| Carritos | `/carts` | *Smart Cart* y *Shopping Session* | 1 |
+| Alertas | `/alerts` | *Discrepancy*, *Budget Threshold Alert*, *Audit Flag* | 1 |
+| Catálogo | `/catalog` | *Item Catalog* | 1 |
+| Reportes, Configuración, Ayuda | `/reports`, `/settings`, `/help` | Merma, parámetros, soporte | 2 o posterior |
+
+**c) Estados del carrito**
+
+| Estado (dominio / API) | Etiqueta UI | Indicador |
+| :--- | :--- | :--- |
+| `Shopping` | En compra | Verde |
+| `Discrepancy` | Con discrepancia | Ámbar |
+| `Locked` | Bloqueado | Rojo |
+| `Paid` | Pagado | Azul |
+| `Offline` | Fuera de línea | Gris |
+
+**d) Alertas, acciones y campos**
+
+- Las alertas indican la causa y la acción esperada, por ejemplo: "Discrepancia de peso: revisa la canasta".
+- Las acciones críticas, como "Desbloquear carrito" o "Guardar cambios", se confirman en un diálogo.
+- Los campos del catálogo se nombran "Precio (S/)", "Peso nominal (g)" y "Tolerancia (± g)".
+
+**e) Equivalencias en la Landing**
+
+| Español | Inglés |
+| :--- | :--- |
+| Conocer solución | Learn the solution |
+| Solicitar demostración | Request a demo |
+| Descargar la app | Get the app |
+| Soy administrador de supermercado | I run a supermarket |
+
+---
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -2886,170 +2886,354 @@ Para cada aplicación se grabó un video que recorre sus flujos principales con 
 ---
 
 ## 5.6. IoT Device Design
+
 ### Introducción
 
-El diseño IoT de Innova Carty se basa en un dispositivo especializado —el Smart
-Cart— que integra todos los sensores necesarios para una sesión de compra
-autónoma, y transmite información al Edge API y luego al backend en la nube para
-su procesamiento, almacenamiento y visualización en la Consola de Operaciones y
-las aplicaciones móviles.
+El diseño IoT de Innova Carty se basa en un único tipo de dispositivo, el **Smart Cart**: un carrito de supermercado al que se le integra un ESP32 con todos los sensores y actuadores que necesita una sesión de compra autónoma. El carrito envía sus eventos al **Edge API** del gateway de la tienda, que los valida con una copia local del catálogo y los sincroniza con el backend en la nube, desde donde se actualizan la Web Console y la app móvil.
 
-A diferencia de un esquema con múltiples dispositivos independientes por ambiente,
-Innova Carty concentra el monitoreo en un único dispositivo físico por carrito, ya
-que la identificación de productos, la validación de peso, el control de
-presupuesto y la seguridad de salida corresponden a una misma entidad en
-movimiento —el carrito— y deben procesarse de forma conjunta y en tiempo real
-durante una misma sesión de compra. La escalabilidad se logra mediante múltiples
-unidades de Smart Cart registradas por tienda, no mediante distintos tipos de
-dispositivo.
+No se usan varios dispositivos independientes, porque la identificación de productos, la validación de peso, el control del presupuesto y la seguridad de salida ocurren sobre la misma entidad en movimiento, el carrito, y deben evaluarse juntas durante la misma sesión. La solución escala agregando más Smart Carts por tienda, no más tipos de dispositivo.
 
-El flujo general de integración es el siguiente:
+**Smart Cart (ESP32) → Edge API (gateway de tienda) → RESTful API en la nube → Web Console / app móvil**
 
-**Smart Cart (Edge Device) → Edge API → Cloud API (Backend) → Dashboard web / Aplicación móvil**
+Criterios de diseño:
 
-Los principales criterios considerados en el diseño son:
+* Integración directa con el Edge API por la red Wi-Fi de la tienda, con operación local cuando no hay conexión con la nube.
+* Instalación sobre la estructura de un carrito existente, con la electrónica en una carcasa IP54 y mantenimiento por módulos (RFID, balanza, pantalla, batería).
+* Indicadores físicos visibles y comprensibles con las manos ocupadas (pantalla, luz y sonido; ver 5.1.2).
+* Autonomía para una jornada completa de tienda (14 h) y recarga nocturna en el corral de carritos.
+* Seguridad física ante una salida sin pago: bloqueo de rueda decidido en el propio carrito (`Shopping Cart Lock`).
+* Coherencia con el Smart Shopping y el Operations & Security Bounded Context (4.2) y con las interfaces de 5.1.2 y 5.4.
 
-* Integración directa con el Edge API y la RESTful API central de la nube.
-* Diseño compacto, resistente y fácil de instalar en la estructura de un carrito existente.
-* Indicadores físicos visibles y comprensibles para el comprador, incluso con las manos ocupadas.
-* Bajo consumo energético, con autonomía suficiente para una jornada completa de tienda.
-* Mantenimiento modular por componente (RFID, celda de carga, pantalla, batería).
-* Escalabilidad mediante múltiples unidades de Smart Cart registradas por tienda.
-* Coherencia con las interfaces diseñadas en Figma (5.1.2) y con el Smart Shopping Bounded Context (4.2.1).
-* Seguridad física para prevenir manipulación o salida no autorizada (`Shopping Cart Lock`).
+### Nodos del sistema IoT
+
+| Nodo | Hardware | Software | Alimentación | Consumo típico | Consumo máximo |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| **Smart Cart** (uno por carrito) | ESP32 DevKit V1 + sensores y actuadores de esta sección | Firmware C++ (Arduino / PlatformIO) | Batería Li-ion 3S2P, 11.1 V, 77.7 Wh | 6.2 W en sesión · 2.0 W en espera | 24 W (todo activo y solenoide energizado) |
+| **Edge Gateway** (uno por tienda) | Raspberry Pi 4 Model B 4 GB con microSD de 32 GB | Edge API en Python (Flask) + SQLite con la caché del catálogo y la cola de eventos | Fuente 5.1 V / 3 A desde la red eléctrica, con UPS | 2.7 W | 6.4 W |
+| **Beacon de puerta** (uno por salida) | Prototipo: ESP32 en modo iBeacon; producción: beacon BLE comercial | Anuncio BLE con el identificador de la puerta | 5 V USB (prototipo) o pila CR2477 | 0.3 W | 0.6 W |
+
+La red Wi-Fi de la tienda (puntos de acceso con WPA2 y una red separada para los carritos) es infraestructura existente del supermercado y no forma parte del diseño. Los consumos del Edge Gateway corresponden a mediciones publicadas para la Raspberry Pi 4 en reposo y con los cuatro núcleos al máximo; el del beacon es un valor de diseño que se medirá en el prototipo.
 
 ### Diseño físico del dispositivo
 
-Innova Carty utiliza un único tipo de dispositivo IoT —el Smart Cart— construido
-sobre ESP32, que integra distintos sensores y actuadores según la función que
-cumplen dentro de la sesión de compra.
+**Sensores y módulos**
 
-**Sensores y módulos integrados**
+| Módulo / sensor | Función | Ubicación en el carrito | Evento que genera |
+| :--- | :--- | :--- | :--- |
+| Lector RFID MFRC522 (13.56 MHz) | Leer la etiqueta de cada producto que se agrega o retira (`RFID Product Tag`) | Zona de lectura en el borde superior, junto al manubrio | Etiqueta leída |
+| 4 celdas de carga de 50 kg + HX711 | Medir el peso de la canasta para validar cada producto (`Weight Confirmation`) | Entre la canasta y una placa rígida en la base | Cambio de peso estable |
+| Escáner BLE integrado del ESP32 | Detectar el beacon de la puerta de salida | Interno (antena del ESP32) | Puerta de salida detectada |
+| Botón de ayuda | Llamar a un supervisor o cancelar la sesión | Bajo la pantalla | Ayuda solicitada |
+| Divisor de tensión al ADC | Medir el nivel de la batería | Dentro de la carcasa | Batería baja |
 
-| Módulo / Sensor | Función | Ubicación en el carrito |
-| :--- | :--- | :--- |
-| Lector RFID MFRC522 | Detectar productos mediante etiquetas RFID pasivas (`RFID Product Tag`) | Borde superior de la canasta |
-| Celdas de carga (×4) + amplificador HX711 | Validar el peso físico de los productos (`Weight Confirmation`) | Base de la canasta |
-| Pantalla táctil Nextion 5" | Mostrar presupuesto, QR de pago y alertas (`On-Cart Display`) | Panel frontal, sobre el manubrio |
-| Tira LED WS2812B | Indicar el estado general del carrito | Perímetro superior de la canasta, visible desde afuera |
-| Buzzer pasivo | Emitir alertas sonoras locales | Interior de la carcasa electrónica |
-| Módulo relé + solenoide | Bloquear la rueda delantera ante salida no autorizada (`Shopping Cart Lock`) | Base de una rueda delantera |
+**Actuadores e interfaces**
 
-**Componentes físicos del Smart Cart**
+| Actuador / interfaz | Función | Ubicación | Comando que recibe |
+| :--- | :--- | :--- | :--- |
+| Pantalla Nextion NX1060P101, 10.1", 1024 × 600 px | On-Cart Display: lista, total, presupuesto, QR de pago y avisos | Sobre el manubrio, inclinada hacia el comprador | Mostrar pantalla / actualizar sesión |
+| Tira LED WS2812B de 24 LED | Mostrar el estado del carrito a distancia | Borde superior de la canasta | Cambiar estado del LED |
+| Buzzer pasivo | Alertas sonoras locales | Dentro de la carcasa | Emitir patrón de sonido |
+| Módulo relé 5 V + solenoide 12 V | Trabar la rueda delantera ante una salida sin pago | Horquilla de la rueda delantera | Bloquear / desbloquear rueda |
+
+**Componentes de soporte**
 
 | Componente | Función | Consideración de diseño |
 | :--- | :--- | :--- |
-| ESP32 DevKit V1 | Controlar lectura, validación local y transmisión de datos | Debe ubicarse en una carcasa sellada, con acceso para mantenimiento |
-| LED de estado (verde) | Representar sesión válida / `Exit Clearance` | Debe ser visible desde el exterior del carrito |
-| LED de advertencia (ámbar) | Representar `Budget Threshold Alert` | Debe diferenciarse visualmente del estado normal |
-| LED crítico (rojo) | Representar `Discrepancy` / bloqueo activo | Debe tener alta visibilidad, incluso para personal de seguridad |
-| Buzzer pasivo | Emitir alertas locales | Especialmente útil ante una `Discrepancy` |
-| Relé + solenoide | Ejecutar el bloqueo físico de rueda | Debe resistir uso rudo y exposición a golpes |
-| Puerto de carga (USB-C) | Suministrar energía / recarga | Debe permanecer protegido de líquidos |
-| Puerto de mantenimiento | Permitir reprogramación o diagnóstico técnico | Uso exclusivo para soporte técnico |
+| ESP32 DevKit V1 (ESP32-WROOM-32) | Leer sensores, aplicar las reglas locales y comunicarse con el Edge API | Wi-Fi y BLE integrados; dentro de la carcasa IP54 con acceso al puerto USB solo para soporte técnico |
+| Batería Li-ion 3S2P (6 celdas 18650 de 3500 mAh) + BMS 3S 10 A | Energía para la jornada completa | En la bandeja inferior, para mantener bajo el centro de gravedad |
+| Convertidor buck XL4015 (5.1 V / 5 A) | Riel de 5 V para pantalla, LED, relé y ESP32 | Margen sobre el pico calculado de 3 A |
+| Fusible de 5 A (acción lenta) + interruptor general | Protección y apagado para mantenimiento | Accesibles solo con herramienta |
+| Contactos de carga 12.6 V / 2 A | Recarga en el corral de carritos | Se acoplan solos al empujar el carrito al corral |
+| Carcasa IP54 | Proteger la electrónica de golpes y líquidos | Con canaleta para los cables por el bastidor trasero |
 
-### Diagramas físicos
+**Ubicación de los componentes**
 
-<img src="assets/chapter-5/iot-device/smart-cart-physical-layout.png" width="800" alt="Diseño físico del Smart Cart">
+<p align="center"><img src="assets/chapter-5/iot-device/smart-cart-layout.png" width="900" alt="Smart Cart - vista lateral y ubicación de componentes"></p>
 
 ### Diseño del circuito
 
-El circuito del Smart Cart se basa en un ESP32 encargado de leer los sensores de
-producto y peso, activar los indicadores físicos y el bloqueo de seguridad, y
-transmitir los eventos al Edge API de Innova Carty.
+El ESP32 se alimenta con 5 V en el pin VIN; su regulador de 3.3 V alimenta también al MFRC522 y a la parte digital del HX711. Los demás periféricos usan el riel de 5 V y el solenoide se conecta directamente a la batería a través del relé.
 
-**Componentes del circuito**
+**Asignación de pines**
 
-| Elemento | Función |
-| :--- | :--- |
-| ESP32 DevKit V1 | Procesar lecturas y transmitir información al Edge API |
-| Lector RFID MFRC522 | Detectar productos por etiqueta RFID |
-| Celdas de carga + HX711 | Medir el peso de la canasta |
-| Pantalla táctil Nextion 5" | Mostrar el On-Cart Display |
-| Tira LED WS2812B | Representar estados operativos |
-| Buzzer pasivo | Emitir alertas locales |
-| Relé + solenoide | Ejecutar el bloqueo mecánico de rueda |
-| Batería Li-ion 2×18650 + TP4056 | Suministrar energía estable y permitir carga |
+| GPIO | Señal | Conectado a | Nivel | Observación |
+| :--- | :--- | :--- | :---: | :--- |
+| 5 | SPI SS | MFRC522 SDA | 3.3 V | Bus VSPI |
+| 18 | SPI SCK | MFRC522 SCK | 3.3 V | Bus VSPI |
+| 23 | SPI MOSI | MFRC522 MOSI | 3.3 V | Bus VSPI |
+| 19 | SPI MISO | MFRC522 MISO | 3.3 V | Bus VSPI |
+| 21 | RST | MFRC522 RST | 3.3 V | — |
+| 26 | UART2 TX | Nextion RX | 3.3 V | 115 200 bps |
+| 27 | UART2 RX | Nextion TX | 3.3 V | TX de la Nextion en nivel TTL de 3.3 V |
+| 16 | DT | HX711 DOUT | 3.3 V | VDD del HX711 a 3.3 V para no enviar 5 V al ESP32 |
+| 4 | SCK | HX711 PD_SCK | 3.3 V | — |
+| 25 | Datos LED | WS2812B DIN | 3.3 V → 5 V | A través del 74AHCT125 y una resistencia de 330 Ω |
+| 32 | PWM | Buzzer (transistor 2N2222) | 3.3 V | Canal LEDC para generar tonos |
+| 33 | Salida digital | Módulo relé IN | 3.3 V | El relé conmuta el solenoide de 12 V |
+| 13 | Entrada | Botón de ayuda | 3.3 V | Pull-up interno |
+| 36 (VP) | ADC1_CH0 | Divisor 100 kΩ / 27 kΩ de la batería | 0–2.7 V | ADC1 funciona con Wi-Fi activo (el ADC2 no) |
 
-**Flujo operativo del circuito**
+Se dejan libres los pines de arranque GPIO 0, 2, 12 y 15 y los de la memoria flash (GPIO 6 a 11). GPIO 5 también interviene en el arranque, pero se puede usar como SS porque la línea queda en alto en reposo, que es el valor que necesita el ESP32 al encender. El MFRC522 no tolera 5 V, por eso se alimenta con 3.3 V.
 
-1. El lector RFID detecta un producto ingresado a la canasta.
-2. El ESP32 consulta el catálogo local (vía Edge API) y agrega el producto a la sesión activa.
-3. La celda de carga registra el peso y el ESP32 valida la consistencia RFID-peso.
-4. El dispositivo actualiza sus indicadores físicos (LED y On-Cart Display).
-5. El ESP32 transmite el evento al Edge API y este lo sincroniza con la nube.
-6. El backend actualiza el total, evalúa el `Budget Limit` y las reglas de negocio.
-7. La plataforma actualiza la Consola de Operaciones y la aplicación móvil correspondiente.
+**Diagrama de conexiones**
 
-**Diagramas de circuito**
+<p align="center"><img src="assets/chapter-5/iot-device/smart-cart-wiring.png" width="1000" alt="Smart Cart - diagrama de conexiones"></p>
 
-<img src="assets/chapter-5/iot-device/smart-cart-circuit.png" width="800" alt="Diagrama de circuito del Smart Cart">
+**Arquitectura de alimentación**
+
+| Riel | Origen | Alimenta | Corriente máxima |
+| :--- | :--- | :--- | :---: |
+| +BAT (9.0–12.6 V) | Batería 3S2P → BMS → fusible 5 A → interruptor | Buck de 5 V, solenoide (a través del relé) y divisor de medición | 2.7 A con batería baja |
+| +5V | Buck XL4015 | Nextion, tira LED, relé, buzzer, VCC del HX711 y VIN del ESP32 | 3.0 A |
+| +3V3 | Regulador del ESP32 DevKit | ESP32, MFRC522 y VDD del HX711 | 0.55 A |
+
+En la versión anterior del diseño se usaban dos celdas 18650 en paralelo con un cargador TP4056. El cálculo de consumo de la siguiente sección muestra que esa batería (3.7 V × 6 Ah ≈ 22 Wh) solo daría unas 3 h de uso continuo con la pantalla de 10.1", y el TP4056 solo carga una celda a 1 A. Además, a 3.7 V se necesitarían dos elevadores de tensión (a 5 V para la pantalla y a 12 V para el solenoide). Con un paquete 3S2P de 11.1 V el solenoide se alimenta directamente, el riel de 5 V se obtiene con un convertidor reductor eficiente (≈ 90 %) y la carga se hace con un cargador de 12.6 V en el corral.
+
+### Consumo energético y autonomía
+
+Consumo por componente en el riel de 5 V (el ESP32 y el MFRC522 se cuentan a la entrada del regulador lineal, por eso su corriente es la misma a 5 V):
+
+| Componente | En sesión (típico) | En espera | Máximo | Fuente del dato |
+| :--- | :---: | :---: | :---: | :--- |
+| ESP32 DevKit V1 (Wi-Fi + escaneo BLE) | 130 mA | 60 mA | 500 mA | Hoja de datos (picos de transmisión Wi-Fi) |
+| Lector MFRC522 | 26 mA | 10 mA | 30 mA | Hoja de datos del módulo |
+| HX711 + 4 celdas de carga (puente de 1 kΩ) | 6 mA | 0 mA (*power down*) | 10 mA | Cálculo con la excitación del puente |
+| Nextion NX1060P101 10.1" | 800 mA | 250 mA (brillo al 20 %) | 2 000 mA | Fabricante: ≈ 800 mA promedio y fuente recomendada de 2 A; espera estimada |
+| Tira WS2812B, 24 LED (brillo limitado al 25 %) | 145 mA | 40 mA | 385 mA | 20 mA por color al 100 %, 1 mA en reposo por LED |
+| Buzzer pasivo | 0 mA | 0 mA | 30 mA | Uso intermitente |
+| Bobina del módulo relé | 0 mA | 0 mA | 75 mA | Solo con la rueda bloqueada |
+| **Total riel de 5 V** | **1 107 mA (5.5 W)** | **360 mA (1.8 W)** | **3 030 mA (15.2 W)** | |
+| Solenoide 12 V (riel +BAT) | 0 W | 0 W | 7.2 W (0.6 A) | Valor de diseño, a confirmar con el modelo comprado |
+
+**Consumo máximo del nodo Smart Cart:** 15.2 W / 0.90 (eficiencia del buck) + 7.2 W del solenoide ≈ **24 W**, es decir 2.2 A a 11.1 V o 2.7 A con la batería en su tensión mínima de 9 V. Con este valor se dimensionan el fusible de 5 A, el BMS de 10 A y el buck de 5 A.
+
+**Autonomía.** Se considera una jornada de 14 h (8:00 a 22:00) con el carrito 6 h en sesión, 8 h en espera y 5 min con la rueda bloqueada:
+
+| Concepto | Cálculo | Energía |
+| :--- | :--- | :---: |
+| En sesión | 5.5 W × 6 h | 33.2 Wh |
+| En espera | 1.8 W × 8 h | 14.4 Wh |
+| Bloqueo (relé) | 0.38 W × 0.08 h | 0.03 Wh |
+| Subtotal en el riel de 5 V | | 47.6 Wh |
+| Energía tomada de la batería | 47.6 Wh / 0.90 + 7.2 W × 0.08 h (solenoide) | **53.5 Wh** |
+| Energía útil de la batería | 11.1 V × 7.0 Ah × 0.90 (corte del BMS y envejecimiento) | **69.9 Wh** |
+
+La batería cubre la jornada completa con un 31 % de reserva, y en uso continuo en sesión rinde unas **11 h** (69.9 Wh / 6.2 W). La recarga completa con el cargador de 12.6 V / 2 A toma entre 4 y 5 h, por lo que se realiza por la noche en el corral. Cuando la batería baja del 15 % el carrito avisa en la pantalla y en la Consola, y al 5 % rechaza iniciar una sesión nueva.
+
+### Comunicación con el Edge API
+
+El carrito se comunica con el Edge API del gateway de la tienda mediante **HTTP con JSON sobre la red Wi-Fi de la tienda**. Cada solicitud se autentica con una clave propia del dispositivo en la cabecera `X-API-Key`, guardada en la memoria NVS del ESP32. En producción el tráfico va cifrado con TLS y el certificado del gateway queda fijado en el firmware; en el prototipo del Sprint 2 se puede usar HTTP dentro de la red del laboratorio.
+
+| Endpoint del Edge API | Cuándo lo usa el carrito | Respuesta |
+| :--- | :--- | :--- |
+| `POST /api/v1/carts/{cartId}/events` | Cada vez que ocurre un evento: etiqueta leída, cambio de peso, puerta detectada, botón, batería baja | `200` con el producto o la sesión actualizada y la lista de comandos para el carrito |
+| `POST /api/v1/carts/{cartId}/heartbeats` | Cada 2 s en sesión y cada 10 s en espera, con batería, señal Wi-Fi y peso actual | `200` con los comandos pendientes, por ejemplo un desbloqueo hecho desde la Consola |
+
+Ejemplo de un producto agregado:
+
+```http
+POST /api/v1/carts/CART-0427/events
+X-API-Key: <clave del dispositivo>
+Content-Type: application/json
+
+{
+  "eventId": "CART-0427-000158",
+  "type": "TAG_READ",
+  "occurredAt": "2026-10-28T15:04:12Z",
+  "data": { "rfidTag": "04A1B2C3D4", "basketWeightGrams": 9314 }
+}
+```
+
+```json
+{
+  "accepted": true,
+  "item": { "sku": "SKU-40105", "name": "Whole wheat bread 600 g", "unitPrice": 8.50, "nominalWeightGrams": 610, "tolerancePercent": 6 },
+  "session": { "total": 76.60, "budget": 150.00, "budgetUsedPercent": 51 },
+  "commands": [
+    { "type": "SET_LED_STATE", "value": "IN_SESSION" },
+    { "type": "BEEP", "value": "ITEM_ADDED" },
+    { "type": "SHOW_SCREEN", "value": "SESSION" }
+  ]
+}
+```
+
+El Edge API reenvía los eventos a la nube (`POST /api/v1/telemetry`, TS01) con el mismo `eventId`, de modo que los reintentos no se registran dos veces. Si el carrito pierde la conexión con el gateway, guarda los eventos en una cola local y los reenvía al reconectarse; mientras tanto muestra "Reconnecting…", no permite pagar y mantiene activo el bloqueo de salida, que se decide en el propio carrito.
+
+**Reglas que se evalúan en el carrito.** Para responder en menos de 1 s sin depender de la red, el ESP32 aplica tres reglas locales: (1) considera estable el peso cuando 5 lecturas seguidas del HX711 (10 muestras por segundo) varían menos de 5 g, para no reaccionar al movimiento del carrito; (2) si el peso aumenta sin una lectura RFID durante 3 s, envía el evento de discrepancia y pausa el pago, regla que confirma el Smart Shopping Bounded Context (US09, US10); y (3) si detecta el beacon de una puerta y no tiene una autorización de salida vigente, bloquea la rueda de inmediato y luego informa al Edge API (US12).
+
+**Lectura RFID y retiro de productos.** El MFRC522 lee a unos 3 cm, por lo que el comprador pasa cada producto por la zona de lectura al agregarlo y también al retirarlo; la variación de peso indica si entró o salió (US06, US07). El UID de cada etiqueta de 13.56 MHz se registra en el campo `rfidPrefix` del catálogo (Web Console, US13). Para una versión de producción se evaluará un lector RFID UHF con antena en la canasta, que hace inventario continuo sin que el comprador tenga que pasar cada producto.
+
+**Tiempos de respuesta**
+
+| Tramo | Tiempo estimado |
+| :--- | :---: |
+| Lectura de la etiqueta (sondeo del MFRC522 cada 100 ms) | ≤ 100 ms |
+| Procesamiento en el ESP32 y armado del JSON | ≤ 20 ms |
+| Solicitud y respuesta HTTP con el Edge API por Wi-Fi | ≤ 100 ms |
+| Búsqueda del producto en la caché del catálogo del Edge API | ≤ 50 ms |
+| Actualización de la pantalla Nextion por UART | ≤ 50 ms |
+| **Producto en el carrito → total actualizado en pantalla** | **≤ 320 ms** (objetivo: < 1 s) |
+| Edge API → nube → Web Console y app (asíncrono, no bloquea al carrito) | ≈ 1 s |
+| Peso estable para validar el producto | 0.5 – 1 s |
+| Puerta detectada (2 escaneos BLE) → rueda bloqueada | ≤ 1 s |
+| Desbloqueo desde la Consola → carrito (por el *heartbeat*) | ≤ 3 s |
+
+### Estructura del firmware
+
+El firmware se organiza con el framework **ModestIoT** visto en el curso: el carrito es un *Device* que contiene sus *Sensors* y *Actuators*; cada sensor genera *Events* que procesa el *EventHandler* del dispositivo, y cada acción sobre un actuador llega como un *Command* a su *CommandHandler*. El envío al Edge API lo hace el manejador de eventos del dispositivo y los comandos de la respuesta se ejecutan con el manejador de comandos, sin una clase cliente fuera de esa jerarquía.
+
+| Elemento de ModestIoT | Componente del Smart Cart | Eventos / comandos |
+| :--- | :--- | :--- |
+| Device | Smart Cart | Mantiene el estado del carrito (disponible, en sesión, con discrepancia, bloqueado, pagado, sin conexión) |
+| Sensor | Lector RFID | Etiqueta leída |
+| Sensor | Balanza (HX711) | Cambio de peso estable |
+| Sensor | Escáner BLE de puerta | Puerta de salida detectada |
+| Sensor | Botón de ayuda | Ayuda solicitada · cancelar sesión |
+| Sensor | Monitor de batería | Batería baja |
+| Actuator | Tira LED | Cambiar estado del LED |
+| Actuator | Buzzer | Emitir patrón de sonido |
+| Actuator | Traba de rueda (relé + solenoide) | Bloquear rueda · desbloquear rueda |
+| Actuator | Pantalla Nextion | Mostrar pantalla · actualizar sesión |
+
+Librerías previstas: `MFRC522` (lector RFID), `HX711` (balanza), `Adafruit NeoPixel` (tira LED), `NimBLE-Arduino` (escaneo BLE, más liviana que la pila BLE por defecto y compatible con Wi-Fi), `ArduinoJson` y `HTTPClient` del core del ESP32. La comunicación con la Nextion usa comandos de texto por UART (`t0.txt="S/ 76.60"`, `page 2`), que no requieren una librería adicional.
 
 ### Flujos de interacción
 
-Los siguientes diagramas representan los principales flujos de interacción entre
-el Smart Cart, el Edge API, el backend y las plataformas de usuario, elaborados
-como Diagram-as-Code mediante Mermaid, según las tecnologías permitidas para el
-proyecto.
+Los siguientes diagramas se elaboraron como *Diagram as Code* con Mermaid.
 
-**Flujo general de una sesión de compra IoT**
+**Producto agregado a la canasta**
 
-\`\`\`mermaid
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Comprador
+    participant SC as Smart Cart (ESP32)
+    participant E as Edge API (gateway)
+    participant B as Backend en la nube
+    participant W as Web Console y app
+    C->>SC: Pasa el producto por la zona RFID y lo coloca
+    SC->>E: POST /events (TAG_READ)
+    E->>E: Busca la etiqueta en la caché del catálogo
+    E-->>SC: 200 con producto, total y comandos
+    SC->>SC: Actualiza pantalla, LED verde y 1 bip
+    SC->>SC: HX711 confirma el aumento de peso
+    SC->>E: POST /events (WEIGHT_CHANGED)
+    E->>B: POST /api/v1/telemetry (mismo eventId)
+    B-->>W: Total y presupuesto actualizados
+```
+
+**Discrepancia de peso**
+
+```mermaid
 flowchart TD
-    A[Lector RFID detecta producto] --> B[ESP32 interpreta la lectura]
-    B --> C[Celda de carga valida peso]
-    C --> D[Actualiza LED y On-Cart Display]
-    D --> E[ESP32 transmite evento al Edge API]
-    E --> F[Backend registra evento y evalúa presupuesto]
-    F --> G[Consola Web y App móvil se actualizan]
-\`\`\`
+    A["Cambio de peso estable"] --> B{"¿Hubo lectura RFID asociada?"}
+    B -->|"Sí"| C{"¿El peso coincide con el nominal ± tolerancia?"}
+    C -->|"Sí"| D["Producto validado: LED verde"]
+    C -->|"No"| E["Esperar 3 s de gracia"]
+    B -->|"No"| E
+    E --> F{"¿La diferencia continúa?"}
+    F -->|"No"| G["La sesión continúa"]
+    F -->|"Sí"| H["Pago en pausa: LED rojo y buzzer"]
+    H --> I["Evento al Edge API y alerta en la Web Console"]
+    I --> J["El supervisor verifica y desbloquea con su PIN"]
+    J --> G
+```
 
-**Flujo de alerta crítica (Discrepancy)**
+**Cruce de la puerta de salida**
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
-    A[Cambio de peso sin lectura RFID asociada] --> B{Discrepancia confirmada?}
-    B -->|Sí| C[LED rojo + buzzer activados]
-    C --> D[Pago bloqueado temporalmente]
-    D --> E[Evento enviado a Consola de Operaciones]
-    E --> F[Supervisor revisa y autoriza o corrige]
-    B -->|No| G[Sesión continúa con normalidad]
-\`\`\`
+    A["El escáner BLE detecta el beacon de la puerta"] --> B{"¿Autorización de salida vigente?"}
+    B -->|"Sí"| C["LED verde: el comprador sale"]
+    C --> D["Fin de la sesión"]
+    B -->|"No"| E["Bloqueo local: relé activa el solenoide y suena la alarma"]
+    E --> F["Evento al Edge API: cruce de perímetro"]
+    F --> G["Alerta 'Locked' en la Web Console"]
+    G --> H["El supervisor verifica y desbloquea"]
+    H --> I["El carrito vuelve a 'En sesión'"]
+```
 
-**Flujo de actualización de estado del dispositivo**
+**Estados del dispositivo**
 
-\`\`\`mermaid
+```mermaid
 stateDiagram-v2
+    direction LR
+    state "Disponible" as Disponible
+    state "En sesión" as EnSesion
+    state "Con discrepancia" as ConDiscrepancia
+    state "Bloqueado" as Bloqueado
+    state "Pagado con autorización" as Pagado
+    state "Sin conexión" as SinConexion
+
     [*] --> Disponible
-    Disponible --> EnSesion: CartPaired
-    EnSesion --> ConDiscrepancia: WeightMismatchDetected
-    ConDiscrepancia --> EnSesion: Discrepancia resuelta
-    EnSesion --> Bloqueado: Intento de salida sin pago
-    EnSesion --> Autorizado: Pago confirmado (Exit Clearance)
-    Autorizado --> Disponible: Fin de sesión
-    Bloqueado --> Disponible: Desbloqueo por supervisor
-    Disponible --> FueraDeLinea: Pérdida de conexión
-    FueraDeLinea --> Disponible: Reconexión
-\`\`\`
+    Disponible --> EnSesion: Inicio de sesión
+    EnSesion --> ConDiscrepancia: Peso sin RFID por 3 s
+    ConDiscrepancia --> EnSesion: Peso corregido o desbloqueo
+    EnSesion --> Bloqueado: Salida sin pago
+    ConDiscrepancia --> Bloqueado: Salida sin pago
+    Bloqueado --> EnSesion: Desbloqueo del supervisor
+    EnSesion --> Pagado: Pago confirmado
+    Pagado --> Disponible: Fin de la sesión
+    EnSesion --> SinConexion: Pierde el gateway
+    SinConexion --> EnSesion: Reconexión
+```
+
+Los estados coinciden con los filtros de la Web Console (*Available*, *In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Offline*) y con los colores de la tira LED definidos en 5.1.2.
 
 ### Relación con la arquitectura del sistema
 
-Los Smart Carts de Innova Carty funcionan como dispositivos edge distribuidos por
-tienda. Cada carrito captura eventos de su propia sesión de compra y los transmite
-hacia el backend en la nube a través del Edge API.
-
 | Etapa | Componente | Responsabilidad |
-| :--- | :--- | :--- |
-| 1 | Smart Cart (Edge Device) | Capturar lecturas RFID y peso; generar eventos locales |
-| 2 | Edge API | Procesar eventos en el borde y sincronizarlos con la nube |
-| 3 | RESTful API / Backend | Persistir la sesión, aplicar reglas de negocio y generar alertas |
-| 4 | Base de datos | Almacenar sesiones, productos, eventos y alertas históricas |
-| 5 | Consola Web de Operaciones | Mostrar estado y alertas a los administradores de tienda |
-| 6 | Aplicación móvil (Innova Carty / Ops) | Notificar al comprador y al supervisor en tiempo real |
+| :---: | :--- | :--- |
+| 1 | Smart Cart (ESP32) | Leer RFID, peso, puerta y botón; aplicar las reglas locales; mostrar el estado y ejecutar los comandos |
+| 2 | Edge API (gateway de tienda) | Validar con la caché del catálogo, devolver comandos al carrito, encolar y reenviar eventos a la nube |
+| 3 | RESTful API en la nube | Persistir la sesión, aplicar las reglas de negocio de los bounded contexts y generar las alertas |
+| 4 | Base de datos | Guardar sesiones, productos, eventos de telemetría y alertas |
+| 5 | Web Console | Mostrar la flota y las alertas al administrador y permitir el desbloqueo |
+| 6 | App móvil Innova Carty | Mostrar la sesión, el pago y el comprobante al comprador |
 
-Esta arquitectura permite administrar múltiples Smart Carts de forma independiente
-dentro de una misma tienda, manteniendo coherencia con el Smart Shopping Bounded
-Context (4.2.1) y con las interfaces diseñadas en el Design System de Figma (5.1.2).
+### Prototipo físico para el Sprint 2
+
+El dispositivo se construye como un prototipo funcional sobre una base de acrílico o MDF que simula la canasta, con los mismos componentes y pines de esta sección, para validar las historias del Smart Cart con hardware real antes de montarlo en un carrito.
+
+| Componente | Cant. | Uso en el prototipo |
+| :--- | :---: | :--- |
+| ESP32 DevKit V1 (30 pines) | 2 | Uno para el Smart Cart y otro como beacon BLE de la puerta |
+| Lector MFRC522 + etiquetas adhesivas de 13.56 MHz | 1 + 10 | Una etiqueta por producto de prueba |
+| Celda de carga tipo barra de 20 kg + HX711 | 1 | Reemplaza a las 4 celdas de 50 kg en la base de prueba; es más fácil de calibrar |
+| Pantalla Nextion de 5" o 7" (serie Enhanced, con componente QR) | 1 | Usa el mismo firmware y las mismas pantallas escaladas; la de 10.1" cuesta unos 160 € y se deja para el carrito final |
+| Tira o anillo WS2812B de 24 LED | 1 | Estados del carrito |
+| 74AHCT125 + resistencia de 330 Ω + capacitor de 1000 µF | 1 | Adaptación de nivel y protección de la tira LED |
+| Buzzer pasivo + transistor 2N2222 + resistencia de 1 kΩ | 1 | Patrones de sonido |
+| Módulo relé de 5 V + cerradura solenoide de 12 V + diodo 1N4007 | 1 | Simula la traba de la rueda |
+| Pulsador | 1 | Botón de ayuda |
+| Fuente de 12 V / 3 A + buck XL4015 + fusible de 5 A | 1 | Reemplaza a la batería en la mesa de trabajo; usa el mismo riel +BAT |
+| 6 celdas 18650 + BMS 3S | 1 juego | Etapa final, para medir el consumo real y la autonomía |
+| Placa perforada, borneras, cables y carcasa | — | Montaje |
+| Raspberry Pi 4 o una laptop en la misma red | 1 | Ejecuta el Edge API durante las pruebas |
+
+**Armado por etapas.** Cada etapa termina con una prueba que se registra como evidencia (foto, video corto o log del monitor serie):
+
+1. ESP32 + MFRC522: imprimir el identificador de cada etiqueta y asociarlo a un producto del catálogo.
+2. Balanza: tarar y calibrar con un peso conocido (por ejemplo, un paquete de 1 kg) hasta lograr lecturas estables de ± 5 g.
+3. Pantalla Nextion: mostrar la pantalla de sesión y actualizar el total desde el ESP32.
+4. Tira LED y buzzer: reproducir los estados y patrones de la tabla de 5.1.2.
+5. Relé, solenoide y beacon: bloquear la traba al acercar el carrito al beacon sin autorización.
+6. Wi-Fi y Edge API: enviar los eventos, recibir los comandos y ver el carrito en la Web Console.
+7. Batería: medir la corriente en sesión y en espera y comparar con el cálculo de consumo.
+
+**Pruebas de aceptación del dispositivo**
+
+| Prueba | Historia | Resultado esperado |
+| :--- | :---: | :--- |
+| Pasar un producto registrado y colocarlo | US05, US06 | El total se actualiza en menos de 1 s, LED verde y 1 bip |
+| Pasar una etiqueta que no está en el catálogo | US06 | *Banner* "Place the item again" y 3 bips; el total no cambia |
+| Pasar de nuevo un producto y retirarlo | US07 | El total disminuye y el peso baja en el valor nominal |
+| Superar el 90 % del presupuesto | US04, US05 | *Banner* y LED ámbar, 2 bips |
+| Colocar un producto sin pasar la etiqueta | US09, US10 | A los 3 s el pago se pausa, LED rojo y alerta en la Web Console |
+| Confirmar el pago (webhook simulado) | US08, TS03 | Pase de salida en pantalla y LED verde durante 15 min |
+| Acercarse al beacon de salida sin pagar | US12 | La traba se activa en menos de 1 s, suena la alarma y aparece la alerta *Locked* |
+| Desbloquear desde la Web Console | US11 | El carrito vuelve a *In session* en menos de 3 s |
+| Cortar el Wi-Fi durante la compra y reconectar | TS01 | Los eventos se reenvían al reconectar y no se duplican |
 
 <div style="page-break-after: always;"></div>
 
@@ -3997,6 +4181,8 @@ La Consola de Operaciones fue desarrollada en **Angular** y su despliegue se aut
        { "source": "/(.*)", "destination": "/index.html" }
      ]
    }
+   ```
+
 ---
 
 ## 6.2. Landing Page, Services & Applications Implementation
@@ -4046,7 +4232,38 @@ Para el Sprint 1 el equipo organiza el trabajo por aspectos. Cada aspecto tiene 
 * **Gestión del Sprint:** Sprint Backlog en Jira, seguimiento de tareas y registro de la colaboración del equipo.
 
 #### 6.2.1.3. Sprint Backlog 1
-*(Pendiente — Responsable: July)*
+
+El Sprint Backlog 1 detalla las historias seleccionadas en la Sprint Planning (6.2.1.1), sus tareas y su responsable según la matriz de liderazgo (6.2.1.2). Al cierre del sprint se completaron las 20 Story Points comprometidas.
+
+| Historia | SP | Tarea | Responsable | Estado |
+| :--- | :---: | :--- | :--- | :---: |
+| **US01** Propuesta de valor en Landing | 3 | Secciones de propuesta de valor y "Cómo funciona" | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Beneficios por segmento y sección de hardware del carrito | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Sección de app para compradores con enlaces a tiendas | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Botones de llamada a la acción por segmento | Trillo Hernández, Anghel Melanie | Terminado |
+| **US02** Solicitud de demo | 3 | Formulario con RUC, razón social, correo y unidades | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Validación de campos y mensajes de error | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Mensaje de confirmación de envío | Díaz Fiestas, Jorge Luis | Terminado |
+| **US03** Términos y privacidad | 1 | Páginas de Términos y Condiciones y de Política de Privacidad, con enlace en el pie de página | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| **US11** Monitoreo en la consola | 8 | Inicio de sesión del personal | Huanca Navarro, Gustavo Esau | Terminado |
+| | | Dashboard con refresco cada 5 segundos | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Lista de carritos con filtros | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Detalle del carrito con discrepancia de peso | Trillo Hernández, Anghel Melanie | Terminado |
+| | | Desbloqueo con PIN de supervisor y confirmación | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Alertas por tipo | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Pruebas de aceptación de US11 | Crisanto Calle, Deybbi Anderson | Terminado |
+| **US13** Catálogo y tolerancias | 5 | Listado de productos con precio, peso nominal y tolerancia | Berrocal Ramirez, Omar Christian | Terminado |
+| | | Modal de edición de peso nominal y tolerancia | Trillo Hernández, Anghel Melanie | Terminado |
+| **Soporte del sprint** | 0 | API fake con json-server bajo `/api/v1` y su documentación | Díaz Fiestas, Jorge Luis | Terminado |
+| | | Configuración de repositorios y flujo GitFlow | Paico Calderon, July Zelmira | Terminado |
+| | | Despliegue en Vercel de la Landing y la Consola | Pardo Chumpitazi, Kevin Patrick | Terminado |
+| | | Pruebas unitarias de la Web App | Crisanto Calle, Deybbi Anderson | Terminado |
+| | | Sprint Backlog en Jira y seguimiento de tareas | Paico Calderon, July Zelmira | Terminado |
+
+**Total comprometido:** 20 SP (US01: 3, US02: 3, US03: 1, US11: 8, US13: 5).
+**Total completado:** 20 SP.
+
+Las historias técnicas TS01, TS02 y TS03 quedan para el Sprint 2, junto con los servicios en Spring Boot que reemplazarán a la API fake.
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 
@@ -4201,81 +4418,105 @@ Se ingresa a la consola desde el botón **See the operations console** o el enla
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
-En el Sprint 1 los servicios en Spring Boot todavía no se implementan (quedan para el Sprint 2 con TS01, TS02 y TS03). Por eso, en este sprint se documentan los recursos de la **API fake** construida con **json-server**, que usa la Web Console para las historias US11 y US13. La API expone los recursos bajo el prefijo `/api/v1`, con los mismos nombres y la misma forma de respuesta definidos en el capítulo IV, de modo que en el Sprint 2 solo cambie la URL base y no las vistas de Angular.
+En el Sprint 1 los servicios en Spring Boot todavía no se implementan (quedan para el Sprint 2 con TS01, TS02 y TS03). Por eso, en este sprint se documentan los recursos de la **API fake** construida con **json-server**, que consume la Web Console para las historias US11 y US13. La API expone los recursos bajo el prefijo `/api/v1`, con los mismos nombres de recursos que los bounded contexts del capítulo IV, de modo que en el Sprint 2 solo cambie la URL base (`apiBaseUrl`) y no las vistas de Angular.
 
-La documentación de esta API se mantiene en el `README.md` del repositorio de la Web App (sección *Fake API*), junto con el archivo `server/db.json` que contiene los datos de prueba y el archivo `server/routes.json` que agrega el prefijo `/api/v1`. A partir del Sprint 2, los endpoints reales se documentarán con **OpenAPI** mediante `springdoc-openapi` y se publicarán en **Swagger UI**.
+La API está en el mismo repositorio de la Web App:
 
-**Cómo levantar la API fake en local**
+* `server/db.json`: datos semilla de la tienda *Surco Store #01* (1 tienda, 16 carritos, 11 sesiones, 21 alertas y 15 productos).
+* `server/app.js`: crea el servidor json-server, agrega las rutas de autenticación y reescribe `/api/v1/*` hacia los recursos.
+* `server/server.js`: levanta la API en local (`http://localhost:3000/api/v1`) y guarda los cambios en `server/db.local.json` para no alterar los datos semilla.
+* `api/index.js`: función *serverless* de Vercel que sirve la misma API en el despliegue; ahí los datos viven en memoria y vuelven al estado inicial cuando la función se reinicia.
+
+La documentación de uso está en la sección *API fake (Sprint 1)* del `README.md` del repositorio. A partir del Sprint 2, los endpoints reales se documentarán con **OpenAPI** mediante `springdoc-openapi` y se publicarán en **Swagger UI**.
+
+**Cómo ejecutar la API fake en local**
 
 ```bash
 npm install
-npm run fake-api     # json-server --watch server/db.json --routes server/routes.json --port 3000
+npm run api        # solo la API fake en http://localhost:3000/api/v1
+npm start          # API fake + Web Console en http://localhost:4200 (proxy de /api)
+npm run api:reset  # vuelve a los datos semilla
 ```
 
 **Endpoints documentados en el Sprint 1**
 
 | Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
 | :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
-| Staff users | Iniciar sesión del personal | `GET` | `/api/v1/staff-users?username={u}&password={p}` | `username`, `password` (query) | `GET /api/v1/staff-users?username=lmedina&password=****` | `200` con el usuario (`id`, `fullName`, `role`, `storeId`); lista vacía si las credenciales no coinciden | US11 |
-| Carts | Listar carritos de la tienda | `GET` | `/api/v1/carts?storeId={id}` | `storeId`, `status` (opcional) | `GET /api/v1/carts?storeId=1&status=Discrepancy` | `200` con la lista de carritos (`id`, `code`, `status`, `zone`, `currentTotal`, `battery`, `lastEvent`) | US11 |
-| Carts | Ver detalle de un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/27` | `200` con el carrito `CART-0427`, sus productos, `expectedWeightGrams: 9314` y `measuredWeightGrams: 9726` | US11 |
-| Carts | Desbloquear carrito con discrepancia | `PATCH` | `/api/v1/carts/{id}` | `id` (path), body con `status` y `unlockedBy` | `PATCH /api/v1/carts/27` · `{"status":"Shopping","unlockedBy":3}` | `200` con el carrito actualizado en estado `Shopping` | US11 |
-| Alerts | Listar alertas abiertas | `GET` | `/api/v1/alerts?status={s}` | `status`, `type` (opcional) | `GET /api/v1/alerts?status=open&type=WeightDiscrepancy` | `200` con la lista de alertas (`id`, `cartId`, `type`, `severity`, `createdAt`) | US11 |
-| Alerts | Resolver una alerta | `PATCH` | `/api/v1/alerts/{id}` | `id` (path), body con `status` y `resolution` | `PATCH /api/v1/alerts/12` · `{"status":"resolved","resolution":"Producto verificado en persona"}` | `200` con la alerta resuelta | US11 |
-| Products | Listar el catálogo | `GET` | `/api/v1/products?q={texto}` | `q`, `_page`, `_limit` (opcional) | `GET /api/v1/products?q=arroz&_page=1&_limit=10` | `200` con los productos (`sku`, `name`, `unitPrice`, `nominalWeightGrams`, `weightToleranceGrams`) | US13 |
-| Products | Actualizar precio, peso y tolerancia | `PATCH` | `/api/v1/products/{id}` | `id` (path), body con los campos a cambiar | `PATCH /api/v1/products/8` · `{"nominalWeightGrams":1000,"weightToleranceGrams":30}` | `200` con el producto actualizado; `404` si el `id` no existe | US13 |
+| Authentication | Iniciar sesión del personal | `POST` | `/api/v1/authentication/sign-in` | Body: `email`, `password` | `{"email":"lucia.medina@retailco.pe","password":"****"}` | `200` con `id`, `fullName`, `role`, `storeId` y `token`; `401` si las credenciales no coinciden | US11 |
+| Authentication | Verificar el PIN del supervisor | `POST` | `/api/v1/authentication/verify-pin` | Body: `userId`, `pin` | `{"userId":1,"pin":"****"}` | `204` si el PIN es correcto; `403` si no | US11 |
+| Stores | Ver la tienda y sus KPIs | `GET` | `/api/v1/stores` | — | `GET /api/v1/stores` | `200` con `name: "Surco Store #01"`, `fleetSize: 40`, `gatewayStatus: "ONLINE"`, `avgCheckoutSeconds: 48` | US11 |
+| Session stats | Sesiones activas por hora | `GET` | `/api/v1/session-stats` | — | `GET /api/v1/session-stats` | `200` con la lista `{ hour, sessions }` para el gráfico del Dashboard | US11 |
+| Carts | Listar los carritos | `GET` | `/api/v1/carts` | `status`, `_sort`, `_order` (opcionales) | `GET /api/v1/carts?status=DISCREPANCY` | `200` con `id`, `status`, `zone`, `itemsCount`, `total`, `budget`, `lastEvent`, `battery`, `sessionId` | US11 |
+| Carts | Ver el detalle de un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/CART-0427` | `200` con el carrito en estado `DISCREPANCY` y `lastEvent: "+412 g without tag"`; `404` si no existe | US11 |
+| Carts | Desbloquear un carrito | `PATCH` | `/api/v1/carts/{id}` | `id` (path); body con `status`, `lastEvent`, `lastEventAt` | `PATCH /api/v1/carts/CART-0427` · `{"status":"IN_SESSION"}` | `200` con el carrito actualizado | US11 |
+| Shopping sessions | Ver la sesión de compra | `GET` | `/api/v1/shopping-sessions/{id}` | `id` (path) | `GET /api/v1/shopping-sessions/ORD-20261003-0815` | `200` con `expectedWeight: 9314`, `measuredWeight: 9726`, `weightTolerance: 266` y los productos | US11 |
+| Alerts | Listar las alertas | `GET` | `/api/v1/alerts` | `cartId`, `status`, `_sort`, `_order` (opcionales) | `GET /api/v1/alerts?_sort=createdAt&_order=desc` | `200` con `id`, `cartId`, `type` (`GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE`), `severity`, `status` (`OPEN`, `ACKNOWLEDGED`, `RESOLVED`) | US11 |
+| Alerts | Atender o resolver una alerta | `PATCH` | `/api/v1/alerts/{id}` | `id` (path); body con `status` | `PATCH /api/v1/alerts/1` · `{"status":"ACKNOWLEDGED"}` | `200` con la alerta actualizada | US11 |
+| Cart events | Línea de tiempo del carrito | `GET` / `POST` | `/api/v1/cart-events` | `cartId`, `_sort`, `_order`; body del evento | `GET /api/v1/cart-events?cartId=CART-0427&_sort=occurredAt&_order=desc` | `200` con los eventos; `201` al registrar el evento de desbloqueo | US11 |
+| Audit logs | Registrar una acción de auditoría | `POST` | `/api/v1/audit-logs` | Body: `cartId`, `action` (`UNLOCK`, `AUDIT_FLAG`), `resolution`, `note`, `userId` | `{"cartId":"CART-0427","action":"UNLOCK","resolution":"Producto verificado en persona","userId":1}` | `201` con el registro creado | US11 |
+| Products | Listar el catálogo | `GET` | `/api/v1/products` | `q`, `category`, `_page`, `_limit` (opcionales) | `GET /api/v1/products?q=milk` | `200` con `id` (SKU), `name`, `category`, `price`, `nominalWeight` (g), `tolerance` (% del peso nominal), `rfidPrefix` | US13 |
+| Products | Registrar un producto | `POST` | `/api/v1/products` | Body con los campos del producto | `{"id":"SKU-30001","name":"Brown sugar 1 kg","price":5.2,"nominalWeight":1010,"tolerance":3}` | `201` con el producto creado | US13 |
+| Products | Actualizar precio, peso y tolerancia | `PATCH` | `/api/v1/products/{id}` | `id` (path); body con los campos a cambiar | `PATCH /api/v1/products/SKU-10021` · `{"nominalWeight":1032,"tolerance":3}` | `200` con el producto actualizado; `404` si el SKU no existe | US13 |
+
+Para desbloquear un carrito, la Web Console primero verifica el PIN (`verify-pin`) y, si es correcto, actualiza el carrito y la sesión, resuelve sus alertas abiertas y registra el evento y el log de auditoría en una sola operación (`CartSupervisionService`).
 
 **Captura de la API fake en ejecución**
 
-![Fake API json-server](assets/chapter-6/sprint-1/fake-api-endpoints.png)
-*[Reemplazar por la captura de la terminal con json-server corriendo y de una respuesta en el navegador o en Postman.]*
+![API fake en ejecución](assets/chapter-6/sprint-1/fake-api-endpoints.png)
 
-**Commits relacionados con la documentación de servicios**
+*Figura: API fake en local (terminal con `npm run api`) y respuesta de `GET /api/v1/carts/CART-0427` desplegada en Vercel.*
+
+**Commits relacionados con los servicios y su documentación**
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | feat(fake-api): add carts, alerts and products resources | Recursos de json-server bajo `/api/v1` con datos de prueba de la tienda Surco Store #01. | [completar] |
-| [petitavo/innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | develop | [completar] | docs(readme): document fake api endpoints | Tabla de endpoints, parámetros y ejemplos de request y response. | [completar] |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | main | [`4e5c8d1`](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/commit/4e5c8d103d81d6fbe76cd1b84ada4a907347cc4f) | feat: initial version of web app console | Sin cuerpo. Agrega la API fake (`server/`), la función serverless `api/index.js` y la sección *API fake* del README. | 03/10/2026 |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | main | [`b780f95`](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/commit/b780f957e12485b749c87a925186278944313781) | chore: trigger deploy | Sin cuerpo. Dispara el despliegue de la Web Console y de la API fake en Vercel. | 03/10/2026 |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | main | [`33eba1d`](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/commit/33eba1dabe67a04b8d00bb7eb23c9491531b3a5f) | feat: show open alerts per cart in cart list | Sin cuerpo. Usa `GET /api/v1/alerts` para mostrar las alertas abiertas de cada carrito. | 03/10/2026 |
 
 ---
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
 
-En el Sprint 1 se desplegaron los dos productos del objetivo del sprint en **Vercel**, conectando cada repositorio de GitHub para que cada *push* a `main` genere un nuevo despliegue de producción y cada *pull request* genere una vista previa. La API fake se desplegó como servicio web en **Render**, para que la Web Console publicada pueda consumir datos sin depender de una máquina local.
+En el Sprint 1 se desplegaron en **Vercel** los dos productos del objetivo del sprint. Cada proyecto de Vercel está conectado a su repositorio de la organización en GitHub, de modo que cada *push* a `main` genera un despliegue de producción y cada *pull request* genera una vista previa. La API fake no necesita un servidor aparte: se despliega junto con la Web Console como una **función serverless de Vercel** (`api/index.js`), por lo que la consola publicada y su API comparten el mismo dominio.
 
 | Producto | Plataforma | Repositorio | URL pública |
 | :--- | :--- | :--- | :--- |
-| Landing Page | Vercel | [innova-carty-landing-page](https://github.com/petitavo/innova-carty-landing-page) | [completar URL] |
-| Web Console (Angular) | Vercel | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) | [completar URL] |
-| API fake (json-server) | Render | [innova-carty-frontend-web-app](https://github.com/petitavo/innova-carty-frontend-web-app) (carpeta `server`) | [completar URL] |
+| Landing Page | Vercel (sitio estático) | [innova-carty-landing-page](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page) | https://innova-carty-landing-page.vercel.app/ |
+| Web Console (Angular) | Vercel | [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | https://innova-carty-web-app.vercel.app/sign-in |
+| API fake (json-server) | Vercel (función serverless del mismo proyecto) | [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) (carpetas `api` y `server`) | https://innova-carty-web-app.vercel.app/api/v1/carts |
 
 **Despliegue del Landing Page**
 
 1. En Vercel se eligió **Add New → Project** y se importó el repositorio `innova-carty-landing-page`.
-2. Como es un sitio estático, se usó el *Framework Preset* **Other**, sin comando de *build*, con la raíz del repositorio como *Output Directory*.
+2. Como es un sitio estático (`index.html`, `terms.html`, `privacy.html` y la carpeta `assets`), se usó el *Framework Preset* **Other**, sin comando de *build* y con la raíz del repositorio como *Output Directory*.
 3. Se asignó la rama `main` como rama de producción y se ejecutó el primer despliegue.
-4. Se verificó en la URL pública que cargan todas las secciones, el cambio de idioma ES/EN, la validación del formulario de demo y las páginas de Términos y Condiciones y Política de Privacidad.
+4. Se verificó en la URL pública que cargan todas las secciones, el cambio de idioma ES/EN, la validación del formulario de demo y las páginas de Términos y Condiciones y Política de Privacidad (US01, US02, US03).
 
-![Despliegue Landing Page en Vercel](assets/chapter-6/sprint-1/deploy-landing-vercel.png)
+![Despliegue del Landing Page en Vercel](assets/chapter-6/sprint-1/deploy-landing-vercel.png)
 
-**Despliegue de la API fake**
+**Despliegue de la Web Console y de la API fake**
 
-1. En Render se creó un **Web Service** conectado al repositorio de la Web App, con *Root Directory* `server`.
-2. Se configuró el *Build Command* `npm install` y el *Start Command* `json-server db.json --routes routes.json --host 0.0.0.0 --port $PORT`.
-3. Se verificó que la URL pública responde, por ejemplo en `GET /api/v1/carts`.
+1. En Vercel se importó el repositorio `innova-carty-frontend-web-app` con el *Framework Preset* **Angular**, *Build Command* `ng build` y *Output Directory* `dist/frontend-web-app/browser`.
+2. La consola llama a la API con la ruta relativa `apiBaseUrl: '/api/v1'` (`src/environments/environment.ts`), así que funciona igual en local, donde `proxy.conf.json` redirige `/api` a `localhost:3000`, y en Vercel.
+3. El archivo `vercel.json` define dos reglas de *rewrite*: `/api/v1/:path*` hacia la función `api/index.js`, que crea la API con `server/app.js` y los datos de `server/db.json`, y cualquier otra ruta hacia `index.html`, para que las rutas de Angular (`/carts`, `/alerts`, `/catalog`) funcionen al recargar la página.
 
-![Despliegue API fake en Render](assets/chapter-6/sprint-1/deploy-fake-api-render.png)
+   ```json
+   {
+     "rewrites": [
+       { "source": "/api/v1/:path*", "destination": "/api?path=:path*" },
+       { "source": "/((?!api/).*)", "destination": "/index.html" }
+     ]
+   }
+   ```
 
-**Despliegue de la Web Console**
+4. Se verificó en la URL pública el inicio de sesión, el Dashboard, el detalle del carrito `CART-0427` con su discrepancia, el desbloqueo con PIN y la edición de tolerancias del catálogo (US11, US13), y que `GET /api/v1/stores` responde con la tienda *Surco Store #01*.
 
-1. Se registró la URL de la API fake en `src/environments/environment.production.ts` (`apiBaseUrl`).
-2. Se agregó un archivo `vercel.json` con una regla de *rewrite* hacia `index.html`, para que las rutas de Angular (`/carts`, `/alerts`, `/catalog`) funcionen al recargar la página.
-3. En Vercel se importó el repositorio `innova-carty-frontend-web-app` con el *Framework Preset* **Angular**, *Build Command* `ng build` y *Output Directory* `dist/innova-carty-frontend-web-app/browser`.
-4. Se verificó en la URL pública el inicio de sesión, el dashboard, el detalle del carrito `CART-0427` con su discrepancia, el desbloqueo con PIN y la edición de tolerancias del catálogo.
+![Despliegue de la Web Console en Vercel](assets/chapter-6/sprint-1/deploy-webapp-vercel.png)
 
-![Despliegue Web Console en Vercel](assets/chapter-6/sprint-1/deploy-webapp-vercel.png)
+![API fake respondiendo en Vercel](assets/chapter-6/sprint-1/deploy-fake-api-vercel.png)
 
-**Resultado.** Los dos productos quedaron accesibles por URL pública, lo que cumple la condición de confirmación del objetivo del Sprint 1. En el Sprint 2 se reemplazará la API fake por el backend en Spring Boot y se actualizará solo la variable `apiBaseUrl` del entorno de producción.
+**Resultado.** Los dos productos y la API fake quedaron accesibles por URL pública, lo que cumple la condición de confirmación del objetivo del Sprint 1. Como en Vercel los datos de la API fake viven en memoria, los cambios hechos durante una demostración se pierden cuando la función se reinicia; es una limitación aceptada para este sprint. En el Sprint 2 la consola apuntará al backend en Spring Boot cambiando solo `apiBaseUrl`.
 
 ---
 
@@ -4283,7 +4524,13 @@ En el Sprint 1 se desplegaron los dos productos del objetivo del sprint en **Ver
 
 En el Sprint 1 el equipo trabajó con GitFlow: cada integrante desarrolló sus tareas en una rama `feature/*` creada desde `develop`, y los líderes de aspecto revisaron los cambios antes de integrarlos. Al cierre del sprint, `develop` se integró en `main` para generar la versión desplegada. Las tareas se asignaron según la matriz de liderazgo y colaboración (6.2.1.2) y se registraron en Jira (6.2.1.3).
 
-La colaboración se evidencia con los gráficos de **GitHub Insights** de cada repositorio: *Contributors*, que muestra los commits de cada integrante en el periodo del sprint, y *Network*, que muestra las ramas `feature/*` y sus integraciones en `develop` y `main`.
+La colaboración se evidencia con los gráficos de **GitHub Insights** de los repositorios de la organización [8721-Desarrollo-de-Soluciones-IOT](https://github.com/8721-Desarrollo-de-Soluciones-IOT): *Contributors*, que muestra los commits de cada integrante en el periodo del sprint, y *Network*, que muestra las ramas `feature/*` y sus integraciones en `develop` y `main`.
+
+| Repositorio | Producto | Insights |
+| :--- | :--- | :--- |
+| [innova-carty-landing-page](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page) | Landing Page | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page/network) |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | Web Console y API fake | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/network) |
+| [docs](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs) | Informe del proyecto | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/network) |
 
 **Landing Page**
 
@@ -4310,9 +4557,10 @@ La colaboración se evidencia con los gráficos de **GitHub Insights** de cada r
 | Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | Despliegue | Sección de app para compradores; páginas legales; desbloqueo con PIN; despliegue en Vercel. | 1 | 3 % |
 | **Total** | | | | **39** | **100 %** |
 
-**Análisis.** En el sprint se registraron 39 commits y los siete integrantes aportaron al menos uno, lo que muestra que todo el equipo participó en el repositorio. La distribución, sin embargo, no fue pareja: Anghel Melanie Trillo (15) y July Paico (9) concentran el 61 % de los commits. En el caso de July, esto responde a su rol de líder de Gestión del Sprint, que incluyó configurar los repositorios y el flujo de GitFlow. El número de commits no mide por sí solo el aporte de cada integrante, porque algunos líderes de aspecto dedicaron buena parte de su tiempo a revisar e integrar ramas `feature/*` en `develop`, y otros entregaron cambios grandes en pocos commits. Aun así, el equipo identificó que varios integrantes agruparon mucho trabajo en commits poco frecuentes.
+**Análisis.** En el sprint se registraron 39 commits y los siete integrantes aportaron al menos uno, lo que muestra que todo el equipo participó en los repositorios. La distribución, sin embargo, no fue pareja: Anghel Melanie Trillo (15) y July Paico (9) concentran el 61 % de los commits. En el caso de July, esto responde a su rol de líder de Gestión del Sprint, que incluyó configurar los repositorios y el flujo de GitFlow. El número de commits no mide por sí solo el aporte de cada integrante, porque algunos líderes de aspecto dedicaron buena parte de su tiempo a revisar e integrar ramas `feature/*` en `develop`, y otros entregaron cambios grandes en pocos commits; por ejemplo, la primera versión de la Web Console y de su API fake se integró en un solo commit (`4e5c8d1`). El equipo identificó que varios integrantes agruparon mucho trabajo en commits poco frecuentes, lo que hace más difícil revisar los cambios y rastrear a qué tarea corresponde cada uno.
 
-Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y frecuentes, cada uno con una sola tarea, siguiendo Conventional Commits; vincular cada commit con el código de la historia o tarea de Jira para mejorar la trazabilidad; e integrar los cambios en `develop` a lo largo del sprint, en lugar de concentrarlos en los últimos días, para repartir mejor la carga de integración.
+Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y frecuentes, cada uno con una sola tarea, siguiendo Conventional Commits; vincular cada commit con el código de la historia o tarea de Jira para mejorar la trazabilidad; e integrar los cambios en `develop` mediante *pull requests* a lo largo del sprint, en lugar de concentrarlos en los últimos días, para repartir mejor la carga de integración.
+
 ---
 
 <div style="page-break-after: always;"></div>

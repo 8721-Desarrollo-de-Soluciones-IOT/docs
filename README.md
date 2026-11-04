@@ -4319,6 +4319,25 @@ Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y f
 
 ---
 
+### 6.2.2. Sprint 2
+
+#### 6.2.1.1. Sprint Planning 1
+
+
+#### 6.2.1.2.  Aspect Leaders and Collaborators.
+
+#### 6.2.2.3. Sprint Backlog 2
+
+| User Story ID | Título | Story Points | Asignado a | Estado |
+| :---: | :--- | :---: | :--- | :---: |
+| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | To Do |
+| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | To Do |
+| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | To Do |
+| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | To Do |
+| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | To Do |
+| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | To Do |
+| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | To Do |
+
 # Conclusiones
 
 * El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.

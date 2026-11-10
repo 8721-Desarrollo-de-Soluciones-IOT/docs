@@ -4677,6 +4677,125 @@ En el Sprint 2 Innova Carty funciona de punta a punta con datos reales: el carri
 
 ![Web App - Detalle del carrito](assets/chapter-6/sprint-2/execution/web-cart-detail.png)
 
+#### 6.2.2.7. Services Documentation Evidence for Sprint Review
+
+En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre doce grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.
+
+* **Swagger UI (desplegado):** https://innova-carty-backend.onrender.com/swagger-ui.html
+* **Especificación OpenAPI (JSON):** https://innova-carty-backend.onrender.com/v3/api-docs
+* **Swagger UI (local):** http://localhost:8080/swagger-ui.html (`mvn spring-boot:run`, base H2 en memoria con datos demo)
+* **Repositorio de Web Services:** https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend
+
+**Seguridad.** Los endpoints de personal y comprador usan un **JWT** (HS256) que devuelve `POST /api/v1/authentication/sign-in`; en Swagger UI se pega en **Authorize** (esquema `bearer`). Los endpoints del carrito usan la cabecera `X-Device-Key` (esquema `deviceKey`). En el plan gratuito de Render el servicio se suspende tras 15 minutos sin uso y la primera solicitud tarda alrededor de un minuto.
+
+**Endpoints documentados en el Sprint 2**
+
+| Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| Authentication | Iniciar sesión (personal o comprador) | `POST` | `/api/v1/authentication/sign-in` | Body: `email`, `password` | `{"email":"lucia.medina@retailco.pe","password":"****"}` | `200` con `id`, `email`, `fullName`, `role` (`ADMIN` o `SHOPPER`), `jobTitle`, `storeId` y `token`; `401` si las credenciales no coinciden | US11 |
+| Authentication | Registrar un comprador | `POST` | `/api/v1/authentication/sign-up` | Body: `fullName`, `email`, `password` | `{"fullName":"Camila Ríos","email":"camila.rios@gmail.com","password":"****"}` | `201` con el usuario `SHOPPER` y su `token`; `409` si el correo ya existe o los datos no son válidos | US05 |
+| Authentication | Verificar el PIN del supervisor | `POST` | `/api/v1/authentication/verify-pin` | Body: `userId`, `pin` | `{"userId":1,"pin":"****"}` | `204` si el PIN es correcto; `403` si no | US11 |
+| Devices | Heartbeat del carrito | `GET` | `/api/v1/devices/carts/{cartId}` | `cartId` (path); cabecera `X-Device-Key` | `GET /api/v1/devices/carts/CART-0427` | `200` con `cartId`, `status`, `sessionId`, `shopper`, `itemsCount`, `total`, `budget`, `paid`, `locked` | TS01 |
+| Devices | Reportar tags RFID, peso, batería y zona | `PUT` | `/api/v1/devices/carts/{cartId}/state` | `cartId` (path); body: `items[{tag, quantity}]`, `measuredWeight` (g, `-1` sin celda), `battery`, `zone` | `{"items":[{"tag":"04A1B2C3D4E580","quantity":1}],"measuredWeight":1032,"battery":87,"zone":"Pasillo 3"}` | `200` con el estado del carrito; abre la sesión, recalcula total y peso esperado, y pasa a `DISCREPANCY` si el peso sale de la tolerancia | TS01, US06 |
+| Devices | Reportar un evento del carrito | `POST` | `/api/v1/devices/carts/{cartId}/events` | `cartId` (path); body: `type` (`BOOT`, `GEOFENCE`, `HELP`, `CHECKOUT`, `CHECKOUT_CANCELLED`, `CARD_PAYMENT`, `LOCAL_UNLOCK`, `UNKNOWN_TAG`, `EXIT`), `detail`, `zone` | `{"type":"GEOFENCE","detail":"Puerta 1","zone":"Salida 1"}` | `200` con el estado del carrito; con `GEOFENCE` sin pago el carrito queda `LOCKED` y se genera una alerta crítica | TS01 |
+| My cart | Vincular el carrito a la app | `POST` | `/api/v1/me/cart` | Body: `cartId` (leído del QR) | `{"cartId":"CART-0427"}` | `200` con `cart` y `session`; `409` si el carrito está offline o vinculado a otro comprador | US05 |
+| My cart | Ver el carrito vinculado en vivo | `GET` | `/api/v1/me/cart` | — (JWT del comprador) | `GET /api/v1/me/cart` | `200` con `cart` (estado, total, presupuesto) y `session` (productos, total, peso esperado); `404` si no hay carrito vinculado | US05, US06 |
+| My cart | Fijar el presupuesto | `PATCH` | `/api/v1/me/cart` | Body: `budget` (`0` = sin presupuesto) | `{"budget":50.0}` | `200` con el carrito y la sesión actualizados; `409` si es negativo | US04 |
+| My cart | Desvincular el carrito | `DELETE` | `/api/v1/me/cart` | — | `DELETE /api/v1/me/cart` | `204` | US05 |
+| My cart | Mis compras | `GET` | `/api/v1/me/sessions` | — | `GET /api/v1/me/sessions` | `200` con las sesiones del comprador (`id` `ORD-…`, `items`, `total`, `status`) | TS02 |
+| My cart | Mis pagos (comprobantes) | `GET` | `/api/v1/me/payments` | — | `GET /api/v1/me/payments` | `200` con los pagos del comprador | US08 |
+| Payments | Pagar la sesión abierta de un carrito | `POST` | `/api/v1/payments` | Body: `cartId`, `method` (`YAPE`, `PLIN`, `CARD`) | `{"cartId":"CART-0427","method":"YAPE"}` | `201` con `id`, `operationCode` (8 dígitos), `cartId`, `sessionId`, `method`, `amount`, `status: "APPROVED"`, `paidAt`; el carrito pasa a `PAID`. `400` método inválido, `403` carrito no vinculado, `409` carrito vacío, bloqueado, en discrepancia o ya pagado | US08, TS03 |
+| Payments | Listar pagos | `GET` | `/api/v1/payments` | `cartId` (opcional) | `GET /api/v1/payments?cartId=CART-0427` | `200` con los pagos ordenados del más reciente al más antiguo | US08 |
+| Shopping sessions | Listar órdenes de compra | `GET` | `/api/v1/shopping-sessions` | `cartId` (opcional) | `GET /api/v1/shopping-sessions?cartId=CART-0427` | `200` con las sesiones del carrito | TS02 |
+| Shopping sessions | Ver una orden de compra | `GET` | `/api/v1/shopping-sessions/{id}` | `id` (path) | `GET /api/v1/shopping-sessions/ORD-20261110-0427` | `200` con `items`, `total`, `budget`, `expectedWeight`, `measuredWeight`, `weightTolerance`, `status`; `404` si no existe | TS02 |
+| Shopping sessions | Actualizar una orden | `PATCH` | `/api/v1/shopping-sessions/{id}` | `id` (path); body con los campos a cambiar | `{"status":"CANCELLED"}` | `200` con la sesión actualizada | TS02 |
+| Carts | Listar los carritos | `GET` | `/api/v1/carts` | `status` (opcional) | `GET /api/v1/carts?status=DISCREPANCY` | `200` con `id`, `status`, `zone`, `itemsCount`, `total`, `budget`, `lastEvent`, `battery`, `sessionId` | US11 |
+| Carts | Ver un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/CART-0427` | `200` con el carrito; `404` si no existe | US11 |
+| Carts | Registrar un carrito | `POST` | `/api/v1/carts` | Body con `id` y datos del carrito | `{"id":"CART-0428","zone":"Entrada"}` | `201` con el carrito en `AVAILABLE`; `409` si ya existe | US11 |
+| Carts | Actualizar un carrito | `PATCH` | `/api/v1/carts/{id}` | `id` (path); body: `status`, `zone`, `lastEvent`, `battery`, `total`, `budget`… | `{"zone":"Pasillo 2"}` | `200` con el carrito actualizado | US11 |
+| Carts | Desbloquear con PIN | `POST` | `/api/v1/carts/{id}/unlock` | `id` (path); body: `pin`, `resolution`, `note` | `{"pin":"****","resolution":"Producto verificado en persona"}` | `200` con el carrito en sesión; resuelve sus alertas y registra el log de auditoría. `403` PIN incorrecto, `409` si no está bloqueado | US11 |
+| Carts | Cerrar la sesión del carrito | `POST` | `/api/v1/carts/{id}/finish` | `id` (path) | `POST /api/v1/carts/CART-0427/finish` | `200` con el carrito disponible otra vez | TS02 |
+| Carts | Eliminar un carrito | `DELETE` | `/api/v1/carts/{id}` | `id` (path) | `DELETE /api/v1/carts/CART-0428` | `204` | US11 |
+| Alerts | Listar alertas | `GET` | `/api/v1/alerts` | `cartId`, `status`, `_order` (opcionales) | `GET /api/v1/alerts?status=OPEN&_order=desc` | `200` con `id`, `cartId`, `type` (`GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE`), `severity`, `status` | US11 |
+| Alerts | Ver / crear / atender una alerta | `GET` / `POST` / `PATCH` | `/api/v1/alerts/{id}`, `/api/v1/alerts` | `id` (path); body de la alerta o `status` | `PATCH /api/v1/alerts/1` · `{"status":"ACKNOWLEDGED"}` | `200` / `201` con la alerta | US11 |
+| Cart events | Línea de tiempo del carrito | `GET` / `POST` | `/api/v1/cart-events` | `cartId`, `_order`, `_limit`; body del evento | `GET /api/v1/cart-events?cartId=CART-0427&_order=desc&_limit=20` | `200` con los eventos (RFID, peso, presupuesto, pago…); `201` al registrar uno | TS01 |
+| Audit logs | Logs de auditoría | `GET` / `POST` | `/api/v1/audit-logs` | `cartId` (opcional); body: `cartId`, `action`, `resolution`, `note` | `GET /api/v1/audit-logs?cartId=CART-0427` | `200` con los registros; `201` al crear uno | US11 |
+| Session stats | Sesiones por hora | `GET` | `/api/v1/session-stats` | — | `GET /api/v1/session-stats` | `200` con la lista `{ hour, sessions }` | US11 |
+| Products | Catálogo | `GET` | `/api/v1/products`, `/api/v1/products/{id}` | `id` (path) | `GET /api/v1/products/SKU-IC-001` | `200` con `id`, `name`, `category`, `price`, `nominalWeight`, `tolerance`, `rfidPrefix` | US06, US13 |
+| Products | Registrar / actualizar / eliminar producto | `POST` / `PATCH` / `DELETE` | `/api/v1/products`, `/api/v1/products/{id}` | Body con los campos del producto (solo `ADMIN`) | `PATCH /api/v1/products/SKU-IC-001` · `{"tolerance":3}` | `201` / `200` / `204` | US13 |
+| Stores | Tiendas | `GET` | `/api/v1/stores`, `/api/v1/stores/{id}` | `id` (path) | `GET /api/v1/stores/1` | `200` con la tienda y sus KPIs | US11 |
+
+**Documentación desplegada en Swagger UI**
+
+Al abrir Swagger UI se carga la especificación `/v3/api-docs` (OpenAPI 3.1) de la **Innova Carty Platform API v1**, servida desde `https://innova-carty-backend.onrender.com`. La descripción indica cómo autenticarse: iniciar sesión con `POST /api/v1/authentication/sign-in` y pegar el token en **Authorize**; los endpoints del carrito usan la cabecera `X-Device-Key`. El candado de cada endpoint indica que requiere autenticación.
+
+![Swagger UI - Cabecera, Session stats y Audit logs](assets/chapter-6/sprint-2/swagger-evidence/swagger1.png)
+
+*Figura: cabecera de la documentación, selector de servidor, botón Authorize y los grupos **Session stats** (gráfico de sesiones por hora del Dashboard) y **Audit logs** (acciones del supervisor).*
+
+![Swagger UI - Stores, Authentication, Cart events y Carts](assets/chapter-6/sprint-2/swagger-evidence/swagger2.png)
+
+*Figura: **Authentication** (inicio de sesión del personal o comprador, registro de comprador y verificación del PIN del supervisor), **Cart events** (línea de tiempo de cada carrito) y el inicio del grupo **Carts**.*
+
+![Swagger UI - Carts y My cart](assets/chapter-6/sprint-2/swagger-evidence/swagger3.png)
+
+*Figura: resto de **Carts** (actualización parcial, cierre de sesión, desbloqueo con PIN y eliminación) y el grupo **My cart**, que usa la vista del comprador en la app: vincular, ver, desvincular, fijar presupuesto, mis pagos y mis compras (US04, US05, TS02).*
+
+![Swagger UI - Shopping sessions, Products y Alerts](assets/chapter-6/sprint-2/swagger-evidence/swagger4.png)
+
+*Figura: **Shopping sessions** (órdenes de compra con sus productos y pesos, TS02), **Products** (catálogo con precio, peso nominal, tolerancia y tag RFID) y el inicio de **Alerts**.*
+
+![Swagger UI - Alerts, Payments y Devices](assets/chapter-6/sprint-2/swagger-evidence/swagger5.png)
+
+*Figura: **Payments** (pagos simulados Yape / Plin / tarjeta; el carrito pasa a `PAID`, US08) y **Devices**, el gateway del ESP32: heartbeat, eventos y reporte de tags, peso, batería y zona (TS01, US06).*
+
+**Esquemas (modelos de request y response)**
+
+La sección *Schemas* describe la estructura de cada request y response, con el tipo de cada campo y los valores permitidos de los enumerados.
+
+![Swagger UI - DeviceStateRequest, Item y DeviceCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger6.png)
+
+*Figura: `DeviceStateRequest` es lo que envía el carrito (tags con su cantidad, peso medido, batería y zona); `DeviceCartResource` es la respuesta que el ESP32 usa para mostrar el total y saber si está pagado (`paid`) o bloqueado (`locked`).*
+
+![Swagger UI - Product, PayRequest y Payment](assets/chapter-6/sprint-2/swagger-evidence/swagger7.png)
+
+*Figura: `Product` con precio, peso nominal, tolerancia y prefijo RFID; `PayRequest` (`cartId`, `method`) y `Payment`, la respuesta del pago con su código de operación, monto, estado y fecha.*
+
+![Swagger UI - LinkRequest y Cart](assets/chapter-6/sprint-2/swagger-evidence/swagger8.png)
+
+*Figura: `LinkRequest` (id del carrito leído del QR) y `Cart` con sus estados `AVAILABLE`, `IN_SESSION`, `DISCREPANCY`, `LOCKED`, `PAID` y `OFFLINE`.*
+
+![Swagger UI - MyCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger9.png)
+
+*Figura: `MyCartResource`, la respuesta de "Mi carrito", que reúne el carrito y su sesión de compra con total, presupuesto y pesos esperado, medido y tolerancia.*
+
+![Swagger UI - SessionItem y ShoppingSession](assets/chapter-6/sprint-2/swagger-evidence/swagger10.png)
+
+*Figura: `SessionItem` (producto de la orden con SKU, tag RFID, cantidad, precio y peso) y `ShoppingSession` con sus estados `ACTIVE`, `PAID` y `CANCELLED`.*
+
+![Swagger UI - DeviceEventRequest, UnlockRequest y CartEvent](assets/chapter-6/sprint-2/swagger-evidence/swagger11.png)
+
+*Figura: `DeviceEventRequest` (evento del carrito), `UnlockRequest` (PIN, resolución y nota del desbloqueo) y `CartEvent` con su tono `OK`, `INFO`, `WARNING` o `CRITICAL`.*
+
+![Swagger UI - VerifyPinRequest, SignUpRequest, AuthenticatedUserResource y SignInRequest](assets/chapter-6/sprint-2/swagger-evidence/swagger12.png)
+
+*Figura: modelos de IAM. `AuthenticatedUserResource` devuelve el usuario con su `role` y el `token` JWT que se usa en **Authorize**.*
+
+![Swagger UI - AuditLog y Alert](assets/chapter-6/sprint-2/swagger-evidence/swagger13.png)
+
+*Figura: `AuditLog` (acción del supervisor) y `Alert` con sus tipos `GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE` y severidades `CRITICAL`, `WARNING`, `INFO`.*
+
+![Swagger UI - BudgetRequest, Store y SessionStat](assets/chapter-6/sprint-2/swagger-evidence/swagger14.png)
+
+*Figura: estados de la alerta (`OPEN`, `ACKNOWLEDGED`, `RESOLVED`), `BudgetRequest` (presupuesto del comprador, US04), `Store` con los KPIs de la tienda y `SessionStat` para el gráfico del Dashboard.*
+
+**Commits relacionados con los servicios y su documentación**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | Agrega los controllers con anotaciones OpenAPI (`@Tag`, `@Operation`), la configuración de Swagger UI (`OpenApiConfiguration`, esquemas `bearer` y `deviceKey`) y la tabla de endpoints del README. | 10/11/2026 |
+| innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Los datos de ejemplo que se ven en Swagger UI quedan en español. | 10/11/2026 |
+
 # Conclusiones
 
 * El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.

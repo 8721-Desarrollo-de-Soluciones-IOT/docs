@@ -4626,6 +4626,39 @@ En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios r
 | innova-carty-landing-page | feature/melanie | `0d55fab` | feat: animate hero cart illustration | Sin cuerpo. | 07/10/2026 |
 | innova-carty-landing-page | feature/melanie | `cb44063` | feat: add hover lift to navigation and language links | Sin cuerpo. Integrado a `main` con el PR #1. | 07/10/2026 |
 
+#### 6.2.2.5. Testing Suite Evidence for Sprint Review
+
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Los tests del backend (Unit Tests con JUnit y Acceptance Tests BDD en Gherkin para los Web Services) se registran más abajo.
+
+**Unit Tests**
+
+| Clase / Componente | Comportamiento probado | User Story | Repositorio |
+| :--- | :--- | :---: | :--- |
+| `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
+| Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
+| `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
+| `I18n` y `translateServerText` (`shared/i18n/i18n.spec.ts`) | Inicia en español y cambia a inglés; ambos idiomas tienen las mismas claves; traduce los textos que escriben la API y los carritos (eventos, alertas, zonas) y conserva los nombres de producto | — | innova-carty-frontend-web-app |
+| `parseCartId` / `parseCartQr` (`test/widget_test.dart`) | Lee el id del carrito desde los distintos formatos de QR, distingue el QR de vinculación del QR de pago e ignora QR que no son de un carrito | US05, US08 | innova-carty-mobile-app |
+| Formato de montos (`test/widget_test.dart`) | Muestra los soles con dos decimales | US05 | innova-carty-mobile-app |
+| Vista según rol (`test/widget_test.dart`) | El rol del inicio de sesión (`SHOPPER` o `ADMIN`) decide la vista de la app | US11 | innova-carty-mobile-app |
+| Idiomas (`test/widget_test.dart`) | Español por defecto e inglés con el selector; textos de la API en español; mismas claves en ambos idiomas | — | innova-carty-mobile-app |
+
+**Acceptance Tests (BDD - Gherkin)**
+
+> ⚠️ **Pendiente:** los archivos `.feature` y sus Steps para los Web Services del sprint (TS01, US06, TS02, US05, US04, US08) se agregan en el repositorio `innova-carty-backend`. Al subirlos, copiar aquí el contenido de cada `.feature` e indicar la User Story que cubre.
+
+Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Actualiza `auth.service.spec.ts` para el inicio de sesión con JWT y el rechazo de cuentas de comprador. | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Agrega `i18n.spec.ts` (cambio de idioma y traducción de los textos de la API). | 10/11/2026 |
+| innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Agrega `test/widget_test.dart` (lectura del QR, formato de soles y vista según rol). | 10/11/2026 |
+| innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Agrega las pruebas de idiomas. | 10/11/2026 |
+| innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Agrega la prueba que distingue el QR de vinculación del QR de pago (US08). | 10/11/2026 |
+
+> ⚠️ **Pendiente:** agregar a esta tabla los commits `test:` del backend (Unit Tests de `CartLifecycleService` y `PaymentService`, y los `.feature` BDD).
+
 # Conclusiones
 
 * El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.

@@ -4659,6 +4659,24 @@ Repositorio de control de versiones para Testing: los mismos repositorios de pro
 
 > ⚠️ **Pendiente:** agregar a esta tabla los commits `test:` del backend (Unit Tests de `CartLifecycleService` y `PaymentService`, y los `.feature` BDD).
 
+#### 6.2.2.6. Execution Evidence for Sprint Review
+
+En el Sprint 2 Innova Carty funciona de punta a punta con datos reales: el carrito físico (`CART-0427`, ESP32 con lector RFID y celda de carga) envía los productos que lee al backend en Render; el comprador vincula el carrito desde la app móvil, ve su total en vivo, fija un presupuesto y paga; y el administrador supervisa la flota desde la consola web o la vista de administrador de la app, atiende las alertas y desbloquea carritos con su PIN. A continuación se muestran las vistas principales en el orden en que se navegan.
+
+##### Frontend Web Application (consola de operaciones)
+
+**1. Inicio de sesión contra el backend.** La consola ahora valida las credenciales con la API en Render y solo deja entrar a cuentas de personal (`ADMIN`); las cuentas de comprador usan la app móvil. El recuadro inferior muestra la cuenta de demostración con su PIN de supervisor para la revisión del sprint.
+
+![Web App - Sign in](assets/chapter-6/sprint-2/execution/web-sign-in.png)
+
+**2. Dashboard.** Después de iniciar sesión, el Dashboard muestra los indicadores de la tienda (carritos activos, alertas abiertas, tiempo promedio de pago y pérdidas evitadas), las sesiones activas por hora, las alertas en vivo y el estado de la flota. Los datos vienen de los endpoints `/api/v1/stores`, `/api/v1/carts`, `/api/v1/alerts` y `/api/v1/session-stats` del backend, y la vista se refresca cada 5 segundos.
+
+![Web App - Dashboard](assets/chapter-6/sprint-2/execution/web-dashboard.png)
+
+**3. Detalle del carrito.** El detalle de `CART-0427` compara el peso esperado según los productos leídos por RFID con el peso medido, la diferencia y la tolerancia; como la diferencia supera la tolerancia, el pago queda en pausa y el supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también al comprador, el total frente al presupuesto fijado desde la app (US04, US05), la línea de tiempo de la sesión y los productos de la orden con su tag RFID (US06, TS02).
+
+![Web App - Detalle del carrito](assets/chapter-6/sprint-2/execution/web-cart-detail.png)
+
 # Conclusiones
 
 * El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.

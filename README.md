@@ -177,6 +177,14 @@
     - [6.2.1.7. Software Deployment Evidence for Sprint Review](#6217-Services-Documentation-Evidence-for-Sprint-Review)
     - [6.2.1.8. Sprint Planning 1](#6218-Software-Deployment-Evidence-for-Sprint-Review)
     - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-Team-Collaboration-Insights-during-Sprint)
+  - [6.2.2. Sprint 2](#622-sprint-2)
+    - [6.2.2.1. Sprint Planning 2](#6221-sprint-planning-2)
+    - [6.2.2.2. Aspect Leaders and Collaborators](#6222-aspect-leaders-and-collaborators)
+    - [6.2.2.3. Sprint Backlog 2](#6223-sprint-backlog-2)
+    - [6.2.2.4. Development Evidence for Sprint Review](#6224-development-evidence-for-sprint-review)
+    - [6.2.2.5. Testing Suite Evidence for Sprint Review](#6225-testing-suite-evidence-for-sprint-review)
+    - [6.2.2.6. Execution Evidence for Sprint Review](#6226-execution-evidence-for-sprint-review)
+    - [6.2.2.7. Services Documentation Evidence for Sprint Review](#6227-services-documentation-evidence-for-sprint-review)
 
 ### [Conclusiones](#conclusiones)
 
@@ -4350,31 +4358,31 @@ El Landing Page es una sola página con una barra de navegación fija. Los enlac
 
 **1. Hero.** Es la primera vista al ingresar. Presenta el mensaje principal ("Shop smart. Pay instantly. Skip the line."), una descripción breve del carrito inteligente y dos llamadas a la acción por segmento: **Get the app** para el comprador e **I run a supermarket** para el supermercado. El enlace *Discover the solution* baja a la siguiente sección.
 
-![Landing Page - Hero](assets/chapter6/execution-evidence/landing1.png)
+![Landing Page - Hero](assets/chapter-6/sprint-1/execution-evidence/landing1.png)
 
 **2. Cifras de impacto y "How it works".** Muestra los indicadores que respaldan la propuesta (−30 % de tiempo de espera, menos de 60 s del QR a la salida, −50 % de salidas no verificadas y telemetría 24/7) y explica el uso en cuatro pasos: vincular el carrito, fijar un presupuesto, colocar los productos y pagar con Yape o Plin.
 
-![Landing Page - How it works](assets/chapter6/execution-evidence/landing2.png)
+![Landing Page - How it works](assets/chapter-6/sprint-1/execution-evidence/landing2.png)
 
 **3. Beneficios por segmento.** Separa los beneficios para compradores (sin colas, control del presupuesto, comprobantes digitales) y para operadores de tienda (consola en vivo, validación de peso y RFID, bloqueo por geofencing). Cada tarjeta termina en una acción: **Get the app** o **See the operations console**, que abre la Web Application.
 
-![Landing Page - Benefits](assets/chapter6/execution-evidence/landing3.png)
+![Landing Page - Benefits](assets/chapter-6/sprint-1/execution-evidence/landing3.png)
 
 **4. Producto.** Presenta el hardware del Smart Cart: lector RFID UHF, celdas de carga, pantalla de 10" y freno inteligente de ruedas, junto al espacio del video About-the-Product.
 
-![Landing Page - Product](assets/chapter6/execution-evidence/landing4.png)
+![Landing Page - Product](assets/chapter-6/sprint-1/execution-evidence/landing4.png)
 
 **5. App para compradores y sección para supermercados.** Anuncia la app móvil con los botones de Google Play y App Store, y abre la sección *For supermarkets* con el formulario de solicitud de demo.
 
-![Landing Page - App for shoppers](assets/chapter6/execution-evidence/landing5.png)
+![Landing Page - App for shoppers](assets/chapter-6/sprint-1/execution-evidence/landing5.png)
 
 **6. Solicitud de demo y preguntas frecuentes.** El formulario pide razón social, RUC, correo corporativo, número estimado de carritos y un mensaje, y exige aceptar la Política de Privacidad antes de enviar con **Request a demonstration** (US02). A la izquierda, las preguntas frecuentes se despliegan como acordeón.
 
-![Landing Page - Request a demo](assets/chapter6/execution-evidence/landing6.png)
+![Landing Page - Request a demo](assets/chapter-6/sprint-1/execution-evidence/landing6.png)
 
 **7. Equipo y pie de página.** Presenta a los siete integrantes del equipo. El pie de página repite los enlaces del producto, da acceso a la consola de operaciones (*Operations console*) y a las páginas de Términos y Condiciones y Política de Privacidad (US03), además del correo de contacto.
 
-![Landing Page - Team and footer](assets/chapter6/execution-evidence/landing7.png)
+![Landing Page - Team and footer](assets/chapter-6/sprint-1/execution-evidence/landing7.png)
 
 ##### Frontend Web Application (consola de operaciones)
 
@@ -4382,39 +4390,39 @@ Se ingresa a la consola desde el botón **See the operations console** o el enla
 
 **1. Inicio de sesión.** El personal de tienda ingresa con su correo de trabajo y contraseña. El acceso está restringido al personal autorizado y la actividad queda registrada para auditoría; para la revisión del sprint se muestra una cuenta de demostración.
 
-![Web App - Sign in](assets/chapter6/execution-evidence/app1.png)
+![Web App - Sign in](assets/chapter-6/sprint-1/execution-evidence/app1.png)
 
 **2. Dashboard.** Es la vista de inicio. Resume los carritos activos, las alertas abiertas, el tiempo promedio de pago y las pérdidas evitadas; muestra las sesiones activas por hora, las alertas en vivo y el estado de la flota. Se refresca cada 5 segundos (US11). Desde *Live alerts* se abre directamente el carrito afectado.
 
-![Web App - Dashboard](assets/chapter6/execution-evidence/app2.png)
+![Web App - Dashboard](assets/chapter-6/sprint-1/execution-evidence/app2.png)
 
 **3. Carritos.** Lista todos los carritos con su estado, número de productos, total, presupuesto, zona, último evento, alertas y batería. Los filtros por estado (*In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Available*, *Offline*) y la búsqueda por carrito, orden o zona permiten encontrar un carrito; los que requieren atención se resaltan. Al hacer clic en una fila se abre su detalle.
 
-![Web App - Carts](assets/chapter6/execution-evidence/app3.png)
+![Web App - Carts](assets/chapter-6/sprint-1/execution-evidence/app3.png)
 
 **4. Alertas.** Agrupa las alertas abiertas por tipo (geofence, peso, RFID y dispositivos) y conserva las resueltas. Cada alerta explica qué ocurrió y ofrece una acción para ir al carrito (*Open cart*, *Go to exit*, *Locate*) o marcarla como atendida (*Acknowledge*).
 
-![Web App - Alerts](assets/chapter6/execution-evidence/app4.png)
+![Web App - Alerts](assets/chapter-6/sprint-1/execution-evidence/app4.png)
 
 **5. Detalle del carrito con discrepancia de peso.** Al abrir el carrito con alerta de peso se compara el peso esperado según las lecturas RFID con el peso medido, la diferencia y la tolerancia; el pago queda en pausa. El supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también el comprador, el total frente al presupuesto, la línea de tiempo de la sesión y los productos del carrito. *Back to carts* regresa a la lista.
 
-![Web App - Cart detail with weight discrepancy](assets/chapter6/execution-evidence/app6.png)
+![Web App - Cart detail with weight discrepancy](assets/chapter-6/sprint-1/execution-evidence/app6.png)
 
 **6. Detalle del carrito bloqueado en la salida.** Cuando un carrito cruza la salida sin autorización de pago, la consola muestra la salida bloqueada con las ruedas trabadas, el monto pendiente y la línea de tiempo del cruce. El supervisor verifica la situación y desbloquea el carrito o lo marca para auditoría.
 
-![Web App - Locked cart detail](assets/chapter6/execution-evidence/app9.png)
+![Web App - Locked cart detail](assets/chapter-6/sprint-1/execution-evidence/app9.png)
 
 **7. Catálogo y tolerancias de peso.** Lista los productos con su SKU, categoría, prefijo de etiqueta RFID, precio, peso nominal y tolerancia, y resalta las tolerancias mayores a 5 %. Permite buscar por nombre, SKU o etiqueta, filtrar por categoría y ver la hora de la última sincronización con los carritos (US13).
 
-![Web App - Catalog](assets/chapter6/execution-evidence/app5.png)
+![Web App - Catalog](assets/chapter-6/sprint-1/execution-evidence/app5.png)
 
 **8. Edición de peso nominal y tolerancia.** El ícono de lápiz abre el modal de edición del producto. Al cambiar el peso nominal o la tolerancia, el modal calcula el rango permitido y advierte que al guardar (**Save and sync**) la nueva regla se envía al gateway edge y a los carritos.
 
-![Web App - Edit product](assets/chapter6/execution-evidence/app7.png)
+![Web App - Edit product](assets/chapter-6/sprint-1/execution-evidence/app7.png)
 
 **9. Registro de producto.** El botón **Add product** abre el mismo formulario vacío. Los campos se validan antes de guardar; por ejemplo, el SKU debe tener el formato `SKU-00000`.
 
-![Web App - Add product](assets/chapter6/execution-evidence/app8.png)
+![Web App - Add product](assets/chapter-6/sprint-1/execution-evidence/app8.png)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
@@ -4571,10 +4579,10 @@ Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y f
 
 ### 6.2.2. Sprint 2
 
-#### 6.2.1.1. Sprint Planning 1
+#### 6.2.2.1. Sprint Planning 2
 
 
-#### 6.2.1.2.  Aspect Leaders and Collaborators.
+#### 6.2.2.2. Aspect Leaders and Collaborators
 
 #### 6.2.2.3. Sprint Backlog 2
 
@@ -4587,6 +4595,206 @@ Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y f
 | **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | To Do |
 | **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | To Do |
 | **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | To Do |
+
+#### 6.2.2.4. Development Evidence for Sprint Review
+
+En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios reales en Spring Boot y agregó la aplicación móvil, de modo que el carrito inteligente, la consola web y la app trabajan sobre la misma plataforma:
+
+* **Backend (Web Services)** (TS01, TS02, US04, US05, US06, US08): API RESTful en Spring Boot 3.5 con Java 21, Spring Data JPA y PostgreSQL en **Supabase**, desplegada en **Render** con Docker. Está organizada por bounded context (`iam`, `catalog`, `monitoring`, `payment`, `shopping`, `devices` y `shared`) y documentada con OpenAPI en Swagger UI.
+  * **TS01 (telemetría del dispositivo edge):** el ESP32 del carrito reporta sus tags RFID, el peso estable, la batería y la zona con `PUT /api/v1/devices/carts/{id}/state`, envía eventos (`GEOFENCE`, `CHECKOUT`, `CARD_PAYMENT`, `LOCAL_UNLOCK`, etc.) con `POST /api/v1/devices/carts/{id}/events` y consulta su estado cada 2 s con `GET /api/v1/devices/carts/{id}`. Las llamadas se autentican con la cabecera `X-Device-Key`.
+  * **US06 (registro automático por RFID):** al recibir los tags, el backend los empareja con el catálogo, abre la sesión de compra si no existe y recalcula el total, el peso esperado y la tolerancia. Si el peso medido sale de la tolerancia, el carrito pasa a `DISCREPANCY` y se genera una alerta.
+  * **TS02 (órdenes de compra):** cada compra se registra como una **sesión de compra** (`ShoppingSession`, id `ORD-…`) con sus productos, total y estado (`ACTIVE`, `PAID`, `CANCELLED`). El administrador las consulta en `/api/v1/shopping-sessions` y el comprador en `/api/v1/me/sessions`.
+  * **US05 (total acumulado) y US04 (presupuesto):** el comprador vincula el carrito escaneando su QR (`POST /api/v1/me/cart`), ve el total en vivo (`GET /api/v1/me/cart`) y fija su presupuesto (`PATCH /api/v1/me/cart`).
+  * **US08 (pago autónomo con QR):** el comprador paga la sesión abierta con Yape, Plin o tarjeta (`POST /api/v1/payments`). En este sprint el pago es **simulado**: genera un código de operación, deja la sesión en `PAID` y el carrito habilita la salida en su siguiente consulta.
+  * **TS03 (webhook de pagos externos):** como los pagos se simulan dentro de la propia API, en este sprint no se expone un webhook para una pasarela externa. La confirmación del pago la hace `POST /api/v1/payments` y la recibe el carrito por su heartbeat.
+* **Frontend Web Application:** la consola de operaciones deja la API fake y apunta al backend en Render (`apiBaseUrl`). Envía el JWT en cada solicitud, cierra la sesión cuando vence y solo deja entrar a cuentas de personal (`ADMIN`). Se agregó el cambio de idioma ES/EN y la identificación del prototipo físico `CART-0427`.
+* **Mobile Application:** nueva app en Flutter con dos vistas según el rol del inicio de sesión. El **comprador** se registra, vincula el carrito con su QR, ve los productos y el total en vivo, fija su presupuesto, paga escaneando el QR de pago del carrito y consulta sus comprobantes. El **administrador** ve la flota en vivo, las alertas y el detalle del carrito con la verificación de peso, y lo desbloquea con su PIN.
+* **Landing Page:** mejoras de interacción (estados *hover* en botones y enlaces, animación del carrito del hero).
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | IAM (sign-in, registro de compradores y PIN de supervisor con JWT), Monitoring compatible con el contrato de la API fake, gateway de dispositivos ESP32, pagos simulados Yape / Plin / tarjeta, endpoints "Mi carrito" para la app, datos demo, Swagger UI, Dockerfile y blueprint de Render. | 10/11/2026 |
+| innova-carty-backend | main | `f1c38a9` | fix: close a paid order when the cart restarts | Sin cuerpo. Cierra la sesión pagada cuando el carrito se reinicia. | 10/11/2026 |
+| innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Renombra al español los productos demo, los ítems de las órdenes guardadas y los títulos de eventos al iniciar (idempotente). | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Apunta `apiBaseUrl` a la API en Render, envía el JWT en cada request, solo permite cuentas ADMIN, conserva la API fake en `npm run start:fake` y elimina la función fake de Vercel. | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Español por defecto con selector ES / EN, textos de la API y estados traducidos, distintivo del prototipo físico y prefijo RFID compatible con UIDs NTAG215. | 10/11/2026 |
+| innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Login donde el rol decide la vista, registro de comprador, "Mi carrito" (vincular con QR, productos en vivo, presupuesto, pago simulado y comprobantes) y vista de administrador (flota, alertas, detalle y desbloqueo con PIN). | 10/11/2026 |
+| innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Español por defecto con selector ES / EN guardado en el teléfono, textos de la API en español y distintivo del prototipo físico. | 10/11/2026 |
+| innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Botón QR junto a Pagar: lee `INNOVACARTY\|CART-0427\|PAY\|total`, vincula el carrito si hace falta y abre Yape / Plin / tarjeta (US08). | 10/11/2026 |
+| innova-carty-landing-page | feature/melanie | `3105e22` | feat: add hover states to buttons | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `b2bb00c` | feat: add hover state to hero chip | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `0d55fab` | feat: animate hero cart illustration | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `cb44063` | feat: add hover lift to navigation and language links | Sin cuerpo. Integrado a `main` con el PR #1. | 07/10/2026 |
+
+#### 6.2.2.5. Testing Suite Evidence for Sprint Review
+
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Los tests del backend (Unit Tests con JUnit y Acceptance Tests BDD en Gherkin para los Web Services) se registran más abajo.
+
+**Unit Tests**
+
+| Clase / Componente | Comportamiento probado | User Story | Repositorio |
+| :--- | :--- | :---: | :--- |
+| `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
+| Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
+| `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
+| `I18n` y `translateServerText` (`shared/i18n/i18n.spec.ts`) | Inicia en español y cambia a inglés; ambos idiomas tienen las mismas claves; traduce los textos que escriben la API y los carritos (eventos, alertas, zonas) y conserva los nombres de producto | — | innova-carty-frontend-web-app |
+| `parseCartId` / `parseCartQr` (`test/widget_test.dart`) | Lee el id del carrito desde los distintos formatos de QR, distingue el QR de vinculación del QR de pago e ignora QR que no son de un carrito | US05, US08 | innova-carty-mobile-app |
+| Formato de montos (`test/widget_test.dart`) | Muestra los soles con dos decimales | US05 | innova-carty-mobile-app |
+| Vista según rol (`test/widget_test.dart`) | El rol del inicio de sesión (`SHOPPER` o `ADMIN`) decide la vista de la app | US11 | innova-carty-mobile-app |
+| Idiomas (`test/widget_test.dart`) | Español por defecto e inglés con el selector; textos de la API en español; mismas claves en ambos idiomas | — | innova-carty-mobile-app |
+
+**Acceptance Tests (BDD - Gherkin)**
+
+> ⚠️ **Pendiente:** los archivos `.feature` y sus Steps para los Web Services del sprint (TS01, US06, TS02, US05, US04, US08) se agregan en el repositorio `innova-carty-backend`. Al subirlos, copiar aquí el contenido de cada `.feature` e indicar la User Story que cubre.
+
+Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Actualiza `auth.service.spec.ts` para el inicio de sesión con JWT y el rechazo de cuentas de comprador. | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Agrega `i18n.spec.ts` (cambio de idioma y traducción de los textos de la API). | 10/11/2026 |
+| innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Agrega `test/widget_test.dart` (lectura del QR, formato de soles y vista según rol). | 10/11/2026 |
+| innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Agrega las pruebas de idiomas. | 10/11/2026 |
+| innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Agrega la prueba que distingue el QR de vinculación del QR de pago (US08). | 10/11/2026 |
+
+> ⚠️ **Pendiente:** agregar a esta tabla los commits `test:` del backend (Unit Tests de `CartLifecycleService` y `PaymentService`, y los `.feature` BDD).
+
+#### 6.2.2.6. Execution Evidence for Sprint Review
+
+En el Sprint 2 Innova Carty funciona de punta a punta con datos reales: el carrito físico (`CART-0427`, ESP32 con lector RFID y celda de carga) envía los productos que lee al backend en Render; el comprador vincula el carrito desde la app móvil, ve su total en vivo, fija un presupuesto y paga; y el administrador supervisa la flota desde la consola web o la vista de administrador de la app, atiende las alertas y desbloquea carritos con su PIN. A continuación se muestran las vistas principales en el orden en que se navegan.
+
+##### Frontend Web Application (consola de operaciones)
+
+**1. Inicio de sesión contra el backend.** La consola ahora valida las credenciales con la API en Render y solo deja entrar a cuentas de personal (`ADMIN`); las cuentas de comprador usan la app móvil. El recuadro inferior muestra la cuenta de demostración con su PIN de supervisor para la revisión del sprint.
+
+![Web App - Sign in](assets/chapter-6/sprint-2/execution/web-sign-in.png)
+
+**2. Dashboard.** Después de iniciar sesión, el Dashboard muestra los indicadores de la tienda (carritos activos, alertas abiertas, tiempo promedio de pago y pérdidas evitadas), las sesiones activas por hora, las alertas en vivo y el estado de la flota. Los datos vienen de los endpoints `/api/v1/stores`, `/api/v1/carts`, `/api/v1/alerts` y `/api/v1/session-stats` del backend, y la vista se refresca cada 5 segundos.
+
+![Web App - Dashboard](assets/chapter-6/sprint-2/execution/web-dashboard.png)
+
+**3. Detalle del carrito.** El detalle de `CART-0427` compara el peso esperado según los productos leídos por RFID con el peso medido, la diferencia y la tolerancia; como la diferencia supera la tolerancia, el pago queda en pausa y el supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también al comprador, el total frente al presupuesto fijado desde la app (US04, US05), la línea de tiempo de la sesión y los productos de la orden con su tag RFID (US06, TS02).
+
+![Web App - Detalle del carrito](assets/chapter-6/sprint-2/execution/web-cart-detail.png)
+
+#### 6.2.2.7. Services Documentation Evidence for Sprint Review
+
+En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre doce grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.
+
+* **Swagger UI (desplegado):** https://innova-carty-backend.onrender.com/swagger-ui.html
+* **Especificación OpenAPI (JSON):** https://innova-carty-backend.onrender.com/v3/api-docs
+* **Swagger UI (local):** http://localhost:8080/swagger-ui.html (`mvn spring-boot:run`, base H2 en memoria con datos demo)
+* **Repositorio de Web Services:** https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend
+
+**Seguridad.** Los endpoints de personal y comprador usan un **JWT** (HS256) que devuelve `POST /api/v1/authentication/sign-in`; en Swagger UI se pega en **Authorize** (esquema `bearer`). Los endpoints del carrito usan la cabecera `X-Device-Key` (esquema `deviceKey`). En el plan gratuito de Render el servicio se suspende tras 15 minutos sin uso y la primera solicitud tarda alrededor de un minuto.
+
+**Endpoints documentados en el Sprint 2**
+
+| Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| Authentication | Iniciar sesión (personal o comprador) | `POST` | `/api/v1/authentication/sign-in` | Body: `email`, `password` | `{"email":"lucia.medina@retailco.pe","password":"****"}` | `200` con `id`, `email`, `fullName`, `role` (`ADMIN` o `SHOPPER`), `jobTitle`, `storeId` y `token`; `401` si las credenciales no coinciden | US11 |
+| Authentication | Registrar un comprador | `POST` | `/api/v1/authentication/sign-up` | Body: `fullName`, `email`, `password` | `{"fullName":"Camila Ríos","email":"camila.rios@gmail.com","password":"****"}` | `201` con el usuario `SHOPPER` y su `token`; `409` si el correo ya existe o los datos no son válidos | US05 |
+| Authentication | Verificar el PIN del supervisor | `POST` | `/api/v1/authentication/verify-pin` | Body: `userId`, `pin` | `{"userId":1,"pin":"****"}` | `204` si el PIN es correcto; `403` si no | US11 |
+| Devices | Heartbeat del carrito | `GET` | `/api/v1/devices/carts/{cartId}` | `cartId` (path); cabecera `X-Device-Key` | `GET /api/v1/devices/carts/CART-0427` | `200` con `cartId`, `status`, `sessionId`, `shopper`, `itemsCount`, `total`, `budget`, `paid`, `locked` | TS01 |
+| Devices | Reportar tags RFID, peso, batería y zona | `PUT` | `/api/v1/devices/carts/{cartId}/state` | `cartId` (path); body: `items[{tag, quantity}]`, `measuredWeight` (g, `-1` sin celda), `battery`, `zone` | `{"items":[{"tag":"04A1B2C3D4E580","quantity":1}],"measuredWeight":1032,"battery":87,"zone":"Pasillo 3"}` | `200` con el estado del carrito; abre la sesión, recalcula total y peso esperado, y pasa a `DISCREPANCY` si el peso sale de la tolerancia | TS01, US06 |
+| Devices | Reportar un evento del carrito | `POST` | `/api/v1/devices/carts/{cartId}/events` | `cartId` (path); body: `type` (`BOOT`, `GEOFENCE`, `HELP`, `CHECKOUT`, `CHECKOUT_CANCELLED`, `CARD_PAYMENT`, `LOCAL_UNLOCK`, `UNKNOWN_TAG`, `EXIT`), `detail`, `zone` | `{"type":"GEOFENCE","detail":"Puerta 1","zone":"Salida 1"}` | `200` con el estado del carrito; con `GEOFENCE` sin pago el carrito queda `LOCKED` y se genera una alerta crítica | TS01 |
+| My cart | Vincular el carrito a la app | `POST` | `/api/v1/me/cart` | Body: `cartId` (leído del QR) | `{"cartId":"CART-0427"}` | `200` con `cart` y `session`; `409` si el carrito está offline o vinculado a otro comprador | US05 |
+| My cart | Ver el carrito vinculado en vivo | `GET` | `/api/v1/me/cart` | — (JWT del comprador) | `GET /api/v1/me/cart` | `200` con `cart` (estado, total, presupuesto) y `session` (productos, total, peso esperado); `404` si no hay carrito vinculado | US05, US06 |
+| My cart | Fijar el presupuesto | `PATCH` | `/api/v1/me/cart` | Body: `budget` (`0` = sin presupuesto) | `{"budget":50.0}` | `200` con el carrito y la sesión actualizados; `409` si es negativo | US04 |
+| My cart | Desvincular el carrito | `DELETE` | `/api/v1/me/cart` | — | `DELETE /api/v1/me/cart` | `204` | US05 |
+| My cart | Mis compras | `GET` | `/api/v1/me/sessions` | — | `GET /api/v1/me/sessions` | `200` con las sesiones del comprador (`id` `ORD-…`, `items`, `total`, `status`) | TS02 |
+| My cart | Mis pagos (comprobantes) | `GET` | `/api/v1/me/payments` | — | `GET /api/v1/me/payments` | `200` con los pagos del comprador | US08 |
+| Payments | Pagar la sesión abierta de un carrito | `POST` | `/api/v1/payments` | Body: `cartId`, `method` (`YAPE`, `PLIN`, `CARD`) | `{"cartId":"CART-0427","method":"YAPE"}` | `201` con `id`, `operationCode` (8 dígitos), `cartId`, `sessionId`, `method`, `amount`, `status: "APPROVED"`, `paidAt`; el carrito pasa a `PAID`. `400` método inválido, `403` carrito no vinculado, `409` carrito vacío, bloqueado, en discrepancia o ya pagado | US08, TS03 |
+| Payments | Listar pagos | `GET` | `/api/v1/payments` | `cartId` (opcional) | `GET /api/v1/payments?cartId=CART-0427` | `200` con los pagos ordenados del más reciente al más antiguo | US08 |
+| Shopping sessions | Listar órdenes de compra | `GET` | `/api/v1/shopping-sessions` | `cartId` (opcional) | `GET /api/v1/shopping-sessions?cartId=CART-0427` | `200` con las sesiones del carrito | TS02 |
+| Shopping sessions | Ver una orden de compra | `GET` | `/api/v1/shopping-sessions/{id}` | `id` (path) | `GET /api/v1/shopping-sessions/ORD-20261110-0427` | `200` con `items`, `total`, `budget`, `expectedWeight`, `measuredWeight`, `weightTolerance`, `status`; `404` si no existe | TS02 |
+| Shopping sessions | Actualizar una orden | `PATCH` | `/api/v1/shopping-sessions/{id}` | `id` (path); body con los campos a cambiar | `{"status":"CANCELLED"}` | `200` con la sesión actualizada | TS02 |
+| Carts | Listar los carritos | `GET` | `/api/v1/carts` | `status` (opcional) | `GET /api/v1/carts?status=DISCREPANCY` | `200` con `id`, `status`, `zone`, `itemsCount`, `total`, `budget`, `lastEvent`, `battery`, `sessionId` | US11 |
+| Carts | Ver un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/CART-0427` | `200` con el carrito; `404` si no existe | US11 |
+| Carts | Registrar un carrito | `POST` | `/api/v1/carts` | Body con `id` y datos del carrito | `{"id":"CART-0428","zone":"Entrada"}` | `201` con el carrito en `AVAILABLE`; `409` si ya existe | US11 |
+| Carts | Actualizar un carrito | `PATCH` | `/api/v1/carts/{id}` | `id` (path); body: `status`, `zone`, `lastEvent`, `battery`, `total`, `budget`… | `{"zone":"Pasillo 2"}` | `200` con el carrito actualizado | US11 |
+| Carts | Desbloquear con PIN | `POST` | `/api/v1/carts/{id}/unlock` | `id` (path); body: `pin`, `resolution`, `note` | `{"pin":"****","resolution":"Producto verificado en persona"}` | `200` con el carrito en sesión; resuelve sus alertas y registra el log de auditoría. `403` PIN incorrecto, `409` si no está bloqueado | US11 |
+| Carts | Cerrar la sesión del carrito | `POST` | `/api/v1/carts/{id}/finish` | `id` (path) | `POST /api/v1/carts/CART-0427/finish` | `200` con el carrito disponible otra vez | TS02 |
+| Carts | Eliminar un carrito | `DELETE` | `/api/v1/carts/{id}` | `id` (path) | `DELETE /api/v1/carts/CART-0428` | `204` | US11 |
+| Alerts | Listar alertas | `GET` | `/api/v1/alerts` | `cartId`, `status`, `_order` (opcionales) | `GET /api/v1/alerts?status=OPEN&_order=desc` | `200` con `id`, `cartId`, `type` (`GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE`), `severity`, `status` | US11 |
+| Alerts | Ver / crear / atender una alerta | `GET` / `POST` / `PATCH` | `/api/v1/alerts/{id}`, `/api/v1/alerts` | `id` (path); body de la alerta o `status` | `PATCH /api/v1/alerts/1` · `{"status":"ACKNOWLEDGED"}` | `200` / `201` con la alerta | US11 |
+| Cart events | Línea de tiempo del carrito | `GET` / `POST` | `/api/v1/cart-events` | `cartId`, `_order`, `_limit`; body del evento | `GET /api/v1/cart-events?cartId=CART-0427&_order=desc&_limit=20` | `200` con los eventos (RFID, peso, presupuesto, pago…); `201` al registrar uno | TS01 |
+| Audit logs | Logs de auditoría | `GET` / `POST` | `/api/v1/audit-logs` | `cartId` (opcional); body: `cartId`, `action`, `resolution`, `note` | `GET /api/v1/audit-logs?cartId=CART-0427` | `200` con los registros; `201` al crear uno | US11 |
+| Session stats | Sesiones por hora | `GET` | `/api/v1/session-stats` | — | `GET /api/v1/session-stats` | `200` con la lista `{ hour, sessions }` | US11 |
+| Products | Catálogo | `GET` | `/api/v1/products`, `/api/v1/products/{id}` | `id` (path) | `GET /api/v1/products/SKU-IC-001` | `200` con `id`, `name`, `category`, `price`, `nominalWeight`, `tolerance`, `rfidPrefix` | US06, US13 |
+| Products | Registrar / actualizar / eliminar producto | `POST` / `PATCH` / `DELETE` | `/api/v1/products`, `/api/v1/products/{id}` | Body con los campos del producto (solo `ADMIN`) | `PATCH /api/v1/products/SKU-IC-001` · `{"tolerance":3}` | `201` / `200` / `204` | US13 |
+| Stores | Tiendas | `GET` | `/api/v1/stores`, `/api/v1/stores/{id}` | `id` (path) | `GET /api/v1/stores/1` | `200` con la tienda y sus KPIs | US11 |
+
+**Documentación desplegada en Swagger UI**
+
+Al abrir Swagger UI se carga la especificación `/v3/api-docs` (OpenAPI 3.1) de la **Innova Carty Platform API v1**, servida desde `https://innova-carty-backend.onrender.com`. La descripción indica cómo autenticarse: iniciar sesión con `POST /api/v1/authentication/sign-in` y pegar el token en **Authorize**; los endpoints del carrito usan la cabecera `X-Device-Key`. El candado de cada endpoint indica que requiere autenticación.
+
+![Swagger UI - Cabecera, Session stats y Audit logs](assets/chapter-6/sprint-2/swagger-evidence/swagger1.png)
+
+*Figura: cabecera de la documentación, selector de servidor, botón Authorize y los grupos **Session stats** (gráfico de sesiones por hora del Dashboard) y **Audit logs** (acciones del supervisor).*
+
+![Swagger UI - Stores, Authentication, Cart events y Carts](assets/chapter-6/sprint-2/swagger-evidence/swagger2.png)
+
+*Figura: **Authentication** (inicio de sesión del personal o comprador, registro de comprador y verificación del PIN del supervisor), **Cart events** (línea de tiempo de cada carrito) y el inicio del grupo **Carts**.*
+
+![Swagger UI - Carts y My cart](assets/chapter-6/sprint-2/swagger-evidence/swagger3.png)
+
+*Figura: resto de **Carts** (actualización parcial, cierre de sesión, desbloqueo con PIN y eliminación) y el grupo **My cart**, que usa la vista del comprador en la app: vincular, ver, desvincular, fijar presupuesto, mis pagos y mis compras (US04, US05, TS02).*
+
+![Swagger UI - Shopping sessions, Products y Alerts](assets/chapter-6/sprint-2/swagger-evidence/swagger4.png)
+
+*Figura: **Shopping sessions** (órdenes de compra con sus productos y pesos, TS02), **Products** (catálogo con precio, peso nominal, tolerancia y tag RFID) y el inicio de **Alerts**.*
+
+![Swagger UI - Alerts, Payments y Devices](assets/chapter-6/sprint-2/swagger-evidence/swagger5.png)
+
+*Figura: **Payments** (pagos simulados Yape / Plin / tarjeta; el carrito pasa a `PAID`, US08) y **Devices**, el gateway del ESP32: heartbeat, eventos y reporte de tags, peso, batería y zona (TS01, US06).*
+
+**Esquemas (modelos de request y response)**
+
+La sección *Schemas* describe la estructura de cada request y response, con el tipo de cada campo y los valores permitidos de los enumerados.
+
+![Swagger UI - DeviceStateRequest, Item y DeviceCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger6.png)
+
+*Figura: `DeviceStateRequest` es lo que envía el carrito (tags con su cantidad, peso medido, batería y zona); `DeviceCartResource` es la respuesta que el ESP32 usa para mostrar el total y saber si está pagado (`paid`) o bloqueado (`locked`).*
+
+![Swagger UI - Product, PayRequest y Payment](assets/chapter-6/sprint-2/swagger-evidence/swagger7.png)
+
+*Figura: `Product` con precio, peso nominal, tolerancia y prefijo RFID; `PayRequest` (`cartId`, `method`) y `Payment`, la respuesta del pago con su código de operación, monto, estado y fecha.*
+
+![Swagger UI - LinkRequest y Cart](assets/chapter-6/sprint-2/swagger-evidence/swagger8.png)
+
+*Figura: `LinkRequest` (id del carrito leído del QR) y `Cart` con sus estados `AVAILABLE`, `IN_SESSION`, `DISCREPANCY`, `LOCKED`, `PAID` y `OFFLINE`.*
+
+![Swagger UI - MyCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger9.png)
+
+*Figura: `MyCartResource`, la respuesta de "Mi carrito", que reúne el carrito y su sesión de compra con total, presupuesto y pesos esperado, medido y tolerancia.*
+
+![Swagger UI - SessionItem y ShoppingSession](assets/chapter-6/sprint-2/swagger-evidence/swagger10.png)
+
+*Figura: `SessionItem` (producto de la orden con SKU, tag RFID, cantidad, precio y peso) y `ShoppingSession` con sus estados `ACTIVE`, `PAID` y `CANCELLED`.*
+
+![Swagger UI - DeviceEventRequest, UnlockRequest y CartEvent](assets/chapter-6/sprint-2/swagger-evidence/swagger11.png)
+
+*Figura: `DeviceEventRequest` (evento del carrito), `UnlockRequest` (PIN, resolución y nota del desbloqueo) y `CartEvent` con su tono `OK`, `INFO`, `WARNING` o `CRITICAL`.*
+
+![Swagger UI - VerifyPinRequest, SignUpRequest, AuthenticatedUserResource y SignInRequest](assets/chapter-6/sprint-2/swagger-evidence/swagger12.png)
+
+*Figura: modelos de IAM. `AuthenticatedUserResource` devuelve el usuario con su `role` y el `token` JWT que se usa en **Authorize**.*
+
+![Swagger UI - AuditLog y Alert](assets/chapter-6/sprint-2/swagger-evidence/swagger13.png)
+
+*Figura: `AuditLog` (acción del supervisor) y `Alert` con sus tipos `GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE` y severidades `CRITICAL`, `WARNING`, `INFO`.*
+
+![Swagger UI - BudgetRequest, Store y SessionStat](assets/chapter-6/sprint-2/swagger-evidence/swagger14.png)
+
+*Figura: estados de la alerta (`OPEN`, `ACKNOWLEDGED`, `RESOLVED`), `BudgetRequest` (presupuesto del comprador, US04), `Store` con los KPIs de la tienda y `SessionStat` para el gráfico del Dashboard.*
+
+**Commits relacionados con los servicios y su documentación**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | Agrega los controllers con anotaciones OpenAPI (`@Tag`, `@Operation`), la configuración de Swagger UI (`OpenApiConfiguration`, esquemas `bearer` y `deviceKey`) y la tabla de endpoints del README. | 10/11/2026 |
+| innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Los datos de ejemplo que se ven en Swagger UI quedan en español. | 10/11/2026 |
 
 # Conclusiones
 

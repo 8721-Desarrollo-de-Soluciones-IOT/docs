@@ -129,12 +129,17 @@
 
 ### [Capítulo II: Requirements Elicitation & Analysis](#capítulo-ii-requirements-elicitation--analysis)
 - [2.1. Competidores](#21-competidores)
+  - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
+  - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
 - [2.2. Entrevistas](#22-entrevistas)
+  - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
+  - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+  - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
 - [2.3. Needfinding](#23-needfinding)
-  - [2.3.1. User-Personas](#231-User-Personas)
-  - [2.3.2. User Task Matrix](#232-User-Task-Matrix)
-  - [2.3.3. User Journey Mapping](#233-User-Journey-Mapping)
-  - [2.3.4. Empathy Mapping](#234-Empathy-Mapping)
+  - [2.3.1. User Personas](#231-user-personas)
+  - [2.3.2. User Task Matrix](#232-user-task-matrix)
+  - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
+  - [2.3.4. Empathy Mapping](#234-empathy-mapping)
 - [2.4. Big Picture EventStorming](#24-big-picture-eventstorming)
 - [2.5. Ubiquitous Language](#25-ubiquitous-language)
 
@@ -145,38 +150,92 @@
 
 ### [Capítulo IV: Solution Software Design](#capítulo-iv-solution-software-design)
 - [4.1. Strategic-Level Domain-Driven Design](#41-strategic-level-domain-driven-design)
+  - [4.1.1. Design-Level EventStorming](#411-design-level-eventstorming)
+    - [4.1.1.1. Candidate Context Discovery](#4111-candidate-context-discovery)
+    - [4.1.1.2. Domain Message Flows Modeling](#4112-domain-message-flows-modeling)
+    - [4.1.1.3. Bounded Context Canvases](#4113-bounded-context-canvases)
+  - [4.1.2. Context Mapping](#412-context-mapping)
+  - [4.1.3. Software Architecture](#413-software-architecture)
+    - [4.1.3.1. Software Architecture System Landscape Diagram](#4131-software-architecture-system-landscape-diagram)
+    - [4.1.3.2. Software Architecture Context Level Diagrams](#4132-software-architecture-context-level-diagrams)
+    - [4.1.3.3. Software Architecture Container Level Diagrams](#4133-software-architecture-container-level-diagrams)
+    - [4.1.3.4. Software Architecture Deployment Diagrams](#4134-software-architecture-deployment-diagrams)
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
+    - [4.2.1.1. Domain Layer](#4211-domain-layer)
+    - [4.2.1.2. Interface Layer](#4212-interface-layer)
+    - [4.2.1.3. Application Layer](#4213-application-layer)
+    - [4.2.1.4. Infrastructure Layer](#4214-infrastructure-layer)
+    - [4.2.1.5. Bounded Context Software Architecture Component Level Diagrams](#4215-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.1.6. Bounded Context Software Architecture Code Level Diagrams](#4216-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.1.6.1. Bounded Context Domain Layer Class Diagrams](#42161-bounded-context-domain-layer-class-diagrams)
+      - [4.2.1.6.2. Bounded Context Database Design Diagram](#42162-bounded-context-database-design-diagram)
   - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
+    - [4.2.2.1. Domain Layer](#4221-domain-layer)
+    - [4.2.2.2. Interface Layer](#4222-interface-layer)
+    - [4.2.2.3. Application Layer](#4223-application-layer)
+    - [4.2.2.4. Infrastructure Layer](#4224-infrastructure-layer)
+    - [4.2.2.5. Bounded Context Software Architecture Component Level Diagrams](#4225-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.2.6. Bounded Context Software Architecture Code Level Diagrams](#4226-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.2.6.1. Bounded Context Domain Layer Class Diagrams](#42261-bounded-context-domain-layer-class-diagrams)
+      - [4.2.2.6.2. Bounded Context Database Design Diagram](#42262-bounded-context-database-design-diagram)
   - [4.2.3. Bounded Context: Catalog & Pricing Bounded Context](#423-bounded-context-catalog--pricing-bounded-context)
+    - [4.2.3.1. Domain Layer](#4231-domain-layer)
+    - [4.2.3.2. Interface Layer](#4232-interface-layer)
+    - [4.2.3.3. Application Layer](#4233-application-layer)
+    - [4.2.3.4. Infrastructure Layer](#4234-infrastructure-layer)
+    - [4.2.3.5. Bounded Context Software Architecture Component Level Diagrams](#4235-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.3.6. Bounded Context Software Architecture Code Level Diagrams](#4236-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.3.6.1. Bounded Context Domain Layer Class Diagrams](#42361-bounded-context-domain-layer-class-diagrams)
+      - [4.2.3.6.2. Bounded Context Database Design Diagram](#42362-bounded-context-database-design-diagram)
   - [4.2.4. Bounded Context: Operations & Security Bounded Context](#424-bounded-context-operations--security-bounded-context)
+    - [4.2.4.1. Domain Layer](#4241-domain-layer)
+    - [4.2.4.2. Interface Layer](#4242-interface-layer)
+    - [4.2.4.3. Application Layer](#4243-application-layer)
+    - [4.2.4.4. Infrastructure Layer](#4244-infrastructure-layer)
+    - [4.2.4.5. Bounded Context Software Architecture Component Level Diagrams](#4245-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.4.6. Bounded Context Software Architecture Code Level Diagrams](#4246-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.4.6.1. Bounded Context Domain Layer Class Diagrams](#42461-bounded-context-domain-layer-class-diagrams)
+      - [4.2.4.6.2. Bounded Context Database Design Diagram](#42462-bounded-context-database-design-diagram)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
+  - [5.1.1. General Style Guidelines](#511-general-style-guidelines)
+  - [5.1.2. Web, Mobile and IoT Style Guidelines](#512-web-mobile-and-iot-style-guidelines)
 - [5.2. Information Architecture](#52-information-architecture)
-  - [5.2.1. Organization Systems](#521-Organization-Systems)
-  - [5.2.2. Labeling Systems](#522-Labeling-Systems)
-  - [5.2.3. SEO Tags and Meta Tags](#523-SEO-Tags-and-Meta-Tags)
-  - [5.2.4. Searching Systems](#524-Searching-Systems)
-  - [5.2.5. Navigation Systems](#525-Navigation-Systems)
+  - [5.2.1. Organization Systems](#521-organization-systems)
+  - [5.2.2. Labeling Systems](#522-labeling-systems)
+  - [5.2.3. SEO Tags and Meta Tags](#523-seo-tags-and-meta-tags)
+  - [5.2.4. Searching Systems](#524-searching-systems)
+  - [5.2.5. Navigation Systems](#525-navigation-systems)
 - [5.3. Landing Page UI Design](#53-landing-page-ui-design)
+  - [5.3.1. Landing Page Wireframe](#531-landing-page-wireframe)
+  - [5.3.2. Landing Page Mock-up](#532-landing-page-mock-up)
 - [5.4. Applications UX/UI Design](#54-applications-uxui-design)
+  - [5.4.1. Applications Wireframes](#541-applications-wireframes)
+  - [5.4.2. Applications Wireflow Diagrams](#542-applications-wireflow-diagrams)
+  - [5.4.3. Applications Mock-ups](#543-applications-mock-ups)
+  - [5.4.4. Applications User Flow Diagrams](#544-applications-user-flow-diagrams)
 - [5.5. Applications Prototyping](#55-applications-prototyping)
 - [5.6. IoT Device Design](#56-iot-device-design)
 
 ### [Capítulo VI: Product Implementation, Validation & Deployment](#capítulo-vi-product-implementation-validation--deployment)
 - [6.1. Software Configuration Management](#61-software-configuration-management)
+  - [6.1.1. Software Development Environment Configuration](#611-software-development-environment-configuration)
+  - [6.1.2. Source Code Management](#612-source-code-management)
+  - [6.1.3. Source Code Style Guide & Conventions](#613-source-code-style-guide--conventions)
+  - [6.1.4. Software Deployment Configuration](#614-software-deployment-configuration)
 - [6.2. Landing Page, Services & Applications Implementation](#62-landing-page-services--applications-implementation)
-  - [6.2.1. Sprint 1](#621-Sprint-1)
-    - [6.2.1.1. Sprint Planning 1](#6211-Sprint-Planning-1)
-    - [6.2.1.2. Aspect Leaders and Collaborators](#6212-Aspect-Leaders-and-Collaborators)
-    - [6.2.1.3. Sprint Backlog 1](#6213-Sprint-Backlog-1)
-    - [6.2.1.4. Development Evidence for Sprint Review](#6214-Development-Evidence-for-Sprint-Review)
-    - [6.2.1.5. Testing Suite Evidence for Sprint Review](#6215-Testing-Suite-Evidence-for-Sprint-Review)
-    - [6.2.1.6. Execution Evidence for Sprint Review](#6216-Execution-Evidence-for-Sprint-Review)
-    - [6.2.1.7. Software Deployment Evidence for Sprint Review](#6217-Services-Documentation-Evidence-for-Sprint-Review)
-    - [6.2.1.8. Sprint Planning 1](#6218-Software-Deployment-Evidence-for-Sprint-Review)
-    - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-Team-Collaboration-Insights-during-Sprint)
+  - [6.2.1. Sprint 1](#621-sprint-1)
+    - [6.2.1.1. Sprint Planning 1](#6211-sprint-planning-1)
+    - [6.2.1.2. Aspect Leaders and Collaborators](#6212-aspect-leaders-and-collaborators)
+    - [6.2.1.3. Sprint Backlog 1](#6213-sprint-backlog-1)
+    - [6.2.1.4. Development Evidence for Sprint Review](#6214-development-evidence-for-sprint-review)
+    - [6.2.1.5. Testing Suite Evidence for Sprint Review](#6215-testing-suite-evidence-for-sprint-review)
+    - [6.2.1.6. Execution Evidence for Sprint Review](#6216-execution-evidence-for-sprint-review)
+    - [6.2.1.7. Services Documentation Evidence for Sprint Review](#6217-services-documentation-evidence-for-sprint-review)
+    - [6.2.1.8. Software Deployment Evidence for Sprint Review](#6218-software-deployment-evidence-for-sprint-review)
+    - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-team-collaboration-insights-during-sprint)
   - [6.2.2. Sprint 2](#622-sprint-2)
     - [6.2.2.1. Sprint Planning 2](#6221-sprint-planning-2)
     - [6.2.2.2. Aspect Leaders and Collaborators](#6222-aspect-leaders-and-collaborators)
@@ -185,6 +244,13 @@
     - [6.2.2.5. Testing Suite Evidence for Sprint Review](#6225-testing-suite-evidence-for-sprint-review)
     - [6.2.2.6. Execution Evidence for Sprint Review](#6226-execution-evidence-for-sprint-review)
     - [6.2.2.7. Services Documentation Evidence for Sprint Review](#6227-services-documentation-evidence-for-sprint-review)
+    - [6.2.2.8. Software Deployment Evidence for Sprint Review](#6228-software-deployment-evidence-for-sprint-review)
+    - [6.2.2.9. Team Collaboration Insights during Sprint](#6229-team-collaboration-insights-during-sprint)
+- [6.3. Validation Interviews](#63-validation-interviews)
+  - [6.3.1. Diseño de Entrevistas](#631-diseño-de-entrevistas)
+  - [6.3.2. Registro de Entrevistas](#632-registro-de-entrevistas)
+  - [6.3.3. Evaluaciones según heurísticas](#633-evaluaciones-según-heurísticas)
+- [6.4. Video About-the-Product](#64-video-about-the-product)
 
 ### [Conclusiones](#conclusiones)
 
@@ -4988,6 +5054,114 @@ La sección *Schemas* describe la estructura de cada request y response, con el 
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | Agrega los controllers con anotaciones OpenAPI (`@Tag`, `@Operation`), la configuración de Swagger UI (`OpenApiConfiguration`, esquemas `bearer` y `deviceKey`) y la tabla de endpoints del README. | 10/11/2026 |
 | innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Los datos de ejemplo que se ven en Swagger UI quedan en español. | 10/11/2026 |
+
+#### 6.2.2.8. Software Deployment Evidence for Sprint Review
+
+*(Pendiente)*
+
+#### 6.2.2.9. Team Collaboration Insights during Sprint
+
+*(Pendiente)*
+
+## 6.3. Validation Interviews
+
+### 6.3.1. Diseño de Entrevistas
+
+**Objetivo:** Validar con usuarios reales que la Landing Page, la aplicación móvil, la Web Console y el Smart Cart permiten alcanzar los *user goals* de los User Personas (sección 5.4.2), e identificar problemas de usabilidad para corregirlos en el siguiente sprint.
+
+**Metodología:**
+* Sesiones individuales de 20 a 25 minutos, presenciales o por Google Meet, grabadas con el consentimiento del participante.
+* Como mínimo 3 participantes por segmento objetivo, que encajen con los User Personas de la sección 2.3.1.
+* Al inicio se explica el propósito de la sesión y se aclara que se evalúa el producto y no al participante.
+* Las tareas se plantean como objetivos, sin indicar detalles de la interfaz (dónde hacer clic o qué menú usar). El participante interactúa libremente y comenta en voz alta lo que piensa.
+* Un integrante del equipo opera el carrito físico (CART-0427) para generar los eventos de cada tarea: lectura RFID, salida por la baliza, pedido de ayuda y pago.
+* Después de cada tarea se hacen preguntas cortas y al final se aplican las preguntas de cierre.
+* Las observaciones se registran con referencia a la sesión y al minuto del video, y se analizan con las heurísticas de Nielsen (sección 6.3.3).
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+**Productos evaluados:** Landing Page, aplicación móvil (vista de comprador) y Smart Cart.
+
+| # | Tarea (objetivo para el participante) | User goal relacionado |
+| :---: | :--- | :--- |
+| 1 | Revisa esta página y explica qué ofrece Innova Carty y cómo empezarías a usarlo. | Landing Page |
+| 2 | Ingresa a la aplicación con tu cuenta. | — |
+| 3 | Empieza tu compra con este carrito y fija un presupuesto de S/ 20. | User goal 1 |
+| 4 | Agrega productos e indica cuánto llevas gastado y cuánto te queda. | User goal 2 |
+| 5 | Paga tu compra con Yape y sal de la tienda. | User goal 3 |
+| 6 | Revisa el comprobante de una compra anterior. | User goal 3 |
+
+#### Segmento 2: Administrador de Tienda / Operaciones Retail
+
+**Productos evaluados:** Landing Page, Web Console, aplicación móvil (vista de administrador) y Smart Cart.
+
+| # | Tarea (objetivo para el participante) | User goal relacionado |
+| :---: | :--- | :--- |
+| 1 | Revisa esta página y explica qué ofrece Innova Carty y cómo solicitarías información. | Landing Page |
+| 2 | Ingresa a la consola con la cuenta de administrador. | — |
+| 3 | Indica cuántos carritos están en uso y si hay alguna alerta activa. | User goal 4 |
+| 4 | Identifica qué productos lleva el cliente del carrito CART-0427. | User goal 4 |
+| 5 | Un cliente intentó salir sin pagar: atiende la alerta y libera el carrito. | User goal 4 |
+| 6 | Identifica qué carrito está pidiendo ayuda. | User goal 4 |
+| 7 | Cambia el precio de un producto e identifica su etiqueta RFID. | User goal 5 |
+| 8 | Verifica el pago que acaba de realizar el cliente. | User goal 3 |
+| 9 | Revisa el estado de los carritos desde el celular. | User goal 4 |
+
+#### Preguntas de cierre (ambos segmentos)
+* ¿Qué fue lo más útil de lo que probaste? ¿Y lo menos útil?
+* ¿Qué cambiarías o agregarías?
+* Del 1 al 5, ¿qué tan fácil fue usarlo? ¿Qué tan útil te resultaría?
+* El carrito también validará el peso de los productos para detectar artículos no escaneados. ¿Te parece útil?
+* ¿Qué te preocuparía de usarlo en una tienda real?
+* *(Segmento 2)* ¿Lo implementarías? ¿Con cuántos carritos empezarías y cuánto pagarías al mes por cada uno?
+* Del 0 al 10, ¿qué tan probable es que lo recomiendes?
+
+### 6.3.2. Registro de Entrevistas
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+*(Pendiente: 3 entrevistas.)*
+
+#### Segmento 2: Administrador de Tienda / Operaciones Retail
+
+##### Entrevista 1:
+
+| Atributo | Detalle |
+| --- | --- |
+| Nombre | Sebastián Ramírez |
+| Edad | 23 años |
+| Distrito | Lince |
+| Ocupación | Administrador de minimarket (formato pequeño, similar a Tiendas Mass) |
+| Entrevistador | Diaz Fiestas, Jorge Luis |
+| Fecha de entrevista | 11 de noviembre de 2026 |
+| Modalidad | Google Meet |
+| Timing | 00:00 - 24:42 (Duración: 24 min 42 s) |
+| Enlace a la grabación | *[Ver en YouTube](https://youtu.be/6kxTbrWjZgI)* |
+| Captura de pantalla de la grabación | [![Entrevista de validación 1 - Administrador](https://img.youtube.com/vi/6kxTbrWjZgI/hqdefault.jpg)](https://youtu.be/6kxTbrWjZgI) |
+| Resumen | Sebastián Ramírez probó la Landing Page, la Web Console y la aplicación móvil en la vista de administrador mientras el entrevistador operaba el carrito físico CART-0427. Destacó la supervisión de carritos en tiempo real, las alertas de seguridad y los pagos digitales como funcionalidades útiles. Identificó oportunidades de mejora en los reportes, las notificaciones y la facilidad de uso. Como referencia de adopción, planteó iniciar con 2 carritos, pagar entre S/ 80 y S/ 100 mensuales por carrito y calificó su disposición a recomendar la solución con 9/10. |
+
+*(Pendiente: entrevistas 2 y 3 de este segmento.)*
+
+### 6.3.3. Evaluaciones según heurísticas
+
+Las observaciones de las sesiones se evalúan con las 10 heurísticas de usabilidad de Nielsen y la siguiente escala de severidad:
+
+| Nivel | Severidad |
+| :---: | :--- |
+| 0 | No es un problema de usabilidad |
+| 1 | Problema cosmético: se corrige si hay tiempo |
+| 2 | Problema menor: baja prioridad |
+| 3 | Problema mayor: alta prioridad |
+| 4 | Catastrófico: impide completar la tarea |
+
+| # | Sesión (video y minuto) | Descripción | Heurística | Severidad | Alternativa de solución |
+| :---: | :--- | :--- | :--- | :---: | :--- |
+| 1 | *(Por completar con las sesiones de ambos segmentos)* | | | | |
+
+## 6.4. Video About-the-Product
+
+*(Pendiente)*
+
 
 # Conclusiones
 

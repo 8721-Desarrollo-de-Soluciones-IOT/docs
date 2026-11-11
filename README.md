@@ -4628,12 +4628,19 @@ En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios r
 
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
-En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Los tests del backend (Unit Tests con JUnit y Acceptance Tests BDD en Gherkin para los Web Services) se registran más abajo.
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Para los Web Services se agregaron Unit Tests con JUnit 5 y Mockito sobre las reglas de dominio del carrito y los pagos, y Acceptance Tests bajo el enfoque BDD con Cucumber: los archivos `.feature` en Gherkin describen los escenarios de las historias del sprint y los Steps en Java llaman a la API como lo hacen sus tres clientes (el carrito con `X-Device-Key`, la app del comprador y la consola web). Todos los tests del backend se ejecutan con `mvn test` (40 tests: 25 unit tests y 15 escenarios).
 
 **Unit Tests**
 
 | Clase / Componente | Comportamiento probado | User Story | Repositorio |
 | :--- | :--- | :---: | :--- |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Abre una orden `ACTIVE` vinculada al carrito y la cancela al cerrar la sesión sin pago | TS02 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Empareja los tags RFID con el catálogo (gana el prefijo más largo), ignora tags desconocidos, recalcula total, cantidad, peso esperado y tolerancia, y quita el producto cuyo tag ya no se lee | US06, US05 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Pasa el carrito a `DISCREPANCY` y genera una alerta `WEIGHT` si el peso sale de la tolerancia; acepta diferencias dentro de la tolerancia y vuelve a `IN_SESSION` al corregirse | US06 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Guarda el presupuesto en la orden y el carrito y rechaza uno negativo | US04 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Solo permite pagar carritos con productos, sin discrepancia y sin pago previo; al pagar deja orden y carrito en `PAID`; bloquea las ruedas con alerta `GEOFENCE` crítica si un carrito sin pagar llega a la salida | US08 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Vincula la app del comprador a la orden abierta; rechaza carritos de otro comprador o desconectados | US05 | innova-carty-backend |
+| `PaymentService` (`PaymentServiceTest`) | Aprueba el pago del comprador vinculado con código de operación de 8 dígitos y el total de la orden; rechaza métodos desconocidos, carritos de otro comprador y carritos que no se pueden pagar; cobra la tarjeta del carrito al comprador vinculado | US08, TS03 | innova-carty-backend |
 | `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
 | Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
 | `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
@@ -4645,9 +4652,194 @@ En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angu
 
 **Acceptance Tests (BDD - Gherkin)**
 
-> ⚠️ **Pendiente:** los archivos `.feature` y sus Steps para los Web Services del sprint (TS01, US06, TS02, US05, US04, US08) se agregan en el repositorio `innova-carty-backend`. Al subirlos, copiar aquí el contenido de cada `.feature` e indicar la User Story que cubre.
+Los escenarios se escribieron a partir de los criterios de aceptación de 3.1 y se ejecutan contra la API completa con la base H2 en memoria y los datos de demostración (productos del prototipo con sus tags NTAG215 y cuentas demo). Los Steps están en `src/test/java/com/innovacarty/platform/acceptance/SmartCartSteps.java` y el reporte se genera en `target/cucumber-report.html`.
 
-Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban:
+**TS01** · `src/test/resources/features/ts01_telemetria_dispositivo_edge.feature`
+
+```gherkin
+Feature: Recepción e ingesta de telemetría desde el dispositivo edge (TS01)
+  Como plataforma de Innova Carty
+  Quiero recibir el estado y los eventos que envía el ESP32 de cada carrito
+  Para mantener actualizado el estado del carrito para la consola, la app y el propio carrito
+
+  Scenario: El carrito reporta su estado con una clave de dispositivo válida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    Then la respuesta tiene el código 200
+    And el carrito queda en estado "IN_SESSION"
+
+  Scenario: Se rechaza la telemetría con una clave de dispositivo inválida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta su estado con la clave de dispositivo "clave-incorrecta"
+    Then la respuesta tiene el código 401
+
+  Scenario: El carrito cruza la salida sin pagar
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el carrito reporta el evento "GEOFENCE" en la zona "Salida 1"
+    Then el carrito queda en estado "LOCKED"
+    And la consola muestra una alerta "GEOFENCE" abierta para el carrito
+```
+
+**US06** · `src/test/resources/features/us06_registro_automatico_rfid.feature`
+
+```gherkin
+Feature: Registro automático de artículo mediante lectura RFID (US06)
+  Como comprador moderno
+  Quiero que los productos que coloco en el carrito se registren solos
+  Para no tener que escanear cada artículo
+
+  Scenario: Los tags leídos se registran como productos del catálogo
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    Then el carrito tiene 3 productos y un total de S/ 9.80
+
+  Scenario: Un tag que no está en el catálogo no se cobra
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 04FFFFFFFFFFFF | 1        |
+    Then el carrito tiene 1 productos y un total de S/ 4.80
+
+  Scenario: El peso no coincide con los productos leídos
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    When la celda de carga reporta un peso estable de 1700 g
+    Then el carrito queda en estado "DISCREPANCY"
+    And la consola muestra una alerta "WEIGHT" abierta para el carrito
+```
+
+**US05** · `src/test/resources/features/us05_total_acumulado.feature`
+
+```gherkin
+Feature: Visualización dinámica del total acumulado (US05)
+  Como comprador moderno
+  Quiero ver en mi celular los productos y el total de mi carrito en tiempo real
+  Para controlar cuánto voy gastando
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: El comprador vincula el carrito y ve su total
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el comprador vincula el carrito escaneando su QR
+    And el comprador consulta su carrito
+    Then la app muestra 1 productos y un total de S/ 4.80
+
+  Scenario: El total se actualiza al agregar productos
+    Given el comprador vincula el carrito escaneando su QR
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador consulta su carrito
+    Then la app muestra 3 productos y un total de S/ 9.80
+```
+
+**US04** · `src/test/resources/features/us04_presupuesto_limite.feature`
+
+```gherkin
+Feature: Configuración de presupuesto límite de compra (US04)
+  Como comprador moderno
+  Quiero fijar un presupuesto para mi compra
+  Para no gastar más de lo planeado
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: El comprador fija su presupuesto
+    When el comprador fija un presupuesto de S/ 50.00
+    Then la respuesta tiene el código 200
+    And el presupuesto del carrito es S/ 50.00
+
+  Scenario: No se acepta un presupuesto negativo
+    When el comprador fija un presupuesto de S/ -10.00
+    Then la respuesta tiene el código 409
+```
+
+**US08** · `src/test/resources/features/us08_pago_autonomo_qr.feature`
+
+```gherkin
+Feature: Liquidación de orden y pago autónomo con QR dinámico (US08)
+  Como comprador moderno
+  Quiero pagar mi compra desde la app escaneando el QR del carrito
+  Para salir de la tienda sin pasar por caja
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: Pago aprobado con Yape
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 201
+    And el pago queda aprobado por S/ 9.80 con un código de operación de 8 dígitos
+    And el carrito queda en estado "PAID"
+
+  Scenario: El pago se pausa si hay una discrepancia de peso
+    Given la celda de carga reporta un peso estable de 1700 g
+    When el comprador paga con "PLIN"
+    Then la respuesta tiene el código 409
+
+  Scenario: Una orden pagada no se cobra dos veces
+    Given el comprador paga con "YAPE"
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 409
+```
+
+**TS02** · `src/test/resources/features/ts02_ordenes_compra.feature`
+
+```gherkin
+Feature: Creación y consulta de órdenes de compra (TS02)
+  Como plataforma de Innova Carty
+  Quiero registrar cada compra como una orden con sus productos y su total
+  Para que el comprador y el administrador puedan consultarla
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: La orden se crea al leer el primer producto
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el administrador consulta las órdenes de compra del carrito
+    Then la orden aparece con estado "ACTIVE", 2 líneas de producto y un total de S/ 9.80
+
+  Scenario: El comprador consulta su orden pagada
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    And el comprador vincula el carrito escaneando su QR
+    And el comprador paga con "PLIN"
+    When el comprador consulta sus compras
+    Then la orden aparece con estado "PAID", 1 líneas de producto y un total de S/ 4.80
+```
+
+Al ejecutarse por primera vez, 7 escenarios fallaron y revelaron un error del backend: al crear una orden nueva, los cambios hechos en la misma petición (los productos de la primera lectura o el comprador que vincula un carrito vacío) no se guardaban. Se corrigió en `CartLifecycleService.startSession` y los 15 escenarios pasaron.
+
+Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban; en el backend se subieron en commits propios:
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -4656,8 +4848,9 @@ Repositorio de control de versiones para Testing: los mismos repositorios de pro
 | innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Agrega `test/widget_test.dart` (lectura del QR, formato de soles y vista según rol). | 10/11/2026 |
 | innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Agrega las pruebas de idiomas. | 10/11/2026 |
 | innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Agrega la prueba que distingue el QR de vinculación del QR de pago (US08). | 10/11/2026 |
-
-> ⚠️ **Pendiente:** agregar a esta tabla los commits `test:` del backend (Unit Tests de `CartLifecycleService` y `PaymentService`, y los `.feature` BDD).
+| innova-carty-backend | main | `730c2ac` | fix: keep the new shopping session managed so its first changes are saved | El id de la orden es asignado, así que `save()` hace merge y devuelve una copia gestionada; se trabajaba sobre el objeto original y se perdían los productos leídos en la misma petición o el comprador vinculado a un carrito vacío. Detectado por los acceptance tests. | 10/11/2026 |
+| innova-carty-backend | main | `64fdfba` | test: add unit tests for CartLifecycleService and PaymentService | Orden, productos RFID y total, verificación de peso, presupuesto, reglas de pago, bloqueo por geofence y vinculación de la app (TS02, US04, US05, US06, US08); pagos simulados Yape / Plin / tarjeta (US08). | 10/11/2026 |
+| innova-carty-backend | main | `3292caf` | test: add acceptance tests for the sprint 2 user stories | Features en Gherkin para TS01, TS02, US04, US05, US06 y US08 con steps de Cucumber que llaman a la API como el carrito, la app del comprador y la consola web. | 10/11/2026 |
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
 

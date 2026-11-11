@@ -200,8 +200,8 @@
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Trillo Hernández, Anghel Melanie (AV2)** <br> Lideró la documentación de la revisión del Sprint 2: redactó la evidencia de desarrollo, de testing, de ejecución y de documentación de servicios a partir de los commits de los repositorios del backend, la consola web, la app móvil y el Landing Page, y tomó las capturas de la consola y de Swagger UI. En el backend implementó los unit tests con JUnit y Mockito y los acceptance tests BDD en Gherkin de las historias del sprint; estas pruebas detectaron un error al crear las órdenes de compra, que corrigió antes de integrarlo a main. Además mejoró la interacción del Landing Page con estados *hover* y la animación del carrito del hero. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. <br><br> **Conclusión general (AV2):** <br> En el AV2 el liderazgo se organizó por historia de usuario: en el Sprint Backlog 2 cada integrante quedó a cargo de una historia (TS01, TS02, TS03, US04, US05, US06 y US08), desde la telemetría del carrito hasta el pago. Como todas dependen de la misma API, los responsables acordaron los endpoints y el contrato con el dispositivo, de modo que el carrito, la consola web y la app móvil trabajan sobre el mismo estado del carrito. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Trillo Hernández, Anghel Melanie (AV2)** <br> Ordenó las evidencias del capítulo VI por sprint para que cada integrante sepa dónde agregar sus capturas. Integró sus cambios con commits separados por sección siguiendo Conventional Commits y el flujo GitFlow mediante pull requests, y documentó en el README del backend cómo ejecutar las pruebas para que el resto del equipo pueda correrlas. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. <br><br> **Conclusión general (AV2):** <br> Para el AV2 el equipo se propuso integrar la solución de punta a punta en el Sprint 2: reemplazar la API fake por el backend en Spring Boot con Supabase desplegado en Render, conectar la consola web, desarrollar la app móvil e integrar el prototipo físico del carrito. Mantuvo GitFlow con ramas `feature/*` integradas a `develop` y luego a main mediante pull requests, documentó la API con OpenAPI y agregó pruebas automatizadas al backend, que permitieron detectar y corregir un error antes de la entrega. |
 
 <div style="page-break-after: always;"></div>
 
@@ -4628,12 +4628,19 @@ En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios r
 
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
-En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Los tests del backend (Unit Tests con JUnit y Acceptance Tests BDD en Gherkin para los Web Services) se registran más abajo.
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Para los Web Services se agregaron Unit Tests con JUnit 5 y Mockito sobre las reglas de dominio del carrito y los pagos, y Acceptance Tests bajo el enfoque BDD con Cucumber: los archivos `.feature` en Gherkin describen los escenarios de las historias del sprint y los Steps en Java llaman a la API como lo hacen sus tres clientes (el carrito con `X-Device-Key`, la app del comprador y la consola web). Todos los tests del backend se ejecutan con `mvn test` (40 tests: 25 unit tests y 15 escenarios).
 
 **Unit Tests**
 
 | Clase / Componente | Comportamiento probado | User Story | Repositorio |
 | :--- | :--- | :---: | :--- |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Abre una orden `ACTIVE` vinculada al carrito y la cancela al cerrar la sesión sin pago | TS02 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Empareja los tags RFID con el catálogo (gana el prefijo más largo), ignora tags desconocidos, recalcula total, cantidad, peso esperado y tolerancia, y quita el producto cuyo tag ya no se lee | US06, US05 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Pasa el carrito a `DISCREPANCY` y genera una alerta `WEIGHT` si el peso sale de la tolerancia; acepta diferencias dentro de la tolerancia y vuelve a `IN_SESSION` al corregirse | US06 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Guarda el presupuesto en la orden y el carrito y rechaza uno negativo | US04 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Solo permite pagar carritos con productos, sin discrepancia y sin pago previo; al pagar deja orden y carrito en `PAID`; bloquea las ruedas con alerta `GEOFENCE` crítica si un carrito sin pagar llega a la salida | US08 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Vincula la app del comprador a la orden abierta; rechaza carritos de otro comprador o desconectados | US05 | innova-carty-backend |
+| `PaymentService` (`PaymentServiceTest`) | Aprueba el pago del comprador vinculado con código de operación de 8 dígitos y el total de la orden; rechaza métodos desconocidos, carritos de otro comprador y carritos que no se pueden pagar; cobra la tarjeta del carrito al comprador vinculado | US08, TS03 | innova-carty-backend |
 | `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
 | Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
 | `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
@@ -4645,9 +4652,194 @@ En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angu
 
 **Acceptance Tests (BDD - Gherkin)**
 
-> ⚠️ **Pendiente:** los archivos `.feature` y sus Steps para los Web Services del sprint (TS01, US06, TS02, US05, US04, US08) se agregan en el repositorio `innova-carty-backend`. Al subirlos, copiar aquí el contenido de cada `.feature` e indicar la User Story que cubre.
+Los escenarios se escribieron a partir de los criterios de aceptación de 3.1 y se ejecutan contra la API completa con la base H2 en memoria y los datos de demostración (productos del prototipo con sus tags NTAG215 y cuentas demo). Los Steps están en `src/test/java/com/innovacarty/platform/acceptance/SmartCartSteps.java` y el reporte se genera en `target/cucumber-report.html`.
 
-Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban:
+**TS01** · `src/test/resources/features/ts01_telemetria_dispositivo_edge.feature`
+
+```gherkin
+Feature: Recepción e ingesta de telemetría desde el dispositivo edge (TS01)
+  Como plataforma de Innova Carty
+  Quiero recibir el estado y los eventos que envía el ESP32 de cada carrito
+  Para mantener actualizado el estado del carrito para la consola, la app y el propio carrito
+
+  Scenario: El carrito reporta su estado con una clave de dispositivo válida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    Then la respuesta tiene el código 200
+    And el carrito queda en estado "IN_SESSION"
+
+  Scenario: Se rechaza la telemetría con una clave de dispositivo inválida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta su estado con la clave de dispositivo "clave-incorrecta"
+    Then la respuesta tiene el código 401
+
+  Scenario: El carrito cruza la salida sin pagar
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el carrito reporta el evento "GEOFENCE" en la zona "Salida 1"
+    Then el carrito queda en estado "LOCKED"
+    And la consola muestra una alerta "GEOFENCE" abierta para el carrito
+```
+
+**US06** · `src/test/resources/features/us06_registro_automatico_rfid.feature`
+
+```gherkin
+Feature: Registro automático de artículo mediante lectura RFID (US06)
+  Como comprador moderno
+  Quiero que los productos que coloco en el carrito se registren solos
+  Para no tener que escanear cada artículo
+
+  Scenario: Los tags leídos se registran como productos del catálogo
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    Then el carrito tiene 3 productos y un total de S/ 9.80
+
+  Scenario: Un tag que no está en el catálogo no se cobra
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 04FFFFFFFFFFFF | 1        |
+    Then el carrito tiene 1 productos y un total de S/ 4.80
+
+  Scenario: El peso no coincide con los productos leídos
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    When la celda de carga reporta un peso estable de 1700 g
+    Then el carrito queda en estado "DISCREPANCY"
+    And la consola muestra una alerta "WEIGHT" abierta para el carrito
+```
+
+**US05** · `src/test/resources/features/us05_total_acumulado.feature`
+
+```gherkin
+Feature: Visualización dinámica del total acumulado (US05)
+  Como comprador moderno
+  Quiero ver en mi celular los productos y el total de mi carrito en tiempo real
+  Para controlar cuánto voy gastando
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: El comprador vincula el carrito y ve su total
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el comprador vincula el carrito escaneando su QR
+    And el comprador consulta su carrito
+    Then la app muestra 1 productos y un total de S/ 4.80
+
+  Scenario: El total se actualiza al agregar productos
+    Given el comprador vincula el carrito escaneando su QR
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador consulta su carrito
+    Then la app muestra 3 productos y un total de S/ 9.80
+```
+
+**US04** · `src/test/resources/features/us04_presupuesto_limite.feature`
+
+```gherkin
+Feature: Configuración de presupuesto límite de compra (US04)
+  Como comprador moderno
+  Quiero fijar un presupuesto para mi compra
+  Para no gastar más de lo planeado
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: El comprador fija su presupuesto
+    When el comprador fija un presupuesto de S/ 50.00
+    Then la respuesta tiene el código 200
+    And el presupuesto del carrito es S/ 50.00
+
+  Scenario: No se acepta un presupuesto negativo
+    When el comprador fija un presupuesto de S/ -10.00
+    Then la respuesta tiene el código 409
+```
+
+**US08** · `src/test/resources/features/us08_pago_autonomo_qr.feature`
+
+```gherkin
+Feature: Liquidación de orden y pago autónomo con QR dinámico (US08)
+  Como comprador moderno
+  Quiero pagar mi compra desde la app escaneando el QR del carrito
+  Para salir de la tienda sin pasar por caja
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: Pago aprobado con Yape
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 201
+    And el pago queda aprobado por S/ 9.80 con un código de operación de 8 dígitos
+    And el carrito queda en estado "PAID"
+
+  Scenario: El pago se pausa si hay una discrepancia de peso
+    Given la celda de carga reporta un peso estable de 1700 g
+    When el comprador paga con "PLIN"
+    Then la respuesta tiene el código 409
+
+  Scenario: Una orden pagada no se cobra dos veces
+    Given el comprador paga con "YAPE"
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 409
+```
+
+**TS02** · `src/test/resources/features/ts02_ordenes_compra.feature`
+
+```gherkin
+Feature: Creación y consulta de órdenes de compra (TS02)
+  Como plataforma de Innova Carty
+  Quiero registrar cada compra como una orden con sus productos y su total
+  Para que el comprador y el administrador puedan consultarla
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: La orden se crea al leer el primer producto
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el administrador consulta las órdenes de compra del carrito
+    Then la orden aparece con estado "ACTIVE", 2 líneas de producto y un total de S/ 9.80
+
+  Scenario: El comprador consulta su orden pagada
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    And el comprador vincula el carrito escaneando su QR
+    And el comprador paga con "PLIN"
+    When el comprador consulta sus compras
+    Then la orden aparece con estado "PAID", 1 líneas de producto y un total de S/ 4.80
+```
+
+Al ejecutarse por primera vez, 7 escenarios fallaron y revelaron un error del backend: al crear una orden nueva, los cambios hechos en la misma petición (los productos de la primera lectura o el comprador que vincula un carrito vacío) no se guardaban. Se corrigió en `CartLifecycleService.startSession` y los 15 escenarios pasaron.
+
+Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban; en el backend se subieron en commits propios:
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -4656,8 +4848,9 @@ Repositorio de control de versiones para Testing: los mismos repositorios de pro
 | innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Agrega `test/widget_test.dart` (lectura del QR, formato de soles y vista según rol). | 10/11/2026 |
 | innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Agrega las pruebas de idiomas. | 10/11/2026 |
 | innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Agrega la prueba que distingue el QR de vinculación del QR de pago (US08). | 10/11/2026 |
-
-> ⚠️ **Pendiente:** agregar a esta tabla los commits `test:` del backend (Unit Tests de `CartLifecycleService` y `PaymentService`, y los `.feature` BDD).
+| innova-carty-backend | main | `730c2ac` | fix: keep the new shopping session managed so its first changes are saved | El id de la orden es asignado, así que `save()` hace merge y devuelve una copia gestionada; se trabajaba sobre el objeto original y se perdían los productos leídos en la misma petición o el comprador vinculado a un carrito vacío. Detectado por los acceptance tests. | 10/11/2026 |
+| innova-carty-backend | main | `64fdfba` | test: add unit tests for CartLifecycleService and PaymentService | Orden, productos RFID y total, verificación de peso, presupuesto, reglas de pago, bloqueo por geofence y vinculación de la app (TS02, US04, US05, US06, US08); pagos simulados Yape / Plin / tarjeta (US08). | 10/11/2026 |
+| innova-carty-backend | main | `3292caf` | test: add acceptance tests for the sprint 2 user stories | Features en Gherkin para TS01, TS02, US04, US05, US06 y US08 con steps de Cucumber que llaman a la API como el carrito, la app del comprador y la consola web. | 10/11/2026 |
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
 

@@ -129,12 +129,17 @@
 
 ### [Capítulo II: Requirements Elicitation & Analysis](#capítulo-ii-requirements-elicitation--analysis)
 - [2.1. Competidores](#21-competidores)
+  - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
+  - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
 - [2.2. Entrevistas](#22-entrevistas)
+  - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
+  - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+  - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
 - [2.3. Needfinding](#23-needfinding)
-  - [2.3.1. User-Personas](#231-User-Personas)
-  - [2.3.2. User Task Matrix](#232-User-Task-Matrix)
-  - [2.3.3. User Journey Mapping](#233-User-Journey-Mapping)
-  - [2.3.4. Empathy Mapping](#234-Empathy-Mapping)
+  - [2.3.1. User Personas](#231-user-personas)
+  - [2.3.2. User Task Matrix](#232-user-task-matrix)
+  - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
+  - [2.3.4. Empathy Mapping](#234-empathy-mapping)
 - [2.4. Big Picture EventStorming](#24-big-picture-eventstorming)
 - [2.5. Ubiquitous Language](#25-ubiquitous-language)
 
@@ -145,38 +150,107 @@
 
 ### [Capítulo IV: Solution Software Design](#capítulo-iv-solution-software-design)
 - [4.1. Strategic-Level Domain-Driven Design](#41-strategic-level-domain-driven-design)
+  - [4.1.1. Design-Level EventStorming](#411-design-level-eventstorming)
+    - [4.1.1.1. Candidate Context Discovery](#4111-candidate-context-discovery)
+    - [4.1.1.2. Domain Message Flows Modeling](#4112-domain-message-flows-modeling)
+    - [4.1.1.3. Bounded Context Canvases](#4113-bounded-context-canvases)
+  - [4.1.2. Context Mapping](#412-context-mapping)
+  - [4.1.3. Software Architecture](#413-software-architecture)
+    - [4.1.3.1. Software Architecture System Landscape Diagram](#4131-software-architecture-system-landscape-diagram)
+    - [4.1.3.2. Software Architecture Context Level Diagrams](#4132-software-architecture-context-level-diagrams)
+    - [4.1.3.3. Software Architecture Container Level Diagrams](#4133-software-architecture-container-level-diagrams)
+    - [4.1.3.4. Software Architecture Deployment Diagrams](#4134-software-architecture-deployment-diagrams)
 - [4.2. Tactical-Level Domain-Driven Design](#42-tactical-level-domain-driven-design)
   - [4.2.1. Bounded Context: Smart Shopping Bounded Context](#421-bounded-context-smart-shopping-bounded-context)
+    - [4.2.1.1. Domain Layer](#4211-domain-layer)
+    - [4.2.1.2. Interface Layer](#4212-interface-layer)
+    - [4.2.1.3. Application Layer](#4213-application-layer)
+    - [4.2.1.4. Infrastructure Layer](#4214-infrastructure-layer)
+    - [4.2.1.5. Bounded Context Software Architecture Component Level Diagrams](#4215-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.1.6. Bounded Context Software Architecture Code Level Diagrams](#4216-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.1.6.1. Bounded Context Domain Layer Class Diagrams](#42161-bounded-context-domain-layer-class-diagrams)
+      - [4.2.1.6.2. Bounded Context Database Design Diagram](#42162-bounded-context-database-design-diagram)
   - [4.2.2. Bounded Context: Payment & Checkout Bounded Context](#422-bounded-context-payment--checkout-bounded-context)
+    - [4.2.2.1. Domain Layer](#4221-domain-layer)
+    - [4.2.2.2. Interface Layer](#4222-interface-layer)
+    - [4.2.2.3. Application Layer](#4223-application-layer)
+    - [4.2.2.4. Infrastructure Layer](#4224-infrastructure-layer)
+    - [4.2.2.5. Bounded Context Software Architecture Component Level Diagrams](#4225-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.2.6. Bounded Context Software Architecture Code Level Diagrams](#4226-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.2.6.1. Bounded Context Domain Layer Class Diagrams](#42261-bounded-context-domain-layer-class-diagrams)
+      - [4.2.2.6.2. Bounded Context Database Design Diagram](#42262-bounded-context-database-design-diagram)
   - [4.2.3. Bounded Context: Catalog & Pricing Bounded Context](#423-bounded-context-catalog--pricing-bounded-context)
+    - [4.2.3.1. Domain Layer](#4231-domain-layer)
+    - [4.2.3.2. Interface Layer](#4232-interface-layer)
+    - [4.2.3.3. Application Layer](#4233-application-layer)
+    - [4.2.3.4. Infrastructure Layer](#4234-infrastructure-layer)
+    - [4.2.3.5. Bounded Context Software Architecture Component Level Diagrams](#4235-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.3.6. Bounded Context Software Architecture Code Level Diagrams](#4236-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.3.6.1. Bounded Context Domain Layer Class Diagrams](#42361-bounded-context-domain-layer-class-diagrams)
+      - [4.2.3.6.2. Bounded Context Database Design Diagram](#42362-bounded-context-database-design-diagram)
   - [4.2.4. Bounded Context: Operations & Security Bounded Context](#424-bounded-context-operations--security-bounded-context)
+    - [4.2.4.1. Domain Layer](#4241-domain-layer)
+    - [4.2.4.2. Interface Layer](#4242-interface-layer)
+    - [4.2.4.3. Application Layer](#4243-application-layer)
+    - [4.2.4.4. Infrastructure Layer](#4244-infrastructure-layer)
+    - [4.2.4.5. Bounded Context Software Architecture Component Level Diagrams](#4245-bounded-context-software-architecture-component-level-diagrams)
+    - [4.2.4.6. Bounded Context Software Architecture Code Level Diagrams](#4246-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.4.6.1. Bounded Context Domain Layer Class Diagrams](#42461-bounded-context-domain-layer-class-diagrams)
+      - [4.2.4.6.2. Bounded Context Database Design Diagram](#42462-bounded-context-database-design-diagram)
 
 ### [Capítulo V: Solution UI/UX Design](#capítulo-v-solution-uiux-design)
 - [5.1. Style Guidelines](#51-style-guidelines)
+  - [5.1.1. General Style Guidelines](#511-general-style-guidelines)
+  - [5.1.2. Web, Mobile and IoT Style Guidelines](#512-web-mobile-and-iot-style-guidelines)
 - [5.2. Information Architecture](#52-information-architecture)
-  - [5.2.1. Organization Systems](#521-Organization-Systems)
-  - [5.2.2. Labeling Systems](#522-Labeling-Systems)
-  - [5.2.3. SEO Tags and Meta Tags](#523-SEO-Tags-and-Meta-Tags)
-  - [5.2.4. Searching Systems](#524-Searching-Systems)
-  - [5.2.5. Navigation Systems](#525-Navigation-Systems)
+  - [5.2.1. Organization Systems](#521-organization-systems)
+  - [5.2.2. Labeling Systems](#522-labeling-systems)
+  - [5.2.3. SEO Tags and Meta Tags](#523-seo-tags-and-meta-tags)
+  - [5.2.4. Searching Systems](#524-searching-systems)
+  - [5.2.5. Navigation Systems](#525-navigation-systems)
 - [5.3. Landing Page UI Design](#53-landing-page-ui-design)
+  - [5.3.1. Landing Page Wireframe](#531-landing-page-wireframe)
+  - [5.3.2. Landing Page Mock-up](#532-landing-page-mock-up)
 - [5.4. Applications UX/UI Design](#54-applications-uxui-design)
+  - [5.4.1. Applications Wireframes](#541-applications-wireframes)
+  - [5.4.2. Applications Wireflow Diagrams](#542-applications-wireflow-diagrams)
+  - [5.4.3. Applications Mock-ups](#543-applications-mock-ups)
+  - [5.4.4. Applications User Flow Diagrams](#544-applications-user-flow-diagrams)
 - [5.5. Applications Prototyping](#55-applications-prototyping)
 - [5.6. IoT Device Design](#56-iot-device-design)
 
 ### [Capítulo VI: Product Implementation, Validation & Deployment](#capítulo-vi-product-implementation-validation--deployment)
 - [6.1. Software Configuration Management](#61-software-configuration-management)
+  - [6.1.1. Software Development Environment Configuration](#611-software-development-environment-configuration)
+  - [6.1.2. Source Code Management](#612-source-code-management)
+  - [6.1.3. Source Code Style Guide & Conventions](#613-source-code-style-guide--conventions)
+  - [6.1.4. Software Deployment Configuration](#614-software-deployment-configuration)
 - [6.2. Landing Page, Services & Applications Implementation](#62-landing-page-services--applications-implementation)
-  - [6.2.1. Sprint 1](#621-Sprint-1)
-    - [6.2.1.1. Sprint Planning 1](#6211-Sprint-Planning-1)
-    - [6.2.1.2. Aspect Leaders and Collaborators](#6212-Aspect-Leaders-and-Collaborators)
-    - [6.2.1.3. Sprint Backlog 1](#6213-Sprint-Backlog-1)
-    - [6.2.1.4. Development Evidence for Sprint Review](#6214-Development-Evidence-for-Sprint-Review)
-    - [6.2.1.5. Testing Suite Evidence for Sprint Review](#6215-Testing-Suite-Evidence-for-Sprint-Review)
-    - [6.2.1.6. Execution Evidence for Sprint Review](#6216-Execution-Evidence-for-Sprint-Review)
-    - [6.2.1.7. Software Deployment Evidence for Sprint Review](#6217-Services-Documentation-Evidence-for-Sprint-Review)
-    - [6.2.1.8. Sprint Planning 1](#6218-Software-Deployment-Evidence-for-Sprint-Review)
-    - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-Team-Collaboration-Insights-during-Sprint)
+  - [6.2.1. Sprint 1](#621-sprint-1)
+    - [6.2.1.1. Sprint Planning 1](#6211-sprint-planning-1)
+    - [6.2.1.2. Aspect Leaders and Collaborators](#6212-aspect-leaders-and-collaborators)
+    - [6.2.1.3. Sprint Backlog 1](#6213-sprint-backlog-1)
+    - [6.2.1.4. Development Evidence for Sprint Review](#6214-development-evidence-for-sprint-review)
+    - [6.2.1.5. Testing Suite Evidence for Sprint Review](#6215-testing-suite-evidence-for-sprint-review)
+    - [6.2.1.6. Execution Evidence for Sprint Review](#6216-execution-evidence-for-sprint-review)
+    - [6.2.1.7. Services Documentation Evidence for Sprint Review](#6217-services-documentation-evidence-for-sprint-review)
+    - [6.2.1.8. Software Deployment Evidence for Sprint Review](#6218-software-deployment-evidence-for-sprint-review)
+    - [6.2.1.9. Team Collaboration Insights during Sprint](#6219-team-collaboration-insights-during-sprint)
+  - [6.2.2. Sprint 2](#622-sprint-2)
+    - [6.2.2.1. Sprint Planning 2](#6221-sprint-planning-2)
+    - [6.2.2.2. Aspect Leaders and Collaborators](#6222-aspect-leaders-and-collaborators)
+    - [6.2.2.3. Sprint Backlog 2](#6223-sprint-backlog-2)
+    - [6.2.2.4. Development Evidence for Sprint Review](#6224-development-evidence-for-sprint-review)
+    - [6.2.2.5. Testing Suite Evidence for Sprint Review](#6225-testing-suite-evidence-for-sprint-review)
+    - [6.2.2.6. Execution Evidence for Sprint Review](#6226-execution-evidence-for-sprint-review)
+    - [6.2.2.7. Services Documentation Evidence for Sprint Review](#6227-services-documentation-evidence-for-sprint-review)
+    - [6.2.2.8. Software Deployment Evidence for Sprint Review](#6228-software-deployment-evidence-for-sprint-review)
+    - [6.2.2.9. Team Collaboration Insights during Sprint](#6229-team-collaboration-insights-during-sprint)
+- [6.3. Validation Interviews](#63-validation-interviews)
+  - [6.3.1. Diseño de Entrevistas](#631-diseño-de-entrevistas)
+  - [6.3.2. Registro de Entrevistas](#632-registro-de-entrevistas)
+  - [6.3.3. Evaluaciones según heurísticas](#633-evaluaciones-según-heurísticas)
+- [6.4. Video About-the-Product](#64-video-about-the-product)
 
 ### [Conclusiones](#conclusiones)
 
@@ -192,8 +266,8 @@
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |--------------------|--------------------|--------------|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. |
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **Trillo Hernández, Anghel Melanie (AV1)** <br> Lideró el análisis de las entrevistas y el diseño estratégico del dominio: elaboró el Candidate Context Discovery, los Bounded Context Canvases de los cuatro contextos (Smart Shopping, Payment & Checkout, Catalog & Pricing y Operations & Security) y el primer diagrama de base de datos de la solución. Coordinó con el equipo los nombres de los contextos y del lenguaje ubicuo para que los capítulos II, III y IV usaran los mismos términos. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Lideró el Design-Level EventStorming en Miro (los diez pasos, de la lluvia de eventos a los bounded contexts) y el Domain Message Flows Modeling con Domain Storytelling (cinco escenarios). Completó el diseño táctico de los cuatro bounded contexts: capas Domain, Interface, Application e Infrastructure, diagramas de componentes C4, diagramas de clases UML y diagramas de base de datos con un script SQL por contexto. En el Sprint 1 implementó los botones de llamada a la acción del Landing Page, el detalle del carrito con discrepancia de peso y el modal de edición de peso nominal y tolerancia. <br><br> **Trillo Hernández, Anghel Melanie (AV2)** <br> Lideró la documentación de la revisión del Sprint 2: redactó la evidencia de desarrollo, de testing, de ejecución y de documentación de servicios a partir de los commits de los repositorios del backend, la consola web, la app móvil y el Landing Page, y tomó las capturas de la consola y de Swagger UI. En el backend implementó los unit tests con JUnit y Mockito y los acceptance tests BDD en Gherkin de las historias del sprint; estas pruebas detectaron un error al crear las órdenes de compra, que corrigió antes de integrarlo a main. Además mejoró la interacción del Landing Page con estados *hover* y la animación del carrito del hero. <br><br> **Paico Calderón, July (AV1)** <br> Asumió el liderazgo del aspecto de Gestión del Sprint dentro de la matriz LACX, coordinando la planificación del Sprint 1 junto al equipo y conduciendo la definición de los segmentos objetivo y de las estrategias y tácticas frente a competidores, lo que permitió alinear al equipo en torno a una visión común del producto desde las primeras etapas del proyecto. <br><br> **Paico Calderón, July (TB1)** <br> Mantuvo su rol de liderazgo en la Gestión del Sprint, actualizando el Sprint Backlog y completando la caracterización del segundo segmento dentro de los User Personas, asegurando que las decisiones de planificación se tomaran de manera conjunta con los demás integrantes del equipo. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Lideró el aspecto de Testing dentro de la matriz LACX, proponiendo conjuntamente con el equipo la construcción del User Journey Mapping y del Big Picture EventStorming a partir de los hallazgos de las entrevistas y los mapas de empatía, articulando el trabajo de needfinding con el diseño técnico de la solución. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Continuó liderando el aspecto de Testing, coordinando con el equipo la definición de la suite de pruebas y la elaboración de los diagramas de despliegue y de la capa de dominio, lo que requirió sincronizar su trabajo con los avances de arquitectura y desarrollo de los demás miembros. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Asumió como responsable el diseño táctico del Smart Shopping Bounded Context: elaboró las capas Interface, Application e Infrastructure y el diagrama de componentes C4 del contexto, alineándolos con la capa de dominio y con los nombres del lenguaje ubicuo acordados por el equipo. Además, condujo una de las entrevistas del primer segmento (compradores) y redactó su perfil profesional. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Lideró los aspectos de Landing Page y Frontend Web App en la matriz LACX: coordinó las tareas de ambos productos, revisó e integró las ramas `feature/*` en `develop` y validó el resultado con el equipo. Preparó y condujo la Sprint Planning 1, en la que se definieron el Sprint Goal, la velocidad de 20 Story Points y los líderes de cada aspecto. En el capítulo V elaboró los User Flow Diagrams y los prototipos de las aplicaciones, que sirvieron de referencia a los demás integrantes al implementar las pantallas. <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Colaboré con mis compañeros para establecer la meta del primer avance y realizar los artefactos de Lean UX Canva para sintetizar lo elaborado del lean ux process por mis compañeros. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Participé de las reuniones y los acuerdos tomados en el chat grupal, continuando con la elaboración de artefactos faltantes y corrección de impact mapping. Además realicé la redacción de la configuración del software, en coordinación con el equipo para la desción de tecnologías a usar en la elaoración de la solución y alineado a la arquitectura propuesta.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Lideró la descripción de la startup (misión y propuesta de valor de Innova Carty) y el diseño de las entrevistas para los dos segmentos objetivo: definió el objetivo, la metodología semiestructurada y las preguntas complementarias y principales que el equipo usó para validar los supuestos del Lean UX Canvas. Elaboró el diagrama de contexto C4 (nivel 1), identificando a los actores y los sistemas externos (Yape/Plin, red de tarjetas y sistema POS) que sirvieron de base para los diagramas de contenedores y de despliegue. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Lideró los Web, Mobile and IoT Style Guidelines, el Organization Systems de la arquitectura de información y el IoT Device Design del Smart Cart: sensores y actuadores sobre ESP32, circuito, estados LED y flujos de interacción, incluido el flujo de alerta por discrepancia de peso. En el Sprint 1 lideró la API fake con json-server y su documentación (US11 y US13), implementó el formulario de solicitud de demo del Landing Page y el refresco automático del dashboard de la consola web, y elaboró las secciones de Services Documentation, Software Deployment y Team Collaboration Insights. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Lideró la síntesis cualitativa de las entrevistas y la elaboración de los Empathy Maps en UXPressia para los dos segmentos objetivo (Comprador Moderno y Administrador de Tienda), estructurando los hallazgos en cuadrantes conductuales (pensamientos, percepciones, dolores y ganancias esperadas). Asimismo, participó activamente en las sesiones conjuntas de modelado de dominio, colaborando en la definición inicial del Big Picture EventStorming y en la delimitación estratégica de los bounded contexts del sistema. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Lideró la definición formal del Context Mapping (sección 4.1.2), modelando en Mermaid y sustentando las relaciones estratégicas entre los cuatro bounded contexts (OHS/PL, Customer/Supplier, Pub/Sub y ACL) y el análisis de alternativas frente a arquitecturas monolíticas o de Shared Kernel. En el capítulo VI lideró la sección 6.1.4 (Software Deployment Configuration), definiendo los procedimientos de CI/CD, configuración de entornos y despliegue del Frontend en Vercel y Backend/Base de Datos en Render vinculados al diagrama C4. Además, consolidó la corrección metodológica de los Empathy Maps alineándolos estrictamente a los arquetipos de User Personas (Juan López y María Fuentes). | **Conclusión general (AV1):** <br> El liderazgo se distribuyó por capítulos y secciones del informe: cada integrante asumió como responsable una parte (perfiles, entrevistas, needfinding, user stories, backlog, EventStorming, bounded contexts, arquitectura) y el resto revisó y complementó su trabajo. Así todos lideraron al menos un entregable y nadie concentró las decisiones del producto. <br><br> **Conclusión general (TB1):** <br> En el TB1 el equipo pasó a un liderazgo por aspectos: en la Sprint Planning 1 se asignó un líder a Landing Page y Frontend Web App, API fake, Testing, Despliegue y Gestión del Sprint, y todos los integrantes colaboraron en los demás aspectos. El diseño táctico de los bounded contexts y el diseño UX/UI también se repartieron por responsable, lo que permitió avanzar en paralelo y mantener la coherencia entre el dominio, las pantallas y el código. <br><br> **Conclusión general (AV2):** <br> En el AV2 el liderazgo se organizó por historia de usuario: en el Sprint Backlog 2 cada integrante quedó a cargo de una historia (TS01, TS02, TS03, US04, US05, US06 y US08), desde la telemetría del carrito hasta el pago. Como todas dependen de la misma API, los responsables acordaron los endpoints y el contrato con el dispositivo, de modo que el carrito, la consola web y la app móvil trabajan sobre el mismo estado del carrito. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **Trillo Hernández, Anghel Melanie (AV1)** <br> Trabajó e integró sus avances mediante pull requests revisados por el equipo. Compartió el análisis de entrevistas y los canvases para que los demás integrantes los usaran como base de las user stories y de la arquitectura, y cumplió sus secciones dentro del plazo del AV1. <br><br> **Trillo Hernández, Anghel Melanie (TB1)** <br> Usó el tablero de Miro como espacio común para que el equipo revisara el EventStorming, los message flows y los canvases. Mantuvo alineados los diagramas con el informe (mismos agregados, eventos, tablas e historias de usuario), organizó sus cambios en commits separados con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Trillo Hernández, Anghel Melanie (AV2)** <br> Ordenó las evidencias del capítulo VI por sprint para que cada integrante sepa dónde agregar sus capturas. Integró sus cambios con commits separados por sección siguiendo Conventional Commits y el flujo GitFlow mediante pull requests, y documentó en el README del backend cómo ejecutar las pruebas para que el resto del equipo pueda correrlas. <br><br> **Paico Calderón, July (AV1)** <br> Planificó y dio seguimiento a tareas transversales del informe, cumpliendo con la elaboración de la carátula, el registro de versiones, los segmentos objetivo, las estrategias frente a competidores, los User Personas, el Product Backlog y los diagramas de contenedores de la arquitectura de software, estableciendo metas claras y cumpliendo los objetivos trazados para el Sprint 1. <br><br> **Paico Calderón, July (TB1)** <br> Planificó y ejecutó la actualización del Sprint Backlog y del Labeling System, además de completar los User Personas del segundo segmento, manteniendo un entorno colaborativo con el equipo para el cumplimiento de los objetivos pendientes de la primera etapa. <br><br> **Crisanto Calle, Deybbi (AV1)** <br> Estableció y cumplió metas vinculadas al diseño centrado en el usuario y a la arquitectura de la solución, completando el análisis competitivo, el User Journey Mapping, el Big Picture EventStorming, los diagramas de despliegue, la capa de dominio y los diagramas de clases de la capa de dominio por bounded context. <br><br> **Crisanto Calle, Deybbi (TB1)** <br> Planificó y gestionó las tareas correspondientes a la evidencia de la suite de pruebas para el Sprint Review, colaborando de forma inclusiva con los demás integrantes para contrastar el trabajo de testing con el backlog del Sprint 1, dejando pendientes de planificación las evaluaciones heurísticas y el video del producto para etapas posteriores. <br><br> **Huanca Navarro, Gustavo Esau (AV1)** <br> Planificó y cumplió dentro del plazo del AV1 las secciones que se le asignaron (perfil, entrevista del primer segmento y diseño táctico del Smart Shopping Bounded Context), integrándolas mediante su rama `feature/gustavo` hacia `develop`. Compartió los diagramas de componentes del contexto para que el resto del equipo mantuviera la misma estructura en los demás bounded contexts. <br><br> **Huanca Navarro, Gustavo Esau (TB1)** <br> Estableció junto al equipo el objetivo del Sprint 1 y registró la planificación (6.2.1.1) y la matriz de líderes y colaboradores (6.2.1.2), de modo que cada integrante supiera qué aspecto lideraba y en cuáles colaboraba. Implementó las secciones de propuesta de valor y "Cómo funciona" del Landing Page (US01) y el inicio de sesión del personal en la consola web (US11), publicó ambos productos en Vercel y documentó la evidencia de desarrollo del sprint (6.2.1.4). <br><br> **Berrocal Ramirez, Omar Christian (Av1)** <br> Trabajé y colaboré con el equipo para cumplir los objetivos y la meta trazada del primer avance, consultando siempre para poder generar un ambiente de familiaridad y empatía entre el equipo. <br><br> **Berrocal Ramirez, Omar Christian (TB1)** <br> Planifiqué junto al equipo los estandares y convenciones a seguir a lo largo del desarrollo del software y tener un panorama claro de lo que se trabajará. Así mismo modifiqué el impact mapping para que se refleje mejor la intención de mejora del problema en meta propuesta para el usuario y los US que nos harán lograrlo.<br><br> **Díaz Fiestas, Jorge Luis (AV1)** <br> Compartió con el equipo el guion de entrevistas para que todos lo aplicaran con el mismo criterio y el análisis y los User Personas partieran de preguntas comunes. Integró sus avances mediante pull requests hacia `develop` y cumplió sus secciones dentro del plazo del AV1. <br><br> **Díaz Fiestas, Jorge Luis (TB1)** <br> Alineó los lineamientos IoT con la paleta de los General Style Guidelines y con el Smart Shopping Bounded Context, para que el diseño del dispositivo usara los mismos estados y eventos que el resto del informe. Documentó los endpoints de la API fake en el README del repositorio para que los integrantes del frontend consumieran los mismos recursos bajo `/api/v1`, organizó sus cambios con Conventional Commits y completó las tareas que se le asignaron en el Sprint Backlog 1. <br><br> **Pardo Chumpitazi, Kevin Patrick (AV1)** <br> Estableció metas de trabajo alineadas a la planificación del equipo para el primer avance, integrando sus aportes mediante su rama de trabajo bajo el flujo GitFlow. Promovió un entorno inclusivo al contrastar los hallazgos de las entrevistas con los compañeros encargados de los User Personas y del backlog, garantizando que las necesidades reales de los usuarios quedaran reflejadas fielmente en los artefactos de needfinding dentro de los plazos establecidos. <br><br> **Pardo Chumpitazi, Kevin Patrick (TB1)** <br> Planificó y ejecutó las tareas asignadas para el cierre del TB1 cumpliendo los estándares de calidad del equipo: gestionó sus contribuciones en la rama `feature/kevin-points` mediante Conventional Commits, coordinó en el chat grupal la alineación de la cuota mínima de entrevistas según la rúbrica y levantó las observaciones del feedback docente en los mapas de empatía y la configuración de despliegue. Integró sus cambios a través de Pull Requests revisados y validados, asegurando la consistencia entre los diagramas y la documentación final del entregable. | **Conclusión general (AV1):** <br> El equipo estableció como meta entregar los primeros capítulos del informe. Se coordinó por Discord, registró en el informe al responsable de cada sección, trabajó con GitFlow (una rama `feature/*` por integrante y pull requests hacia `develop`) y usó Miro para las sesiones colaborativas de EventStorming. Con estas prácticas se cumplió la entrega del AV1. <br><br> **Conclusión general (TB1):** <br> Para el TB1 el equipo fijó el Sprint Goal de publicar el Landing Page y la primera versión de la consola web, planificó el Sprint 1 con una velocidad de 20 Story Points y gestionó las tareas en Jira. Adoptó Conventional Commits y la revisión de cambios antes de integrarlos a `develop`, y completó los Story Points comprometidos, además de los capítulos de arquitectura y diseño UX/UI. <br><br> **Conclusión general (AV2):** <br> Para el AV2 el equipo se propuso integrar la solución de punta a punta en el Sprint 2: reemplazar la API fake por el backend en Spring Boot con Supabase desplegado en Render, conectar la consola web, desarrollar la app móvil e integrar el prototipo físico del carrito. Mantuvo GitFlow con ramas `feature/*` integradas a `develop` y luego a main mediante pull requests, documentó la API con OpenAPI y agregó pruebas automatizadas al backend, que permitieron detectar y corregir un error antes de la entrega. |
 
 <div style="page-break-after: always;"></div>
 
@@ -4350,31 +4424,31 @@ El Landing Page es una sola página con una barra de navegación fija. Los enlac
 
 **1. Hero.** Es la primera vista al ingresar. Presenta el mensaje principal ("Shop smart. Pay instantly. Skip the line."), una descripción breve del carrito inteligente y dos llamadas a la acción por segmento: **Get the app** para el comprador e **I run a supermarket** para el supermercado. El enlace *Discover the solution* baja a la siguiente sección.
 
-![Landing Page - Hero](assets/chapter6/execution-evidence/landing1.png)
+![Landing Page - Hero](assets/chapter-6/sprint-1/execution-evidence/landing1.png)
 
 **2. Cifras de impacto y "How it works".** Muestra los indicadores que respaldan la propuesta (−30 % de tiempo de espera, menos de 60 s del QR a la salida, −50 % de salidas no verificadas y telemetría 24/7) y explica el uso en cuatro pasos: vincular el carrito, fijar un presupuesto, colocar los productos y pagar con Yape o Plin.
 
-![Landing Page - How it works](assets/chapter6/execution-evidence/landing2.png)
+![Landing Page - How it works](assets/chapter-6/sprint-1/execution-evidence/landing2.png)
 
 **3. Beneficios por segmento.** Separa los beneficios para compradores (sin colas, control del presupuesto, comprobantes digitales) y para operadores de tienda (consola en vivo, validación de peso y RFID, bloqueo por geofencing). Cada tarjeta termina en una acción: **Get the app** o **See the operations console**, que abre la Web Application.
 
-![Landing Page - Benefits](assets/chapter6/execution-evidence/landing3.png)
+![Landing Page - Benefits](assets/chapter-6/sprint-1/execution-evidence/landing3.png)
 
 **4. Producto.** Presenta el hardware del Smart Cart: lector RFID UHF, celdas de carga, pantalla de 10" y freno inteligente de ruedas, junto al espacio del video About-the-Product.
 
-![Landing Page - Product](assets/chapter6/execution-evidence/landing4.png)
+![Landing Page - Product](assets/chapter-6/sprint-1/execution-evidence/landing4.png)
 
 **5. App para compradores y sección para supermercados.** Anuncia la app móvil con los botones de Google Play y App Store, y abre la sección *For supermarkets* con el formulario de solicitud de demo.
 
-![Landing Page - App for shoppers](assets/chapter6/execution-evidence/landing5.png)
+![Landing Page - App for shoppers](assets/chapter-6/sprint-1/execution-evidence/landing5.png)
 
 **6. Solicitud de demo y preguntas frecuentes.** El formulario pide razón social, RUC, correo corporativo, número estimado de carritos y un mensaje, y exige aceptar la Política de Privacidad antes de enviar con **Request a demonstration** (US02). A la izquierda, las preguntas frecuentes se despliegan como acordeón.
 
-![Landing Page - Request a demo](assets/chapter6/execution-evidence/landing6.png)
+![Landing Page - Request a demo](assets/chapter-6/sprint-1/execution-evidence/landing6.png)
 
 **7. Equipo y pie de página.** Presenta a los siete integrantes del equipo. El pie de página repite los enlaces del producto, da acceso a la consola de operaciones (*Operations console*) y a las páginas de Términos y Condiciones y Política de Privacidad (US03), además del correo de contacto.
 
-![Landing Page - Team and footer](assets/chapter6/execution-evidence/landing7.png)
+![Landing Page - Team and footer](assets/chapter-6/sprint-1/execution-evidence/landing7.png)
 
 ##### Frontend Web Application (consola de operaciones)
 
@@ -4382,39 +4456,39 @@ Se ingresa a la consola desde el botón **See the operations console** o el enla
 
 **1. Inicio de sesión.** El personal de tienda ingresa con su correo de trabajo y contraseña. El acceso está restringido al personal autorizado y la actividad queda registrada para auditoría; para la revisión del sprint se muestra una cuenta de demostración.
 
-![Web App - Sign in](assets/chapter6/execution-evidence/app1.png)
+![Web App - Sign in](assets/chapter-6/sprint-1/execution-evidence/app1.png)
 
 **2. Dashboard.** Es la vista de inicio. Resume los carritos activos, las alertas abiertas, el tiempo promedio de pago y las pérdidas evitadas; muestra las sesiones activas por hora, las alertas en vivo y el estado de la flota. Se refresca cada 5 segundos (US11). Desde *Live alerts* se abre directamente el carrito afectado.
 
-![Web App - Dashboard](assets/chapter6/execution-evidence/app2.png)
+![Web App - Dashboard](assets/chapter-6/sprint-1/execution-evidence/app2.png)
 
 **3. Carritos.** Lista todos los carritos con su estado, número de productos, total, presupuesto, zona, último evento, alertas y batería. Los filtros por estado (*In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Available*, *Offline*) y la búsqueda por carrito, orden o zona permiten encontrar un carrito; los que requieren atención se resaltan. Al hacer clic en una fila se abre su detalle.
 
-![Web App - Carts](assets/chapter6/execution-evidence/app3.png)
+![Web App - Carts](assets/chapter-6/sprint-1/execution-evidence/app3.png)
 
 **4. Alertas.** Agrupa las alertas abiertas por tipo (geofence, peso, RFID y dispositivos) y conserva las resueltas. Cada alerta explica qué ocurrió y ofrece una acción para ir al carrito (*Open cart*, *Go to exit*, *Locate*) o marcarla como atendida (*Acknowledge*).
 
-![Web App - Alerts](assets/chapter6/execution-evidence/app4.png)
+![Web App - Alerts](assets/chapter-6/sprint-1/execution-evidence/app4.png)
 
 **5. Detalle del carrito con discrepancia de peso.** Al abrir el carrito con alerta de peso se compara el peso esperado según las lecturas RFID con el peso medido, la diferencia y la tolerancia; el pago queda en pausa. El supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también el comprador, el total frente al presupuesto, la línea de tiempo de la sesión y los productos del carrito. *Back to carts* regresa a la lista.
 
-![Web App - Cart detail with weight discrepancy](assets/chapter6/execution-evidence/app6.png)
+![Web App - Cart detail with weight discrepancy](assets/chapter-6/sprint-1/execution-evidence/app6.png)
 
 **6. Detalle del carrito bloqueado en la salida.** Cuando un carrito cruza la salida sin autorización de pago, la consola muestra la salida bloqueada con las ruedas trabadas, el monto pendiente y la línea de tiempo del cruce. El supervisor verifica la situación y desbloquea el carrito o lo marca para auditoría.
 
-![Web App - Locked cart detail](assets/chapter6/execution-evidence/app9.png)
+![Web App - Locked cart detail](assets/chapter-6/sprint-1/execution-evidence/app9.png)
 
 **7. Catálogo y tolerancias de peso.** Lista los productos con su SKU, categoría, prefijo de etiqueta RFID, precio, peso nominal y tolerancia, y resalta las tolerancias mayores a 5 %. Permite buscar por nombre, SKU o etiqueta, filtrar por categoría y ver la hora de la última sincronización con los carritos (US13).
 
-![Web App - Catalog](assets/chapter6/execution-evidence/app5.png)
+![Web App - Catalog](assets/chapter-6/sprint-1/execution-evidence/app5.png)
 
 **8. Edición de peso nominal y tolerancia.** El ícono de lápiz abre el modal de edición del producto. Al cambiar el peso nominal o la tolerancia, el modal calcula el rango permitido y advierte que al guardar (**Save and sync**) la nueva regla se envía al gateway edge y a los carritos.
 
-![Web App - Edit product](assets/chapter6/execution-evidence/app7.png)
+![Web App - Edit product](assets/chapter-6/sprint-1/execution-evidence/app7.png)
 
 **9. Registro de producto.** El botón **Add product** abre el mismo formulario vacío. Los campos se validan antes de guardar; por ejemplo, el SKU debe tener el formato `SKU-00000`.
 
-![Web App - Add product](assets/chapter6/execution-evidence/app8.png)
+![Web App - Add product](assets/chapter-6/sprint-1/execution-evidence/app8.png)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
@@ -4568,6 +4642,526 @@ Como mejora para el Sprint 2, el equipo acordó hacer commits más pequeños y f
 <div style="page-break-after: always;"></div>
 
 ---
+
+### 6.2.2. Sprint 2
+
+#### 6.2.2.1. Sprint Planning 2
+
+
+#### 6.2.2.2. Aspect Leaders and Collaborators
+
+#### 6.2.2.3. Sprint Backlog 2
+
+| User Story ID | Título | Story Points | Asignado a | Estado |
+| :---: | :--- | :---: | :--- | :---: |
+| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | To Do |
+| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | To Do |
+| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | To Do |
+| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | To Do |
+| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | To Do |
+| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | To Do |
+| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | To Do |
+
+#### 6.2.2.4. Development Evidence for Sprint Review
+
+En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios reales en Spring Boot y agregó la aplicación móvil, de modo que el carrito inteligente, la consola web y la app trabajan sobre la misma plataforma:
+
+* **Backend (Web Services)** (TS01, TS02, US04, US05, US06, US08): API RESTful en Spring Boot 3.5 con Java 21, Spring Data JPA y PostgreSQL en **Supabase**, desplegada en **Render** con Docker. Está organizada por bounded context (`iam`, `catalog`, `monitoring`, `payment`, `shopping`, `devices` y `shared`) y documentada con OpenAPI en Swagger UI.
+  * **TS01 (telemetría del dispositivo edge):** el ESP32 del carrito reporta sus tags RFID, el peso estable, la batería y la zona con `PUT /api/v1/devices/carts/{id}/state`, envía eventos (`GEOFENCE`, `CHECKOUT`, `CARD_PAYMENT`, `LOCAL_UNLOCK`, etc.) con `POST /api/v1/devices/carts/{id}/events` y consulta su estado cada 2 s con `GET /api/v1/devices/carts/{id}`. Las llamadas se autentican con la cabecera `X-Device-Key`.
+  * **US06 (registro automático por RFID):** al recibir los tags, el backend los empareja con el catálogo, abre la sesión de compra si no existe y recalcula el total, el peso esperado y la tolerancia. Si el peso medido sale de la tolerancia, el carrito pasa a `DISCREPANCY` y se genera una alerta.
+  * **TS02 (órdenes de compra):** cada compra se registra como una **sesión de compra** (`ShoppingSession`, id `ORD-…`) con sus productos, total y estado (`ACTIVE`, `PAID`, `CANCELLED`). El administrador las consulta en `/api/v1/shopping-sessions` y el comprador en `/api/v1/me/sessions`.
+  * **US05 (total acumulado) y US04 (presupuesto):** el comprador vincula el carrito escaneando su QR (`POST /api/v1/me/cart`), ve el total en vivo (`GET /api/v1/me/cart`) y fija su presupuesto (`PATCH /api/v1/me/cart`).
+  * **US08 (pago autónomo con QR):** el comprador paga la sesión abierta con Yape, Plin o tarjeta (`POST /api/v1/payments`). En este sprint el pago es **simulado**: genera un código de operación, deja la sesión en `PAID` y el carrito habilita la salida en su siguiente consulta.
+  * **TS03 (webhook de pagos externos):** como los pagos se simulan dentro de la propia API, en este sprint no se expone un webhook para una pasarela externa. La confirmación del pago la hace `POST /api/v1/payments` y la recibe el carrito por su heartbeat.
+* **Frontend Web Application:** la consola de operaciones deja la API fake y apunta al backend en Render (`apiBaseUrl`). Envía el JWT en cada solicitud, cierra la sesión cuando vence y solo deja entrar a cuentas de personal (`ADMIN`). Se agregó el cambio de idioma ES/EN y la identificación del prototipo físico `CART-0427`.
+* **Mobile Application:** nueva app en Flutter con dos vistas según el rol del inicio de sesión. El **comprador** se registra, vincula el carrito con su QR, ve los productos y el total en vivo, fija su presupuesto, paga escaneando el QR de pago del carrito y consulta sus comprobantes. El **administrador** ve la flota en vivo, las alertas y el detalle del carrito con la verificación de peso, y lo desbloquea con su PIN.
+* **Landing Page:** mejoras de interacción (estados *hover* en botones y enlaces, animación del carrito del hero).
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | IAM (sign-in, registro de compradores y PIN de supervisor con JWT), Monitoring compatible con el contrato de la API fake, gateway de dispositivos ESP32, pagos simulados Yape / Plin / tarjeta, endpoints "Mi carrito" para la app, datos demo, Swagger UI, Dockerfile y blueprint de Render. | 10/11/2026 |
+| innova-carty-backend | main | `f1c38a9` | fix: close a paid order when the cart restarts | Sin cuerpo. Cierra la sesión pagada cuando el carrito se reinicia. | 10/11/2026 |
+| innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Renombra al español los productos demo, los ítems de las órdenes guardadas y los títulos de eventos al iniciar (idempotente). | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Apunta `apiBaseUrl` a la API en Render, envía el JWT en cada request, solo permite cuentas ADMIN, conserva la API fake en `npm run start:fake` y elimina la función fake de Vercel. | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Español por defecto con selector ES / EN, textos de la API y estados traducidos, distintivo del prototipo físico y prefijo RFID compatible con UIDs NTAG215. | 10/11/2026 |
+| innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Login donde el rol decide la vista, registro de comprador, "Mi carrito" (vincular con QR, productos en vivo, presupuesto, pago simulado y comprobantes) y vista de administrador (flota, alertas, detalle y desbloqueo con PIN). | 10/11/2026 |
+| innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Español por defecto con selector ES / EN guardado en el teléfono, textos de la API en español y distintivo del prototipo físico. | 10/11/2026 |
+| innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Botón QR junto a Pagar: lee `INNOVACARTY\|CART-0427\|PAY\|total`, vincula el carrito si hace falta y abre Yape / Plin / tarjeta (US08). | 10/11/2026 |
+| innova-carty-landing-page | feature/melanie | `3105e22` | feat: add hover states to buttons | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `b2bb00c` | feat: add hover state to hero chip | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `0d55fab` | feat: animate hero cart illustration | Sin cuerpo. | 07/10/2026 |
+| innova-carty-landing-page | feature/melanie | `cb44063` | feat: add hover lift to navigation and language links | Sin cuerpo. Integrado a `main` con el PR #1. | 07/10/2026 |
+
+#### 6.2.2.5. Testing Suite Evidence for Sprint Review
+
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Para los Web Services se agregaron Unit Tests con JUnit 5 y Mockito sobre las reglas de dominio del carrito y los pagos, y Acceptance Tests bajo el enfoque BDD con Cucumber: los archivos `.feature` en Gherkin describen los escenarios de las historias del sprint y los Steps en Java llaman a la API como lo hacen sus tres clientes (el carrito con `X-Device-Key`, la app del comprador y la consola web). Todos los tests del backend se ejecutan con `mvn test` (40 tests: 25 unit tests y 15 escenarios).
+
+**Unit Tests**
+
+| Clase / Componente | Comportamiento probado | User Story | Repositorio |
+| :--- | :--- | :---: | :--- |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Abre una orden `ACTIVE` vinculada al carrito y la cancela al cerrar la sesión sin pago | TS02 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Empareja los tags RFID con el catálogo (gana el prefijo más largo), ignora tags desconocidos, recalcula total, cantidad, peso esperado y tolerancia, y quita el producto cuyo tag ya no se lee | US06, US05 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Pasa el carrito a `DISCREPANCY` y genera una alerta `WEIGHT` si el peso sale de la tolerancia; acepta diferencias dentro de la tolerancia y vuelve a `IN_SESSION` al corregirse | US06 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Guarda el presupuesto en la orden y el carrito y rechaza uno negativo | US04 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Solo permite pagar carritos con productos, sin discrepancia y sin pago previo; al pagar deja orden y carrito en `PAID`; bloquea las ruedas con alerta `GEOFENCE` crítica si un carrito sin pagar llega a la salida | US08 | innova-carty-backend |
+| `CartLifecycleService` (`CartLifecycleServiceTest`) | Vincula la app del comprador a la orden abierta; rechaza carritos de otro comprador o desconectados | US05 | innova-carty-backend |
+| `PaymentService` (`PaymentServiceTest`) | Aprueba el pago del comprador vinculado con código de operación de 8 dígitos y el total de la orden; rechaza métodos desconocidos, carritos de otro comprador y carritos que no se pueden pagar; cobra la tarjeta del carrito al comprador vinculado | US08, TS03 | innova-carty-backend |
+| `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
+| Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
+| `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
+| `I18n` y `translateServerText` (`shared/i18n/i18n.spec.ts`) | Inicia en español y cambia a inglés; ambos idiomas tienen las mismas claves; traduce los textos que escriben la API y los carritos (eventos, alertas, zonas) y conserva los nombres de producto | — | innova-carty-frontend-web-app |
+| `parseCartId` / `parseCartQr` (`test/widget_test.dart`) | Lee el id del carrito desde los distintos formatos de QR, distingue el QR de vinculación del QR de pago e ignora QR que no son de un carrito | US05, US08 | innova-carty-mobile-app |
+| Formato de montos (`test/widget_test.dart`) | Muestra los soles con dos decimales | US05 | innova-carty-mobile-app |
+| Vista según rol (`test/widget_test.dart`) | El rol del inicio de sesión (`SHOPPER` o `ADMIN`) decide la vista de la app | US11 | innova-carty-mobile-app |
+| Idiomas (`test/widget_test.dart`) | Español por defecto e inglés con el selector; textos de la API en español; mismas claves en ambos idiomas | — | innova-carty-mobile-app |
+
+**Acceptance Tests (BDD - Gherkin)**
+
+Los escenarios se escribieron a partir de los criterios de aceptación de 3.1 y se ejecutan contra la API completa con la base H2 en memoria y los datos de demostración (productos del prototipo con sus tags NTAG215 y cuentas demo). Los Steps están en `src/test/java/com/innovacarty/platform/acceptance/SmartCartSteps.java` y el reporte se genera en `target/cucumber-report.html`.
+
+**TS01** · `src/test/resources/features/ts01_telemetria_dispositivo_edge.feature`
+
+```gherkin
+Feature: Recepción e ingesta de telemetría desde el dispositivo edge (TS01)
+  Como plataforma de Innova Carty
+  Quiero recibir el estado y los eventos que envía el ESP32 de cada carrito
+  Para mantener actualizado el estado del carrito para la consola, la app y el propio carrito
+
+  Scenario: El carrito reporta su estado con una clave de dispositivo válida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    Then la respuesta tiene el código 200
+    And el carrito queda en estado "IN_SESSION"
+
+  Scenario: Se rechaza la telemetría con una clave de dispositivo inválida
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta su estado con la clave de dispositivo "clave-incorrecta"
+    Then la respuesta tiene el código 401
+
+  Scenario: El carrito cruza la salida sin pagar
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el carrito reporta el evento "GEOFENCE" en la zona "Salida 1"
+    Then el carrito queda en estado "LOCKED"
+    And la consola muestra una alerta "GEOFENCE" abierta para el carrito
+```
+
+**US06** · `src/test/resources/features/us06_registro_automatico_rfid.feature`
+
+```gherkin
+Feature: Registro automático de artículo mediante lectura RFID (US06)
+  Como comprador moderno
+  Quiero que los productos que coloco en el carrito se registren solos
+  Para no tener que escanear cada artículo
+
+  Scenario: Los tags leídos se registran como productos del catálogo
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    Then el carrito tiene 3 productos y un total de S/ 9.80
+
+  Scenario: Un tag que no está en el catálogo no se cobra
+    Given un carrito inteligente nuevo conectado a la tienda
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 04FFFFFFFFFFFF | 1        |
+    Then el carrito tiene 1 productos y un total de S/ 4.80
+
+  Scenario: El peso no coincide con los productos leídos
+    Given un carrito inteligente nuevo conectado a la tienda
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    When la celda de carga reporta un peso estable de 1700 g
+    Then el carrito queda en estado "DISCREPANCY"
+    And la consola muestra una alerta "WEIGHT" abierta para el carrito
+```
+
+**US05** · `src/test/resources/features/us05_total_acumulado.feature`
+
+```gherkin
+Feature: Visualización dinámica del total acumulado (US05)
+  Como comprador moderno
+  Quiero ver en mi celular los productos y el total de mi carrito en tiempo real
+  Para controlar cuánto voy gastando
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: El comprador vincula el carrito y ve su total
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    When el comprador vincula el carrito escaneando su QR
+    And el comprador consulta su carrito
+    Then la app muestra 1 productos y un total de S/ 4.80
+
+  Scenario: El total se actualiza al agregar productos
+    Given el comprador vincula el carrito escaneando su QR
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador consulta su carrito
+    Then la app muestra 3 productos y un total de S/ 9.80
+```
+
+**US04** · `src/test/resources/features/us04_presupuesto_limite.feature`
+
+```gherkin
+Feature: Configuración de presupuesto límite de compra (US04)
+  Como comprador moderno
+  Quiero fijar un presupuesto para mi compra
+  Para no gastar más de lo planeado
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: El comprador fija su presupuesto
+    When el comprador fija un presupuesto de S/ 50.00
+    Then la respuesta tiene el código 200
+    And el presupuesto del carrito es S/ 50.00
+
+  Scenario: No se acepta un presupuesto negativo
+    When el comprador fija un presupuesto de S/ -10.00
+    Then la respuesta tiene el código 409
+```
+
+**US08** · `src/test/resources/features/us08_pago_autonomo_qr.feature`
+
+```gherkin
+Feature: Liquidación de orden y pago autónomo con QR dinámico (US08)
+  Como comprador moderno
+  Quiero pagar mi compra desde la app escaneando el QR del carrito
+  Para salir de la tienda sin pasar por caja
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: Pago aprobado con Yape
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 201
+    And el pago queda aprobado por S/ 9.80 con un código de operación de 8 dígitos
+    And el carrito queda en estado "PAID"
+
+  Scenario: El pago se pausa si hay una discrepancia de peso
+    Given la celda de carga reporta un peso estable de 1700 g
+    When el comprador paga con "PLIN"
+    Then la respuesta tiene el código 409
+
+  Scenario: Una orden pagada no se cobra dos veces
+    Given el comprador paga con "YAPE"
+    When el comprador paga con "YAPE"
+    Then la respuesta tiene el código 409
+```
+
+**TS02** · `src/test/resources/features/ts02_ordenes_compra.feature`
+
+```gherkin
+Feature: Creación y consulta de órdenes de compra (TS02)
+  Como plataforma de Innova Carty
+  Quiero registrar cada compra como una orden con sus productos y su total
+  Para que el comprador y el administrador puedan consultarla
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+
+  Scenario: La orden se crea al leer el primer producto
+    When el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el administrador consulta las órdenes de compra del carrito
+    Then la orden aparece con estado "ACTIVE", 2 líneas de producto y un total de S/ 9.80
+
+  Scenario: El comprador consulta su orden pagada
+    Given el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+    And el comprador vincula el carrito escaneando su QR
+    And el comprador paga con "PLIN"
+    When el comprador consulta sus compras
+    Then la orden aparece con estado "PAID", 1 líneas de producto y un total de S/ 4.80
+```
+
+Al ejecutarse por primera vez, 7 escenarios fallaron y revelaron un error del backend: al crear una orden nueva, los cambios hechos en la misma petición (los productos de la primera lectura o el comprador que vincula un carrito vacío) no se guardaban. Se corrigió en `CartLifecycleService.startSession` y los 15 escenarios pasaron.
+
+Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban; en el backend se subieron en commits propios:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Actualiza `auth.service.spec.ts` para el inicio de sesión con JWT y el rechazo de cuentas de comprador. | 10/11/2026 |
+| innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Agrega `i18n.spec.ts` (cambio de idioma y traducción de los textos de la API). | 10/11/2026 |
+| innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Agrega `test/widget_test.dart` (lectura del QR, formato de soles y vista según rol). | 10/11/2026 |
+| innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Agrega las pruebas de idiomas. | 10/11/2026 |
+| innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Agrega la prueba que distingue el QR de vinculación del QR de pago (US08). | 10/11/2026 |
+| innova-carty-backend | main | `730c2ac` | fix: keep the new shopping session managed so its first changes are saved | El id de la orden es asignado, así que `save()` hace merge y devuelve una copia gestionada; se trabajaba sobre el objeto original y se perdían los productos leídos en la misma petición o el comprador vinculado a un carrito vacío. Detectado por los acceptance tests. | 10/11/2026 |
+| innova-carty-backend | main | `64fdfba` | test: add unit tests for CartLifecycleService and PaymentService | Orden, productos RFID y total, verificación de peso, presupuesto, reglas de pago, bloqueo por geofence y vinculación de la app (TS02, US04, US05, US06, US08); pagos simulados Yape / Plin / tarjeta (US08). | 10/11/2026 |
+| innova-carty-backend | main | `3292caf` | test: add acceptance tests for the sprint 2 user stories | Features en Gherkin para TS01, TS02, US04, US05, US06 y US08 con steps de Cucumber que llaman a la API como el carrito, la app del comprador y la consola web. | 10/11/2026 |
+
+#### 6.2.2.6. Execution Evidence for Sprint Review
+
+En el Sprint 2 Innova Carty funciona de punta a punta con datos reales: el carrito físico (`CART-0427`, ESP32 con lector RFID y celda de carga) envía los productos que lee al backend en Render; el comprador vincula el carrito desde la app móvil, ve su total en vivo, fija un presupuesto y paga; y el administrador supervisa la flota desde la consola web o la vista de administrador de la app, atiende las alertas y desbloquea carritos con su PIN. A continuación se muestran las vistas principales en el orden en que se navegan.
+
+##### Frontend Web Application (consola de operaciones)
+
+**1. Inicio de sesión contra el backend.** La consola ahora valida las credenciales con la API en Render y solo deja entrar a cuentas de personal (`ADMIN`); las cuentas de comprador usan la app móvil. El recuadro inferior muestra la cuenta de demostración con su PIN de supervisor para la revisión del sprint.
+
+![Web App - Sign in](assets/chapter-6/sprint-2/execution/web-sign-in.png)
+
+**2. Dashboard.** Después de iniciar sesión, el Dashboard muestra los indicadores de la tienda (carritos activos, alertas abiertas, tiempo promedio de pago y pérdidas evitadas), las sesiones activas por hora, las alertas en vivo y el estado de la flota. Los datos vienen de los endpoints `/api/v1/stores`, `/api/v1/carts`, `/api/v1/alerts` y `/api/v1/session-stats` del backend, y la vista se refresca cada 5 segundos.
+
+![Web App - Dashboard](assets/chapter-6/sprint-2/execution/web-dashboard.png)
+
+**3. Detalle del carrito.** El detalle de `CART-0427` compara el peso esperado según los productos leídos por RFID con el peso medido, la diferencia y la tolerancia; como la diferencia supera la tolerancia, el pago queda en pausa y el supervisor puede **Verify and unlock** con su PIN o **Add audit flag**. La vista muestra también al comprador, el total frente al presupuesto fijado desde la app (US04, US05), la línea de tiempo de la sesión y los productos de la orden con su tag RFID (US06, TS02).
+
+![Web App - Detalle del carrito](assets/chapter-6/sprint-2/execution/web-cart-detail.png)
+
+#### 6.2.2.7. Services Documentation Evidence for Sprint Review
+
+En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre doce grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.
+
+* **Swagger UI (desplegado):** https://innova-carty-backend.onrender.com/swagger-ui.html
+* **Especificación OpenAPI (JSON):** https://innova-carty-backend.onrender.com/v3/api-docs
+* **Swagger UI (local):** http://localhost:8080/swagger-ui.html (`mvn spring-boot:run`, base H2 en memoria con datos demo)
+* **Repositorio de Web Services:** https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend
+
+**Seguridad.** Los endpoints de personal y comprador usan un **JWT** (HS256) que devuelve `POST /api/v1/authentication/sign-in`; en Swagger UI se pega en **Authorize** (esquema `bearer`). Los endpoints del carrito usan la cabecera `X-Device-Key` (esquema `deviceKey`). En el plan gratuito de Render el servicio se suspende tras 15 minutos sin uso y la primera solicitud tarda alrededor de un minuto.
+
+**Endpoints documentados en el Sprint 2**
+
+| Recurso | Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Ejemplo de request | Ejemplo de response | User Story |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| Authentication | Iniciar sesión (personal o comprador) | `POST` | `/api/v1/authentication/sign-in` | Body: `email`, `password` | `{"email":"lucia.medina@retailco.pe","password":"****"}` | `200` con `id`, `email`, `fullName`, `role` (`ADMIN` o `SHOPPER`), `jobTitle`, `storeId` y `token`; `401` si las credenciales no coinciden | US11 |
+| Authentication | Registrar un comprador | `POST` | `/api/v1/authentication/sign-up` | Body: `fullName`, `email`, `password` | `{"fullName":"Camila Ríos","email":"camila.rios@gmail.com","password":"****"}` | `201` con el usuario `SHOPPER` y su `token`; `409` si el correo ya existe o los datos no son válidos | US05 |
+| Authentication | Verificar el PIN del supervisor | `POST` | `/api/v1/authentication/verify-pin` | Body: `userId`, `pin` | `{"userId":1,"pin":"****"}` | `204` si el PIN es correcto; `403` si no | US11 |
+| Devices | Heartbeat del carrito | `GET` | `/api/v1/devices/carts/{cartId}` | `cartId` (path); cabecera `X-Device-Key` | `GET /api/v1/devices/carts/CART-0427` | `200` con `cartId`, `status`, `sessionId`, `shopper`, `itemsCount`, `total`, `budget`, `paid`, `locked` | TS01 |
+| Devices | Reportar tags RFID, peso, batería y zona | `PUT` | `/api/v1/devices/carts/{cartId}/state` | `cartId` (path); body: `items[{tag, quantity}]`, `measuredWeight` (g, `-1` sin celda), `battery`, `zone` | `{"items":[{"tag":"04A1B2C3D4E580","quantity":1}],"measuredWeight":1032,"battery":87,"zone":"Pasillo 3"}` | `200` con el estado del carrito; abre la sesión, recalcula total y peso esperado, y pasa a `DISCREPANCY` si el peso sale de la tolerancia | TS01, US06 |
+| Devices | Reportar un evento del carrito | `POST` | `/api/v1/devices/carts/{cartId}/events` | `cartId` (path); body: `type` (`BOOT`, `GEOFENCE`, `HELP`, `CHECKOUT`, `CHECKOUT_CANCELLED`, `CARD_PAYMENT`, `LOCAL_UNLOCK`, `UNKNOWN_TAG`, `EXIT`), `detail`, `zone` | `{"type":"GEOFENCE","detail":"Puerta 1","zone":"Salida 1"}` | `200` con el estado del carrito; con `GEOFENCE` sin pago el carrito queda `LOCKED` y se genera una alerta crítica | TS01 |
+| My cart | Vincular el carrito a la app | `POST` | `/api/v1/me/cart` | Body: `cartId` (leído del QR) | `{"cartId":"CART-0427"}` | `200` con `cart` y `session`; `409` si el carrito está offline o vinculado a otro comprador | US05 |
+| My cart | Ver el carrito vinculado en vivo | `GET` | `/api/v1/me/cart` | — (JWT del comprador) | `GET /api/v1/me/cart` | `200` con `cart` (estado, total, presupuesto) y `session` (productos, total, peso esperado); `404` si no hay carrito vinculado | US05, US06 |
+| My cart | Fijar el presupuesto | `PATCH` | `/api/v1/me/cart` | Body: `budget` (`0` = sin presupuesto) | `{"budget":50.0}` | `200` con el carrito y la sesión actualizados; `409` si es negativo | US04 |
+| My cart | Desvincular el carrito | `DELETE` | `/api/v1/me/cart` | — | `DELETE /api/v1/me/cart` | `204` | US05 |
+| My cart | Mis compras | `GET` | `/api/v1/me/sessions` | — | `GET /api/v1/me/sessions` | `200` con las sesiones del comprador (`id` `ORD-…`, `items`, `total`, `status`) | TS02 |
+| My cart | Mis pagos (comprobantes) | `GET` | `/api/v1/me/payments` | — | `GET /api/v1/me/payments` | `200` con los pagos del comprador | US08 |
+| Payments | Pagar la sesión abierta de un carrito | `POST` | `/api/v1/payments` | Body: `cartId`, `method` (`YAPE`, `PLIN`, `CARD`) | `{"cartId":"CART-0427","method":"YAPE"}` | `201` con `id`, `operationCode` (8 dígitos), `cartId`, `sessionId`, `method`, `amount`, `status: "APPROVED"`, `paidAt`; el carrito pasa a `PAID`. `400` método inválido, `403` carrito no vinculado, `409` carrito vacío, bloqueado, en discrepancia o ya pagado | US08, TS03 |
+| Payments | Listar pagos | `GET` | `/api/v1/payments` | `cartId` (opcional) | `GET /api/v1/payments?cartId=CART-0427` | `200` con los pagos ordenados del más reciente al más antiguo | US08 |
+| Shopping sessions | Listar órdenes de compra | `GET` | `/api/v1/shopping-sessions` | `cartId` (opcional) | `GET /api/v1/shopping-sessions?cartId=CART-0427` | `200` con las sesiones del carrito | TS02 |
+| Shopping sessions | Ver una orden de compra | `GET` | `/api/v1/shopping-sessions/{id}` | `id` (path) | `GET /api/v1/shopping-sessions/ORD-20261110-0427` | `200` con `items`, `total`, `budget`, `expectedWeight`, `measuredWeight`, `weightTolerance`, `status`; `404` si no existe | TS02 |
+| Shopping sessions | Actualizar una orden | `PATCH` | `/api/v1/shopping-sessions/{id}` | `id` (path); body con los campos a cambiar | `{"status":"CANCELLED"}` | `200` con la sesión actualizada | TS02 |
+| Carts | Listar los carritos | `GET` | `/api/v1/carts` | `status` (opcional) | `GET /api/v1/carts?status=DISCREPANCY` | `200` con `id`, `status`, `zone`, `itemsCount`, `total`, `budget`, `lastEvent`, `battery`, `sessionId` | US11 |
+| Carts | Ver un carrito | `GET` | `/api/v1/carts/{id}` | `id` (path) | `GET /api/v1/carts/CART-0427` | `200` con el carrito; `404` si no existe | US11 |
+| Carts | Registrar un carrito | `POST` | `/api/v1/carts` | Body con `id` y datos del carrito | `{"id":"CART-0428","zone":"Entrada"}` | `201` con el carrito en `AVAILABLE`; `409` si ya existe | US11 |
+| Carts | Actualizar un carrito | `PATCH` | `/api/v1/carts/{id}` | `id` (path); body: `status`, `zone`, `lastEvent`, `battery`, `total`, `budget`… | `{"zone":"Pasillo 2"}` | `200` con el carrito actualizado | US11 |
+| Carts | Desbloquear con PIN | `POST` | `/api/v1/carts/{id}/unlock` | `id` (path); body: `pin`, `resolution`, `note` | `{"pin":"****","resolution":"Producto verificado en persona"}` | `200` con el carrito en sesión; resuelve sus alertas y registra el log de auditoría. `403` PIN incorrecto, `409` si no está bloqueado | US11 |
+| Carts | Cerrar la sesión del carrito | `POST` | `/api/v1/carts/{id}/finish` | `id` (path) | `POST /api/v1/carts/CART-0427/finish` | `200` con el carrito disponible otra vez | TS02 |
+| Carts | Eliminar un carrito | `DELETE` | `/api/v1/carts/{id}` | `id` (path) | `DELETE /api/v1/carts/CART-0428` | `204` | US11 |
+| Alerts | Listar alertas | `GET` | `/api/v1/alerts` | `cartId`, `status`, `_order` (opcionales) | `GET /api/v1/alerts?status=OPEN&_order=desc` | `200` con `id`, `cartId`, `type` (`GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE`), `severity`, `status` | US11 |
+| Alerts | Ver / crear / atender una alerta | `GET` / `POST` / `PATCH` | `/api/v1/alerts/{id}`, `/api/v1/alerts` | `id` (path); body de la alerta o `status` | `PATCH /api/v1/alerts/1` · `{"status":"ACKNOWLEDGED"}` | `200` / `201` con la alerta | US11 |
+| Cart events | Línea de tiempo del carrito | `GET` / `POST` | `/api/v1/cart-events` | `cartId`, `_order`, `_limit`; body del evento | `GET /api/v1/cart-events?cartId=CART-0427&_order=desc&_limit=20` | `200` con los eventos (RFID, peso, presupuesto, pago…); `201` al registrar uno | TS01 |
+| Audit logs | Logs de auditoría | `GET` / `POST` | `/api/v1/audit-logs` | `cartId` (opcional); body: `cartId`, `action`, `resolution`, `note` | `GET /api/v1/audit-logs?cartId=CART-0427` | `200` con los registros; `201` al crear uno | US11 |
+| Session stats | Sesiones por hora | `GET` | `/api/v1/session-stats` | — | `GET /api/v1/session-stats` | `200` con la lista `{ hour, sessions }` | US11 |
+| Products | Catálogo | `GET` | `/api/v1/products`, `/api/v1/products/{id}` | `id` (path) | `GET /api/v1/products/SKU-IC-001` | `200` con `id`, `name`, `category`, `price`, `nominalWeight`, `tolerance`, `rfidPrefix` | US06, US13 |
+| Products | Registrar / actualizar / eliminar producto | `POST` / `PATCH` / `DELETE` | `/api/v1/products`, `/api/v1/products/{id}` | Body con los campos del producto (solo `ADMIN`) | `PATCH /api/v1/products/SKU-IC-001` · `{"tolerance":3}` | `201` / `200` / `204` | US13 |
+| Stores | Tiendas | `GET` | `/api/v1/stores`, `/api/v1/stores/{id}` | `id` (path) | `GET /api/v1/stores/1` | `200` con la tienda y sus KPIs | US11 |
+
+**Documentación desplegada en Swagger UI**
+
+Al abrir Swagger UI se carga la especificación `/v3/api-docs` (OpenAPI 3.1) de la **Innova Carty Platform API v1**, servida desde `https://innova-carty-backend.onrender.com`. La descripción indica cómo autenticarse: iniciar sesión con `POST /api/v1/authentication/sign-in` y pegar el token en **Authorize**; los endpoints del carrito usan la cabecera `X-Device-Key`. El candado de cada endpoint indica que requiere autenticación.
+
+![Swagger UI - Cabecera, Session stats y Audit logs](assets/chapter-6/sprint-2/swagger-evidence/swagger1.png)
+
+*Figura: cabecera de la documentación, selector de servidor, botón Authorize y los grupos **Session stats** (gráfico de sesiones por hora del Dashboard) y **Audit logs** (acciones del supervisor).*
+
+![Swagger UI - Stores, Authentication, Cart events y Carts](assets/chapter-6/sprint-2/swagger-evidence/swagger2.png)
+
+*Figura: **Authentication** (inicio de sesión del personal o comprador, registro de comprador y verificación del PIN del supervisor), **Cart events** (línea de tiempo de cada carrito) y el inicio del grupo **Carts**.*
+
+![Swagger UI - Carts y My cart](assets/chapter-6/sprint-2/swagger-evidence/swagger3.png)
+
+*Figura: resto de **Carts** (actualización parcial, cierre de sesión, desbloqueo con PIN y eliminación) y el grupo **My cart**, que usa la vista del comprador en la app: vincular, ver, desvincular, fijar presupuesto, mis pagos y mis compras (US04, US05, TS02).*
+
+![Swagger UI - Shopping sessions, Products y Alerts](assets/chapter-6/sprint-2/swagger-evidence/swagger4.png)
+
+*Figura: **Shopping sessions** (órdenes de compra con sus productos y pesos, TS02), **Products** (catálogo con precio, peso nominal, tolerancia y tag RFID) y el inicio de **Alerts**.*
+
+![Swagger UI - Alerts, Payments y Devices](assets/chapter-6/sprint-2/swagger-evidence/swagger5.png)
+
+*Figura: **Payments** (pagos simulados Yape / Plin / tarjeta; el carrito pasa a `PAID`, US08) y **Devices**, el gateway del ESP32: heartbeat, eventos y reporte de tags, peso, batería y zona (TS01, US06).*
+
+**Esquemas (modelos de request y response)**
+
+La sección *Schemas* describe la estructura de cada request y response, con el tipo de cada campo y los valores permitidos de los enumerados.
+
+![Swagger UI - DeviceStateRequest, Item y DeviceCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger6.png)
+
+*Figura: `DeviceStateRequest` es lo que envía el carrito (tags con su cantidad, peso medido, batería y zona); `DeviceCartResource` es la respuesta que el ESP32 usa para mostrar el total y saber si está pagado (`paid`) o bloqueado (`locked`).*
+
+![Swagger UI - Product, PayRequest y Payment](assets/chapter-6/sprint-2/swagger-evidence/swagger7.png)
+
+*Figura: `Product` con precio, peso nominal, tolerancia y prefijo RFID; `PayRequest` (`cartId`, `method`) y `Payment`, la respuesta del pago con su código de operación, monto, estado y fecha.*
+
+![Swagger UI - LinkRequest y Cart](assets/chapter-6/sprint-2/swagger-evidence/swagger8.png)
+
+*Figura: `LinkRequest` (id del carrito leído del QR) y `Cart` con sus estados `AVAILABLE`, `IN_SESSION`, `DISCREPANCY`, `LOCKED`, `PAID` y `OFFLINE`.*
+
+![Swagger UI - MyCartResource](assets/chapter-6/sprint-2/swagger-evidence/swagger9.png)
+
+*Figura: `MyCartResource`, la respuesta de "Mi carrito", que reúne el carrito y su sesión de compra con total, presupuesto y pesos esperado, medido y tolerancia.*
+
+![Swagger UI - SessionItem y ShoppingSession](assets/chapter-6/sprint-2/swagger-evidence/swagger10.png)
+
+*Figura: `SessionItem` (producto de la orden con SKU, tag RFID, cantidad, precio y peso) y `ShoppingSession` con sus estados `ACTIVE`, `PAID` y `CANCELLED`.*
+
+![Swagger UI - DeviceEventRequest, UnlockRequest y CartEvent](assets/chapter-6/sprint-2/swagger-evidence/swagger11.png)
+
+*Figura: `DeviceEventRequest` (evento del carrito), `UnlockRequest` (PIN, resolución y nota del desbloqueo) y `CartEvent` con su tono `OK`, `INFO`, `WARNING` o `CRITICAL`.*
+
+![Swagger UI - VerifyPinRequest, SignUpRequest, AuthenticatedUserResource y SignInRequest](assets/chapter-6/sprint-2/swagger-evidence/swagger12.png)
+
+*Figura: modelos de IAM. `AuthenticatedUserResource` devuelve el usuario con su `role` y el `token` JWT que se usa en **Authorize**.*
+
+![Swagger UI - AuditLog y Alert](assets/chapter-6/sprint-2/swagger-evidence/swagger13.png)
+
+*Figura: `AuditLog` (acción del supervisor) y `Alert` con sus tipos `GEOFENCE`, `WEIGHT`, `RFID`, `DEVICE` y severidades `CRITICAL`, `WARNING`, `INFO`.*
+
+![Swagger UI - BudgetRequest, Store y SessionStat](assets/chapter-6/sprint-2/swagger-evidence/swagger14.png)
+
+*Figura: estados de la alerta (`OPEN`, `ACKNOWLEDGED`, `RESOLVED`), `BudgetRequest` (presupuesto del comprador, US04), `Store` con los KPIs de la tienda y `SessionStat` para el gráfico del Dashboard.*
+
+**Commits relacionados con los servicios y su documentación**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | Agrega los controllers con anotaciones OpenAPI (`@Tag`, `@Operation`), la configuración de Swagger UI (`OpenApiConfiguration`, esquemas `bearer` y `deviceKey`) y la tabla de endpoints del README. | 10/11/2026 |
+| innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Los datos de ejemplo que se ven en Swagger UI quedan en español. | 10/11/2026 |
+
+#### 6.2.2.8. Software Deployment Evidence for Sprint Review
+
+*(Pendiente)*
+
+#### 6.2.2.9. Team Collaboration Insights during Sprint
+
+*(Pendiente)*
+
+## 6.3. Validation Interviews
+
+### 6.3.1. Diseño de Entrevistas
+
+**Objetivo:** Validar con usuarios reales que la Landing Page, la aplicación móvil, la Web Console y el Smart Cart permiten alcanzar los *user goals* de los User Personas (sección 5.4.2), e identificar problemas de usabilidad para corregirlos en el siguiente sprint.
+
+**Metodología:**
+* Sesiones individuales de 20 a 25 minutos, presenciales o por Google Meet, grabadas con el consentimiento del participante.
+* Como mínimo 3 participantes por segmento objetivo, que encajen con los User Personas de la sección 2.3.1.
+* Al inicio se explica el propósito de la sesión y se aclara que se evalúa el producto y no al participante.
+* Las tareas se plantean como objetivos, sin indicar detalles de la interfaz (dónde hacer clic o qué menú usar). El participante interactúa libremente y comenta en voz alta lo que piensa.
+* Un integrante del equipo opera el carrito físico (CART-0427) para generar los eventos de cada tarea: lectura RFID, salida por la baliza, pedido de ayuda y pago.
+* Después de cada tarea se hacen preguntas cortas y al final se aplican las preguntas de cierre.
+* Las observaciones se registran con referencia a la sesión y al minuto del video, y se analizan con las heurísticas de Nielsen (sección 6.3.3).
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+**Productos evaluados:** Landing Page, aplicación móvil (vista de comprador) y Smart Cart.
+
+| # | Tarea (objetivo para el participante) | User goal relacionado |
+| :---: | :--- | :--- |
+| 1 | Revisa esta página y explica qué ofrece Innova Carty y cómo empezarías a usarlo. | Landing Page |
+| 2 | Ingresa a la aplicación con tu cuenta. | — |
+| 3 | Empieza tu compra con este carrito y fija un presupuesto de S/ 20. | User goal 1 |
+| 4 | Agrega productos e indica cuánto llevas gastado y cuánto te queda. | User goal 2 |
+| 5 | Paga tu compra con Yape y sal de la tienda. | User goal 3 |
+| 6 | Revisa el comprobante de una compra anterior. | User goal 3 |
+
+#### Segmento 2: Administrador de Tienda / Operaciones Retail
+
+**Productos evaluados:** Landing Page, Web Console, aplicación móvil (vista de administrador) y Smart Cart.
+
+| # | Tarea (objetivo para el participante) | User goal relacionado |
+| :---: | :--- | :--- |
+| 1 | Revisa esta página y explica qué ofrece Innova Carty y cómo solicitarías información. | Landing Page |
+| 2 | Ingresa a la consola con la cuenta de administrador. | — |
+| 3 | Indica cuántos carritos están en uso y si hay alguna alerta activa. | User goal 4 |
+| 4 | Identifica qué productos lleva el cliente del carrito CART-0427. | User goal 4 |
+| 5 | Un cliente intentó salir sin pagar: atiende la alerta y libera el carrito. | User goal 4 |
+| 6 | Identifica qué carrito está pidiendo ayuda. | User goal 4 |
+| 7 | Cambia el precio de un producto e identifica su etiqueta RFID. | User goal 5 |
+| 8 | Verifica el pago que acaba de realizar el cliente. | User goal 3 |
+| 9 | Revisa el estado de los carritos desde el celular. | User goal 4 |
+
+#### Preguntas de cierre (ambos segmentos)
+* ¿Qué fue lo más útil de lo que probaste? ¿Y lo menos útil?
+* ¿Qué cambiarías o agregarías?
+* Del 1 al 5, ¿qué tan fácil fue usarlo? ¿Qué tan útil te resultaría?
+* El carrito también validará el peso de los productos para detectar artículos no escaneados. ¿Te parece útil?
+* ¿Qué te preocuparía de usarlo en una tienda real?
+* *(Segmento 2)* ¿Lo implementarías? ¿Con cuántos carritos empezarías y cuánto pagarías al mes por cada uno?
+* Del 0 al 10, ¿qué tan probable es que lo recomiendes?
+
+### 6.3.2. Registro de Entrevistas
+
+#### Segmento 1: Comprador Moderno / Consumidor Final
+
+*(Pendiente: 3 entrevistas.)*
+
+#### Segmento 2: Administrador de Tienda / Operaciones Retail
+
+##### Entrevista 1:
+
+| Atributo | Detalle |
+| --- | --- |
+| Nombre | Sebastián Ramírez |
+| Edad | 23 años |
+| Distrito | Lince |
+| Ocupación | Administrador de minimarket (formato pequeño, similar a Tiendas Mass) |
+| Entrevistador | Diaz Fiestas, Jorge Luis |
+| Fecha de entrevista | 11 de noviembre de 2026 |
+| Modalidad | Google Meet |
+| Timing | 00:00 - 24:42 (Duración: 24 min 42 s) |
+| Enlace a la grabación | *[Ver en YouTube](https://youtu.be/6kxTbrWjZgI)* |
+| Captura de pantalla de la grabación | [![Entrevista de validación 1 - Administrador](https://img.youtube.com/vi/6kxTbrWjZgI/hqdefault.jpg)](https://youtu.be/6kxTbrWjZgI) |
+| Resumen | Sebastián Ramírez probó la Landing Page, la Web Console y la aplicación móvil en la vista de administrador mientras el entrevistador operaba el carrito físico CART-0427. Destacó la supervisión de carritos en tiempo real, las alertas de seguridad y los pagos digitales como funcionalidades útiles. Identificó oportunidades de mejora en los reportes, las notificaciones y la facilidad de uso. Como referencia de adopción, planteó iniciar con 2 carritos, pagar entre S/ 80 y S/ 100 mensuales por carrito y calificó su disposición a recomendar la solución con 9/10. |
+
+*(Pendiente: entrevistas 2 y 3 de este segmento.)*
+
+### 6.3.3. Evaluaciones según heurísticas
+
+Las observaciones de las sesiones se evalúan con las 10 heurísticas de usabilidad de Nielsen y la siguiente escala de severidad:
+
+| Nivel | Severidad |
+| :---: | :--- |
+| 0 | No es un problema de usabilidad |
+| 1 | Problema cosmético: se corrige si hay tiempo |
+| 2 | Problema menor: baja prioridad |
+| 3 | Problema mayor: alta prioridad |
+| 4 | Catastrófico: impide completar la tarea |
+
+| # | Sesión (video y minuto) | Descripción | Heurística | Severidad | Alternativa de solución |
+| :---: | :--- | :--- | :--- | :---: | :--- |
+| 1 | *(Por completar con las sesiones de ambos segmentos)* | | | | |
+
+## 6.4. Video About-the-Product
+
+*(Pendiente)*
+
 
 # Conclusiones
 

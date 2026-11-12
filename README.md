@@ -4936,6 +4936,70 @@ En el Sprint 2 Innova Carty funciona de punta a punta con datos reales: el carri
 
 ![Web App - Detalle del carrito](assets/chapter-6/sprint-2/execution/web-cart-detail.png)
 
+##### Mobile Application (comprador y administrador)
+
+La app móvil en Flutter consume la misma API en Render. Compradores y personal de tienda usan la misma app: la cuenta con la que se inicia sesión decide si se muestra la vista de comprador o la de administrador.
+
+**1. Inicio de sesión.** El comprador o el personal ingresa con su correo y contraseña; desde aquí también se crea una cuenta de comprador nueva. La app permite cambiar entre español e inglés, y el recuadro inferior muestra las cuentas de demostración para la revisión del sprint.
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-login.png" width="230" alt="App móvil - Inicio de sesión">
+</p>
+
+**2. Escaneo del QR y carrito vinculado.** El comprador escanea con la cámara el QR del carrito para vincularlo a su cuenta (TS02). Al vincularse, la app muestra `CART-0427` con la orden abierta, el estado del prototipo físico y el total en S/ 0.00 mientras aún no se leen productos.
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-scan-qr.png" width="230" alt="App móvil - Escaneo del QR">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-cart.png" width="230" alt="App móvil - Carrito vinculado">
+</p>
+
+**3. Productos leídos por RFID en tiempo real.** Cada producto que el lector RFID del carrito identifica aparece en la app con su cantidad, precio unitario y subtotal; el total se recalcula en vivo (US05, US06).
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-cart-with-products.png" width="230" alt="App móvil - Carrito con productos">
+</p>
+
+**4. Presupuesto.** Desde **Poner un presupuesto** el comprador fija un monto máximo; la barra de progreso muestra cuánto le queda frente al total del carrito (US04).
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-set-budget.png" width="230" alt="App móvil - Fijar presupuesto">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-budget-progress.png" width="230" alt="App móvil - Progreso del presupuesto">
+</p>
+
+**5. Pago.** Al presionar **Pagar**, el comprador elige entre Yape, Plin o tarjeta y confirma el monto. En el prototipo el pago es simulado y no mueve dinero real (US08).
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-payment-method.png" width="230" alt="App móvil - Método de pago">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-payment-yape.png" width="230" alt="App móvil - Pago con Yape">
+</p>
+
+**6. Comprobante y salida.** Con el pago aprobado, la app muestra el comprobante (método, número de operación, carrito, pedido y detalle) y el carrito pasa a **Pagado**, por lo que no se bloqueará al cruzar la puerta de salida.
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-receipt.png" width="230" alt="App móvil - Comprobante">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-paid.png" width="230" alt="App móvil - Carrito pagado">
+</p>
+
+**7. Historial de pagos.** En **Mis pagos** el comprador consulta sus compras anteriores y puede volver a abrir cada comprobante.
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-shopper-history.png" width="230" alt="App móvil - Mis pagos">
+</p>
+
+**8. Vista de administrador: flota y alertas.** Con una cuenta `ADMIN`, la app muestra la flota de la tienda con los indicadores de carritos activos, carritos que requieren atención y total de la flota, y filtros por estado. La pestaña **Alertas** lista las alertas abiertas (pedido de ayuda, peso que no coincide, salida sin pagar, etiqueta RFID ilegible, carrito sin conexión) con las acciones **Ver carrito**, **Reconocer** y **Resolver** (US11).
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-admin-fleet.png" width="230" alt="App móvil - Flota">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-admin-alerts.png" width="230" alt="App móvil - Alertas">
+</p>
+
+**9. Detalle del carrito y desbloqueo con PIN.** El detalle de un carrito con discrepancia compara el peso medido con el esperado y la tolerancia, y lista los productos y la actividad de la sesión. Con **Verificar y desbloquear**, el supervisor indica qué pasó (revisado, producto agregado, producto retirado o pagó en caja) y confirma con su PIN (US11).
+
+<p align="center">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-admin-cart-detail.png" width="230" alt="App móvil - Detalle del carrito">
+  <img src="assets/chapter-6/sprint-2/execution/app/mobile-admin-unlock-pin.png" width="230" alt="App móvil - Desbloqueo con PIN">
+</p>
+
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
 
 En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre doce grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.

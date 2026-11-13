@@ -5361,6 +5361,8 @@ En la primera sesión no hubo problemas catastróficos: el participante entendi�
 
 Delgado De La Vega, F. L. (2026). *Impacto de la calidad del servicio sobre la satisfacción de clientes en supermercados del distrito de San Borja* [Tesis de maestría, Universidad San Ignacio de Loyola]. Repositorio Institucional USIL. https://repositorio.usil.edu.pe/server/api/core/bitstreams/ee6274c8-9c66-4253-a9ac-061089c0a4d2/content
 
+Nielsen, J. (1994). *Usability engineering*. Morgan Kaufmann. https://vtechworks.lib.vt.edu/bitstreams/46876dfe-d4b6-4a99-ab37-050bd93125d2/download
+
 Vega, M., Sánchez, E., & Andia, A. (2025). *Diseño e implementación del piloto de CBDC minorista en Perú* (Documento de Trabajo DT. N°. 2025-003). Banco Central de Reserva del Perú (BCRP). https://www.bcrp.gob.pe/docs/Publicaciones/Documentos-de-Trabajo/2025/documento-de-trabajo-003-2025.pdf
 
 Villalobos Paz, O. E. (2023). *Implementación de Lean Management para reducir la merma en la categoría de carnes rojas de una cadena de supermercados* [Tesis de pregrado, Universidad San Ignacio de Loyola]. Repositorio Institucional USIL. https://repositorio.usil.edu.pe/server/api/core/bitstreams/c87882f3-3aba-4144-b03a-17371dc5dc8a/content

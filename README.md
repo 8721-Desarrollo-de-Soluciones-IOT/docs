@@ -5212,8 +5212,44 @@ El Landing Page mantiene el despliegue del Sprint 1 (sitio estático en Vercel, 
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
-*(Pendiente)*
+En el Sprint 2 el equipo consolidó el flujo de trabajo con GitFlow, aplicando las mejoras acordadas en la retrospectiva anterior: cada integrante desarrolló sus tareas en ramas `feature/*` creadas desde `develop`, utilizando mensajes bajo el estándar **Conventional Commits** vinculados al identificador de tarea en Jira, e integrando los cambios de forma continua mediante *pull requests* revisados por los líderes de aspecto. Al cierre del sprint, `develop` se integró en `main` para desplegar las versiones productivas en Render y Vercel. Las tareas se asignaron según la matriz de liderazgo y colaboración (6.2.2.2) y se registraron en Jira (6.2.2.3).
 
+La colaboración se evidencia con los gráficos de **GitHub Insights** de los repositorios de la organización [8721-Desarrollo-de-Soluciones-IOT](https://github.com/8721-Desarrollo-de-Soluciones-IOT): *Contributors*, que muestra los commits de cada integrante en el periodo del sprint, y *Network*, que muestra las ramas `feature/*` y sus integraciones en `develop` y `main`.
+
+| Repositorio | Producto | Insights |
+| :--- | :--- | :--- |
+| [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend) | Backend RESTful (Spring Boot + Supabase) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend/network) |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | Consola Web (Angular + JWT + i18n) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/network) |
+| [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) | Aplicación Móvil (Flutter) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app/network) |
+| [docs](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs) | Informe del proyecto | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/network) |
+
+
+**Top committers del sprint**
+
+![Top committers](assets/chapter-6/sprint-2/insights-top-committers.png)
+
+| Integrante | GitHub Username | Aspecto que lideró | Aportes en el Sprint 2 | Commits | % del total |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| Trillo Hernández, Anghel Melanie[cite: 1] | AM27TH | Frontend Web & UI/UX | Conexión de consola web a API real; implementación de autenticación JWT; soporte multiidioma (ES/EN)[cite: 3]; vistas de alertas y telemetría en vivo. | 11 | 29 % |
+| Paico Calderon, July Zelmira[cite: 1] | u20211d760 | Gestión del Sprint | Gestión de los 39 Story Points en Jira[cite: 3]; administración de nuevos repositorios y revisión de *pull requests*; documentación de arquitectura del informe. | 4 | 11 % |
+| Berrocal Ramirez, Omar Christian[cite: 1] | OmBRz | Aplicación Móvil (Flutter)[cite: 3] | Desarrollo de app móvil en Flutter para comprador (escaneo/presupuesto) y administrador; integración de pasarela QR (Yape/Plin)[cite: 2, 3]. | 2 | 5 % |
+| Huanca Navarro, Gustavo Esau[cite: 1] | petitavo | Arquitectura & Backend | Implementación del backend en Spring Boot bajo DDD; integración con base de datos en Supabase; gestión de sesiones y pagos[cite: 3]. | 4 | 11 % |
+| Díaz Fiestas, Jorge Luis[cite: 1] | LuisDiazpe | IoT & Hardware (ESP32)[cite: 1] | Programación del firmware en ESP32 para el carrito físico `CART-0427`; lectura simultánea de sensores RFID y celda de carga[cite: 2, 3]; envío de telemetría. | 11 | 29 % |
+| Crisanto Calle, Deybbi Anderson[cite: 1] | Dacc03 | Testing & QA | Diseño e implementación de 40 pruebas automatizadas (unitarias y de integración) en el backend[cite: 3]; validación de conciliación peso-RFID[cite: 2]. | 4 | 11 % |
+| Pardo Chumpitazi, Kevin Patrick[cite: 1] | Kevinyin11 | DevOps & Despliegue | Despliegue continuo del backend en Render[cite: 3] y consola web en Vercel; configuración de variables de entorno, seguridad CORS y webhooks. | 2 | 5 % |
+| **Total** | | | | **38** | **100 %** |
+
+- Los gráficos *Contributors* de los repositorios de producto contabilizan los commits integrados en `main` tras la aprobación de los *pull requests*. El total de `[Total]` commits de la tabla corresponde al gráfico *Top committers* de la organización, consolidando el desarrollo en backend, frontend web, aplicación móvil, firmware IoT y el repositorio `docs` del informe.
+
+**Análisis.** En este segundo sprint se alcanzó un total de `38` commits para completar los **39 Story Points** planificados, logrando que los siete integrantes participaran activamente a lo largo de múltiples repositorios especializados. A diferencia del Sprint 1 —donde el trabajo se concentró en pocos commits de gran tamaño—, la adopción de *Conventional Commits* y la integración continua mediante *pull requests* permitió distribuir la carga de desarrollo de manera más granular y equilibrada. Esto facilitó la trazabilidad directa con las historias de usuario en Jira, agilizó la revisión de código entre pares y permitió detectar errores de integración de forma temprana antes del despliegue en Render y la sincronización con el prototipo físico `CART-0427`.
+
+- Como mejora continua para el cierre del proyecto (Sprint 3), el equipo acordó automatizar la ejecución de las 40 pruebas del backend mediante un pipeline de **GitHub Actions (CI)** en cada *pull request* hacia `develop`, garantizando que ningún cambio rompa la comunicación con el dispositivo IoT ni con las aplicaciones cliente.
+
+---
+
+<div style="page-break-after: always;"></div>
+
+---
 ## 6.3. Validation Interviews
 
 ### 6.3.1. Diseño de Entrevistas

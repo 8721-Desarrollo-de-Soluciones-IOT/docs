@@ -5311,7 +5311,9 @@ Las observaciones de las sesiones se evalúan con las 10 heurísticas de usabili
 
 ## 6.4. Video About-the-Product
 
-*(Pendiente)*
+**Innova Carty** es un sistema de carrito de compras inteligente que conecta hardware IoT con una aplicación móvil. Permite registrar productos en tiempo real mediante identificación por radiofrecuencia (RFID) y control de peso, ofreciendo a los usuarios una compra ágil, transparente y libre de filas en caja.
+
+ **Video demostrativo:** [About Innova Carty](https://youtu.be/pCsk4X8F9BI)
 
 
 # Conclusiones

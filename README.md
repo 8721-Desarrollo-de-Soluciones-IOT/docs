@@ -5144,7 +5144,7 @@ La sección *Schemas* describe la estructura de cada request y response, con el 
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-Las observaciones de las sesiones se evalúan con las 10 heurísticas de usabilidad de Nielsen y la siguiente escala de severidad:
+Las observaciones de las sesiones de validación (sección 6.3.2) se evalúan con las 10 heurísticas de usabilidad de Nielsen (1994). Cada problema se asocia a la sesión y al minuto del video donde se observó, a la heurística que incumple y a un nivel de severidad según la siguiente escala:
 
 | Nivel | Severidad |
 | :---: | :--- |
@@ -5154,9 +5154,32 @@ Las observaciones de las sesiones se evalúan con las 10 heurísticas de usabili
 | 3 | Problema mayor: alta prioridad |
 | 4 | Catastrófico: impide completar la tarea |
 
+**Heurísticas de referencia:** H1. Visibilidad del estado del sistema · H2. Relación entre el sistema y el mundo real · H3. Control y libertad del usuario · H4. Consistencia y estándares · H5. Prevención de errores · H6. Reconocer antes que recordar · H7. Flexibilidad y eficiencia de uso · H8. Diseño estético y minimalista · H9. Ayudar a reconocer, diagnosticar y recuperarse de errores · H10. Ayuda y documentación.
+
+#### Segmento 2: Administrador de Tienda / Operaciones Retail
+
+**Productos evaluados:** Landing Page, Web Console, aplicación móvil (vista de administrador) y Smart Cart (`CART-0427`).
+
 | # | Sesión (video y minuto) | Descripción | Heurística | Severidad | Alternativa de solución |
 | :---: | :--- | :--- | :--- | :---: | :--- |
-| 1 | *(Por completar con las sesiones de ambos segmentos)* | | | | |
+| 1 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | El Dashboard muestra indicadores del momento (carritos activos, alertas abiertas, tiempo promedio de pago, pérdidas evitadas), pero no hay reportes por día, semana o mes ni forma de exportarlos. El administrador no puede revisar el historial de ventas, alertas y discrepancias para tomar decisiones. | H7. Flexibilidad y eficiencia de uso | 3 | Agregar una vista **Reportes** en la Web Console con filtros por rango de fechas y por carrito, gráficos de sesiones, alertas y pérdidas evitadas, y exportación a CSV/PDF. |
+| 2 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | Las alertas (salida sin pago, discrepancia de peso, pedido de ayuda) solo se ven si la consola o la app están abiertas en esa vista. No hay notificación push, sonido ni aviso visible fuera de la pantalla, así que una alerta crítica puede pasar desapercibida. | H1. Visibilidad del estado del sistema | 3 | Enviar notificaciones push a la app móvil de administrador (Firebase Cloud Messaging) para alertas críticas y agregar a la consola un aviso sonoro, un contador en la pestaña del navegador y un *toast* persistente hasta que alguien atienda la alerta. |
+| 3 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | El ícono de notificaciones de la barra superior no indica cuántas alertas nuevas hay ni de qué tipo, y no se distingue claramente lo leído de lo pendiente. | H1. Visibilidad del estado del sistema | 2 | Mostrar un *badge* con el número de alertas sin atender, agrupar el panel de notificaciones por tipo y severidad, y marcar las ya revisadas. |
+| 4 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | La consola está en español por defecto, pero algunas acciones clave siguen en inglés (*Verify and unlock*, *Add audit flag*, *Acknowledge*, *Open cart*), al igual que gran parte de la Landing Page. Esto obliga al usuario a interpretar las acciones al atender una alerta. | H4. Consistencia y estándares | 2 | Completar la traducción de botones, estados y mensajes en la Web Console, la app móvil y la Landing Page con los archivos i18n existentes, y revisar que todo cambie con el selector ES / EN. |
+| 5 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | La interfaz usa términos técnicos que no son del lenguaje de un administrador de minimarket, como *geofence*, *gateway edge*, *audit flag* o *tolerancia*, lo que dificulta entender qué pasó con un carrito y qué hay que hacer. | H2. Relación entre el sistema y el mundo real | 2 | Usar etiquetas del lenguaje de la tienda ("Salida no autorizada", "Conexión del carrito", "Marcar para revisión", "Margen de peso permitido") y agregar *tooltips* con una explicación corta. |
+| 6 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | Para atender una salida bloqueada o una discrepancia, el usuario tuvo que pasar por varias vistas (Alertas → detalle del carrito → verificación con PIN) sin una guía de qué hacer primero. En una tienda con poco personal esto alarga el tiempo de respuesta. | H7. Flexibilidad y eficiencia de uso | 2 | Agregar en cada alerta una acción directa ("Verificar y liberar") que abra el modal del PIN sin salir de la lista, y mostrar en el detalle del carrito los pasos sugeridos según el tipo de alerta. |
+| 7 | [Entrevista S2-1](https://youtu.be/6kxTbrWjZgI) · Sebastián Ramírez · *mm:ss* | La consola no tiene ayuda integrada ni un recorrido inicial que explique los estados del carrito (*In session*, *Discrepancy*, *Locked*, *Paid · clearance*, *Offline*) y qué significa cada alerta. | H10. Ayuda y documentación | 1 | Incluir un *onboarding* breve en el primer inicio de sesión y una sección de ayuda con la leyenda de estados y alertas, accesible desde el perfil del supervisor. |
+
+#### Resumen de resultados
+
+| Severidad | Cantidad | Problemas (#) | Prioridad en el siguiente sprint |
+| :---: | :---: | :--- | :--- |
+| 4 | 0 | — | — |
+| 3 | 2 | S2-1, S2-2 | Alta: se incorporan al Sprint Backlog 3 como historias de usuario. |
+| 2 | 4 | S2-3, S2-4, S2-5, S2-6 | Media: se atienden en el Sprint 3 si la capacidad lo permite. |
+| 1 | 1 | S2-7 | Baja: se registran en el Product Backlog. |
+
+En la primera sesión no hubo problemas catastróficos: el participante completó las tareas de supervisión, atención de alertas y desbloqueo de carritos. Los dos problemas de mayor severidad son la falta de reportes históricos y de notificaciones fuera de la pantalla, y coinciden con las oportunidades de mejora que el participante mencionó al cierre (reportes, notificaciones y facilidad de uso). Los demás hallazgos tienen que ver con la consistencia del idioma y el vocabulario de la interfaz, y se corrigen principalmente con cambios de textos e i18n.
 
 ## 6.4. Video About-the-Product
 

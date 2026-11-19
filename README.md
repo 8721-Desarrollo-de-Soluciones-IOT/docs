@@ -22,7 +22,7 @@
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Trabajo Parcial (TB1)</strong>
+  <strong>Avance del Trabajo Final (AV2)</strong>
 </p>
 
 <br>
@@ -32,7 +32,7 @@
 </p>
 
 <p align="center" style="font-size: 14pt;">
-  <strong>[Nombre del equipo]</strong>
+  <strong>Innova Carty</strong>
 </p>
 
 <br>
@@ -93,7 +93,7 @@
 </div>
 
 <br>
-<p align="center">Octubre 2026</p>
+<p align="center">Noviembre 2026</p>
 
 <div style="page-break-after: always;"></div>
 
@@ -105,6 +105,8 @@
 |---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
 | 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
+| 3       | 13/11/2026 | Paico Calderon, July Zelmira <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Trillo Hernandez, Anghel Melanie <br> Crisanto Calle Deybbi Anderson | Avance 2 (AV2), Sprint 2: <br> **Paico:** Sprint Backlog 2 (6.2.2.3) y Video About-the-Product (6.4). <br> **Díaz:** correcciones del TB1 en 4.1.3.2, 5.1.2, 5.2.1, 5.6 y 6.2.1.7–6.2.1.9; capturas de despliegue e insights del Sprint 1; Validation Interviews (6.3.1 y 6.3.2) y tabla de contenido. <br> **Huanca:** Sprint Planning 2 (6.2.2.1), Aspect Leaders and Collaborators (6.2.2.2), Software Deployment Evidence (6.2.2.8) y Student Outcome AV2. <br> **Trillo:** Development, Testing Suite, Execution (consola y app móvil) y Services Documentation Evidence del Sprint 2 (6.2.2.4–6.2.2.7), numeración del capítulo VI, Student Outcome AV2 y conclusión general del AV2. <br> **Crisanto:** Evaluaciones según heurísticas (6.3.3) y Bibliografía de ingeniería de usabilidad. |
+| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Correcciones de la evaluación del AV2: carátula del AV2 con el nombre del equipo, texto de plantilla del análisis competitivo (2.1.1), datos de la entrevista 2 del Segmento 2 (2.2.2), TS03 (webhook de pagos) y conteo de pruebas en 6.2.2.4, 6.2.2.5 y 6.2.2.7, y tabla de commits del Sprint 2 (se retiran los commits del Landing Page del Sprint 1 y se agregan los del backend y del video del Landing Page). |
 
 <div style="page-break-after: always;"></div>
 
@@ -578,15 +580,12 @@ Profesionales y directivos encargados de la administración operativa, supervisi
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2" colspan="2">¿Por qué realizar este análisis?</td>
-            <td colspan="9">Indicar en este espacio la pregunta que se busca responder o el propósito principal del análisis.</td>
-        </tr>
-        <tr>
+            <td colspan="2">¿Por qué realizar este análisis?</td>
             <td colspan="9">El propósito de este análisis es entender cómo funcionan y qué características poseen las soluciones de compra inteligente actuales, con el fin de potenciar las ventajas únicas de Innova Carty (pago ágil por QR peruano y control estricto de presupuesto) y aprovechar las barreras de costo y fricción de la competencia.</td>
         </tr>
         <tr>
             <tr>
-                <td colspan="3">(En la cabecera colocar nombre y logo de cada competidor)</td>
+                <td colspan="3">Competidores</td>
                 <td colspan="2"><img src="assets/common/team/INNOVA_CARTY.jpg" style="width: 60px; height: auto;"><br>Innova Carty (Nuestro)</td>
                 <td colspan="2"><img src="assets/common/team/SCANYGO.png" style="width: 60px; height: auto;"><br>Scan & Go (Apps)</td>
                 <td colspan="2"><img src="assets/common/team/SMARTCART.jpg" style="width: 60px; height: auto;"><br>Smart-Cart</td>
@@ -849,12 +848,12 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 | Atributo | Detalle |
 | :--- | :--- |
-| Nombre | Camila [apellido — completar] |
+| Nombre | Camila Delgado |
 | Edad | 28 años |
-| Distrito | [completar] |
+| Distrito | Lima |
 | Ocupación | Encargada de operaciones en tienda retail |
-| Fecha de entrevista | [completar] |
-| Timing | [completar duración] |
+| Fecha de entrevista | 20 de setiembre de 2026 |
+| Timing | 00:00 - 07:00 (Duración: 7 min) |
 | Enlace a la grabación | [Ver en YouTube](https://youtu.be/kIMXW7XIeIk) |
 | Captura de pantalla de la grabación | <a href="https://youtu.be/kIMXW7XIeIk" target="_blank"><img src="https://img.youtube.com/vi/kIMXW7XIeIk/hqdefault.jpg" width="320" alt="Entrevista 2 - Segmento 2"></a> |
 | Resumen | Camila tiene 28 años y se desempeña como encargada de operaciones en una tienda retail, con cinco años de experiencia en el sector y dos en su puesto actual. Supervisa el funcionamiento general de la tienda: inventario, atención al cliente, cajas, reposición y coordinación de personal en horas de alta afluencia. Identifica las colas en caja como el principal problema en horarios punta, lo que obliga a movilizar personal de otras áreas y genera quejas de clientes, sobre todo en fines de semana y quincenas. Sobre el control de mercancía, señala que el proceso actual (paso por caja más supervisión interna) siempre conlleva el riesgo de que algún producto no se registre correctamente, generando diferencias de inventario, pérdidas económicas y revisiones adicionales del personal. Actualmente gestionan ventas e inventario mediante sistemas de punto de venta. Se muestra receptiva a la idea de un carrito que identifique productos y envíe información en tiempo real al sistema, y considera positivo que el cliente pueda escanear, ver el total y pagar desde el carrito, ya que reduciría la afluencia en cajas en momentos de alta demanda. Condiciona su adopción a que el sistema sea seguro y confiable, se integre con el punto de venta e inventario existentes, sea fácil de usar tanto para clientes como para trabajadores, y cuente con mecanismos para detectar productos no registrados. Considera que podría reducir costos operativos de caja, aunque señala que habría que evaluar el costo de implementar y mantener los equipos. Se muestra dispuesta a probar el sistema, siempre que primero se haga una prueba piloto controlada que demuestre seguridad y correcto funcionamiento. |
@@ -4710,29 +4709,31 @@ En el Sprint 2 el equipo reemplazó la API fake del Sprint 1 por los servicios r
   * **TS02 (órdenes de compra):** cada compra se registra como una **sesión de compra** (`ShoppingSession`, id `ORD-…`) con sus productos, total y estado (`ACTIVE`, `PAID`, `CANCELLED`). El administrador las consulta en `/api/v1/shopping-sessions` y el comprador en `/api/v1/me/sessions`.
   * **US05 (total acumulado) y US04 (presupuesto):** el comprador vincula el carrito escaneando su QR (`POST /api/v1/me/cart`), ve el total en vivo (`GET /api/v1/me/cart`) y fija su presupuesto (`PATCH /api/v1/me/cart`).
   * **US08 (pago autónomo con QR):** el comprador paga la sesión abierta con Yape, Plin o tarjeta (`POST /api/v1/payments`). En este sprint el pago es **simulado**: genera un código de operación, deja la sesión en `PAID` y el carrito habilita la salida en su siguiente consulta.
-  * **TS03 (webhook de pagos externos):** como los pagos se simulan dentro de la propia API, en este sprint no se expone un webhook para una pasarela externa. La confirmación del pago la hace `POST /api/v1/payments` y la recibe el carrito por su heartbeat.
+  * **TS03 (webhook de pagos externos):** el backend expone `POST /api/v1/payments/webhook` para que el proveedor de pagos (Yape, Plin o la pasarela de tarjeta) confirme el pago aunque la app del comprador se cierre. La notificación se autentica con el secreto compartido de la cabecera `X-Webhook-Secret` (comparado en tiempo constante; `401` si no coincide). Un evento `APPROVED` paga la orden abierta solo si el monto coincide con el total (`409` si no) y deja el carrito en `PAID`; un evento `REJECTED` se registra en la línea de tiempo del carrito sin cambiar su estado; y un `eventId` repetido no crea un segundo pago, porque los proveedores reintentan sus notificaciones. Como en este sprint no hay una pasarela real contratada, el webhook se prueba con los acceptance tests y con llamadas desde Swagger UI; el pago desde la app sigue siendo simulado con `POST /api/v1/payments`.
 * **Frontend Web Application:** la consola de operaciones deja la API fake y apunta al backend en Render (`apiBaseUrl`). Envía el JWT en cada solicitud, cierra la sesión cuando vence y solo deja entrar a cuentas de personal (`ADMIN`). Se agregó el cambio de idioma ES/EN y la identificación del prototipo físico `CART-0427`.
 * **Mobile Application:** nueva app en Flutter con dos vistas según el rol del inicio de sesión. El **comprador** se registra, vincula el carrito con su QR, ve los productos y el total en vivo, fija su presupuesto, paga escaneando el QR de pago del carrito y consulta sus comprobantes. El **administrador** ve la flota en vivo, las alertas y el detalle del carrito con la verificación de peso, y lo desbloquea con su PIN.
-* **Landing Page:** mejoras de interacción (estados *hover* en botones y enlaces, animación del carrito del hero).
+* **Landing Page:** se incorporó el video About-the-Product en la página (los estados *hover* y la animación del carrito del hero se hicieron al cierre del Sprint 1, el 07/10/2026).
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | IAM (sign-in, registro de compradores y PIN de supervisor con JWT), Monitoring compatible con el contrato de la API fake, gateway de dispositivos ESP32, pagos simulados Yape / Plin / tarjeta, endpoints "Mi carrito" para la app, datos demo, Swagger UI, Dockerfile y blueprint de Render. | 10/11/2026 |
 | innova-carty-backend | main | `f1c38a9` | fix: close a paid order when the cart restarts | Sin cuerpo. Cierra la sesión pagada cuando el carrito se reinicia. | 10/11/2026 |
 | innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Renombra al español los productos demo, los ítems de las órdenes guardadas y los títulos de eventos al iniciar (idempotente). | 10/11/2026 |
+| innova-carty-backend | feature/melanie | `730c2ac` | fix: keep the new shopping session managed so its first changes are saved | Corrige la pérdida de los productos leídos o del comprador vinculado al crear una orden nueva; detectado por los acceptance tests (6.2.2.5). | 10/11/2026 |
+| innova-carty-backend | feature/melanie | `64fdfba` | test: add unit tests for CartLifecycleService and PaymentService | Unit tests con JUnit 5 y Mockito de las reglas del carrito y de los pagos. | 10/11/2026 |
+| innova-carty-backend | feature/melanie | `3292caf` | test: add acceptance tests for the sprint 2 user stories | Features en Gherkin y steps de Cucumber de TS01, TS02, US04, US05, US06 y US08. Integrado a `main` con el PR #1. | 10/11/2026 |
+| innova-carty-backend | main | `2d419fb` | feat(payment): add webhook to confirm external payments (TS03) | `POST /api/v1/payments/webhook` protegido con `X-Webhook-Secret`: `APPROVED` paga la orden si el monto coincide con el total, `REJECTED` se registra en el historial del carrito y un `eventId` repetido no crea un segundo pago. | 11/11/2026 |
+| innova-carty-backend | main | `0aea721` | test(payment): cover the payment webhook with unit and acceptance tests | Feature TS03 (pago confirmado, notificación repetida, pago rechazado, monto distinto y secreto incorrecto) y unit tests de `PaymentService.confirmExternal`. | 11/11/2026 |
 | innova-carty-frontend-web-app | main | `d25299e` | feat: connect the console to the Spring Boot backend on Render | Apunta `apiBaseUrl` a la API en Render, envía el JWT en cada request, solo permite cuentas ADMIN, conserva la API fake en `npm run start:fake` y elimina la función fake de Vercel. | 10/11/2026 |
 | innova-carty-frontend-web-app | main | `9cddb79` | feat(i18n): add Spanish and English to the console with a language switch | Español por defecto con selector ES / EN, textos de la API y estados traducidos, distintivo del prototipo físico y prefijo RFID compatible con UIDs NTAG215. | 10/11/2026 |
 | innova-carty-mobile-app | main | `6c3383e` | feat: add Flutter app with shopper and admin views | Login donde el rol decide la vista, registro de comprador, "Mi carrito" (vincular con QR, productos en vivo, presupuesto, pago simulado y comprobantes) y vista de administrador (flota, alertas, detalle y desbloqueo con PIN). | 10/11/2026 |
 | innova-carty-mobile-app | main | `0ee99db` | feat(i18n): add Spanish and English to the app with a language switch | Español por defecto con selector ES / EN guardado en el teléfono, textos de la API en español y distintivo del prototipo físico. | 10/11/2026 |
 | innova-carty-mobile-app | main | `884798e` | feat(shopper): pay by scanning the payment QR of the cart | Botón QR junto a Pagar: lee `INNOVACARTY\|CART-0427\|PAY\|total`, vincula el carrito si hace falta y abre Yape / Plin / tarjeta (US08). | 10/11/2026 |
-| innova-carty-landing-page | feature/melanie | `3105e22` | feat: add hover states to buttons | Sin cuerpo. | 07/10/2026 |
-| innova-carty-landing-page | feature/melanie | `b2bb00c` | feat: add hover state to hero chip | Sin cuerpo. | 07/10/2026 |
-| innova-carty-landing-page | feature/melanie | `0d55fab` | feat: animate hero cart illustration | Sin cuerpo. | 07/10/2026 |
-| innova-carty-landing-page | feature/melanie | `cb44063` | feat: add hover lift to navigation and language links | Sin cuerpo. Integrado a `main` con el PR #1. | 07/10/2026 |
+| innova-carty-landing-page | main | `d24b1c8` | feat: video about the product | Sin cuerpo. Incorpora el video About-the-Product en la página. | 11/11/2026 |
 
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
-En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Para los Web Services se agregaron Unit Tests con JUnit 5 y Mockito sobre las reglas de dominio del carrito y los pagos, y Acceptance Tests bajo el enfoque BDD con Cucumber: los archivos `.feature` en Gherkin describen los escenarios de las historias del sprint y los Steps en Java llaman a la API como lo hacen sus tres clientes (el carrito con `X-Device-Key`, la app del comprador y la consola web). Todos los tests del backend se ejecutan con `mvn test` (40 tests: 25 unit tests y 15 escenarios).
+En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angular, `ng test`) para el nuevo inicio de sesión contra el backend y el cambio de idioma, y se agregaron Unit Tests a la aplicación móvil (Flutter, `flutter test`) para la lectura del QR del carrito, el formato de montos y la vista según el rol. Para los Web Services se agregaron Unit Tests con JUnit 5 y Mockito sobre las reglas de dominio del carrito y los pagos, y Acceptance Tests bajo el enfoque BDD con Cucumber: los archivos `.feature` en Gherkin describen los escenarios de las historias del sprint y los Steps en Java llaman a la API como lo hacen sus tres clientes (el carrito con `X-Device-Key`, la app del comprador y la consola web). Todos los tests del backend se ejecutan con `mvn test` (49 tests: 29 unit tests y 20 escenarios, de los cuales 4 unit tests y 5 escenarios cubren el webhook de TS03).
 
 **Unit Tests**
 
@@ -4744,7 +4745,8 @@ En el Sprint 2 se mantuvieron y ampliaron los Unit Tests de la consola web (Angu
 | `CartLifecycleService` (`CartLifecycleServiceTest`) | Guarda el presupuesto en la orden y el carrito y rechaza uno negativo | US04 | innova-carty-backend |
 | `CartLifecycleService` (`CartLifecycleServiceTest`) | Solo permite pagar carritos con productos, sin discrepancia y sin pago previo; al pagar deja orden y carrito en `PAID`; bloquea las ruedas con alerta `GEOFENCE` crítica si un carrito sin pagar llega a la salida | US08 | innova-carty-backend |
 | `CartLifecycleService` (`CartLifecycleServiceTest`) | Vincula la app del comprador a la orden abierta; rechaza carritos de otro comprador o desconectados | US05 | innova-carty-backend |
-| `PaymentService` (`PaymentServiceTest`) | Aprueba el pago del comprador vinculado con código de operación de 8 dígitos y el total de la orden; rechaza métodos desconocidos, carritos de otro comprador y carritos que no se pueden pagar; cobra la tarjeta del carrito al comprador vinculado | US08, TS03 | innova-carty-backend |
+| `PaymentService` (`PaymentServiceTest`) | Aprueba el pago del comprador vinculado con código de operación de 8 dígitos y el total de la orden; rechaza métodos desconocidos, carritos de otro comprador y carritos que no se pueden pagar; cobra la tarjeta del carrito al comprador vinculado | US08 | innova-carty-backend |
+| `PaymentService.confirmExternal` (`PaymentServiceTest`) | La confirmación del proveedor paga la orden; un `eventId` repetido no paga dos veces; un pago rechazado solo se registra; el monto debe coincidir con el total de la orden | TS03 | innova-carty-backend |
 | `AuthService` (`iam/infrastructure/auth.service.spec.ts`) | Inicia sesión contra la API y conserva al usuario; queda sin sesión con credenciales incorrectas; rechaza cuentas de comprador (usan la app); arma las iniciales del avatar | US11 | innova-carty-frontend-web-app |
 | Reglas de dominio de monitoreo (`monitoring/domain/model/monitoring-domain.spec.ts`) | Marca los carritos en discrepancia o bloqueados para el supervisor; cuenta como activos solo los carritos con comprador; calcula la diferencia entre peso medido y esperado y la compara con la tolerancia; trata las alertas atendidas como abiertas | US11 | innova-carty-frontend-web-app |
 | `allowedRange` (`catalog/domain/model/product.entity.spec.ts`) | Devuelve el rango de peso aceptado de un producto y lo reduce al peso nominal con tolerancia 0 | US13 | innova-carty-frontend-web-app |
@@ -4941,7 +4943,51 @@ Feature: Creación y consulta de órdenes de compra (TS02)
     Then la orden aparece con estado "PAID", 1 líneas de producto y un total de S/ 4.80
 ```
 
-Al ejecutarse por primera vez, 7 escenarios fallaron y revelaron un error del backend: al crear una orden nueva, los cambios hechos en la misma petición (los productos de la primera lectura o el comprador que vincula un carrito vacío) no se guardaban. Se corrigió en `CartLifecycleService.startSession` y los 15 escenarios pasaron.
+**TS03** · `src/test/resources/features/ts03_webhook_confirmacion_pagos.feature`
+
+```gherkin
+Feature: Webhook de confirmación de pagos externos (TS03)
+  Como plataforma Innova Carty
+  Quiero recibir la confirmación que envía el proveedor de pagos (Yape, Plin o pasarela de tarjeta)
+  Para marcar la orden como pagada aunque la app del comprador se cierre
+
+  Background:
+    Given un carrito inteligente nuevo conectado a la tienda
+    And un comprador registrado en la app
+    And el carrito reporta los siguientes tags RFID:
+      | tag            | cantidad |
+      | 04414793C92A81 | 1        |
+      | 044D4593C92A81 | 2        |
+    And el comprador vincula el carrito escaneando su QR
+
+  Scenario: El proveedor confirma el pago y el carrito pasa a pagado
+    When el proveedor confirma el pago "YAPE" del evento "evt-yape-001" por S/ 9.80
+    Then la respuesta tiene el código 200
+    And el webhook responde "PAYMENT_CREATED"
+    And el carrito queda en estado "PAID"
+
+  Scenario: Una notificación repetida no crea un segundo pago
+    Given el proveedor confirma el pago "PLIN" del evento "evt-plin-001" por S/ 9.80
+    When el proveedor confirma el pago "PLIN" del evento "evt-plin-001" por S/ 9.80
+    Then el webhook responde "DUPLICATE"
+    And el carrito tiene 1 pago registrado
+
+  Scenario: Un pago rechazado no cambia el estado del carrito
+    When el proveedor rechaza el pago "YAPE" del evento "evt-yape-002"
+    Then el webhook responde "REJECTION_RECORDED"
+    And el carrito queda en estado "IN_SESSION"
+
+  Scenario: Un monto distinto al total de la orden no se acepta
+    When el proveedor confirma el pago "YAPE" del evento "evt-yape-003" por S/ 5.00
+    Then la respuesta tiene el código 409
+    And el carrito queda en estado "IN_SESSION"
+
+  Scenario: Una notificación sin el secreto correcto se rechaza
+    When llega una notificación de pago con el secreto "secreto-falso"
+    Then la respuesta tiene el código 401
+```
+
+Al ejecutarse por primera vez, 7 escenarios fallaron y revelaron un error del backend: al crear una orden nueva, los cambios hechos en la misma petición (los productos de la primera lectura o el comprador que vincula un carrito vacío) no se guardaban. Se corrigió en `CartLifecycleService.startSession` y los 15 escenarios de ese momento pasaron. Después se agregaron los 5 escenarios de TS03, y los 20 escenarios pasan.
 
 Repositorio de control de versiones para Testing: los mismos repositorios de producto ([innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app), [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) e [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend)). En la consola web y en la app los tests se subieron junto con las funcionalidades que prueban; en el backend se subieron en commits propios:
 
@@ -4955,6 +5001,7 @@ Repositorio de control de versiones para Testing: los mismos repositorios de pro
 | innova-carty-backend | main | `730c2ac` | fix: keep the new shopping session managed so its first changes are saved | El id de la orden es asignado, así que `save()` hace merge y devuelve una copia gestionada; se trabajaba sobre el objeto original y se perdían los productos leídos en la misma petición o el comprador vinculado a un carrito vacío. Detectado por los acceptance tests. | 10/11/2026 |
 | innova-carty-backend | main | `64fdfba` | test: add unit tests for CartLifecycleService and PaymentService | Orden, productos RFID y total, verificación de peso, presupuesto, reglas de pago, bloqueo por geofence y vinculación de la app (TS02, US04, US05, US06, US08); pagos simulados Yape / Plin / tarjeta (US08). | 10/11/2026 |
 | innova-carty-backend | main | `3292caf` | test: add acceptance tests for the sprint 2 user stories | Features en Gherkin para TS01, TS02, US04, US05, US06 y US08 con steps de Cucumber que llaman a la API como el carrito, la app del comprador y la consola web. | 10/11/2026 |
+| innova-carty-backend | main | `0aea721` | test(payment): cover the payment webhook with unit and acceptance tests | Feature TS03 con 5 escenarios y 4 unit tests de `PaymentService.confirmExternal`. | 11/11/2026 |
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
 
@@ -5040,14 +5087,14 @@ La app móvil en Flutter consume la misma API en Render. Compradores y personal 
 
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
 
-En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre doce grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.
+En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot y se documentaron con **OpenAPI** mediante `springdoc-openapi`. La documentación se publica en **Swagger UI** junto con la API desplegada en Render, y cubre trece grupos de recursos: Authentication, Carts, Shopping sessions, Alerts, Cart events, Audit logs, Session stats, Products, Stores, Payments, Payment Webhook, My cart y Devices. Los recursos que ya consumía la consola en el Sprint 1 conservan las mismas rutas bajo `/api/v1`, por lo que la consola solo cambió su URL base.
 
 * **Swagger UI (desplegado):** https://innova-carty-backend.onrender.com/swagger-ui.html
 * **Especificación OpenAPI (JSON):** https://innova-carty-backend.onrender.com/v3/api-docs
 * **Swagger UI (local):** http://localhost:8080/swagger-ui.html (`mvn spring-boot:run`, base H2 en memoria con datos demo)
 * **Repositorio de Web Services:** https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend
 
-**Seguridad.** Los endpoints de personal y comprador usan un **JWT** (HS256) que devuelve `POST /api/v1/authentication/sign-in`; en Swagger UI se pega en **Authorize** (esquema `bearer`). Los endpoints del carrito usan la cabecera `X-Device-Key` (esquema `deviceKey`). En el plan gratuito de Render el servicio se suspende tras 15 minutos sin uso y la primera solicitud tarda alrededor de un minuto.
+**Seguridad.** Los endpoints de personal y comprador usan un **JWT** (HS256) que devuelve `POST /api/v1/authentication/sign-in`; en Swagger UI se pega en **Authorize** (esquema `bearer`). Los endpoints del carrito usan la cabecera `X-Device-Key` (esquema `deviceKey`) y el webhook de pagos usa el secreto compartido de la cabecera `X-Webhook-Secret` (esquema `webhookSecret`, variable de entorno `PAYMENT_WEBHOOK_SECRET` en Render). En el plan gratuito de Render el servicio se suspende tras 15 minutos sin uso y la primera solicitud tarda alrededor de un minuto.
 
 **Endpoints documentados en el Sprint 2**
 
@@ -5067,6 +5114,7 @@ En el Sprint 2 los Web Services de Innova Carty se implementaron en Spring Boot 
 | My cart | Mis pagos (comprobantes) | `GET` | `/api/v1/me/payments` | — | `GET /api/v1/me/payments` | `200` con los pagos del comprador | US08 |
 | Payments | Pagar la sesión abierta de un carrito | `POST` | `/api/v1/payments` | Body: `cartId`, `method` (`YAPE`, `PLIN`, `CARD`) | `{"cartId":"CART-0427","method":"YAPE"}` | `201` con `id`, `operationCode` (8 dígitos), `cartId`, `sessionId`, `method`, `amount`, `status: "APPROVED"`, `paidAt`; el carrito pasa a `PAID`. `400` método inválido, `403` carrito no vinculado, `409` carrito vacío, bloqueado, en discrepancia o ya pagado | US08, TS03 |
 | Payments | Listar pagos | `GET` | `/api/v1/payments` | `cartId` (opcional) | `GET /api/v1/payments?cartId=CART-0427` | `200` con los pagos ordenados del más reciente al más antiguo | US08 |
+| Payment Webhook | Recibir la confirmación del proveedor de pagos | `POST` | `/api/v1/payments/webhook` | Cabecera `X-Webhook-Secret`; body: `eventId`, `provider` (`YAPE`, `PLIN`, `CARD`), `cartId`, `operationCode`, `amount`, `status` (`APPROVED`, `REJECTED`) | `{"eventId":"evt-yape-001","provider":"YAPE","cartId":"CART-0427","operationCode":"48213907","amount":9.80,"status":"APPROVED"}` | `200` con `received`, `result` (`PAYMENT_CREATED`, `DUPLICATE` o `REJECTION_RECORDED`) y `payment`; `401` secreto incorrecto, `409` si el monto no coincide con el total de la orden | TS03 |
 | Shopping sessions | Listar órdenes de compra | `GET` | `/api/v1/shopping-sessions` | `cartId` (opcional) | `GET /api/v1/shopping-sessions?cartId=CART-0427` | `200` con las sesiones del carrito | TS02 |
 | Shopping sessions | Ver una orden de compra | `GET` | `/api/v1/shopping-sessions/{id}` | `id` (path) | `GET /api/v1/shopping-sessions/ORD-20261110-0427` | `200` con `items`, `total`, `budget`, `expectedWeight`, `measuredWeight`, `weightTolerance`, `status`; `404` si no existe | TS02 |
 | Shopping sessions | Actualizar una orden | `PATCH` | `/api/v1/shopping-sessions/{id}` | `id` (path); body con los campos a cambiar | `{"status":"CANCELLED"}` | `200` con la sesión actualizada | TS02 |
@@ -5156,6 +5204,7 @@ La sección *Schemas* describe la estructura de cada request y response, con el 
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | innova-carty-backend | main | `50a19a5` | feat: add Spring Boot platform API with Supabase, devices gateway and simulated payments | Agrega los controllers con anotaciones OpenAPI (`@Tag`, `@Operation`), la configuración de Swagger UI (`OpenApiConfiguration`, esquemas `bearer` y `deviceKey`) y la tabla de endpoints del README. | 10/11/2026 |
 | innova-carty-backend | main | `4faf8ee` | feat(catalog): show the demo products with Spanish names | Los datos de ejemplo que se ven en Swagger UI quedan en español. | 10/11/2026 |
+| innova-carty-backend | main | `2d419fb` | feat(payment): add webhook to confirm external payments (TS03) | Agrega `PaymentWebhookController` con su `@Tag` "Payment Webhook" y `@Operation`, el esquema de seguridad `webhookSecret` en `OpenApiConfiguration` y la fila del webhook en la tabla de endpoints del README. | 11/11/2026 |
 
 #### 6.2.2.8. Software Deployment Evidence for Sprint Review
 

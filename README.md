@@ -5394,16 +5394,7 @@ En el Sprint 2 (del 12/10/2026 al 16/11/2026) el equipo trabajó en seis reposit
 ![Insights Contributors docs](assets/chapter-6/sprint-2/insights/insights-docs-contributors.png)
 ![Insights Network docs](assets/chapter-6/sprint-2/insights/insights-docs-network.png)
 
-**Web Services (backend)**
-
-<!-- PENDIENTE captura: ![Insights Contributors backend](assets/chapter-6/sprint-2/insights/insights-backend-contributors.png) -->
-<!-- PENDIENTE captura: ![Insights Network backend](assets/chapter-6/sprint-2/insights/insights-backend-network.png) -->
-
-**Web Console, Mobile App y Landing Page**
-
-<!-- PENDIENTE captura: ![Insights Contributors Web Console](assets/chapter-6/sprint-2/insights/insights-webapp-contributors.png) -->
-<!-- PENDIENTE captura: ![Insights Contributors Mobile App](assets/chapter-6/sprint-2/insights/insights-mobile-contributors.png) -->
-<!-- PENDIENTE captura: ![Insights Contributors Landing Page](assets/chapter-6/sprint-2/insights/insights-landing-contributors.png) -->
+Los gráficos de los repositorios de código se consultan en los enlaces de la tabla anterior.
 
 **Commits del Sprint 2 por integrante**
 

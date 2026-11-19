@@ -106,7 +106,7 @@
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
 | 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
 | 3       | 13/11/2026 | Paico Calderon, July Zelmira <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Trillo Hernandez, Anghel Melanie <br> Crisanto Calle Deybbi Anderson | Avance 2 (AV2), Sprint 2: <br> **Paico:** Sprint Backlog 2 (6.2.2.3) y Video About-the-Product (6.4). <br> **Díaz:** correcciones del TB1 en 4.1.3.2, 5.1.2, 5.2.1, 5.6 y 6.2.1.7–6.2.1.9; capturas de despliegue e insights del Sprint 1; Validation Interviews (6.3.1 y 6.3.2) y tabla de contenido. <br> **Huanca:** Sprint Planning 2 (6.2.2.1), Aspect Leaders and Collaborators (6.2.2.2), Software Deployment Evidence (6.2.2.8) y Student Outcome AV2. <br> **Trillo:** Development, Testing Suite, Execution (consola y app móvil) y Services Documentation Evidence del Sprint 2 (6.2.2.4–6.2.2.7), numeración del capítulo VI, Student Outcome AV2 y conclusión general del AV2. <br> **Crisanto:** Evaluaciones según heurísticas (6.3.3) y Bibliografía de ingeniería de usabilidad. |
-| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Correcciones de la evaluación del AV2: carátula del AV2 con el nombre del equipo, texto de plantilla del análisis competitivo (2.1.1), datos de la entrevista 2 del Segmento 2 (2.2.2), TS03 (webhook de pagos) y conteo de pruebas en 6.2.2.4, 6.2.2.5 y 6.2.2.7, y tabla de commits del Sprint 2 (se retiran los commits del Landing Page del Sprint 1 y se agregan los del backend y del video del Landing Page). |
+| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Correcciones de la evaluación del AV2: carátula del AV2 con el nombre del equipo, texto de plantilla del análisis competitivo (2.1.1), datos de la entrevista 2 del Segmento 2 (2.2.2), TS03 (webhook de pagos) y conteo de pruebas en 6.2.2.4, 6.2.2.5 y 6.2.2.7, Sprint Backlog 2 con Engineering Tasks, estimación en horas, estados y tablero de Trello (6.2.2.3), y tabla de commits del Sprint 2 (se retiran los commits del Landing Page del Sprint 1 y se agregan los del backend y del video del Landing Page). |
 
 <div style="page-break-after: always;"></div>
 
@@ -4691,13 +4691,58 @@ Para el Sprint 2 el equipo mantiene la organización por aspectos del Sprint 1: 
 
 | User Story ID | Título | Story Points | Asignado a | Estado |
 | :---: | :--- | :---: | :--- | :---: |
-| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | To Do |
-| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | To Do |
-| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | To Do |
-| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | To Do |
-| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | To Do |
-| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | To Do |
-| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | To Do |
+| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | Done |
+| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | Done |
+| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | Done |
+| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | Done |
+| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | Done |
+| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | Done |
+| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | Done |
+
+Cada historia se descompuso en Engineering Tasks de 4 a 8 horas. El responsable de la historia coordina sus tareas, y las tareas de pruebas, despliegue, app móvil e integración de la consola las toma el líder de ese aspecto según la matriz LACX (6.2.2.2). Las tareas se registran en el tablero del Sprint 2 con los estados *To Do*, *In Process*, *To Review* y *Done*; la tabla muestra su estado al cierre del sprint.
+
+| Historia | SP | Engineering Task | Estimación (h) | Responsable | Estado |
+| :--- | :---: | :--- | :---: | :--- | :---: |
+| **TS02** Órdenes de compra | 5 | Modelo `ShoppingSession` con sus ítems y repositorio JPA sobre Supabase | 6 | Díaz Fiestas, Jorge Luis | Done |
+| | | Endpoints de administrador `/api/v1/shopping-sessions` (listar, ver y actualizar) | 5 | Díaz Fiestas, Jorge Luis | Done |
+| | | Endpoint del comprador `/api/v1/me/sessions` | 4 | Díaz Fiestas, Jorge Luis | Done |
+| | | Acceptance tests de TS02 | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **TS01** Telemetría del dispositivo edge | 5 | Endpoint `PUT /devices/carts/{id}/state` autenticado con `X-Device-Key` | 6 | Huanca Navarro, Gustavo Esau | Done |
+| | | Endpoints de eventos y de heartbeat del carrito | 6 | Huanca Navarro, Gustavo Esau | Done |
+| | | Firmware del ESP32: lectura RFID, celda de carga y envío al backend | 8 | Huanca Navarro, Gustavo Esau | Done |
+| | | Acceptance tests de TS01 | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **US06** Registro automático por RFID | 8 | Emparejamiento de tags con el catálogo y apertura de la sesión de compra | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Verificación de peso con tolerancia, estado `DISCREPANCY` y alerta `WEIGHT` | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Unit tests de `CartLifecycleService` | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Corrección del error de persistencia detectado por los acceptance tests | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **US05** Total acumulado | 5 | Endpoints `/api/v1/me/cart` para vincular, ver y desvincular el carrito | 6 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Pantalla "Mi carrito" en la app: vínculo por QR, productos y total en vivo | 8 | Berrocal Ramirez, Omar Christian | Done |
+| | | Conexión de la consola web al backend con JWT y acceso solo `ADMIN` | 8 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Idiomas ES / EN en la consola web | 4 | Crisanto Calle, Deybbi Anderson | Done |
+| **US04** Presupuesto límite | 3 | Endpoint `PATCH /api/v1/me/cart` con validación del presupuesto | 4 | Berrocal Ramirez, Omar Christian | Done |
+| | | Configuración del presupuesto en la app y aviso al superarlo | 5 | Berrocal Ramirez, Omar Christian | Done |
+| | | Idiomas ES / EN en la app móvil | 4 | Berrocal Ramirez, Omar Christian | Done |
+| **US08** Pago autónomo con QR | 8 | `PaymentService` con pagos simulados Yape, Plin y tarjeta | 8 | Paico Calderon, July Zelmira | Done |
+| | | Pago desde la app escaneando el QR de pago del carrito | 6 | Paico Calderon, July Zelmira | Done |
+| | | Comprobantes del comprador (`/api/v1/me/payments`) | 4 | Paico Calderon, July Zelmira | Done |
+| | | Unit tests y acceptance tests de los pagos | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **TS03** Webhook de pagos externos | 5 | `PaymentWebhookController` protegido con `X-Webhook-Secret` | 6 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Notificaciones repetidas por `eventId`, pagos rechazados y validación del monto | 5 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Unit tests y acceptance tests del webhook | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **Soporte del sprint** | 0 | Despliegue del backend en Render con Docker y base de datos en Supabase | 6 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Redespliegue de la consola web en Vercel | 4 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Documentación OpenAPI y Swagger UI | 5 | Díaz Fiestas, Jorge Luis | Done |
+| | | Video About-the-Product en el Landing Page | 4 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Sprint Backlog en el tablero y seguimiento de tareas | 4 | Paico Calderon, July Zelmira | Done |
+
+**Total comprometido:** 39 SP (TS02: 5, TS01: 5, US06: 8, US05: 5, US04: 3, US08: 8, TS03: 5).
+**Total completado:** 39 SP.
+
+**Tablero del Sprint 2 (Trello):** https://trello.com/b/iYzQF1lG/innova-carty-sprint-2
+
+![Tablero del Sprint 2 en Trello](assets/chapter-6/sprint-2/sprint-backlog-trello.png)
+
+*Figura: tablero del Sprint 2 en Trello con las listas To Do, In Process, To Review y Done; las 31 Engineering Tasks están en Done al cierre del sprint.*
 
 #### 6.2.2.4. Development Evidence for Sprint Review
 

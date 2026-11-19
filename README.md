@@ -106,7 +106,7 @@
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
 | 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
 | 3       | 13/11/2026 | Paico Calderon, July Zelmira <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Trillo Hernandez, Anghel Melanie <br> Crisanto Calle Deybbi Anderson | Avance 2 (AV2), Sprint 2: <br> **Paico:** Sprint Backlog 2 (6.2.2.3) y Video About-the-Product (6.4). <br> **Díaz:** correcciones del TB1 en 4.1.3.2, 5.1.2, 5.2.1, 5.6 y 6.2.1.7–6.2.1.9; capturas de despliegue e insights del Sprint 1; Validation Interviews (6.3.1 y 6.3.2) y tabla de contenido. <br> **Huanca:** Sprint Planning 2 (6.2.2.1), Aspect Leaders and Collaborators (6.2.2.2), Software Deployment Evidence (6.2.2.8) y Student Outcome AV2. <br> **Trillo:** Development, Testing Suite, Execution (consola y app móvil) y Services Documentation Evidence del Sprint 2 (6.2.2.4–6.2.2.7), numeración del capítulo VI, Student Outcome AV2 y conclusión general del AV2. <br> **Crisanto:** Evaluaciones según heurísticas (6.3.3) y Bibliografía de ingeniería de usabilidad. |
-| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Correcciones de la evaluación del AV2: carátula del AV2 con el nombre del equipo, texto de plantilla del análisis competitivo (2.1.1), datos de la entrevista 2 del Segmento 2 (2.2.2), TS03 (webhook de pagos) y conteo de pruebas en 6.2.2.4, 6.2.2.5 y 6.2.2.7, Sprint Backlog 2 con Engineering Tasks, estimación en horas, estados y tablero de Trello (6.2.2.3), y tabla de commits del Sprint 2 (se retiran los commits del Landing Page del Sprint 1 y se agregan los del backend y del video del Landing Page). |
+| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Correcciones de la evaluación del AV2: carátula del AV2 con el nombre del equipo, texto de plantilla del análisis competitivo (2.1.1), datos de la entrevista 2 del Segmento 2 (2.2.2), TS03 (webhook de pagos) y conteo de pruebas en 6.2.2.4, 6.2.2.5 y 6.2.2.7, Sprint Backlog 2 con Engineering Tasks, estimación en horas, estados y tablero de Trello (6.2.2.3), Team Collaboration Insights del Sprint 2 (6.2.2.9) a partir del borrador de Berrocal, y tabla de commits del Sprint 2 (se retiran los commits del Landing Page del Sprint 1 y se agregan los del backend y del video del Landing Page). |
 
 <div style="page-break-after: always;"></div>
 
@@ -5306,7 +5306,47 @@ El Landing Page mantiene el despliegue del Sprint 1 (sitio estático en Vercel, 
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
-*(Pendiente)*
+En el Sprint 2 (del 12/10/2026 al 13/11/2026) el equipo trabajó en cinco repositorios de la organización [8721-Desarrollo-de-Soluciones-IOT](https://github.com/8721-Desarrollo-de-Soluciones-IOT). En el repositorio del informe se mantuvo GitFlow: cada integrante trabajó en su rama `feature/*`, la integró en `develop` mediante *pull requests* y `develop` se integró en `main` para la entrega. En los repositorios de código, en cambio, la mayor parte del trabajo se subió directamente a `main`, y solo el backend registra un *pull request* (`feature/melanie`, PR #1).
+
+La colaboración se evidencia con los gráficos de **GitHub Insights** de cada repositorio: *Contributors*, que muestra los commits de cada integrante, y *Network*, que muestra las ramas y sus integraciones.
+
+| Repositorio | Producto | Insights |
+| :--- | :--- | :--- |
+| [innova-carty-backend](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend) | Web Services (Spring Boot y Supabase) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend/network) |
+| [innova-carty-frontend-web-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app) | Web Console (Angular) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app/network) |
+| [innova-carty-mobile-app](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app) | Mobile App (Flutter) | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app/network) |
+| [innova-carty-landing-page](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page) | Landing Page | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page/network) |
+| [docs](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs) | Informe del proyecto | [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/network) |
+
+**Actividad del repositorio del informe**
+
+![Pulse del repositorio docs](assets/chapter-6/sprint-2/insights-docs-pulse.png)
+
+*Figura: Pulse del repositorio `docs` del 05/11 al 12/11/2026, la semana de mayor actividad del sprint: 19 pull requests integrados y 15 commits en `main` de 7 autores, sin contar los merges.*
+
+**Commits por integrante en el Sprint 2**
+
+La tabla cuenta los commits integrados en `main` de cada repositorio entre el 12/10 y el 13/11/2026, sin contar los merges.
+
+| Integrante | GitHub Username | Aspecto que lideró | Aportes en el Sprint 2 | docs | Código | Total | % |
+| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| Trillo Hernández, Anghel Melanie | AM27TH | Testing | Unit tests y acceptance tests del backend y corrección del error que detectaron (PR #1); evidencias de desarrollo, testing, ejecución y documentación de servicios (6.2.2.4–6.2.2.7); integración de 6 *pull requests* en `docs`. | 9 | 3 | 12 | 32 % |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | Backend | Correcciones del TB1 en los capítulos IV, V y VI; capturas de despliegue e insights del Sprint 1; diseño y registro de las entrevistas de validación (6.3.1 y 6.3.2); integración de 8 *pull requests* en `docs`, incluidas las ramas `release` y `main`. | 8 | 0 | 8 | 22 % |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | Integración de la Web Console | Evaluaciones según heurísticas (6.3.3); bibliografía de ingeniería de usabilidad; video About-the-Product en el Landing Page. | 3 | 1 | 4 | 11 % |
+| Paico Calderon, July Zelmira | u20211d760 | Pagos | Sprint Backlog 2 y Video About-the-Product (6.4); integración de 5 *pull requests* en `docs`, incluida la entrega de `develop` a `main` (PR #65). | 2 | 0 | 2 | 5 % |
+| Huanca Navarro, Gustavo Esau | petitavo | Device Gateway y Telemetría | Sprint Planning 2, matriz de líderes y colaboradores y evidencia de despliegue (6.2.2.1, 6.2.2.2 y 6.2.2.8). | 1 | 0 | 1 | 3 % |
+| Berrocal Ramirez, Omar Christian | OmBRz | Mobile App | Primer borrador de esta sección y captura del Pulse del repositorio `docs`, en la rama `feature/omar` (sin integrar a `develop` al cierre del sprint). | 0 | 0 | 0 | 0 % |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | Despliegue (Render y Vercel) | Sin commits registrados en el periodo. | 0 | 0 | 0 | 0 % |
+| Asistente de IA (cuenta `claude`) | — | — | Primera versión del backend, conexión de la consola al backend e idiomas, app móvil y webhook de TS03, generados por integrantes del equipo con un asistente de IA (Claude Code). | 0 | 10 | 10 | 27 % |
+| **Total** | | | | **23** | **14** | **37** | **100 %** |
+
+**Análisis.** El repositorio del informe muestra un trabajo colaborativo sostenido: cinco integrantes tienen commits propios en el periodo, se integraron 21 *pull requests* y las ramas `feature/*` siguieron el flujo de GitFlow acordado en la retrospectiva del Sprint 1. Los repositorios de código, en cambio, no reflejan la organización por aspectos de la matriz LACX (6.2.2.2): 10 de los 14 commits de código se generaron con un asistente de IA y se subieron directamente a `main`, de modo que los líderes de Backend, Device Gateway, Mobile App, Pagos e Integración de la Web Console no tienen commits propios en los productos que lideran. El uso del asistente se declara aquí por transparencia, y cada líder de aspecto debe poder explicar y defender el código de su aspecto. Tampoco se cumplió el acuerdo de integrar el código con *pull requests* durante todo el sprint, y dos integrantes no registran commits integrados en el periodo.
+
+Como mejora para el Sprint 3, el equipo acuerda:
+
+* Que cada integrante suba el código de las tareas que tiene asignadas en el tablero (6.2.2.3) desde su propia cuenta, en una rama `feature/*` y con un *pull request* hacia `develop` revisado por el líder del aspecto.
+* Que el código generado con ayuda de un asistente de IA se revise, se entienda y se suba desde la cuenta del integrante responsable de la tarea, declarando su uso en el mensaje del commit.
+* Proteger `main` y `develop` en todos los repositorios, publicar el firmware del ESP32 en la organización y versionar cada entrega con tags SemVer.
 
 ## 6.3. Validation Interviews
 

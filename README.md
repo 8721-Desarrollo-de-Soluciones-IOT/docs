@@ -22,7 +22,7 @@
 </p>
 
 <p align="center" style="font-size: 16pt;">
-  <strong>Trabajo Parcial (TB1)</strong>
+  <strong>Avance del Trabajo Final (AV2)</strong>
 </p>
 
 <br>
@@ -32,7 +32,7 @@
 </p>
 
 <p align="center" style="font-size: 14pt;">
-  <strong>[Nombre del equipo]</strong>
+  <strong>Innova Carty</strong>
 </p>
 
 <br>
@@ -93,7 +93,7 @@
 </div>
 
 <br>
-<p align="center">Octubre 2026</p>
+<p align="center">Noviembre 2026</p>
 
 <div style="page-break-after: always;"></div>
 
@@ -105,12 +105,63 @@
 |---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1       | 15/09/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Capítulo I: Introducción <br> Capítulo II: Requirements Elicitation & Analysis. <br> Capítulo III: Requirements Specification. <br> Capítulo IV: Solution Software Design.  |
 | 2       | 07/10/2026 | Berrocal Ramirez Omar Christian <br> Crisanto Calle Deybbi Anderson <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Paico Calderon, July Zelmira <br> Pardo Chumpitazi, Kevin Patrick <br> Trillo Hernandez, Anghel Melanie   | Correcciones del Avance 1 (AV1). <br> Capítulo V: Solution UI/UX Design. <br> Capítulo VI: Product Implementation, Validation & Deployment. |
+| 3       | 13/11/2026 | Paico Calderon, July Zelmira <br> Diaz Fiestas Jorge Luis <br> Huanca Navarro Gustavo Esau <br> Trillo Hernandez, Anghel Melanie <br> Crisanto Calle Deybbi Anderson | Avance 2 (AV2), Sprint 2: <br> **Paico:** Sprint Backlog 2 (6.2.2.3) y Video About-the-Product (6.4). <br> **Díaz:** correcciones del TB1 en 4.1.3.2, 5.1.2, 5.2.1, 5.6 y 6.2.1.7–6.2.1.9; capturas de despliegue e insights del Sprint 1; Validation Interviews (6.3.1 y 6.3.2) y tabla de contenido. <br> **Huanca:** Sprint Planning 2 (6.2.2.1), Aspect Leaders and Collaborators (6.2.2.2), Software Deployment Evidence (6.2.2.8) y Student Outcome AV2. <br> **Trillo:** Development, Testing Suite, Execution (consola y app móvil) y Services Documentation Evidence del Sprint 2 (6.2.2.4–6.2.2.7), numeración del capítulo VI, Student Outcome AV2 y conclusión general del AV2. <br> **Crisanto:** Evaluaciones según heurísticas (6.3.3) y Bibliografía de ingeniería de usabilidad. |
+| 4       | 18/11/2026 | Trillo Hernandez, Anghel Melanie <br> Diaz Fiestas Jorge Luis | Correcciones de la evaluación del AV2: <br> **Trillo:** carátula del AV2 con el nombre del equipo; texto de plantilla del análisis competitivo (2.1.1); datos de la entrevista 2 del Segmento 2 (2.2.2); Sprint Backlog 2 con Engineering Tasks, estimación en horas, estados y tablero de Trello (6.2.2.3); capturas de Insights del repositorio `docs` (6.2.2.9). <br> **Díaz:** TS03 (webhook de pagos), conteo de pruebas y tabla de commits del Sprint 2 en 6.2.2.4, 6.2.2.5, 6.2.2.7 y 6.2.2.8; firmware del carrito en `innova-carty-embedded-app`; Team Collaboration Insights del Sprint 2 (6.2.2.9) con la declaración de uso de IA; Student Outcome AV2. |
+| 5       | 18/11/2026 | Trillo Hernandez, Anghel Melanie | Project Report Collaboration Insights (commits y pull requests por integrante y entrega, con las capturas Contributors y Network del repositorio `docs`); Conclusiones del Sprint 2; Bibliografía de arquitectura, tecnologías y proceso (14 fuentes nuevas); Anexos con repositorios, productos desplegados, tableros y videos del proyecto. |
+
+<div style="page-break-after: always;"></div>
+
+---
+
+# Project Report Collaboration Insights
+
+El informe se elabora de forma colaborativa en el repositorio [docs](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs) de la organización [8721-Desarrollo-de-Soluciones-IOT](https://github.com/8721-Desarrollo-de-Soluciones-IOT), con el flujo GitFlow descrito en 6.1.2: cada integrante trabaja sus secciones en su rama `feature/*`, las integra en `develop` mediante *pull requests* y, al cierre de cada entrega, `develop` se integra en `main` a través de la rama `release`. Los mensajes de commit siguen Conventional Commits (`docs(chapter-N): …`).
+
+* **URL del repositorio del informe:** https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs
+* **Insights:** [Contributors](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/graphs/contributors) · [Network](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/network) · [Pulse](https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs/pulse)
+
+![Insights Contributors del repositorio docs](assets/chapter-6/sprint-2/insights/insights-docs-contributors.png)
+
+*Figura: gráfico Contributors del repositorio `docs` (commits por semana en `main`, sin merges), capturado el 18/11/2026. Incluye los commits posteriores a la entrega del AV2, por lo que algunos totales superan los de la tabla.*
+
+![Insights Network del repositorio docs](assets/chapter-6/sprint-2/insights/insights-docs-network.png)
+
+*Figura: gráfico Network del repositorio `docs` con las ramas `feature/*` de los integrantes y su integración en `develop`, `release` y `main`.*
+
+**Commits por integrante y entrega**
+
+La tabla cuenta los commits integrados en `main` del repositorio `docs`, sin contar los merges, según la fecha de cada commit: AV1 hasta el 15/09/2026, TB1 del 16/09 al 07/10/2026 y AV2 del 08/10 al 13/11/2026.
+
+| Integrante | GitHub Username | AV1 | TB1 | AV2 | Total |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| Trillo Hernández, Anghel Melanie | AM27TH | 0 | 21 | 9 | 30 |
+| Díaz Fiestas, Jorge Luis | LuisDiazpe | 7 | 11 | 8 | 26 |
+| Paico Calderon, July Zelmira | u20211d760 | 3 | 17 | 2 | 22 |
+| Crisanto Calle, Deybbi Anderson | Dacc03 | 1 | 8 | 3 | 12 |
+| Huanca Navarro, Gustavo Esau | petitavo | 0 | 11 | 1 | 12 |
+| Pardo Chumpitazi, Kevin Patrick | Kevinyin11 | 0 | 12 | 0 | 12 |
+| Berrocal Ramirez, Omar Christian | OmBRz | 0 | 10 | 0 | 10 |
+| **Total** | | **11** | **90** | **23** | **124** |
+
+**Pull requests integrados:** 1 en el AV1, 43 en el TB1 y 21 en el AV2.
+
+**Aportes al informe por entrega**
+
+| Entrega | Aportes |
+| :--- | :--- |
+| AV1 | Capítulos I a IV: perfil de la startup y de la solución, segmentos objetivo, needfinding, especificación de requisitos y diseño estratégico y táctico del software. El detalle por integrante está en el Student Outcome (AV1). |
+| TB1 | Correcciones del AV1, Capítulo V (UI/UX Design) y Sprint 1 del Capítulo VI. Es la entrega con más actividad: los siete integrantes tienen commits y se integraron 43 *pull requests*. |
+| AV2 | Sprint 2 del Capítulo VI y las secciones 6.3 y 6.4, con el detalle por autor en la versión 3 del Registro de Versiones. Cinco integrantes registran commits en `main`; el borrador de Team Collaboration Insights de Berrocal quedó en `feature/omar` y se incorporó después (versión 4). |
+
+**Análisis.** Los siete integrantes aportaron al informe a lo largo del proyecto, con 124 commits y 65 *pull requests* integrados en `main`. La actividad se concentró en el TB1, mientras que en el AV1 la mayor parte de las secciones se integró en pocos commits de tres integrantes y en el AV2 dos integrantes no registran commits integrados. El conteo de commits no mide por sí solo el aporte de cada integrante, porque algunas secciones se redactaron en equipo y las subió un solo integrante; por eso el Registro de Versiones detalla el autor de cada cambio.
 
 <div style="page-break-after: always;"></div>
 
 ---
 
 ## Contenido
+
+### [Project Report Collaboration Insights](#project-report-collaboration-insights)
 
 ### [ABET – EAC - Student Outcome](#abet--eac---student-outcome-5)
 
@@ -578,15 +629,12 @@ Profesionales y directivos encargados de la administración operativa, supervisi
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2" colspan="2">¿Por qué realizar este análisis?</td>
-            <td colspan="9">Indicar en este espacio la pregunta que se busca responder o el propósito principal del análisis.</td>
-        </tr>
-        <tr>
+            <td colspan="2">¿Por qué realizar este análisis?</td>
             <td colspan="9">El propósito de este análisis es entender cómo funcionan y qué características poseen las soluciones de compra inteligente actuales, con el fin de potenciar las ventajas únicas de Innova Carty (pago ágil por QR peruano y control estricto de presupuesto) y aprovechar las barreras de costo y fricción de la competencia.</td>
         </tr>
         <tr>
             <tr>
-                <td colspan="3">(En la cabecera colocar nombre y logo de cada competidor)</td>
+                <td colspan="3">Competidores</td>
                 <td colspan="2"><img src="assets/common/team/INNOVA_CARTY.jpg" style="width: 60px; height: auto;"><br>Innova Carty (Nuestro)</td>
                 <td colspan="2"><img src="assets/common/team/SCANYGO.png" style="width: 60px; height: auto;"><br>Scan & Go (Apps)</td>
                 <td colspan="2"><img src="assets/common/team/SMARTCART.jpg" style="width: 60px; height: auto;"><br>Smart-Cart</td>
@@ -849,12 +897,12 @@ Innova Carty se posicionará como la opción **intermedia y localizada**. Es má
 
 | Atributo | Detalle |
 | :--- | :--- |
-| Nombre | Camila [apellido — completar] |
+| Nombre | Camila Delgado |
 | Edad | 28 años |
-| Distrito | [completar] |
+| Distrito | Lima |
 | Ocupación | Encargada de operaciones en tienda retail |
-| Fecha de entrevista | [completar] |
-| Timing | [completar duración] |
+| Fecha de entrevista | 20 de setiembre de 2026 |
+| Timing | 00:00 - 07:00 (Duración: 7 min) |
 | Enlace a la grabación | [Ver en YouTube](https://youtu.be/kIMXW7XIeIk) |
 | Captura de pantalla de la grabación | <a href="https://youtu.be/kIMXW7XIeIk" target="_blank"><img src="https://img.youtube.com/vi/kIMXW7XIeIk/hqdefault.jpg" width="320" alt="Entrevista 2 - Segmento 2"></a> |
 | Resumen | Camila tiene 28 años y se desempeña como encargada de operaciones en una tienda retail, con cinco años de experiencia en el sector y dos en su puesto actual. Supervisa el funcionamiento general de la tienda: inventario, atención al cliente, cajas, reposición y coordinación de personal en horas de alta afluencia. Identifica las colas en caja como el principal problema en horarios punta, lo que obliga a movilizar personal de otras áreas y genera quejas de clientes, sobre todo en fines de semana y quincenas. Sobre el control de mercancía, señala que el proceso actual (paso por caja más supervisión interna) siempre conlleva el riesgo de que algún producto no se registre correctamente, generando diferencias de inventario, pérdidas económicas y revisiones adicionales del personal. Actualmente gestionan ventas e inventario mediante sistemas de punto de venta. Se muestra receptiva a la idea de un carrito que identifique productos y envíe información en tiempo real al sistema, y considera positivo que el cliente pueda escanear, ver el total y pagar desde el carrito, ya que reduciría la afluencia en cajas en momentos de alta demanda. Condiciona su adopción a que el sistema sea seguro y confiable, se integre con el punto de venta e inventario existentes, sea fácil de usar tanto para clientes como para trabajadores, y cuente con mecanismos para detectar productos no registrados. Considera que podría reducir costos operativos de caja, aunque señala que habría que evaluar el costo de implementar y mantener los equipos. Se muestra dispuesta a probar el sistema, siempre que primero se haga una prueba piloto controlada que demuestre seguridad y correcto funcionamiento. |
@@ -4692,13 +4740,58 @@ Para el Sprint 2 el equipo mantiene la organización por aspectos del Sprint 1: 
 
 | User Story ID | Título | Story Points | Asignado a | Estado |
 | :---: | :--- | :---: | :--- | :---: |
-| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | To Do |
-| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | To Do |
-| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | To Do |
-| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | To Do |
-| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | To Do |
-| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | To Do |
-| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | To Do |
+| **TS02** | Creación y Consulta de Órdenes de Compra | 5 | Diaz Fiestas, Jorge Luis | Done |
+| **TS01** | Recepción e Ingesta de Telemetría desde Dispositivo Edge | 5 | Huanca Navarro, Gustavo Esau | Done |
+| **US06** | Registro Automático de Artículo mediante Lectura RFID | 8 | Trillo Hernández, Anghel Melanie | Done |
+| **US05** | Visualización Dinámica del Total Acumulado | 5 | Crisanto Calle, Deybbi Anderson | Done |
+| **US04** | Configuración de Presupuesto Límite de Compra | 3 | Berrocal Ramirez, Omar Christian | Done |
+| **US08** | Liquidación de Orden y Pago Autónomo con QR Dinámico | 8 | Paico Calderon, July Zelmira | Done |
+| **TS03** | Webhook de Confirmación de Pagos Externos | 5 | Pardo Chumpitazi, Kevin Patrick | Done |
+
+Cada historia se descompuso en Engineering Tasks de 4 a 8 horas. El responsable de la historia coordina sus tareas, y las tareas de pruebas, despliegue, app móvil e integración de la consola las toma el líder de ese aspecto según la matriz LACX (6.2.2.2). Las tareas se registran en el tablero del Sprint 2 con los estados *To Do*, *In Process*, *To Review* y *Done*; la tabla muestra su estado al cierre del sprint.
+
+| Historia | SP | Engineering Task | Estimación (h) | Responsable | Estado |
+| :--- | :---: | :--- | :---: | :--- | :---: |
+| **TS02** Órdenes de compra | 5 | Modelo `ShoppingSession` con sus ítems y repositorio JPA sobre Supabase | 6 | Díaz Fiestas, Jorge Luis | Done |
+| | | Endpoints de administrador `/api/v1/shopping-sessions` (listar, ver y actualizar) | 5 | Díaz Fiestas, Jorge Luis | Done |
+| | | Endpoint del comprador `/api/v1/me/sessions` | 4 | Díaz Fiestas, Jorge Luis | Done |
+| | | Acceptance tests de TS02 | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **TS01** Telemetría del dispositivo edge | 5 | Endpoint `PUT /devices/carts/{id}/state` autenticado con `X-Device-Key` | 6 | Huanca Navarro, Gustavo Esau | Done |
+| | | Endpoints de eventos y de heartbeat del carrito | 6 | Huanca Navarro, Gustavo Esau | Done |
+| | | Firmware del ESP32: lectura RFID, celda de carga y envío al backend | 8 | Huanca Navarro, Gustavo Esau | Done |
+| | | Acceptance tests de TS01 | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **US06** Registro automático por RFID | 8 | Emparejamiento de tags con el catálogo y apertura de la sesión de compra | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Verificación de peso con tolerancia, estado `DISCREPANCY` y alerta `WEIGHT` | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Unit tests de `CartLifecycleService` | 6 | Trillo Hernández, Anghel Melanie | Done |
+| | | Corrección del error de persistencia detectado por los acceptance tests | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **US05** Total acumulado | 5 | Endpoints `/api/v1/me/cart` para vincular, ver y desvincular el carrito | 6 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Pantalla "Mi carrito" en la app: vínculo por QR, productos y total en vivo | 8 | Berrocal Ramirez, Omar Christian | Done |
+| | | Conexión de la consola web al backend con JWT y acceso solo `ADMIN` | 8 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Idiomas ES / EN en la consola web | 4 | Crisanto Calle, Deybbi Anderson | Done |
+| **US04** Presupuesto límite | 3 | Endpoint `PATCH /api/v1/me/cart` con validación del presupuesto | 4 | Berrocal Ramirez, Omar Christian | Done |
+| | | Configuración del presupuesto en la app y aviso al superarlo | 5 | Berrocal Ramirez, Omar Christian | Done |
+| | | Idiomas ES / EN en la app móvil | 4 | Berrocal Ramirez, Omar Christian | Done |
+| **US08** Pago autónomo con QR | 8 | `PaymentService` con pagos simulados Yape, Plin y tarjeta | 8 | Paico Calderon, July Zelmira | Done |
+| | | Pago desde la app escaneando el QR de pago del carrito | 6 | Paico Calderon, July Zelmira | Done |
+| | | Comprobantes del comprador (`/api/v1/me/payments`) | 4 | Paico Calderon, July Zelmira | Done |
+| | | Unit tests y acceptance tests de los pagos | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **TS03** Webhook de pagos externos | 5 | `PaymentWebhookController` protegido con `X-Webhook-Secret` | 6 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Notificaciones repetidas por `eventId`, pagos rechazados y validación del monto | 5 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Unit tests y acceptance tests del webhook | 4 | Trillo Hernández, Anghel Melanie | Done |
+| **Soporte del sprint** | 0 | Despliegue del backend en Render con Docker y base de datos en Supabase | 6 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Redespliegue de la consola web en Vercel | 4 | Pardo Chumpitazi, Kevin Patrick | Done |
+| | | Documentación OpenAPI y Swagger UI | 5 | Díaz Fiestas, Jorge Luis | Done |
+| | | Video About-the-Product en el Landing Page | 4 | Crisanto Calle, Deybbi Anderson | Done |
+| | | Sprint Backlog en el tablero y seguimiento de tareas | 4 | Paico Calderon, July Zelmira | Done |
+
+**Total comprometido:** 39 SP (TS02: 5, TS01: 5, US06: 8, US05: 5, US04: 3, US08: 8, TS03: 5).
+**Total completado:** 39 SP.
+
+**Tablero del Sprint 2 (Trello):** https://trello.com/b/iYzQF1lG/innova-carty-sprint-2
+
+![Tablero del Sprint 2 en Trello](assets/chapter-6/sprint-2/sprint-backlog-trello.png)
+
+*Figura: tablero del Sprint 2 en Trello con las listas To Do, In Process, To Review y Done; las 31 Engineering Tasks están en Done al cierre del sprint.*
 
 #### 6.2.2.4. Development Evidence for Sprint Review
 
@@ -5301,16 +5394,7 @@ En el Sprint 2 (del 12/10/2026 al 16/11/2026) el equipo trabajó en seis reposit
 ![Insights Contributors docs](assets/chapter-6/sprint-2/insights/insights-docs-contributors.png)
 ![Insights Network docs](assets/chapter-6/sprint-2/insights/insights-docs-network.png)
 
-**Web Services (backend)**
-
-![Insights Contributors backend](assets/chapter-6/sprint-2/insights/insights-backend-contributors.png)
-![Insights Network backend](assets/chapter-6/sprint-2/insights/insights-backend-network.png)
-
-**Web Console, Mobile App y Landing Page**
-
-![Insights Contributors Web Console](assets/chapter-6/sprint-2/insights/insights-webapp-contributors.png)
-![Insights Contributors Mobile App](assets/chapter-6/sprint-2/insights/insights-mobile-contributors.png)
-![Insights Contributors Landing Page](assets/chapter-6/sprint-2/insights/insights-landing-contributors.png)
+Los gráficos de los repositorios de código se consultan en los enlaces de la tabla anterior.
 
 **Commits del Sprint 2 por integrante**
 
@@ -5478,6 +5562,22 @@ En la primera sesión no hubo problemas catastróficos: el participante entendi�
 
 # Conclusiones
 
+## Conclusiones del Sprint 2 (AV2)
+
+* **Sprint Goal.** El Sprint 2 cumplió su objetivo: el carrito `CART-0427` envía sus tags RFID y su peso al backend desplegado en Render, el comprador lo vincula desde la app móvil, ve el total, fija un presupuesto y paga con QR, y el administrador sigue el proceso desde la consola web con datos reales en lugar de la API fake. Se completaron los 39 Story Points comprometidos (6.2.2.3), casi el doble de los 20 del Sprint 1, gracias a que los repositorios, el flujo de trabajo y los despliegues ya estaban configurados.
+
+* **Arquitectura.** El paso de la API fake al backend real solo requirió cambiar `apiBaseUrl` en la consola, porque el Sprint 1 ya usaba el prefijo `/api/v1` y el mismo contrato. La organización del backend por bounded contexts y capas (domain, application, infrastructure e interfaces) respeta el diseño táctico del Capítulo IV, lo que confirma que el modelo de dominio era una base adecuada para la implementación.
+
+* **Calidad.** Los 49 tests del backend (29 unit tests y 20 escenarios BDD en Gherkin) se escribieron a partir de los criterios de aceptación del Capítulo III. En su primera ejecución detectaron un error real de persistencia en la creación de órdenes, que se corrigió antes de la entrega. Escribir las pruebas desde los criterios de aceptación permitió encontrar fallas que una revisión manual no había detectado.
+
+* **Validación con usuarios.** La primera sesión de validación con un administrador de tienda (6.3.2) apoya la hipótesis del Segmento 2: el participante entendió el Dashboard, la vista de Carritos y los tipos de alerta, y calificó la facilidad de uso con 4.2/5 y la utilidad con 4.9/5. Los problemas encontrados (6.3.3) son sobre todo de etiquetas y acciones poco claras en la vista de Alertas, y ninguno impide completar las tareas. La hipótesis del Segmento 1 (comprador moderno) todavía no se valida con usuarios, porque sus entrevistas están pendientes.
+
+* **Proceso.** El informe se trabajó con GitFlow y *pull requests*, pero en los repositorios de código no se cumplió el acuerdo de la retrospectiva del Sprint 1: la mayor parte del código se subió directamente a `main` y se generó con un asistente de IA, como se declara en 6.2.2.9. Es la principal mejora de proceso para el Sprint 3.
+
+* **Siguientes pasos del Roadmap.** Para el Sprint 3 el equipo prioriza: completar las entrevistas de validación de ambos segmentos (3 a 5 por segmento); incorporar al backlog los hallazgos de severidad 3 y 2, en especial las notificaciones push para el administrador, la claridad de las alertas y los reportes por fecha; publicar un build instalable de la app móvil (Firebase App Distribution) y enlazarlo desde el Landing Page; y reemplazar el pago simulado por una pasarela o un sandbox de pruebas que llame al webhook de TS03.
+
+## Conclusiones del needfinding (AV1 y TB1)
+
 * El trabajo de needfinding confirmó en gran medida los Problem Statements planteados al inicio del proyecto. Las entrevistas con compradores y administradores de tienda mostraron que la pérdida de tiempo en caja, la falta de visibilidad del gasto durante la compra y la dificultad para controlar el peso y la tolerancia de productos a granel son fricciones reales y recurrentes, lo que respalda la necesidad de una solución como el carrito inteligente. Sin embargo, también se identificaron matices que no estaban contemplados en la formulación original del problema, como la resistencia de algunos usuarios del Segmento 2 a modificar procesos operativos ya establecidos, lo que obliga a repensar la forma en que se comunica el valor de la herramienta a este perfil.
 
 * En cuanto a los assumptions realizados sobre el comportamiento de los segmentos, varios se validaron con las entrevistas y otros debieron ajustarse. Se asumía que el comprador moderno del Segmento 1 estaría dispuesto a usar un dispositivo adicional dentro de la tienda si este le ahorraba tiempo, y esto se confirmó de manera consistente en los testimonios recogidos. En cambio, se había asumido que el administrador de tienda priorizaría sobre todo la reducción de mermas, cuando en la práctica surgió con más fuerza su preocupación por la rapidez de implementación y por no alterar el flujo de trabajo del personal. Este hallazgo llevó al equipo a ajustar el enfoque de las hipótesis hacia una propuesta de valor que combine eficiencia con baja fricción de adopción.
@@ -5492,11 +5592,39 @@ En la primera sesión no hubo problemas catastróficos: el participante entendi�
 
 # Bibliografía
 
+Brown, S. (s. f.). *The C4 model for visualising software architecture*. https://c4model.com
+
+Conventional Commits. (s. f.). *Conventional Commits 1.0.0*. https://www.conventionalcommits.org/en/v1.0.0/
+
+Cucumber. (s. f.). *Gherkin reference*. https://cucumber.io/docs/gherkin/reference/
+
 Delgado De La Vega, F. L. (2026). *Impacto de la calidad del servicio sobre la satisfacción de clientes en supermercados del distrito de San Borja* [Tesis de maestría, Universidad San Ignacio de Loyola]. Repositorio Institucional USIL. https://repositorio.usil.edu.pe/server/api/core/bitstreams/ee6274c8-9c66-4253-a9ac-061089c0a4d2/content
+
+Driessen, V. (2010, 5 de enero). *A successful Git branching model*. https://nvie.com/posts/a-successful-git-branching-model/
+
+Espressif Systems. (s. f.). *ESP32 series datasheet*. https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+
+Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley.
+
+Flutter. (s. f.). *Flutter documentation*. https://docs.flutter.dev
+
+Gothelf, J., & Seiden, J. (2021). *Lean UX: Creating great products with agile teams* (3.ª ed.). O'Reilly Media.
 
 Nielsen, J. (1994). *Usability engineering*. Morgan Kaufmann. https://vtechworks.lib.vt.edu/bitstreams/46876dfe-d4b6-4a99-ab37-050bd93125d2/download
 
+OpenAPI Initiative. (2021). *OpenAPI Specification v3.1.0*. https://spec.openapis.org/oas/v3.1.0
+
+Render. (s. f.). *Render documentation*. https://render.com/docs
+
+Schwaber, K., & Sutherland, J. (2020). *The Scrum Guide*. https://scrumguides.org/scrum-guide.html
+
+Spring. (s. f.). *Spring Boot reference documentation*. https://docs.spring.io/spring-boot/
+
+Supabase. (s. f.). *Supabase documentation*. https://supabase.com/docs
+
 Vega, M., Sánchez, E., & Andia, A. (2025). *Diseño e implementación del piloto de CBDC minorista en Perú* (Documento de Trabajo DT. N°. 2025-003). Banco Central de Reserva del Perú (BCRP). https://www.bcrp.gob.pe/docs/Publicaciones/Documentos-de-Trabajo/2025/documento-de-trabajo-003-2025.pdf
+
+Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley.
 
 Villalobos Paz, O. E. (2023). *Implementación de Lean Management para reducir la merma en la categoría de carnes rojas de una cadena de supermercados* [Tesis de pregrado, Universidad San Ignacio de Loyola]. Repositorio Institucional USIL. https://repositorio.usil.edu.pe/server/api/core/bitstreams/c87882f3-3aba-4144-b03a-17371dc5dc8a/content
 
@@ -5508,4 +5636,43 @@ Yuziv Duda, I. (2024). *Desarrollo de un carrito de compras inteligente con tecn
 
 # Anexos
 
+## Anexo 1. Repositorios del proyecto
+
+Organización en GitHub: https://github.com/8721-Desarrollo-de-Soluciones-IOT
+
+| Repositorio | Contenido | URL |
+| :--- | :--- | :--- |
+| docs | Informe del proyecto | https://github.com/8721-Desarrollo-de-Soluciones-IOT/docs |
+| innova-carty-landing-page | Landing Page | https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-landing-page |
+| innova-carty-frontend-web-app | Web Console (Angular) | https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-frontend-web-app |
+| innova-carty-backend | Web Services (Spring Boot y Supabase) | https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-backend |
+| innova-carty-mobile-app | Mobile App (Flutter) | https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-mobile-app |
+| innova-carty-embedded-app | Firmware del carrito (ESP32) | https://github.com/8721-Desarrollo-de-Soluciones-IOT/innova-carty-embedded-app |
+
+## Anexo 2. Productos desplegados
+
+| Producto | URL pública |
+| :--- | :--- |
+| Landing Page | https://innova-carty-landing-page.vercel.app/ |
+| Web Console | https://innova-carty-web-app.vercel.app/sign-in |
+| Web Services | https://innova-carty-backend.onrender.com/api/v1 |
+| Documentación de la API (Swagger UI) | https://innova-carty-backend.onrender.com/swagger-ui.html |
+
+La app móvil se instala con el APK de Android y el firmware se carga por USB al ESP32 del carrito, como se describe en 6.2.2.8.
+
+## Anexo 3. Tableros de trabajo
+
 * **Tablero de Miro (Design-Level EventStorming, Domain Message Flows y Bounded Context Canvases):** https://miro.com/app/board/uXjVEd-agkM=/
+* **Tablero del Sprint 2 (Trello):** https://trello.com/b/iYzQF1lG/innova-carty-sprint-2
+
+## Anexo 4. Videos del proyecto
+
+| Video | Sección | URL |
+| :--- | :--- | :--- |
+| Entrevistas de needfinding | 2.2.2 | Enlaces a Microsoft Stream y YouTube en la tabla de cada entrevista |
+| Prototipos de los productos | 5.5 | Enlaces a Microsoft Stream en la tabla de prototipos |
+| Entrevista de validación S2-1 | 6.3.2 | https://youtu.be/6kxTbrWjZgI |
+| About-the-Product | 6.4 | https://youtu.be/pCsk4X8F9BI |
+
+<!-- PENDIENTE: Anexo 5. Videos de Exposiciones (AV1, TB1 y AV2) con su URL, y Anexo 6. Consentimientos de las entrevistas. -->
+
